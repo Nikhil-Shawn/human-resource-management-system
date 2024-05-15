@@ -1,4 +1,4 @@
-# human-resource-system
+# human-resource-management-system
 
 ## Overview
 This Human Resource System is designed to streamline and manage various HR processes within an organization. It includes modules for employee management, payroll, leave management, performance evaluation, and more. The system aims to automate routine HR tasks, improve efficiency, and enhance overall HR management.
