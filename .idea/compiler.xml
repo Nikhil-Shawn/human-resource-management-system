@@ -9,8 +9,5 @@
         <module name="human-resource-management-system" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="human-resource-management-system" target="21" />
-    </bytecodeTargetLevel>
   </component>
 </project>
