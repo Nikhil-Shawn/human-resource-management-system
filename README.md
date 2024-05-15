@@ -2,6 +2,7 @@
 
 ## Overview
 This Human Resource System is designed to streamline and manage various HR processes within an organization. It includes modules for employee management, payroll, leave management, performance evaluation, and more. The system aims to automate routine HR tasks, improve efficiency, and enhance overall HR management.
+2024 M.Sc. ACS SRH Heidelberg
 
 ## Features - Subject to change
 - **Employee Management**: Maintain employee records, including personal information, contact details, and employment history.
