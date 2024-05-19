@@ -1,4 +1,4 @@
-package Entity;
+package com.humanresourcemanagementsystem.Entity;
 
 public interface Person {
 
