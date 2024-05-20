@@ -4,62 +4,66 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Employee")
-public class Employee implements Person {
+public class Employee {
 
-    // Person fields
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PersonID")
-    private int personID;
-
-    @Column(name = "FirstName", nullable = false)
-    private String firstName;
-
-    @Column(name = "LastName", nullable = false)
-    private String lastName;
-
-    // Employee-specific field
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "EmployeeID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "EmployeeID", length = 45)
     private int employeeID;
 
-    // Getters and Setters for Person fields
-    @Override
-    public int getPersonID() {
-        return personID;
-    }
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
-    @Override
-    public void setPersonID(int personID) {
-        this.personID = personID;
-    }
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
-    @Override
-    public String getFirstName() {
-        return firstName;
-    }
+    // Additional fields specific to Employee
+    //Yet to add
 
-    @Override
-    public void setFirstName(String firstName) {
+
+    //Constructor
+    public Employee(int employeeID, String firstName, String lastName) {
+        this.employeeID = employeeID;
         this.firstName = firstName;
-    }
-
-    @Override
-    public String getLastName() {
-        return lastName;
-    }
-
-    @Override
-    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    // Getters and Setters for Employee-specific field
+    //Empty Constructor
+    public Employee() {
+    }
+
+
+    // Getters and Setters
     public int getEmployeeID() {
         return employeeID;
     }
 
     public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeID=" + employeeID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
