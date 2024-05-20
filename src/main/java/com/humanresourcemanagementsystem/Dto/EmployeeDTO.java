@@ -1,39 +1,15 @@
 package com.humanresourcemanagementsystem.Dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-public class EmployeeDTO {
+public class EmployeeDTO extends PersonDTO {
 
     private int employeeID;
-    private String firstName;
-    private String lastName;
 
-    public EmployeeDTO(int employeeID, String lastName, String firstName) {
+    public EmployeeDTO(int personID, String firstName, String lastName, String email, String phone, int employeeID) {
+        super(personID, firstName, lastName, email, phone);
         this.employeeID = employeeID;
-        this.lastName = lastName;
-        this.firstName = firstName;
     }
 
     public EmployeeDTO() {
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public int getEmployeeID() {
@@ -48,8 +24,11 @@ public class EmployeeDTO {
     public String toString() {
         return "EmployeeDTO{" +
                 "employeeID=" + employeeID +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", personID=" + getPersonID() +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", phone='" + getPhone() + '\'' +
                 '}';
     }
 }

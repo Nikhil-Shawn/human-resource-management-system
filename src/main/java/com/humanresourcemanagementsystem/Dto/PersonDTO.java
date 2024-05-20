@@ -1,43 +1,24 @@
-package com.humanresourcemanagementsystem.Entity;
+package com.humanresourcemanagementsystem.Dto;
 
-import jakarta.persistence.*;
-import java.util.Set;
+public class PersonDTO {
 
-@Entity
-@Table(name = "Person")
-public class Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "PersonID")
     private int personID;
-
-    @Column(name = "first_name", nullable = false)
     private String firstName;
-
-    @Column(name = "last_name", nullable = false)
     private String lastName;
-
-    @Column(name = "Email", nullable = false)
     private String email;
-
-    @Column(name = "Phone", nullable = false)
     private String phone;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    private Set<Employee> employees;
-
-    // Constructors
-    public Person() {}
-
-    public Person(String firstName, String lastName, String email, String phone) {
+    public PersonDTO(int personID, String firstName, String lastName, String email, String phone) {
+        this.personID = personID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
     }
 
-    // Getters and Setters
+    public PersonDTO() {
+    }
+
     public int getPersonID() {
         return personID;
     }
@@ -78,11 +59,14 @@ public class Person {
         this.phone = phone;
     }
 
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
+    @Override
+    public String toString() {
+        return "PersonDTO{" +
+                "personID=" + personID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

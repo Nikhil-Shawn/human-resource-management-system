@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80271200-17d5-493b-b73e-66a4b21a2bc8" name="Changes" comment="Refactoring project structure 2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/EmployeeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/EmployeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EmployeeIMPL.java" afterDir="false" />
+    <list default="true" id="80271200-17d5-493b-b73e-66a4b21a2bc8" name="Changes" comment="Refactored Structure and did Basic CRUD">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/PersonDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/PersonIMPL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/PersonService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EmployeeController/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EmployeeController/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/EmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/EmployeeDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/HumanResourceManagementSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/HumanResourceManagementSystemApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/EmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/PersonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EmployeeIMPL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EmployeeIMPL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,12 +97,21 @@
       <option name="project" value="LOCAL" />
       <updated>1716160094751</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Refactored Structure and did Basic CRUD">
+      <option name="closed" value="true" />
+      <created>1716226876913</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716226876913</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactoring project structure" />
     <MESSAGE value="Refactoring project structure 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring project structure 2" />
+    <MESSAGE value="Refactored Structure and did Basic CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Structure and did Basic CRUD" />
   </component>
 </project>

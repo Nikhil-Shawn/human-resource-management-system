@@ -19,9 +19,9 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping(path ="/save")
-    public String saveEmployee (@RequestBody EmployeeDTO employeeDTO){
-         return employeeService.addEmployee(employeeDTO);
+    @PostMapping("/save")
+    public String saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        return employeeService.addEmployee(employeeDTO);
     }
 
 

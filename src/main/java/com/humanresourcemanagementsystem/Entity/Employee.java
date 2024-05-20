@@ -8,30 +8,19 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "EmployeeID", length = 45)
+    @Column(name = "EmployeeID")
     private int employeeID;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
+    @ManyToOne
+    @JoinColumn(name = "PersonID", referencedColumnName = "PersonID")
+    private Person person;
 
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
+    // Constructors
+    public Employee() {}
 
-    // Additional fields specific to Employee
-    //Yet to add
-
-
-    //Constructor
-    public Employee(int employeeID, String firstName, String lastName) {
-        this.employeeID = employeeID;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Employee(Person person) {
+        this.person = person;
     }
-
-    //Empty Constructor
-    public Employee() {
-    }
-
 
     // Getters and Setters
     public int getEmployeeID() {
@@ -42,28 +31,11 @@ public class Employee {
         this.employeeID = employeeID;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "employeeID=" + employeeID +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }
