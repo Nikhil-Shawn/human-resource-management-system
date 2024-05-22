@@ -31,7 +31,7 @@ Contributions are welcome! If you'd like to contribute to the development of thi
 2. Create a new branch: `git checkout -b feature/your-feature-name`
 3. Make your changes and commit them: `git commit -am 'Add new feature'`
 4. Push to the branch: `git push origin feature/your-feature-name`
-5. Submit a pull request detailing your changes
+5. Submit a pull request detailing your changes.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -42,5 +42,4 @@ If you encounter any issues or have any questions about the HR System, please [o
 ## Acknowledgements
 - [Tech Stack Used](link to technologies used)
 - [Contributors](link to contributors)
-
 
