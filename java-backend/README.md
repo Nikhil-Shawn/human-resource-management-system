@@ -17,7 +17,7 @@ This Human Resource Management System is designed to streamline and manage vario
 1. Clone the repository: `git clone https://github.com/yourusername/human-resource-system.git`
 2. Install dependencies: `npm install` or `yarn install`
 3. Configure the database settings in `config.js`
-4. Run the application: `npm start` or `yarn start`
+4. Run the application: `npm start` or `yarn start`.....
 
 ## Usage
 1. Access the HR System through the provided URL.
