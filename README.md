@@ -43,4 +43,3 @@ If you encounter any issues or have any questions about the HR System, please [o
 - [Tech Stack Used](link to technologies used)
 - [Contributors](link to contributors)
 
-
