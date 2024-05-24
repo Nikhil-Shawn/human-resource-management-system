@@ -23,17 +23,25 @@ public class EmployeeIMPL implements EmployeeService {
 
         // Create a Person entity from the DTO
         Person person = new Person(
+                employeeDTO.getPersonID(),
                 employeeDTO.getFirstName(),
                 employeeDTO.getLastName(),
+                employeeDTO.getAddress(),
                 employeeDTO.getEmail(),
-                employeeDTO.getPhone()
+                employeeDTO.getPassword(),
+                employeeDTO.getPhone(),
+                employeeDTO.getDateOfBirth(),
+                employeeDTO.getGender(),
+                employeeDTO.getNationality(),
+                employeeDTO.getMaritalStatus(),
+                employeeDTO.getPersonType()
         );
 
         // Save the Person entity
         Person savedPerson = personService.savePerson(person);
 
         // Create an Employee entity and set the person
-        Employee employee = new Employee(savedPerson);
+        Employee employee = new Employee(savedPerson, employeeDTO.getDesignation());
 
         // Save the Employee entity
         employeeRepository.save(employee);
