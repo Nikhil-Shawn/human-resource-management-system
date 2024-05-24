@@ -9,7 +9,8 @@ public class EmployeeDTO extends PersonDTO {
         this.employeeID = employeeID;
     }
 
-    public EmployeeDTO() {
+    public EmployeeDTO(int EmployeeID) {
+        this.employeeID = EmployeeID;
     }
 
     public int getEmployeeID() {
