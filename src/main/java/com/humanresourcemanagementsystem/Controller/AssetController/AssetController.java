@@ -13,13 +13,5 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class AssetController {
 
-    @Autowired
-    private EmployeeService employeeService;
-
-    @PostMapping("/save")
-    public String saveEmployee(@RequestBody AssetDTO assetDTO) {
-        return employeeService.addEmployee(assetDTO);
-    }
-
 
 }

@@ -1,10 +1,22 @@
-package com.humanresourcemanagementsystem.Dto;
+package com.humanresourcemanagementsystem.Entity;
 
+import jakarta.persistence.*;
+import org.hibernate.type.descriptor.jdbc.NVarcharJdbcType;
 import java.time.LocalDate;
 
-public class AssetDTO extends EmployeeDTO {
+@Entity
+public class Asset {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "asset_id")
     private int asset_id;
+
+    @ManyToOne
+    @JoinColumn(name = "EmployeeID", referencedColumnName = "EmployeeID")
+    private Employee employee;
+
+    // Additional asset details (you can add more fields as needed)
     private String asset_type;
     private String serial_number;
     private LocalDate issued_date;
@@ -12,18 +24,18 @@ public class AssetDTO extends EmployeeDTO {
     private LocalDate created_at;
     private LocalDate updated_at;
 
-    public AssetDTO(int EmployeeID, int asset_id , String asset_type , String serial_number, LocalDate issued_date
-            ,LocalDate return_date, LocalDate created_at, LocalDate updated_at )
-    {
-        super(EmployeeID);
-        this.asset_id = asset_id;
+    // Constructors
+    public Asset() {
+    }
+
+    public Asset( String asset_type, String serial_number, LocalDate issued_date, LocalDate return_date,
+                 LocalDate created_at, LocalDate updated_at ) {
         this.asset_type = asset_type;
         this.serial_number = serial_number;
         this.issued_date = issued_date;
         this.return_date = return_date;
         this.created_at = created_at;
         this.updated_at = updated_at;
-
     }
 
     public int getAsset_id() {
@@ -33,6 +45,7 @@ public class AssetDTO extends EmployeeDTO {
     public void setAsset_id(int asset_id) {
         this.asset_id = asset_id;
     }
+
 
     public String getAsset_type() {
         return asset_type;
@@ -66,7 +79,6 @@ public class AssetDTO extends EmployeeDTO {
         this.return_date = return_date;
     }
 
-
     public LocalDate getCreated_at() {
         return created_at;
     }
@@ -82,18 +94,5 @@ public class AssetDTO extends EmployeeDTO {
     public void setUpdated_at(LocalDate updated_at) {
         this.updated_at = updated_at;
     }
-
-    @Override
-    public String toString() {
-        return "AssetDTO{" +
-                "asset_id=" + asset_id +
-                "EmployeeID=" + getEmployeeID() +
-                "asset_type=" + getAsset_type() +
-                "serial_number=" + getSerial_number() +
-                "issued_date=" + getIssued_date() +
-                "return_date=" + getReturn_date() +
-                "created_at=" + getCreated_at()+
-                "updated_at=" + getUpdated_at()+
-                '}';
-    }
 }
+
