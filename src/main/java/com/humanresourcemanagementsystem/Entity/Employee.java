@@ -2,6 +2,8 @@ package com.humanresourcemanagementsystem.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Employee")
 public class Employee {
@@ -14,6 +16,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "PersonID", referencedColumnName = "PersonID")
     private Person person;
+
 
     // Constructors
     public Employee() {}
