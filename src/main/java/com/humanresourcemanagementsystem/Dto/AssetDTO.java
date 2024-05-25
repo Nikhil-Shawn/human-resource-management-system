@@ -1,19 +1,29 @@
 package com.humanresourcemanagementsystem.Dto;
 
+import jakarta.persistence.*;
+import org.hibernate.type.descriptor.jdbc.NVarcharJdbcType;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class AssetDTO extends EmployeeDTO {
 
     private int asset_id;
     private String asset_type;
     private String serial_number;
-    private LocalDate issued_date;
-    private LocalDate return_date;
-    private LocalDate created_at;
-    private LocalDate updated_at;
+    private Date issued_date;
+    private Date return_date;
+    private Date created_at;
+    private Date updated_at;
 
-    public AssetDTO(int EmployeeID, int asset_id , String asset_type , String serial_number, LocalDate issued_date
-            ,LocalDate return_date, LocalDate created_at, LocalDate updated_at )
+    // Constructors
+    public AssetDTO() {
+        this.created_at = new Date();
+        this.updated_at = new Date();
+    }
+
+
+    public AssetDTO(int EmployeeID, int asset_id , String asset_type , String serial_number, Date issued_date
+            ,Date return_date, Date created_at, Date updated_at )
     {
         super(EmployeeID);
         this.asset_id = asset_id;
@@ -50,36 +60,36 @@ public class AssetDTO extends EmployeeDTO {
         this.serial_number = serial_number;
     }
 
-    public LocalDate getIssued_date() {
+    public Date getIssued_date() {
         return issued_date;
     }
 
-    public void setIssued_date(LocalDate issued_date) {
+    public void setIssued_date(Date issued_date) {
         this.issued_date = issued_date;
     }
 
-    public LocalDate getReturn_date() {
+    public Date getReturn_date() {
         return return_date;
     }
 
-    public void setReturn_date(LocalDate return_date) {
+    public void setReturn_date(Date return_date) {
         this.return_date = return_date;
     }
 
 
-    public LocalDate getCreated_at() {
+    public Date getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(LocalDate created_at) {
+    public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
 
-    public LocalDate getUpdated_at() {
+    public Date getUpdated_at() {
         return updated_at;
     }
 
-    public void setUpdated_at(LocalDate updated_at) {
+    public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
     }
 
