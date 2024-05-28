@@ -1,8 +1,13 @@
 import "./App.css";
 import loginImage from "./images/loginImage.svg";
 import nexusLogo from "./images/nexusLogo.png";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+	const navigate = useNavigate();
+	const handleLogin = () =>{
+		navigate('/landing-page')
+	}
 	return (
 		<div>
 			<div className="login-image">
@@ -37,7 +42,7 @@ function App() {
 					></input>
 				</div>
 				<div className="login-container">
-					<button className="applicant-button">Login</button>
+					<button className="applicant-button" onClick={handleLogin}>Login</button>
 				</div>
 			</div>
 		</div>
