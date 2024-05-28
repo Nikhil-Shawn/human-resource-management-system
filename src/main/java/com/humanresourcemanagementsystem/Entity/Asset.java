@@ -1,11 +1,11 @@
 package com.humanresourcemanagementsystem.Entity;
 
 import jakarta.persistence.*;
-import org.hibernate.type.descriptor.jdbc.NVarcharJdbcType;
-import java.time.LocalDate;
+
 import java.util.Date;
 
 @Entity
+@Table(name = "hrm_asset")
 public class Asset {
 
     @Id
@@ -38,13 +38,14 @@ public class Asset {
     private Date updated_at;
 
     // Constructors
-    public Asset() {
+    public Asset( ) {
         this.created_at = new Date();
         this.updated_at = new Date();
     }
 
-    public Asset( String asset_type, String serial_number, Date issued_date, Date return_date,
+    public Asset( int asset_id, String asset_type, String serial_number, Date issued_date, Date return_date,
                  Date created_at, Date updated_at ) {
+        this();
         this.asset_type = asset_type;
         this.serial_number = serial_number;
         this.issued_date = issued_date;

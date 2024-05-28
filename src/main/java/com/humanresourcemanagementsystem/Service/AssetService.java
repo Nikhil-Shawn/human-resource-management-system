@@ -1,8 +1,8 @@
 package com.humanresourcemanagementsystem.Service;
 
 import com.humanresourcemanagementsystem.Dto.AssetDTO;
-import com.humanresourcemanagementsystem.Dto.EmployeeDTO;
+import com.humanresourcemanagementsystem.response.AssetResponse;
 
 public interface AssetService {
-    String addAsset(AssetDTO assetDTO);
+    AssetResponse addAsset(AssetDTO assetDTO);
 }
