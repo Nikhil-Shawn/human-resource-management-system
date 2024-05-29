@@ -13,7 +13,7 @@ public class Asset {
     @Column(name = "asset_id")
     private int asset_id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "EmployeeID", referencedColumnName = "EmployeeID")
     private Employee employee;
 
