@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+   
+  .login-image {
+    flex: 1;
+    text-align: center;
+  }
+   
+  .login-image img {
+    max-width: 100%;
+    height: auto;
+  }
+   
+  .login-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: white;
+  }
+   
+  .logo img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+   
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+   
+  .emp-button,
+  .applicant-button {
+    flex: 1;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .emp-button:hover, .applicant-button:hover {
+    color: white;
+    background-color: black;
+  }
+   
+  .form-container {
+    width: 100%;
+  }
+   
+  .form-container h2 {
+    margin-bottom: 10px;
+  }
+   
+  .form-container p {
+    margin-bottom: 20px;
+  }
+   
+  .input-field {
+    margin-right: 20px;
+    width: 97%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+   
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
