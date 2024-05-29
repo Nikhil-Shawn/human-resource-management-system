@@ -1,6 +1,6 @@
 import React from "react";
-import loginImage from "./images/loginImage.svg";
-import nexusLogo from "./images/nexusLogo.png";
+import loginImage from "../images/loginImage.svg";
+import nexusLogo from "../images/nexusLogo.png";
 import "./Login.css";
  
 function Login() {
@@ -18,8 +18,8 @@ function Login() {
 <button className="applicant-button">Applicant</button>
 </div>
 <div className="form-container">
-<h2>Create an account</h2>
-<p>Enter your email to sign up</p>
+<h2>Login to your account</h2>
+<p>Enter your email and password to sign in</p>
 <input type="text" placeholder="email@domain.com" className="input-field" />
 <input type="password" placeholder="password" className="input-field" />
 <button className="login-button">Login</button>
