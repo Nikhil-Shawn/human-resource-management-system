@@ -8,15 +8,54 @@ import com.humanresourcemanagementsystem.Service.EmployeeService;
 import com.humanresourcemanagementsystem.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeIMPL implements EmployeeService {
+
 
     @Autowired
     private EmployeeRepository employeeRepository;
 
     @Autowired
     private PersonService personService;
+
+    @Override
+    public EmployeeDTO getEmployeeById(int id) {
+        Optional<Employee> employeeOpt = employeeRepository.findById(id);
+        if (employeeOpt.isPresent()) {
+            Employee employee = employeeOpt.get();
+            // Fetch associated person information
+            EmployeeDTO employeeDTO = new EmployeeDTO();
+            employeeDTO.setEmployeeID(employee.getEmployeeID());
+            employeeDTO.setDesignation(employee.getDesignation());
+            // Fetch associated person details
+            Person person = personService.getPersonById(employee.getPerson().getPersonID());
+            employeeDTO.setPerson(person);
+            return employeeDTO;
+        } else {
+            throw new RuntimeException("Employee not found with id: " + id);
+        }
+    }
+
+    @Override
+    public List<EmployeeDTO> getAllEmployees() {
+        List<Employee> employees = employeeRepository.findAll();
+        return employees.stream()
+                .map(employee -> {
+                    EmployeeDTO employeeDTO = new EmployeeDTO();
+                    employeeDTO.setEmployeeID(employee.getEmployeeID());
+                    employeeDTO.setDesignation(employee.getDesignation());
+                    // Fetch associated person details
+                    Person person = personService.getPersonById(employee.getPerson().getPersonID());
+                    employeeDTO.setPerson(person);
+                    return employeeDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     public String addEmployee(EmployeeDTO employeeDTO) {
@@ -47,5 +86,7 @@ public class EmployeeIMPL implements EmployeeService {
         employeeRepository.save(employee);
 
         return employee.getPerson().getFirstName();
+
+
     }
 }

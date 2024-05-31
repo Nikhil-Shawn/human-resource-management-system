@@ -24,5 +24,17 @@ public class EmployeeController {
         return employeeService.addEmployee(employeeDTO);
     }
 
+    // Get employee by ID
+    @GetMapping("/{id}")
+    public EmployeeDTO getEmployeeById(@PathVariable int id) {
+        return employeeService.getEmployeeById(id);
+    }
+
+    // Get all employees
+    @GetMapping("/all")
+    public List<EmployeeDTO> getAllEmployees() {
+        return employeeService.getAllEmployees();
+    }
+
 
 }

@@ -55,7 +55,8 @@
   }
   
   .employee-table td {
-    border: 1px solid #E0E4EA;
+    border-bottom: 1px solid #E0E4EA;
+    border-top: 1px solid #E0E4EA;
     padding: 8px;
     text-align: left;
     background: white;
