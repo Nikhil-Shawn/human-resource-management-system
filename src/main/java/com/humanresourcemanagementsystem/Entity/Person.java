@@ -1,5 +1,6 @@
 package com.humanresourcemanagementsystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Set;
 import java.util.Date;
@@ -55,6 +56,7 @@ public class Person {
     private Date updatedAt;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Employee> employees;
 
     // Constructors

@@ -18,7 +18,6 @@ public class Employee {
     @JoinColumn(name = "person_id", referencedColumnName = "person_id")
     private Person person;
 
-
     // Constructors
     public Employee() {}
 

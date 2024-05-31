@@ -1,11 +1,14 @@
 package com.humanresourcemanagementsystem.Dto;
 
+import com.humanresourcemanagementsystem.Entity.Person;
+
 import java.util.Date;
 
 public class EmployeeDTO extends PersonDTO {
 
     private int employeeID;
     private String designation;
+    private Person person;
 
     public EmployeeDTO(){
     }
@@ -33,6 +36,14 @@ public class EmployeeDTO extends PersonDTO {
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     @Override
