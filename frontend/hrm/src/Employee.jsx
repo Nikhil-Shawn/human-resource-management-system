@@ -14,7 +14,7 @@ function Employee() {
       name: 'John Smith',
       position: 'Project Manager',
       department: 'Development',
-      status: 'Active',
+      status: 'ACTIVE',
       joiningdate: 'Sep 12, 2023',
       email: 'jane.smith@hr-nexus.com',
       phone: '0149 421 4219'
@@ -24,7 +24,7 @@ function Employee() {
       name: 'Jane Smith',
       position: 'Project Manager',
       department: 'Development',
-      status: 'Active',
+      status: 'ACTIVE',
       joiningdate: 'Sep 12, 2023',
       email: 'jane.smith@hr-nexus.com',
       phone: '0149 421 4219'
@@ -85,9 +85,9 @@ function Employee() {
               <td>{employee.department}</td>
               <td><span style={{
                 backgroundColor: '#DDFCE0',
-                color: 'black',
-                borderRadius: '5px',
-                padding: '4px 5px',
+                color: '#0EB01D',
+                borderRadius: '30px',
+                padding: '15px 25px',
                 display: 'inline-block'
               }}>{employee.status}</span></td>
               <td>{employee.joiningdate}</td>
