@@ -22,6 +22,18 @@ public class AssetIMPL implements AssetService {
 
     @Override
     public String addAsset(AssetDTO assetDTO) {
+
+        // Fetch and set the employee
+        Employee employee = employeeRepository.findById(assetDTO.getEmployee_id()).orElse(null);
+        if (employee == null) {
+            return "Employee not found";
+        }
+
+        // Check if the employee already has an asset assigned
+        if (assetRepository.existsByEmployee(employee)) {
+            return "Employee already has an asset assigned";
+        }
+
         Asset asset = new Asset();
         asset.setAsset_type(assetDTO.getAsset_type());
         asset.setSerial_number(assetDTO.getSerial_number());
@@ -30,11 +42,7 @@ public class AssetIMPL implements AssetService {
         asset.setCreated_at(new Date());
         asset.setUpdated_at(new Date());
 
-        // Fetch and set the employee
-        Employee employee = employeeRepository.findById(assetDTO.getEmployee_id()).orElse(null);
-        if (employee == null) {
-            return "Employee not found";
-        }
+        // Set the employee in the asset
         asset.setEmployee(employee);
 
         assetRepository.save(asset);
