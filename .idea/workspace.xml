@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EmployeeController/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EmployeeController/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/EmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/EmployeeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EmployeeIMPL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EmployeeIMPL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/PersonIMPL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/PersonIMPL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/PersonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Employee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Employee.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/Dashboard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +36,12 @@
     &quot;assignee&quot;: &quot;poojasanjaypatil&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Nikhil-Shawn/human-resource-management-system.git",
-    "accountId": "2059bb61-9395-40a0-a185-0e83ccf63b60"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Nikhil-Shawn/human-resource-management-system.git&quot;,
+    &quot;accountId&quot;: &quot;2059bb61-9395-40a0-a185-0e83ccf63b60&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -58,15 +51,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HumanResourceManagementSystemApplication.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Employee-get",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HumanResourceManagementSystemApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Employee-get&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pooja/IdeaProjects/human-resource-management-system&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

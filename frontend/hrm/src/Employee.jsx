@@ -75,9 +75,21 @@ function Employee() {
           {employees.map(employee => (
             <tr key={employee.id}>
               <td style={{ borderLeft: '1px solid #E0E4EA' }} >{employee.name}</td>
-              <td>{employee.position}</td>
+              <td><span style={{
+                backgroundColor: '#DDCBFC',
+                color: 'white',
+                borderRadius: '5px',
+                padding: '4px 5px',
+                display: 'inline-block'
+              }}>{employee.position}</span></td>
               <td>{employee.department}</td>
-              <td>{employee.status}</td>
+              <td><span style={{
+                backgroundColor: '#DDFCE0',
+                color: 'black',
+                borderRadius: '5px',
+                padding: '4px 5px',
+                display: 'inline-block'
+              }}>{employee.status}</span></td>
               <td>{employee.joiningdate}</td>
               <td><IoIosMail style={{marginRight: '5px' }}/>{employee.email}</td>
               <td><FaPhoneAlt style={{marginRight: '5px' }}/>{employee.phone}</td>
