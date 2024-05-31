@@ -57,6 +57,9 @@ public class Person {
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private Set<Employee> employees;
 
+    @OneToMany(mappedBy = "person")
+    private Set<Experience> experiences;
+
     // Constructors
     public Person() {
         this.createdAt = new Date();
@@ -198,4 +201,20 @@ public class Person {
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
+
+    public Set<Experience> getExperiences() {
+        return experiences;
+    }
+
+    public void setExperiences(Set<Experience> experiences) {
+        this.experiences = experiences;
+    }
+
+    //    public Experience getExperience() {
+//        return experience;
+//    }
+//
+//    public void setExperience(Experience experience) {
+//        this.experience = experience;
+//    }
 }

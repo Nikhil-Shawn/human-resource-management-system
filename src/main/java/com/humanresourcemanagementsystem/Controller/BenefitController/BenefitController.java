@@ -1,4 +1,4 @@
-package com.humanresourcemanagementsystem.Controller;
+package com.humanresourcemanagementsystem.Controller.BenefitController;
 
 import com.humanresourcemanagementsystem.Dto.BenefitDTO;
 import com.humanresourcemanagementsystem.Service.BenefitService;
