@@ -18,6 +18,9 @@ public class Employee {
     @JoinColumn(name = "person_id", referencedColumnName = "person_id")
     private Person person;
 
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    private Asset asset;
+
     // Constructors
     public Employee() {}
 
@@ -49,5 +52,13 @@ public class Employee {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public Asset getAsset() {
+        return asset;
+    }
+
+    public void setAsset(Asset asset) {
+        this.asset = asset;
     }
 }
