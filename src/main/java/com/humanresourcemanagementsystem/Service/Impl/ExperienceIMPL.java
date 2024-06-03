@@ -1,13 +1,23 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
+import com.humanresourcemanagementsystem.Dto.BenefitDTO;
+import com.humanresourcemanagementsystem.Dto.EmployeePersonDTO;
 import com.humanresourcemanagementsystem.Dto.ExperienceDTO;
+import com.humanresourcemanagementsystem.Entity.Benefit;
+import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Entity.Experience;
 import com.humanresourcemanagementsystem.Entity.Person;
 import com.humanresourcemanagementsystem.Repo.ExperienceRepository;
 import com.humanresourcemanagementsystem.Repo.PersonRepository;
 import com.humanresourcemanagementsystem.Service.ExperienceService;
+import com.humanresourcemanagementsystem.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ExperienceIMPL implements ExperienceService {
@@ -18,22 +28,67 @@ public class ExperienceIMPL implements ExperienceService {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    private PersonService personService;
+
+    @Override
+    public ExperienceDTO getExperienceById(int id) {
+        Optional<Experience> experienceOpt = experienceRepository.findById(id);
+        if (experienceOpt.isPresent()) {
+            Experience experience = experienceOpt.get();
+            // Fetch associated experience information
+            ExperienceDTO experienceDTO = new ExperienceDTO();
+            experienceDTO.setExperience_id(experience.getExperienceID());
+            experienceDTO.setCompany_name(experience.getCompany_name());
+            experienceDTO.setEmployment_type(experience.getEmployment_type());
+            experienceDTO.setNo_of_years(experience.getNo_of_years());
+            experienceDTO.setPosition(experience.getPosition());
+            experienceDTO.setStart_date(experience.getStart_date());
+            experienceDTO.setEnd_date(experience.getEnd_date());
+            // Fetch associated person details
+            Person person = experience.getPerson();
+            if (person != null) {
+                experienceDTO.setPerson_id(person.getPersonID());
+            }
+            return experienceDTO;
+        } else {
+            throw new RuntimeException("Experience not found with id: " + id);
+        }
+    }
+
+    @Override
+    public List<ExperienceDTO> getAllExperience() {
+        List<Experience> experiences = experienceRepository.findAll();
+        return experiences.stream()
+                .map(experience -> {
+                    // Fetch associated experience information
+                    ExperienceDTO experienceDTO = new ExperienceDTO();
+                    experienceDTO.setExperience_id(experience.getExperienceID());
+                    experienceDTO.setCompany_name(experience.getCompany_name());
+                    experienceDTO.setEmployment_type(experience.getEmployment_type());
+                    experienceDTO.setNo_of_years(experience.getNo_of_years());
+                    experienceDTO.setPosition(experience.getPosition());
+                    experienceDTO.setStart_date(experience.getStart_date());
+                    experienceDTO.setEnd_date(experience.getEnd_date());
+                    // Fetch associated person details
+                    Person person = personService.getPersonById(experience.getPerson().getPersonID());
+                    experienceDTO.setPerson_id(person.getPersonID());
+                    return experienceDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
+//    @Override
+//    public List<EmployeeExperienceDTO> getAllExperience() {
+//        List<Experience> experiences = experienceRepository.findAll();
+//        return experiences.stream()
+//                .map(experienceMapper::toDTO)
+//                .collect(Collectors.toList());
+//    }
+
     @Override
     public String addExperience(ExperienceDTO experienceDTO)
     {
-//        boolean exists = experienceRepository.existsByDetails(
-//                experienceDTO.getCompany_name(),
-//                experienceDTO.getEmployment_type(),
-//                experienceDTO.getNo_of_years(),
-//                experienceDTO.getPosition(),
-//                experienceDTO.getStart_date(),
-//                experienceDTO.getEnd_date()
-//        );
-//
-//        if (exists) {
-//            return "Experience entry already exists";
-//        }
-
         // Fetch and set the person
         Person person = personRepository.findById(experienceDTO.getPerson_id()).orElse(null);
         if (person == null) {

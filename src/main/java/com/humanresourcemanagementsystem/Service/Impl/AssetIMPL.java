@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AssetIMPL implements AssetService {
@@ -19,6 +22,54 @@ public class AssetIMPL implements AssetService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Override
+    public AssetDTO getAssetById(int id) {
+        Optional<Asset> assetOpt = assetRepository.findById((long) id);
+        if (assetOpt.isPresent()) {
+            Asset asset = assetOpt.get();
+            // Fetch associated asset information
+            AssetDTO assetDTO = new AssetDTO();
+            assetDTO.setAsset_id(asset.getAsset_id());
+            assetDTO.setAsset_type(asset.getAsset_type());
+            assetDTO.setSerial_number(asset.getSerial_number());
+            assetDTO.setIssued_date(asset.getIssued_date());
+            assetDTO.setReturn_date(asset.getReturn_date());
+            assetDTO.setCreated_at(asset.getCreated_at());
+            assetDTO.setUpdated_at(asset.getUpdated_at());
+            // Fetch associated employee details
+            Employee employee = asset.getEmployee();
+            if (employee != null) {
+                assetDTO.setEmployee_id(employee.getEmployeeID());
+            }
+            return assetDTO;
+        } else {
+            throw new RuntimeException("Asset not found with id: " + id);
+        }
+    }
+
+    @Override
+    public List<AssetDTO> getAllAsset() {
+        List<Asset> assets = assetRepository.findAll();
+        return assets.stream()
+                .map(asset -> {
+                    AssetDTO assetDTO = new AssetDTO();
+                    assetDTO.setAsset_id(asset.getAsset_id());
+                    assetDTO.setAsset_type(asset.getAsset_type());
+                    assetDTO.setSerial_number(asset.getSerial_number());
+                    assetDTO.setIssued_date(asset.getIssued_date());
+                    assetDTO.setReturn_date(asset.getReturn_date());
+                    assetDTO.setCreated_at(asset.getCreated_at());
+                    assetDTO.setUpdated_at(asset.getUpdated_at());
+                    // Fetch associated employee details
+                    Employee employee = asset.getEmployee();
+                    if (employee != null) {
+                        assetDTO.setEmployee_id(employee.getEmployeeID());
+                    }
+                    return assetDTO;
+                })
+                .collect(Collectors.toList());
+    }
 
     @Override
     public String addAsset(AssetDTO assetDTO) {

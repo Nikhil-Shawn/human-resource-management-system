@@ -18,6 +18,7 @@ public class ExperienceDTO extends PersonDTO {
 
     public ExperienceDTO(int experience_id, int person_id, String company_name, String employment_type, String no_of_years, String position, Date start_date, Date end_date) {
         this.experience_id = experience_id;
+        this. person_id =  person_id ;
         this.company_name = company_name;
         this.employment_type = employment_type;
         this.no_of_years = no_of_years;
@@ -26,12 +27,12 @@ public class ExperienceDTO extends PersonDTO {
         this.end_date = end_date;
     }
 
-    public int getExperienceID() {
+    public int getExperience_id() {
         return experience_id;
     }
 
-    public void setExperienceID(int experienceID) {
-        this.experience_id = experienceID;
+    public void setExperience_id(int experience_id) {
+        this.experience_id = experience_id;
     }
 
     public int getPerson_id() {
@@ -100,8 +101,6 @@ public class ExperienceDTO extends PersonDTO {
                 ",position='" + position + '\'' +
                 ",start_date=" + start_date +
                 ",end_date=" + end_date +
-//                ",created_at=" + created_at +
-//                ",updated_at=" + updated_at +
                 '}';
     }
 }
