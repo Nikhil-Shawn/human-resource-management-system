@@ -42,12 +42,10 @@
 }
 
 @media (max-width: 768px) {
-    .header-container {
-        padding: 10px;
-    }
-
+   
     .logo img {
-        max-height: 40px; /* Reduce the height for smaller screens */
+    max-height: 150px;
+    max-width: 150px;
     }
 
     .logout-button-container button {

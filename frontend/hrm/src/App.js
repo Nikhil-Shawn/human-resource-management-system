@@ -5,12 +5,11 @@ import Register from "./Pages/Register";
 import Employee from "./Employee";
 
 function App() {
-  return (
-    <div className="wrapper">
-      <Employee />
-    </div>
-    
-  );
+	return (
+		<div className="wrapper">
+			<Login />
+		</div>
+	);
 }
 
 export default App;
