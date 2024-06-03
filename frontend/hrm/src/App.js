@@ -7,7 +7,7 @@ import Employee from "./Employee";
 function App() {
   return (
     <div className="wrapper">
-      <Login />
+      <Employee />
     </div>
     
   );
