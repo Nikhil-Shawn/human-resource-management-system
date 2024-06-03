@@ -1,6 +1,8 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
+import com.humanresourcemanagementsystem.Dto.AssetDTO;
 import com.humanresourcemanagementsystem.Dto.BenefitDTO;
+import com.humanresourcemanagementsystem.Entity.Asset;
 import com.humanresourcemanagementsystem.Entity.Benefit;
 import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Repo.BenefitRepository;
@@ -10,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BenefitIMPL implements BenefitService {
@@ -19,6 +24,55 @@ public class BenefitIMPL implements BenefitService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Override
+    public BenefitDTO getBenefitById(int id) {
+        Optional<Benefit> benefitOpt = benefitRepository.findById(id);
+        if (benefitOpt.isPresent()) {
+            Benefit benefit = benefitOpt.get();
+            // Fetch associated benefit information
+            BenefitDTO benefitDTO = new BenefitDTO();
+            benefitDTO.setBenefit_id(benefit.getBenefit_id());
+            benefitDTO.setBenefit_type(benefit.getBenefit_type());
+            benefitDTO.setCoverage_details(benefit.getCoverage_details());
+            benefitDTO.setStart_date(benefit.getStart_date());
+            benefitDTO.setEnd_date(benefit.getEnd_date());
+            benefitDTO.setCreated_at(benefit.getCreated_at());
+            benefitDTO.setUpdated_at(benefit.getUpdated_at());
+            // Fetch associated employee details
+            Employee employee = benefit.getEmployee();
+            if (employee != null) {
+                benefitDTO.setEmployee_id(employee.getEmployeeID());
+            }
+            return benefitDTO;
+        } else {
+            throw new RuntimeException("Benefit not found with id: " + id);
+        }
+    }
+
+    @Override
+    public List<BenefitDTO> getAllBenefit() {
+        List<Benefit> benefits = benefitRepository.findAll();
+        return benefits.stream()
+                .map(benefit -> {
+                    BenefitDTO benefitDTO = new BenefitDTO();
+                    benefitDTO.setBenefit_id(benefit.getBenefit_id());
+                    benefitDTO.setBenefit_type(benefit.getBenefit_type());
+                    benefitDTO.setCoverage_details(benefit.getCoverage_details());
+                    benefitDTO.setStart_date(benefit.getStart_date());
+                    benefitDTO.setEnd_date(benefit.getEnd_date());
+                    benefitDTO.setCreated_at(benefit.getCreated_at());
+                    benefitDTO.setUpdated_at(benefit.getUpdated_at());
+                    // Fetch associated employee details
+                    Employee employee = benefit.getEmployee();
+                    if (employee != null) {
+                        benefitDTO.setEmployee_id(employee.getEmployeeID());
+                    }
+                    return benefitDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     public String addBenefit(BenefitDTO benefitDTO) {
