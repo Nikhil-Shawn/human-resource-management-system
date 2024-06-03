@@ -1,6 +1,7 @@
 package com.humanresourcemanagementsystem.Controller.EmployeeController;
 
 import com.humanresourcemanagementsystem.Dto.EmployeeDTO;
+import com.humanresourcemanagementsystem.Dto.EmployeePersonDTO;
 import com.humanresourcemanagementsystem.Service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 import com.humanresourcemanagementsystem.Entity.Employee;
@@ -30,9 +31,15 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
-    // Get all employees
+//    // Get all employees
+//    @GetMapping("/all")
+//    public List<EmployeeDTO> getAllEmployees() {
+//        return employeeService.getAllEmployees();
+//    }
+
+    //Get ALL employees Filtered
     @GetMapping("/all")
-    public List<EmployeeDTO> getAllEmployees() {
+    public List<EmployeePersonDTO> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 

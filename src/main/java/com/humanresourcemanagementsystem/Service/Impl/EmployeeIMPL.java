@@ -1,8 +1,10 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
 import com.humanresourcemanagementsystem.Dto.EmployeeDTO;
+import com.humanresourcemanagementsystem.Dto.EmployeePersonDTO;
 import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Entity.Person;
+import com.humanresourcemanagementsystem.Mapper.EmployeeMapper;
 import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
 import com.humanresourcemanagementsystem.Service.EmployeeService;
 import com.humanresourcemanagementsystem.Service.PersonService;
@@ -22,6 +24,9 @@ public class EmployeeIMPL implements EmployeeService {
     @Autowired
     private PersonService personService;
 
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
     @Override
     public EmployeeDTO getEmployeeById(int id) {
         Optional<Employee> employeeOpt = employeeRepository.findById(id);
@@ -40,19 +45,28 @@ public class EmployeeIMPL implements EmployeeService {
         }
     }
 
+//    @Override
+//    public List<EmployeeDTO> getAllEmployees() {
+//        List<Employee> employees = employeeRepository.findAll();
+//        return employees.stream()
+//                .map(employee -> {
+//                    EmployeeDTO employeeDTO = new EmployeeDTO();
+//                    employeeDTO.setEmployeeID(employee.getEmployeeID());
+//                    employeeDTO.setDesignation(employee.getDesignation());
+//                    // Fetch associated person details
+//                    Person person = personService.getPersonById(employee.getPerson().getPersonID());
+//                    employeeDTO.setPerson(person);
+//                    return employeeDTO;
+//                })
+//                .collect(Collectors.toList());
+//    }
+
+    //Filtered Get all employees
     @Override
-    public List<EmployeeDTO> getAllEmployees() {
+    public List<EmployeePersonDTO> getAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
         return employees.stream()
-                .map(employee -> {
-                    EmployeeDTO employeeDTO = new EmployeeDTO();
-                    employeeDTO.setEmployeeID(employee.getEmployeeID());
-                    employeeDTO.setDesignation(employee.getDesignation());
-                    // Fetch associated person details
-                    Person person = personService.getPersonById(employee.getPerson().getPersonID());
-                    employeeDTO.setPerson(person);
-                    return employeeDTO;
-                })
+                .map(employeeMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
