@@ -1,0 +1,56 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.logo img {
+    max-height: 150px;
+    max-width: 150px;
+}
+
+
+.logout-button-container button {
+    font-size: 16px;
+    cursor: pointer;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+
+.logout-button-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Styling */
+@media (max-width: 1024px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logout-button-container {
+        margin-top: 10px;
+    }
+
+    .logout-button-container button {
+        width: 100%; /* Make the button take full width */
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 10px;
+    }
+
+    .logo img {
+        max-height: 40px; /* Reduce the height for smaller screens */
+    }
+
+    .logout-button-container button {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
