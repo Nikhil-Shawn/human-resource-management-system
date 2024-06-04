@@ -1,0 +1,106 @@
+.leaves-container {
+    padding-left: 20px;
+    padding-right : 20px;
+    padding-bottom: 20px;;
+  }
+
+  .leaves-heading{
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .logo img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: unset;
+  }
+  
+  .employee-table {
+    width: 100%;
+    border-collapse: separate; /* Ensure separate borders for radius to work */
+    border-spacing: 0; /* Optional, to control spacing between cells */
+    margin-top: 20px;
+  }
+  
+  .employee-table th {
+    background: #F4F5F7;
+    padding: 16px 8px;
+    text-align: left;
+    margin-left: 20px;
+  }
+  
+  .employee-table thead:after {
+    content: '';
+    display: block;
+    height: 20px; /* Adjust the height to your needs */
+  }
+
+  .employee-table thead tr:first-child th:first-child {
+    border-top-left-radius: 15px;
+  }
+  
+  .employee-table thead tr:first-child th:last-child {
+    border-top-right-radius: 15px;
+  }
+
+  .employee-table thead tr:first-child th:first-child {
+    border-bottom-left-radius: 15px;
+  }
+  
+  .employee-table thead tr:first-child th:last-child {
+    border-bottom-right-radius: 15px;
+  }
+  
+  .employee-table tbody tr:first-child td:first-child {
+    border-top-left-radius: 15px;
+  }
+  
+  .employee-table tbody tr:first-child td:last-child {
+    border-top-right-radius: 15px;
+  }
+  
+  .employee-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+  }
+  
+  .employee-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+  }
+  
+  .employee-table td {
+    border-bottom: 1px solid #E0E4EA;
+    border-top: 1px solid #E0E4EA;
+    padding: 8px;
+    text-align: left;
+    background: white;
+  }
+  
+  .employee-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .view-button,
+  .edit-button,
+  .delete-button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .view-button {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .edit-button {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  .delete-button {
+    background-color: #f44336;
+    color: white;
+  }
+  

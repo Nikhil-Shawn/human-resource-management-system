@@ -5,10 +5,19 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./Dashboard.css";
 import "../App.css";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
     const [date, setDate] = useState(new Date());
+    const navigate = useNavigate();
 
+    const displayEmployeee = () => {
+        navigate('/employee')
+    }
+
+    const displayLeaves = () =>{
+        navigate('/leaves')
+    }
     return (
         <div className="dashboard-container">
             <Sidebar />
@@ -16,12 +25,12 @@ function Dashboard() {
                 <HeaderComponent />
                 <div className="dashboard-main">
                     <div className="dashboard-grid">
-                        <div className="dashboard-card">
+                        <div className="dashboard-card" onClick={displayEmployeee}>
                             <div className="card-title">Employee</div>
                             <div className="card-icon employee-icon"></div>
                             <div className="card-subtitle">No. of Employees</div>
                         </div>
-                        <div className="dashboard-card">
+                        <div className="dashboard-card" onClick={displayLeaves}>
                             <div className="card-title">Leaves</div>
                             <div className="card-icon leaves-icon"></div>
                             <div className="card-subtitle">No. of Leaves</div>
