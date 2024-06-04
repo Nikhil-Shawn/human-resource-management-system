@@ -47,10 +47,10 @@ public class PayrollService {
 
             Payroll savedPayroll = payrollRepository.save(payroll);
             return convertToDTO(savedPayroll);
-        } else {
+        }
             System.out.println("Employee not found for ID: " + employeeId);
             return null;
-        }
+
     }
 
     public PayrollDTO updatePayroll(Long id, PayrollDTO payrollDTO) {
