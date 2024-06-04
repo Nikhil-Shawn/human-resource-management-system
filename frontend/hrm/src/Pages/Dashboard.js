@@ -14,6 +14,10 @@ function Dashboard() {
     const displayEmployeee = () => {
         navigate('/employee')
     }
+
+    const displayLeaves = () =>{
+        navigate('/leaves')
+    }
     return (
         <div className="dashboard-container">
             <Sidebar />
@@ -26,7 +30,7 @@ function Dashboard() {
                             <div className="card-icon employee-icon"></div>
                             <div className="card-subtitle">No. of Employees</div>
                         </div>
-                        <div className="dashboard-card">
+                        <div className="dashboard-card" onClick={displayLeaves}>
                             <div className="card-title">Leaves</div>
                             <div className="card-icon leaves-icon"></div>
                             <div className="card-subtitle">No. of Leaves</div>
