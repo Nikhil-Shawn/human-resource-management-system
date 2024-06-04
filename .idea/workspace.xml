@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Employee get">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/PayrollController/PayrollController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/PayrollDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/VacationDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Payroll.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Vacation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/PayrollRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/PayrollService.java" afterDir="false" />
+    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Payroll Post completed and tested">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Employee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Employee.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,16 +53,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HumanResourceManagementSystemApplication.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Employee-get",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HumanResourceManagementSystemApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Employee-get&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pooja/IdeaProjects/human-resource-management-system&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -101,12 +96,21 @@
       <option name="project" value="LOCAL" />
       <updated>1717168630228</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Payroll Post completed and tested">
+      <option name="closed" value="true" />
+      <created>1717433594187</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717433594187</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Benefit details displayed and tested 29/05/2024" />
     <MESSAGE value="Employee get" />
-    <option name="LAST_COMMIT_MESSAGE" value="Employee get" />
+    <MESSAGE value="Payroll Post completed and tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="Payroll Post completed and tested" />
   </component>
 </project>
