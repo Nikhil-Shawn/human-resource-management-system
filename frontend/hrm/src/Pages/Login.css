@@ -90,3 +90,19 @@
     cursor: pointer;
     font-size: 16px;
   }
+
+  .create-account-message {
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+  }
+  
+  .create-account-link {
+    color: #0000EE; /* Blue color for link */
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .create-account-link:hover {
+    color: #000; /* Change color on hover */
+  }

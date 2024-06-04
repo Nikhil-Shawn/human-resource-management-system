@@ -7,8 +7,13 @@ import { useNavigate } from "react-router-dom";
 function Login() {
 	const navigate = useNavigate();
 	const handleLogin = () => {
-    navigate('/dashboard')
-  };
+		navigate("/dashboard");
+	};
+
+	const handleCreateAccount = () => {
+		navigate("/register");
+	};
+
 	return (
 		<div className="container">
 			<div className="login-image">
@@ -38,6 +43,12 @@ function Login() {
 					<button className="login-button" onClick={handleLogin}>
 						Login
 					</button>
+					<p className="create-account-message">
+						No account?{" "}
+						<span className="create-account-link" onClick={handleCreateAccount}>
+							Create an account here
+						</span>
+					</p>
 				</div>
 			</div>
 		</div>
