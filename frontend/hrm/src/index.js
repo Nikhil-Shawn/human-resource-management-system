@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './Pages/Dashboard';
+import Employee from './Employee';
+import Register from './Pages/Register';
+import Leaves from './Pages/Leaves';
 
 
 
@@ -15,6 +18,9 @@ root.render(
     <Routes>
     <Route path="/" element={<App />} />
     <Route path="/dashboard" element={<Dashboard/>}></Route>
+    <Route path="/employee" element={<Employee/>}></Route>
+    <Route path="/register" element={<Register/>}></Route>
+    <Route path="/leaves" element={<Leaves/>}></Route>
     </Routes>
   </React.StrictMode>
   </BrowserRouter>
