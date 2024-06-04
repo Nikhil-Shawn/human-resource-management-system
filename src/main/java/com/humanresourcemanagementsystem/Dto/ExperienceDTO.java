@@ -2,7 +2,8 @@ package com.humanresourcemanagementsystem.Dto;
 
 import java.util.Date;
 
-public class ExperienceDTO extends PersonDTO {
+//public class ExperienceDTO extends PersonDTO {
+public class ExperienceDTO {
 
     private int experience_id;
         private int person_id ;
