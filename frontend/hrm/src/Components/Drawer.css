@@ -24,3 +24,16 @@
   font-size: 1.5em;
   cursor: pointer;
 }
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.date-fields {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-fields > * {
+  width: 48%;
+}

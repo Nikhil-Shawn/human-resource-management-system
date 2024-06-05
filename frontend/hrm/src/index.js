@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './Pages/Dashboard';
-import Employee from './Employee';
+import Employee from './Pages/Employee';
 import Register from './Pages/Register';
 import Leaves from './Pages/Leaves';
 import CreateEmployee from './Pages/CreateEmployee';
@@ -22,6 +22,8 @@ root.render(
     <Route path="/employee" element={<Employee/>}></Route>
     <Route path="/register" element={<Register/>}></Route>
     <Route path="/leaves" element={<Leaves/>}></Route>
+    <Route path="/create-employee" element={<CreateEmployee/>}></Route>
+    <Route path="/employee" element={<Employee/>}></Route>
     </Routes>
   </React.StrictMode>
   </BrowserRouter>

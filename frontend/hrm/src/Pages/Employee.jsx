@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Employee.css';
-import Sidebar from './Components/Sidebar';
+import Sidebar from '../Components/Sidebar';
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaPhoneAlt } from 'react-icons/fa';
 import { IoIosMail } from "react-icons/io";
