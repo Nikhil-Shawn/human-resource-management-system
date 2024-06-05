@@ -6,6 +6,7 @@ import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Entity.Person;
 import com.humanresourcemanagementsystem.Mapper.EmployeeMapper;
 import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
+import com.humanresourcemanagementsystem.Repo.PersonRepository;
 import com.humanresourcemanagementsystem.Service.EmployeeService;
 import com.humanresourcemanagementsystem.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ import java.util.stream.Collectors;
 @Service
 public class EmployeeIMPL implements EmployeeService {
 
+    @Autowired
+    private PersonRepository personRepository;
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -68,6 +71,38 @@ public class EmployeeIMPL implements EmployeeService {
         return employees.stream()
                 .map(employeeMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public EmployeePersonDTO updateEmployeePerson(int employeeID, EmployeePersonDTO employeePersonDTO) {
+        Optional<Employee> optionalEmployee = employeeRepository.findById(employeeID);
+
+        if (optionalEmployee.isPresent()) {
+            Employee employee = optionalEmployee.get();
+            Person person = employee.getPerson();
+
+            // Update employee details
+            employee.setDesignation(employeePersonDTO.getDesignation());
+            employeeRepository.save(employee);
+
+            // Update person details
+            person.setFirstName(employeePersonDTO.getFirstName());
+            person.setLastName(employeePersonDTO.getLastName());
+            person.setAddress(employeePersonDTO.getAddress());
+            person.setEmail(employeePersonDTO.getEmail());
+            person.setPassword(employeePersonDTO.getPassword());
+            person.setPhone(employeePersonDTO.getPhone());
+            person.setDateOfBirth(employeePersonDTO.getDateOfBirth());
+            person.setGender(employeePersonDTO.getGender());
+            person.setNationality(employeePersonDTO.getNationality());
+            person.setMaritalStatus(employeePersonDTO.getMaritalStatus());
+            person.setPersonType(employeePersonDTO.getPersonType());
+            person.setUpdatedAt(employeePersonDTO.getUpdatedAt());
+            personRepository.save(person);
+
+            return employeePersonDTO;
+        }
+
+        return null;
     }
 
 

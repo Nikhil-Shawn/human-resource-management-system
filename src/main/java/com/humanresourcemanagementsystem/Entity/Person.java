@@ -59,8 +59,8 @@ public class Person {
     @JsonIgnore
     private Set<Employee> employees;
 
-    @OneToMany(mappedBy = "person")
-    private Set<Experience> experiences;
+//    @OneToMany(mappedBy = "person")
+//    private Set<Experience> experiences;
 
     // Constructors
     public Person() {
@@ -204,13 +204,13 @@ public class Person {
         this.employees = employees;
     }
 
-    public Set<Experience> getExperiences() {
-        return experiences;
-    }
-
-    public void setExperiences(Set<Experience> experiences) {
-        this.experiences = experiences;
-    }
+//    public Set<Experience> getExperiences() {
+//        return experiences;
+//    }
+//
+//    public void setExperiences(Set<Experience> experiences) {
+//        this.experiences = experiences;
+//    }
 
     //    public Experience getExperience() {
 //        return experience;
