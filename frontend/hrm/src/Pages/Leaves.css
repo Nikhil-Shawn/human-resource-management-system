@@ -4,9 +4,31 @@
     padding-bottom: 20px;;
   }
 
-  .leaves-heading{
+  .leaves-text{
     font-size: 32px;
     font-weight: 700;
+  }
+
+  .leaves-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .add-leave-button-container button{
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    width: 120px;
+  
+  }
+
+  .add-leave-button-container button:hover{
+background-color: #80aaff;
   }
 
   .logo img {
