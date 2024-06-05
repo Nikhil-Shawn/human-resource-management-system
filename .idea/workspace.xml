@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Employee and Person update api done" />
+=======
+    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Education Multiple and by id tested and completed" />
+>>>>>>> 86cc50d499e3150986fa07834b315a4b8e913567
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="ABE-delete" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,6 +51,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HumanResourceManagementSystemApplication.executor": "Run",
@@ -55,6 +60,16 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system",
     "settings.editor.selected.configurable": "preferences.pluginManager"
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HumanResourceManagementSystemApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Education-details&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pooja/IdeaProjects/human-resource-management-system&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+>>>>>>> 86cc50d499e3150986fa07834b315a4b8e913567
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -90,6 +105,7 @@
       <option name="project" value="LOCAL" />
       <updated>1717168630228</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00004" summary="Employee and Person update api done">
       <option name="closed" value="true" />
       <created>1717546861900</created>
@@ -99,12 +115,66 @@
       <updated>1717546861900</updated>
     </task>
     <option name="localTasksCounter" value="5" />
+=======
+    <task id="LOCAL-00004" summary="Payroll Post completed and tested">
+      <option name="closed" value="true" />
+      <created>1717433594187</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717433594187</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Education Post">
+      <option name="closed" value="true" />
+      <created>1717595576877</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717595576877</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Education Multiple Post">
+      <option name="closed" value="true" />
+      <created>1717599013998</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717599013998</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Education Multiple and by id tested and completed">
+      <option name="closed" value="true" />
+      <created>1717608047995</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717608047995</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+>>>>>>> 86cc50d499e3150986fa07834b315a4b8e913567
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Benefit details displayed and tested 29/05/2024" />
     <MESSAGE value="Employee get" />
+<<<<<<< HEAD
     <MESSAGE value="Employee and Person update api done" />
     <option name="LAST_COMMIT_MESSAGE" value="Employee and Person update api done" />
+=======
+    <MESSAGE value="Payroll Post completed and tested" />
+    <MESSAGE value="Education Post" />
+    <MESSAGE value="Education Multiple Post" />
+    <MESSAGE value="Education Multiple and by id tested and completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Education Multiple and by id tested and completed" />
+>>>>>>> 86cc50d499e3150986fa07834b315a4b8e913567
   </component>
 </project>

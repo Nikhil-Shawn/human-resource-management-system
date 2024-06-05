@@ -1,10 +1,9 @@
 import React from "react";
-import "./Leaves.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from "../Components/Sidebar";
 import HeaderComponent from "../Components/HeaderComponent";
 
-function Leaves() {
+function Payroll() {
 	// Example data
 	const employees = [
 		{
@@ -21,6 +20,8 @@ function Leaves() {
 			period: "Sep 9,2022 - Jan 15,2023",
 			Reason: "Maternity Leave",
 			leaveStatus: "REJECTED",
+            bonus : "$2400",
+            payrollStatus : "COMPLETED"
 		},
 		{
 			id: "2",
@@ -36,6 +37,8 @@ function Leaves() {
 			period: "Aug 9-15,2023",
 			Reason: "Medical Reason",
 			leaveStatus: "APPROVED",
+            bonus : "$2400",
+            payrollStatus : "IN PROGRESS"
 		},
 		{
 			id: "3",
@@ -51,6 +54,9 @@ function Leaves() {
 			period: "Aug 24,2023",
 			Reason: "Personal Reasons",
 			leaveStatus: "PENDING",
+            bonus : "$2400",
+            payrollStatus : "PENDING"
+
 		},
 		{
 			id: "4",
@@ -66,18 +72,18 @@ function Leaves() {
 			period: "Jul 12, 2023",
 			Reason: "Work Related",
 			leaveStatus: "NEW LEAVE",
+            bonus : "$2400",
+            payrollStatus : "COMPLETED"
 		},
 		// Add more employees as needed
 	];
 
-	const getStatusStyle = (status) => {
-		switch (status) {
-			case "APPROVED":
+	const getPayrollStyle = (payrollStatus) => {
+		switch (payrollStatus) {
+			case "COMPLETED":
 				return { backgroundColor: "#DDFCE0", color: "#0EB01D" };
-			case "NEW LEAVE":
+			case "IN PROGRESS":
 				return { backgroundColor: "#FFF9C4", color: "#FF9800" };
-			case "REJECTED":
-				return { backgroundColor: "#F8D7DA", color: "#DC3545" };
 			case "PENDING":
 				return { backgroundColor: "#E0BBFF", color: "#6F42C1" };
 			default:
@@ -92,9 +98,9 @@ function Leaves() {
 				<HeaderComponent />
 				<div className="leaves-container">
 					<div className="leaves-heading">
-						<div className="leaves-text">Leaves</div>
+						<div className="leaves-text">Payroll</div>
 						<div className="add-leave-button-container">
-							<button>+ Add Leave</button>
+							<button>+ Add Salary</button>
 						</div>
 					</div>
 					<table className="employee-table">
@@ -116,9 +122,8 @@ function Leaves() {
 								</th>
 								<th>Position</th>
 								<th>Deparment</th>
-								<th>Leave Type</th>
 								<th>Period</th>
-								<th>Reason</th>
+								<th>Bonus</th>
 								<th>Status</th>
 								<th></th>
 							</tr>
@@ -160,19 +165,19 @@ function Leaves() {
 										</span>
 									</td>
 									<td>{employee.department}</td>
-									<td>{employee.leaveType}</td>
+									
 									<td>{employee.period}</td>
-									<td>{employee.Reason}</td>
+									<td>{employee.bonus}</td>
 									<td>
 										<span
 											style={{
-												...getStatusStyle(employee.leaveStatus),
+												...getPayrollStyle(employee.payrollStatus),
 												borderRadius: "30px",
 												padding: "8px 20px",
 												display: "inline-block",
 											}}
 										>
-											{employee.leaveStatus}
+											{employee.payrollStatus}
 										</span>
 									</td>
 									<td style={{ borderRight: "1px solid #E0E4EA" }}>
@@ -188,4 +193,4 @@ function Leaves() {
 	);
 }
 
-export default Leaves;
+export default Payroll;
