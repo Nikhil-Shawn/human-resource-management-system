@@ -3,6 +3,8 @@ package com.humanresourcemanagementsystem.Controller.EmployeeController;
 import com.humanresourcemanagementsystem.Dto.EmployeeDTO;
 import com.humanresourcemanagementsystem.Dto.EmployeePersonDTO;
 import com.humanresourcemanagementsystem.Service.EmployeeService;
+import com.humanresourcemanagementsystem.Service.Impl.EmployeeIMPL;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
@@ -41,6 +43,16 @@ public class EmployeeController {
     @GetMapping("/all")
     public List<EmployeePersonDTO> getAllEmployees() {
         return employeeService.getAllEmployees();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeePersonDTO> updateEmployeePerson(@PathVariable int id, @RequestBody EmployeePersonDTO employeePersonDTO) {
+        EmployeePersonDTO updatedEmployeePerson = employeeService.updateEmployeePerson(id, employeePersonDTO);
+        if (updatedEmployeePerson != null) {
+            return ResponseEntity.ok(updatedEmployeePerson);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
