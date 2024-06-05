@@ -1,5 +1,4 @@
 import React from "react";
-import "./Payroll.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from "../Components/Sidebar";
 import HeaderComponent from "../Components/HeaderComponent";
