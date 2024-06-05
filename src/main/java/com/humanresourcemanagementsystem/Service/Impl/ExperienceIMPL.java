@@ -39,17 +39,13 @@ public class ExperienceIMPL implements ExperienceService {
             // Fetch associated experience information
             ExperienceDTO experienceDTO = new ExperienceDTO();
             experienceDTO.setExperience_id(experience.getExperienceID());
+            experienceDTO.setPerson_id(experience.getPersonID());
             experienceDTO.setCompany_name(experience.getCompany_name());
             experienceDTO.setEmployment_type(experience.getEmployment_type());
             experienceDTO.setNo_of_years(experience.getNo_of_years());
             experienceDTO.setPosition(experience.getPosition());
             experienceDTO.setStart_date(experience.getStart_date());
             experienceDTO.setEnd_date(experience.getEnd_date());
-            // Fetch associated person details
-            Person person = experience.getPerson();
-            if (person != null) {
-                experienceDTO.setPerson_id(person.getPersonID());
-            }
             return experienceDTO;
         } else {
             throw new RuntimeException("Experience not found with id: " + id);
@@ -64,27 +60,17 @@ public class ExperienceIMPL implements ExperienceService {
                     // Fetch associated experience information
                     ExperienceDTO experienceDTO = new ExperienceDTO();
                     experienceDTO.setExperience_id(experience.getExperienceID());
+                    experienceDTO.setPerson_id(experience.getPersonID());
                     experienceDTO.setCompany_name(experience.getCompany_name());
                     experienceDTO.setEmployment_type(experience.getEmployment_type());
                     experienceDTO.setNo_of_years(experience.getNo_of_years());
                     experienceDTO.setPosition(experience.getPosition());
                     experienceDTO.setStart_date(experience.getStart_date());
                     experienceDTO.setEnd_date(experience.getEnd_date());
-                    // Fetch associated person details
-                    Person person = personService.getPersonById(experience.getPerson().getPersonID());
-                    experienceDTO.setPerson_id(person.getPersonID());
                     return experienceDTO;
                 })
                 .collect(Collectors.toList());
     }
-
-//    @Override
-//    public List<EmployeeExperienceDTO> getAllExperience() {
-//        List<Experience> experiences = experienceRepository.findAll();
-//        return experiences.stream()
-//                .map(experienceMapper::toDTO)
-//                .collect(Collectors.toList());
-//    }
 
     @Override
     public String addExperience(ExperienceDTO experienceDTO)
@@ -103,7 +89,7 @@ public class ExperienceIMPL implements ExperienceService {
         experience.setPosition(experienceDTO.getPosition());
         experience.setStart_date(experienceDTO.getStart_date());
         experience.setEnd_date(experienceDTO.getEnd_date());
-        experience.setPerson(person); // Correctly set the Person entity
+        experience.setPersonID(experienceDTO.getPerson_id());
 
         experienceRepository.save(experience);
         return "Experience added successfully";
