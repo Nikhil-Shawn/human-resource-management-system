@@ -9,4 +9,5 @@ public interface EmployeeService {
     String addEmployee(EmployeeDTO employeeDTO);
     EmployeeDTO getEmployeeById(int id);
     List<EmployeePersonDTO> getAllEmployees();
+    EmployeePersonDTO updateEmployeePerson(int employeeID, EmployeePersonDTO employeePersonDTO);
 }

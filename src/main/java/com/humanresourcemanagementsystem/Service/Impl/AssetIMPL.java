@@ -8,6 +8,7 @@ import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
 import com.humanresourcemanagementsystem.Service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -69,6 +70,23 @@ public class AssetIMPL implements AssetService {
                     return assetDTO;
                 })
                 .collect(Collectors.toList());
+    }
+//
+//    @Override
+//    public void deleteAssetById(long id) {
+//        assetRepository.deleteById(id);
+//    }
+
+    @Override
+    @Transactional
+    public String deleteAssetById(long id) {
+        Optional<Asset> assetOpt = assetRepository.findById(id);
+        if (assetOpt.isPresent()) {
+            assetRepository.deleteById(id);
+            return "Asset deleted successfully";
+        } else {
+            return "Asset not found";
+        }
     }
 
     @Override

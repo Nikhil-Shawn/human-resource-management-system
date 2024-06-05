@@ -19,17 +19,23 @@ public class AssetController
         return assetService.addAsset(assetDTO);
     }
 
-    // Get employee by ID
+    // Get asset by ID
     @GetMapping("/{id}")
     public AssetDTO getAssetById(@PathVariable int id) {
         return assetService.getAssetById(id);
     }
 
-    // Get all employees
+    // Get all assets
     @GetMapping("/all")
     public List<AssetDTO> getAllAsset() {
         return assetService.getAllAsset() ;
 
+    }
+
+   // Delete asset by id
+    @DeleteMapping("/delete/{id}")
+    public String deleteAssetById(@PathVariable long id) {
+        return assetService.deleteAssetById(id);
     }
 
 }
