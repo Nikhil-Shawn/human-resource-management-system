@@ -1,7 +1,9 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
 import com.humanresourcemanagementsystem.Dto.EducationDTO;
+import com.humanresourcemanagementsystem.Dto.ExperienceDTO;
 import com.humanresourcemanagementsystem.Entity.Education;
+import com.humanresourcemanagementsystem.Entity.Experience;
 import com.humanresourcemanagementsystem.Entity.Person;
 import com.humanresourcemanagementsystem.Repo.EducationRepository;
 import com.humanresourcemanagementsystem.Repo.PersonRepository;
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EducationIMPL implements EducationService {
@@ -67,13 +71,44 @@ public class EducationIMPL implements EducationService {
 
     @Override
     public EducationDTO getEducationById(int id) {
-        // Your implementation here
-        return null;
+        Optional<Education> educationOpt = educationRepository.findById(id);
+        if (educationOpt.isPresent()) {
+            Education education = educationOpt.get();
+            // Fetch associated education information
+            EducationDTO educationDTO = new EducationDTO();
+            educationDTO.setEducation_id(education.getEducation_id());
+            educationDTO.setPerson_id(education.getPerson());
+            educationDTO.setDegree(education.getDegree());
+            educationDTO.setInstitution(education.getInstitution());
+            educationDTO.setMajor(education.getMajor());
+            educationDTO.setGraduation_start_date(education.getGraduation_start_date());
+            educationDTO.setGraduation_end_date(education.getGraduation_end_date());
+            educationDTO.setCreated_at(education.getCreated_at());
+            educationDTO.setUpdated_at(education.getUpdated_at());
+            return educationDTO;
+        } else {
+            throw new RuntimeException("Education not found with id: " + id);
+        }
     }
 
     @Override
     public List<EducationDTO> getAllEducation() {
-        // Your implementation here
-        return List.of();
+        List<Education> educations = educationRepository.findAll();
+        return educations.stream()
+                .map(education -> {
+                    // Fetch associated education information
+                    EducationDTO educationDTO = new EducationDTO();
+                    educationDTO.setEducation_id(education.getEducation_id());
+                    educationDTO.setPerson_id(education.getPerson());
+                    educationDTO.setDegree(education.getDegree());
+                    educationDTO.setInstitution(education.getInstitution());
+                    educationDTO.setMajor(education.getMajor());
+                    educationDTO.setGraduation_start_date(education.getGraduation_start_date());
+                    educationDTO.setGraduation_end_date(education.getGraduation_end_date());
+                    educationDTO.setCreated_at(education.getCreated_at());
+                    educationDTO.setUpdated_at(education.getUpdated_at());
+                    return educationDTO;
+                })
+                .collect(Collectors.toList());
     }
 }

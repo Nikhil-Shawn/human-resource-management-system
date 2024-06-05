@@ -27,14 +27,13 @@ public class EducationController {
         return ResponseEntity.ok(response);
     }
 
-    // Uncomment if you need these methods
-    // @GetMapping("/{id}")
-    // public EducationDTO getEducationById(@PathVariable int id) {
-    //     return educationService.getEducationById(id);
-    // }
+     @GetMapping("/{id}")
+     public EducationDTO getEducationById(@PathVariable int id) {
+         return educationService.getEducationById(id);
+     }
 
-    // @GetMapping("/all")
-    // public List<EducationDTO> getAllEducation() {
-    //     return educationService.getAllEducation();
-    // }
+     @GetMapping("/all")
+     public List<EducationDTO> getAllEducation() {
+         return educationService.getAllEducation();
+     }
 }
