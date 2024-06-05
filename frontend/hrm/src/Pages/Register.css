@@ -24,10 +24,16 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  position: relative; /* To position the back button relative to the form section */
 }
 
 .form-section .logo {
   width: 100px;
+  margin-bottom: 1rem;
+}
+
+.form-section .logo-large {
+  width: 150px;
   margin-bottom: 1rem;
 }
 
@@ -36,11 +42,32 @@
   color: #333;
 }
 
+.form-section h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.form-section h5 {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
 .form-section form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 300px;
+  max-width: 600px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px; /* Added space between columns */
+}
+
+.personal-info,
+.address-info {
+  width: 48%;
 }
 
 .form-section input {
@@ -48,6 +75,13 @@
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .form-section button {
@@ -59,8 +93,32 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 1rem;
 }
 
 .form-section button:hover {
   background-color: #555;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #555;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
 }
