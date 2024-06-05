@@ -3,6 +3,7 @@ import "./App.css";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Employee from "./Employee";
+import CreateEmployee from './Pages/CreateEmployee'
 
 function App() {
 	return (
