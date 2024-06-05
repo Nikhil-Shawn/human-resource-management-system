@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Education Multiple Post">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EducationController/EducationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EducationController/EducationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EducationIMPL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EducationIMPL.java" afterDir="false" />
-    </list>
+    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Education Multiple and by id tested and completed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717599013998</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Education Multiple and by id tested and completed">
+      <option name="closed" value="true" />
+      <created>1717608047995</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717608047995</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,6 +142,7 @@
     <MESSAGE value="Payroll Post completed and tested" />
     <MESSAGE value="Education Post" />
     <MESSAGE value="Education Multiple Post" />
-    <option name="LAST_COMMIT_MESSAGE" value="Education Multiple Post" />
+    <MESSAGE value="Education Multiple and by id tested and completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Education Multiple and by id tested and completed" />
   </component>
 </project>
