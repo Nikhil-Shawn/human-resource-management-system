@@ -40,7 +40,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you encounter any issues or have any questions about the HR System, please [open an issue](https://github.com/nikhil-shawn/human-resource-system/issues) on GitHub.
 
 ## Acknowledgements
-- [Tech Stack Used](link to technologies used)
-- [Contributors](link to contributors)
+- Anirudh (https://github.com/anirudh17d)
+- Pooja (https://github.com/poojasanjaypatil)
+- Andreas Müller (https://github.com/AndreasMuellerXR)
+- Bilal Hussain (https://github.com/mbilalhussain15)
 
 
