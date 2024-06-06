@@ -1,5 +1,6 @@
 package com.humanresourcemanagementsystem.Controller.EducationController;
 
+import com.humanresourcemanagementsystem.Dto.BenefitDTO;
 import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Service.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +37,11 @@ public class EducationController {
      public List<EducationDTO> getAllEducation() {
          return educationService.getAllEducation();
      }
+
+    // Update education by id
+    @PutMapping("/update/{id}")
+    public String updateEducationById(@PathVariable int id, @RequestBody EducationDTO educationDTO) {
+        return educationService.updateEducationById(id, educationDTO);
+    }
+
 }

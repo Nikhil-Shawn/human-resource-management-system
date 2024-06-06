@@ -1,8 +1,10 @@
 package com.humanresourcemanagementsystem.Controller.ExperienceController;
 
 import com.humanresourcemanagementsystem.Dto.BenefitDTO;
+import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Dto.ExperienceDTO;
 import com.humanresourcemanagementsystem.Service.ExperienceService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,6 +22,12 @@ public class ExperienceController
         return experienceService.addExperience(experienceDTO);
     }
 
+    @PostMapping("/multi")
+    public ResponseEntity<?> createMultipleExperience(@RequestBody List<ExperienceDTO> experienceDTOs) {
+        String response = experienceService.addMultipleExperience(experienceDTOs);
+        return ResponseEntity.ok(response);
+    }
+
     // Get experience by ID
     @GetMapping("/{id}")
     public ExperienceDTO getExperienceById(@PathVariable int id) {
@@ -30,8 +38,12 @@ public class ExperienceController
     @GetMapping("/all")
     public List<ExperienceDTO> getAllExperience() {
         return experienceService.getAllExperience();
-
     }
 
+    // Update experience by id
+    @PutMapping("/update/{id}")
+    public String updateExperienceById(@PathVariable int id, @RequestBody ExperienceDTO experienceDTO) {
+        return experienceService.updateExperienceById(id, experienceDTO);
+    }
 
 }

@@ -13,7 +13,7 @@ public class Asset {
     @Column(name = "asset_id")
     private int asset_id;
 
-    @OneToOne  //One employee can have multiple assets but oto as we will store in an array of asset types
+    @ManyToOne
     @JoinColumn(name = "EmployeeID", referencedColumnName = "EmployeeID")
     private Employee employee;
 

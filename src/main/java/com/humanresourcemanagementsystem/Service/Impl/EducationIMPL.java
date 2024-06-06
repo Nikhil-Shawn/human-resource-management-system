@@ -1,15 +1,15 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
+import com.humanresourcemanagementsystem.Dto.BenefitDTO;
 import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Dto.ExperienceDTO;
-import com.humanresourcemanagementsystem.Entity.Education;
-import com.humanresourcemanagementsystem.Entity.Experience;
-import com.humanresourcemanagementsystem.Entity.Person;
+import com.humanresourcemanagementsystem.Entity.*;
 import com.humanresourcemanagementsystem.Repo.EducationRepository;
 import com.humanresourcemanagementsystem.Repo.PersonRepository;
 import com.humanresourcemanagementsystem.Service.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -111,4 +111,31 @@ public class EducationIMPL implements EducationService {
                 })
                 .collect(Collectors.toList());
     }
+
+    @Override
+    @Transactional
+    public String updateEducationById(int id, EducationDTO educationDTO) {
+        Optional<Education> educationOpt = educationRepository.findById((int) id);
+        if (educationOpt.isPresent()) {
+            Education education = educationOpt.get();
+            education.setDegree(educationDTO.getDegree());
+            education.setInstitution(educationDTO.getInstitution());
+            education.setMajor(educationDTO.getMajor());
+            education.setGraduation_start_date(educationDTO.getGraduation_start_date());
+            education.setGraduation_end_date(educationDTO.getGraduation_end_date());
+            education.setUpdated_at(new Date());
+
+            Person person = personRepository.findById(educationDTO.getPerson_id()).orElse(null);
+            if (person == null) {
+                return "Person not found";
+            }
+
+            educationRepository.save(education);
+
+            return "Education updated successfully";
+        } else {
+            return "Education not found";
+        }
+    }
+
 }
