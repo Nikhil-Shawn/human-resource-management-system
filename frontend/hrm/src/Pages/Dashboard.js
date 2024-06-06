@@ -49,7 +49,7 @@ function Dashboard() {
                             <div className="card-subtitle">Payroll details</div>
                         </div>
                         <div className="dashboard-card">
-                            <div className="card-title">Asset</div>
+                            <div className="card-title">Assets</div>
                             <div className="card-icon assets-icon"></div>
                             <div className="card-subtitle">Asset management</div>
                         </div>
@@ -70,7 +70,7 @@ function Dashboard() {
                 </div>
             </div>
         </div>
-    );
+    );   
 }
 
 export default Dashboard;
