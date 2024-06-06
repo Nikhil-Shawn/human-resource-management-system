@@ -1,10 +1,7 @@
 import React from 'react';
 import { FaBriefcase, FaChartPie, FaDollarSign, FaLaptop, FaSignOutAlt, FaUserTie, FaUsers } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import { useNavigate } from 'react-router-dom';
-
-
 
 
 function Sidebar() {
@@ -31,7 +28,10 @@ const displaySeparation = () => {
     navigate('/separation')
 }
 
-  
+const displayAssets = () => {
+  navigate('/assets')
+}
+
 
   return (
     <div className="sidebar">
@@ -60,9 +60,9 @@ const displaySeparation = () => {
           <FaDollarSign className="sidebar-icon" />
           <span>Payroll</span>
         </div>
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={displayAssets}>
           <FaLaptop className="sidebar-icon" />
-          <span><Link to="/assets">Assets</Link></span>
+          <span>Assets</span>
         </div>
         <div className="sidebar-item" onClick={displaySeparation}>
           <FaSignOutAlt className="sidebar-icon" />
