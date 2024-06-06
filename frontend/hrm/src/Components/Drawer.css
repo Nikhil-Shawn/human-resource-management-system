@@ -9,6 +9,8 @@
   transition: right 0.3s ease;
   padding: 20px;
   z-index: 1000;
+  font-size: 15px; 
+
 }
 
 .drawer.open {
