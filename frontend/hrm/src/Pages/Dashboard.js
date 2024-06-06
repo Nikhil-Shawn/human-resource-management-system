@@ -22,6 +22,10 @@ function Dashboard() {
     const displayPayroll = () => {
         navigate('/payroll')
     }
+
+    const displaySeparation = () => {
+        navigate('/separation')
+    }
     return (
         <div className="dashboard-container">
             <Sidebar />
@@ -49,7 +53,7 @@ function Dashboard() {
                             <div className="card-icon assets-icon"></div>
                             <div className="card-subtitle">Asset management</div>
                         </div>
-                        <div className="dashboard-card">
+                        <div className="dashboard-card" onClick={displaySeparation}>
                             <div className="card-title">Separation</div>
                             <div className="card-icon separation-icon"></div>
                             <div className="card-subtitle">Contract Termination</div>

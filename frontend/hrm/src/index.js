@@ -9,6 +9,7 @@ import Employee from './Employee';
 import Register from './Pages/Register';
 import Leaves from './Pages/Leaves';
 import Payroll from './Pages/Payroll';
+import Separation from './Pages/Separation';
 
 
 
@@ -23,6 +24,7 @@ root.render(
     <Route path="/register" element={<Register/>}></Route>
     <Route path="/leaves" element={<Leaves/>}></Route>
     <Route path="/payroll" element={<Payroll/>}></Route>
+    <Route path="/separation" element={<Separation/>}></Route>
     </Routes>
   </React.StrictMode>
   </BrowserRouter>
