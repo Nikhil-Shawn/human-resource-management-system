@@ -2,7 +2,6 @@ import React from 'react';
 import { FaBriefcase, FaChartPie, FaDollarSign, FaLaptop, FaSignOutAlt, FaUserTie, FaUsers } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
-import { FaUsers, FaBriefcase, FaDollarSign, FaSignOutAlt, FaLaptop, FaUserTie, FaChartPie } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 
