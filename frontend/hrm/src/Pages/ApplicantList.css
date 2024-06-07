@@ -1,0 +1,171 @@
+/* Container for the assets table */
+.applicant-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-left: 30px;
+}
+
+/* Styling for the assets text */
+.applicant-text {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Styling for the assets heading */
+.applicant-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Styling for the add asset button */
+.add-applicant-button-container button {
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  width: 137px;
+  height: 33px;
+}
+
+.add-applicant-button-container button:hover {
+  background-color: #80aaff;
+}
+
+.logo img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: unset;
+}
+
+/* Styling for the employee table */
+.applicant-table {
+  width: 100%;
+  border-collapse: separate; /* Ensure separate borders for radius to work */
+  border-spacing: 0; /* Optional, to control spacing between cells */
+  margin-top: 20px;
+}
+
+.applicant-table th {
+  background: #F4F5F7;
+  padding: 16px 8px;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.applicant-table thead:after {
+  content: '';
+  display: block;
+  height: 20px; /* Adjust the height to your needs */
+}
+
+.applicant-table thead tr:first-child th:first-child {
+  border-top-left-radius: 15px;
+}
+
+.applicant-table thead tr:first-child th:last-child {
+  border-top-right-radius: 15px;
+}
+
+.applicant-table thead tr:first-child th:first-child {
+  border-bottom-left-radius: 15px;
+}
+
+.applicant-table thead tr:first-child th:last-child {
+  border-bottom-right-radius: 15px;
+}
+
+.applicant-table tbody tr:first-child td:first-child {
+  border-top-left-radius: 15px;
+}
+
+.applicant-table tbody tr:first-child td:last-child {
+  border-top-right-radius: 15px;
+}
+
+.applicant-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 15px;
+}
+
+.applicant-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 15px;
+}
+
+.applicant-table td {
+  border-bottom: 1px solid #E0E4EA;
+  border-top: 1px solid #E0E4EA;
+  padding: 8px;
+  text-align: left;
+  background: white;
+}
+
+.applicant-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.view-button,
+.edit-button,
+.delete-button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.view-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.edit-button {
+  background-color: #2196F3;
+  color: white;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Progress bar styles */
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  margin-top: 5px; /* Added margin to increase space between text and bar */
+}
+
+.progress-bar {
+  display: flex;
+  width: 100px;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-left: 0; /* Adjusted to align with text */
+}
+
+.progress-bar div {
+  height: 100%;
+}
+
+.status-new-applicant .progress-bar div:nth-child(1) {
+  background-color: #0066cc;
+}
+
+.status-in-progress .progress-bar div:nth-child(-n+2) {
+  background-color: #0066cc;
+}
+
+.status-on-hold .progress-bar div:nth-child(-n+3) {
+  background-color: #0066cc;
+}
+
+.status-accepted .progress-bar div:nth-child(-n+4),
+.status-rejected .progress-bar div:nth-child(-n+4) {
+  background-color: #0066cc;
+}
