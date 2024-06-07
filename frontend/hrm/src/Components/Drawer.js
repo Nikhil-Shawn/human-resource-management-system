@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import './Drawer.css'; 
+import Button from '@mui/material/Button';
 
 const industries = [
   { value: 'Information Technology', label: 'Information Technology' },
@@ -11,13 +12,10 @@ const industries = [
 
 const Drawer = ({ isOpen, onClose }) => {
   const textFieldStyles = {
+    alignItems: 'right',
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
         borderRadius: '8px',
-      },
-      '& input': {
-        fontSize: '12px', 
-        padding: '16px', 
       },
       '& .MuiSelect-select': {
         fontSize: '12px', 
@@ -36,8 +34,14 @@ const Drawer = ({ isOpen, onClose }) => {
 
   return (
     <div className={`drawer ${isOpen ? 'open' : ''}`}>
-      <button className="drawer-close-button" onClick={onClose}>X</button>
-      <h2>Add Employee Details</h2>
+      <div className="head-group">
+        <div>
+          <h2>Add Experience</h2>
+        </div>
+        <div className='button-group'>
+          <Button variant="outlined" onClick={onClose} className="cancel-button">Cancel</Button>
+        </div>
+      </div>
       <div className="form-container">
         <div className="form-group">
           <p>Job Title</p>
@@ -79,22 +83,21 @@ const Drawer = ({ isOpen, onClose }) => {
         <div className="form-group">
           <p>Period of Work</p>
           <div className="date-fields">
-            <TextField
+            <input
+              type='date'
               id="start-work"
-              label="Start Work"
-              variant="outlined"
-              fullWidth
-              sx={textFieldStyles}
+              className="date-field"
             />
-            <TextField
+            <input
+              type='date'
               id="end-work"
-              label="End Work"
-              variant="outlined"
-              fullWidth
-              sx={textFieldStyles}
+              className="date-field"
             />
           </div>
         </div>
+      </div>
+      <div className="save-button-container">
+        <Button variant="contained"  onClick={onClose} color="primary" className="save-button">Save</Button>
       </div>
     </div>
   );
