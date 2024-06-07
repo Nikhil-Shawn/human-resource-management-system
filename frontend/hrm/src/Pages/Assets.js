@@ -96,8 +96,20 @@ const assetsData = [
           </div>
           <table className="employee-table">
             <thead>
-              <tr>
-                <th>Name</th>
+            <tr
+								style={{
+									fontWeight: "0",
+									fontSize: "0.8vw",
+									color: "black",
+								}}
+							>
+								<th
+									style={{
+										padding: "20px 0px 20px 40px",
+										marginLeft: "10px",
+									}}
+								>
+									Name</th>
                 <th>Position</th>
                 <th>Department</th>
                 <th>Issued Date</th>
@@ -107,7 +119,7 @@ const assetsData = [
                 <th></th>
               </tr>
             </thead>
-            <tbody>
+						<tbody style={{ fontSize: "0.8vw", textAlign: "center" }}>
               {assetsData.map((asset, index) => (
                 <tr key={index}>
                   <td style={{
