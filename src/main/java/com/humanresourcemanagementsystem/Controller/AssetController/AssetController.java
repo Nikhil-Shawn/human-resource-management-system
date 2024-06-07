@@ -1,7 +1,5 @@
 package com.humanresourcemanagementsystem.Controller.AssetController;
 import com.humanresourcemanagementsystem.Dto.AssetDTO;
-import com.humanresourcemanagementsystem.Dto.BenefitDTO;
-import com.humanresourcemanagementsystem.Dto.EmployeeDTO;
 import com.humanresourcemanagementsystem.Service.AssetService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,31 +14,34 @@ public class AssetController
 {
     @Autowired
     private AssetService assetService;
+
+    //Save Single Asset
     @PostMapping("/save")
     public String saveAsset(@RequestBody AssetDTO assetDTO) {
         return assetService.addAsset(assetDTO);
     }
 
+    //Save Multiple Assets
     @PostMapping("/multi")
     public ResponseEntity<?> createMultipleAsset(@RequestBody List<AssetDTO> assetDTOs) {
         String response = assetService.addMultipleAsset(assetDTOs);
         return ResponseEntity.ok(response);
     }
 
-    // Get asset by ID
+    // Get Asset By ID
     @GetMapping("/{id}")
     public AssetDTO getAssetById(@PathVariable int id) {
         return assetService.getAssetById(id);
     }
 
-    // Get all assets
+    // Get All Assets
     @GetMapping("/all")
     public List<AssetDTO> getAllAsset() {
         return assetService.getAllAsset() ;
 
     }
 
-    // Update asset by id
+    // Update Asset By ID
     @PutMapping("/update/{id}")
     public String updateAssetById(@PathVariable int id, @RequestBody AssetDTO assetDTO) {
         return assetService.updateAssetById(id, assetDTO);
