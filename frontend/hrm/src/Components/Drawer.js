@@ -13,7 +13,7 @@ const industries = [
 
 const Drawer = ({ isOpen, onClose }) => {
   const [jobTitle, setJobTitle] = useState('');
-  const [industry, setIndustry] = useState('');
+  const [employeementType, setEmployeementType] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [startWork, setStartWork] = useState('');
   const [endWork, setEndWork] = useState('');
@@ -21,11 +21,11 @@ const Drawer = ({ isOpen, onClose }) => {
   const handleSave = async () => {
     const experienceData = {
       person_id: "1",
-      degree: jobTitle,
-      institution: companyName,
-      major: industry,
-      graduation_start_date: startWork,
-      graduation_end_date: endWork
+      position: jobTitle,
+      company_name: companyName,
+      employment_type: employeementType,
+      start_date: startWork,
+      end_date: endWork
     };
 
     // Log the experience data before sending it
@@ -85,23 +85,16 @@ const Drawer = ({ isOpen, onClose }) => {
           />
         </div>
         <div className="form-group">
-          <p>Company's Industry</p>
+          <p>Employment Type</p>
           <TextField
-            id="company-industry"
-            select
-            label="Company's Industry"
+            id="company-name"
+            label="Company Name"
             variant="outlined"
             fullWidth
-            value={industry}
-            onChange={(e) => setIndustry(e.target.value)}
+            value={employeementType}
+            onChange={(e) => setEmployeementType(e.target.value)}
             sx={textFieldStyles}
-          >
-            {industries.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
+          />
         </div>
         <div className="form-group">
           <p>Company Name</p>
