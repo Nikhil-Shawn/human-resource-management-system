@@ -33,12 +33,6 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
-//    // Get all employees
-//    @GetMapping("/all")
-//    public List<EmployeeDTO> getAllEmployees() {
-//        return employeeService.getAllEmployees();
-//    }
-
     //Get ALL employees Filtered
     @GetMapping("/all")
     public List<EmployeePersonDTO> getAllEmployees() {

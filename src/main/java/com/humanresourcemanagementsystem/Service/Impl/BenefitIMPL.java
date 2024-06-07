@@ -2,14 +2,14 @@ package com.humanresourcemanagementsystem.Service.Impl;
 
 import com.humanresourcemanagementsystem.Dto.AssetDTO;
 import com.humanresourcemanagementsystem.Dto.BenefitDTO;
-import com.humanresourcemanagementsystem.Entity.Asset;
-import com.humanresourcemanagementsystem.Entity.Benefit;
-import com.humanresourcemanagementsystem.Entity.Employee;
+import com.humanresourcemanagementsystem.Dto.EducationDTO;
+import com.humanresourcemanagementsystem.Entity.*;
 import com.humanresourcemanagementsystem.Repo.BenefitRepository;
 import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
 import com.humanresourcemanagementsystem.Service.BenefitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -93,5 +93,56 @@ public class BenefitIMPL implements BenefitService {
 
         benefitRepository.save(benefit);
         return "Benefit added successfully";
+    }
+
+    @Override
+    public String addMultipleBenefit(List<BenefitDTO> benefitDTOs) {
+        for (BenefitDTO benefitDTO : benefitDTOs) {
+            // Fetch and set the employee
+            Employee employee = employeeRepository.findById(benefitDTO.getEmployee_id()).orElse(null);
+            if (employee == null) {
+                return "Employee not found";
+            }
+
+            Benefit benefit = new Benefit();
+            benefit.setBenefit_type(benefitDTO.getBenefit_type());
+            benefit.setCoverage_details(benefitDTO.getCoverage_details());
+            benefit.setStart_date(benefitDTO.getStart_date());
+            benefit.setEnd_date(benefitDTO.getEnd_date());
+            benefit.setCreated_at(new Date());
+            benefit.setUpdated_at(new Date());
+
+            benefit.setEmployee(employee);
+
+            benefitRepository.save(benefit);
+        }
+        return "Benefits records added successfully";
+    }
+
+    @Override
+    @Transactional
+    public String updateBenefitById(int id, BenefitDTO benefitDTO) {
+        Optional<Benefit> benefitOpt = benefitRepository.findById((int) id);
+        if (benefitOpt.isPresent()) {
+            Benefit benefit = benefitOpt.get();
+            benefit.setBenefit_type(benefitDTO.getBenefit_type());
+            benefit.setCoverage_details(benefitDTO.getCoverage_details());
+            benefit.setStart_date(benefitDTO.getStart_date());
+            benefit.setEnd_date(benefitDTO.getEnd_date());
+            benefit.setUpdated_at(new Date());
+
+            // Fetch and set the employee
+            Employee employee = employeeRepository.findById(benefitDTO.getEmployee_id()).orElse(null);
+            if (employee == null) {
+                return "Employee not found";
+            }
+
+            benefit.setEmployee(employee);  // Set employee
+
+            benefitRepository.save(benefit);
+            return "Benefit updated successfully";
+        } else {
+            return "Benefit not found";
+        }
     }
 }

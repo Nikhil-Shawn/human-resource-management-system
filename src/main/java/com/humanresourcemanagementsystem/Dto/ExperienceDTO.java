@@ -36,7 +36,7 @@ public class ExperienceDTO {
         this.experience_id = experience_id;
     }
 
-    public int getPerson_id() {
+    public Integer getPerson_id() {
         return person_id;
     }
 

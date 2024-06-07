@@ -10,6 +10,7 @@ import Register from './Pages/Register';
 import Leaves from './Pages/Leaves';
 import Payroll from './Pages/Payroll';
 import Separation from './Pages/Separation';
+import Assets from './Pages/Assets';
 
 
 
@@ -25,6 +26,7 @@ root.render(
     <Route path="/leaves" element={<Leaves/>}></Route>
     <Route path="/payroll" element={<Payroll/>}></Route>
     <Route path="/separation" element={<Separation/>}></Route>
+    <Route path="/assets" element={<Assets/>}></Route>
     </Routes>
   </React.StrictMode>
   </BrowserRouter>
