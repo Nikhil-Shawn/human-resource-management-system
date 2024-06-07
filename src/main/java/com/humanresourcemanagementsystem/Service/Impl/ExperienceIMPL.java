@@ -48,7 +48,7 @@ public class ExperienceIMPL implements ExperienceService {
         experience.setStart_date(experienceDTO.getStart_date());
         experience.setEnd_date(experienceDTO.getEnd_date());
         experience.setPerson(person);
-
+        System.out.println(experience);
         //Save experience details
         experienceRepository.save(experience);
         return "Experience added successfully";

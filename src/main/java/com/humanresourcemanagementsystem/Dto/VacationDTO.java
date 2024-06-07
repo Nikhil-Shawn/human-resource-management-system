@@ -3,8 +3,8 @@ package com.humanresourcemanagementsystem.Dto;
 import java.util.Date;
 
 public class VacationDTO {
-    private Long vacation_id;
-    private Long employeeId;
+    private int vacation_id;
+    private int employeeId;
     private Date startDate;
     private Date endDate;
     private String reason;
@@ -14,19 +14,19 @@ public class VacationDTO {
     private Date updatedAt;
 
 
-    public Long getVacationId() {
+    public int getVacationId() {
         return vacation_id;
     }
 
-    public void setVacationId(Long vacation_id) {
+    public void setVacationId(int vacation_id) {
         this.vacation_id = vacation_id;
     }
 
-    public Long getEmployeeId() {
+    public int getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Long employeeId) {
+    public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
 

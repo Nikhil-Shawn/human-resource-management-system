@@ -237,8 +237,13 @@ public class Employee {
         this.createdAt = createdAt;
     }
 
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public Date getUpdatedAt() {
         return updatedAt;
     }
+
 
 }

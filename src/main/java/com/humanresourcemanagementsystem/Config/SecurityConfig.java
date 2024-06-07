@@ -52,6 +52,9 @@ public class SecurityConfig {
                                 "/api/departments/updateDepartment/{id}",
                                 "/api/departments/deleteDepartment/{id}",
 
+                                //For Experience
+                                "/api/v1/experience/save",
+
                                 //For Logout
                                 "/api/logout",
 
