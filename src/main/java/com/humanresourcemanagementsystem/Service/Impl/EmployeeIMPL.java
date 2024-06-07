@@ -10,6 +10,7 @@ import com.humanresourcemanagementsystem.Repo.PersonRepository;
 import com.humanresourcemanagementsystem.Service.EmployeeService;
 import com.humanresourcemanagementsystem.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +30,8 @@ public class EmployeeIMPL implements EmployeeService {
 
     @Autowired
     private EmployeeMapper employeeMapper;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public EmployeeDTO getEmployeeById(int id) {
@@ -88,8 +91,8 @@ public class EmployeeIMPL implements EmployeeService {
             person.setFirstName(employeePersonDTO.getFirstName());
             person.setLastName(employeePersonDTO.getLastName());
             person.setAddress(employeePersonDTO.getAddress());
-            person.setEmail(employeePersonDTO.getEmail());
-            person.setPassword(employeePersonDTO.getPassword());
+            person.setPersonEmail(employeePersonDTO.getEmail());
+            person.setPersonPassword(passwordEncoder.encode(employeePersonDTO.getPassword()));
             person.setPhone(employeePersonDTO.getPhone());
             person.setDateOfBirth(employeePersonDTO.getDateOfBirth());
             person.setGender(employeePersonDTO.getGender());
@@ -98,7 +101,6 @@ public class EmployeeIMPL implements EmployeeService {
             person.setPersonType(employeePersonDTO.getPersonType());
             person.setUpdatedAt(employeePersonDTO.getUpdatedAt());
             personRepository.save(person);
-
             return employeePersonDTO;
         }
 
@@ -115,8 +117,8 @@ public class EmployeeIMPL implements EmployeeService {
                 employeeDTO.getFirstName(),
                 employeeDTO.getLastName(),
                 employeeDTO.getAddress(),
-                employeeDTO.getEmail(),
-                employeeDTO.getPassword(),
+                employeeDTO.getPersonEmail(),
+                passwordEncoder.encode(employeeDTO.getPersonPassword()),
                 employeeDTO.getPhone(),
                 employeeDTO.getDateOfBirth(),
                 employeeDTO.getGender(),
@@ -130,6 +132,26 @@ public class EmployeeIMPL implements EmployeeService {
 
         // Create an Employee entity and set the person
         Employee employee = new Employee(savedPerson, employeeDTO.getDesignation());
+
+        employee.setEmployeeID(employeeDTO.getEmployeeID());
+        employee.setPerson(person);
+//        employee.setDepartment(department);
+//        employee.setExperience(experience);
+//        employee.setEducation(education);
+//        employee.setSupervisor(supervisor);
+//        employee.setSupervisor(employeeDTO.getSupervisor());
+        employee.setManageWhom(employeeDTO.getManageWhom());
+        employee.setEmploymentType(employeeDTO.getEmploymentType());
+        employee.setAdmin(employeeDTO.getAdmin());
+        employee.setEmpEmail(employeeDTO.getEmpEmail());
+        employee.setEmpPassword(passwordEncoder.encode(employeeDTO.getEmpPassword()));
+        employee.setDesignation(employeeDTO.getDesignation());
+        employee.setHireDate(employeeDTO.getHireDate());
+        employee.setTerminationDate(employeeDTO.getTerminationDate());
+        employee.setEmploymentStatus(employeeDTO.getEmploymentStatus());
+        employee.setWorkLocation(employeeDTO.getWorkLocation());
+        employee.setCreatedAt(employeeDTO.getCreatedAt());
+        employee.setUpdatedAt(employeeDTO.getUpdatedAt());
 
         // Save the Employee entity
         employeeRepository.save(employee);

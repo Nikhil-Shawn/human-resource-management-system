@@ -4,8 +4,9 @@ import java.util.Date;
 
 public class AssetDTO {
 
+    // Asset entity fields
     private int asset_id;
-    private int employee_id; // Added EmployeeID field
+    private int employee_id;
     private String asset_type;
     private String serial_number;
     private Date issued_date;
@@ -13,12 +14,13 @@ public class AssetDTO {
     private Date created_at;
     private Date updated_at;
 
-    // Constructors
+    // Default constructor initializes created at and updated at field with current date
     public AssetDTO() {
         this.created_at = new Date();
         this.updated_at = new Date();
     }
 
+    //Parameterized constructor initializes all fields with provided values
     public AssetDTO(int employee_id, int asset_id, String asset_type, String serial_number, Date issued_date,
                     Date return_date, Date created_at, Date updated_at) {
         this.employee_id = employee_id;
@@ -31,6 +33,7 @@ public class AssetDTO {
         this.updated_at = updated_at;
     }
 
+    // Getter and Setter provide access to the private fields
     public int getAsset_id() {
         return asset_id;
     }
@@ -95,6 +98,7 @@ public class AssetDTO {
         this.updated_at = updated_at;
     }
 
+    //Provides detailed and formatted information about the object’s current state.
     @Override
     public String toString() {
         return "AssetDTO{" +

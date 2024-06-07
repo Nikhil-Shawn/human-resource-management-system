@@ -12,8 +12,8 @@ public class PersonDTO {
     private String firstName;
     private String lastName;
     private String address;
-    private String email;
-    private String password;
+    private String personEmail;
+    private String personPassword;
     private String phone;
     private Date dateOfBirth;
     private String gender;
@@ -34,8 +34,8 @@ public class PersonDTO {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.email = email;
-        this.password = password;
+        this.personEmail = email;
+        this.personPassword = password;
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -75,22 +75,6 @@ public class PersonDTO {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getPhone() {
@@ -157,6 +141,21 @@ public class PersonDTO {
         this.updatedAt = updatedAt;
     }
 
+    public String getPersonPassword() {
+        return personPassword;
+    }
+
+    public void setPersonPassword(String personPassword) {
+        this.personPassword = personPassword;
+    }
+
+    public String getPersonEmail() {
+        return personEmail;
+    }
+
+    public void setPersonEmail(String personEmail) {
+        this.personEmail = personEmail;
+    }
     @Override
     public String toString() {
         return "PersonDTO{" +
@@ -164,8 +163,8 @@ public class PersonDTO {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", personEmail='" + personEmail + '\'' +
+                ", personPassword='" + personPassword + '\'' +
                 ", phone='" + phone + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", gender='" + gender + '\'' +
