@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import './Drawer.css'; 
 import Button from '@mui/material/Button';
+import axios from 'axios';
 
 const industries = [
   { value: 'Information Technology', label: 'Information Technology' },
@@ -11,6 +12,34 @@ const industries = [
 ];
 
 const Drawer = ({ isOpen, onClose }) => {
+  const [jobTitle, setJobTitle] = useState('');
+  const [industry, setIndustry] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [startWork, setStartWork] = useState('');
+  const [endWork, setEndWork] = useState('');
+
+  const handleSave = async () => {
+    const experienceData = {
+      person_id: "1",
+      degree: jobTitle,
+      institution: companyName,
+      major: industry,
+      graduation_start_date: startWork,
+      graduation_end_date: endWork
+    };
+
+    // Log the experience data before sending it
+    console.log('Experience Data:', experienceData);
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/v1/experience/save', experienceData);
+      console.log('Experience saved successfully:', response.data);
+      onClose();
+    } catch (error) {
+      console.error('Error saving experience:', error);
+    }
+  };
+
   const textFieldStyles = {
     alignItems: 'right',
     '& .MuiOutlinedInput-root': {
@@ -50,6 +79,8 @@ const Drawer = ({ isOpen, onClose }) => {
             label="Enter Job Title"
             variant="outlined"
             fullWidth
+            value={jobTitle}
+            onChange={(e) => setJobTitle(e.target.value)}
             sx={textFieldStyles}
           />
         </div>
@@ -61,6 +92,8 @@ const Drawer = ({ isOpen, onClose }) => {
             label="Company's Industry"
             variant="outlined"
             fullWidth
+            value={industry}
+            onChange={(e) => setIndustry(e.target.value)}
             sx={textFieldStyles}
           >
             {industries.map((option) => (
@@ -77,6 +110,8 @@ const Drawer = ({ isOpen, onClose }) => {
             label="Company Name"
             variant="outlined"
             fullWidth
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
             sx={textFieldStyles}
           />
         </div>
@@ -87,17 +122,21 @@ const Drawer = ({ isOpen, onClose }) => {
               type='date'
               id="start-work"
               className="date-field"
+              value={startWork}
+              onChange={(e) => setStartWork(e.target.value)}
             />
             <input
               type='date'
               id="end-work"
               className="date-field"
+              value={endWork}
+              onChange={(e) => setEndWork(e.target.value)}
             />
           </div>
         </div>
       </div>
       <div className="save-button-container">
-        <Button variant="contained"  onClick={onClose} color="primary" className="save-button">Save</Button>
+        <Button variant="contained" color="primary" className="save-button" onClick={handleSave}>Save</Button>
       </div>
     </div>
   );

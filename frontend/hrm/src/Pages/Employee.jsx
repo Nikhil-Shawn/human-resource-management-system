@@ -1,98 +1,87 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './Employee.css';
-import Sidebar from '../Components/Sidebar';
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { FaPhoneAlt } from 'react-icons/fa';
-import { IoIosMail } from "react-icons/io";
-import HeaderComponent from '../Components/HeaderComponent';
+import React from 'react';
+import { Box, Grid, Paper, Typography, Button, TextField, MenuItem } from '@mui/material';
+import Sidebar from '../Components/Sidebar'; // Assuming you have a Sidebar component
+import './Employee.css'; // Create CSS for custom styles
 
-function Employee() {
-  const [employees, setEmployees] = useState([]);
+const industries = [
+  { value: 'Information Technology', label: 'Information Technology' },
+  { value: 'Finance', label: 'Finance' },
+  { value: 'Healthcare', label: 'Healthcare' },
+];
 
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/v1/employee/all')
-      .then(response => {
-        setEmployees(response.data);
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.error("There was an error fetching the employee data!", error);
-      });
-  }, []);
-
+const EmployeeDetail = () => {
   return (
-    <div className="app">
+    <Box display="flex">
       <Sidebar />
-      <div className="main-content">
-        <HeaderComponent/>
-        <div className="employee-container">
-          <div className="employee-text">Employee List</div>
-          <table className="employee-table">
-            <thead>
-              <tr style={{
-                fontWeight: '0',
-                fontSize: '0.8vw',
-                color: 'black'
-              }}>
-                <th style={{
-                  padding: '20px 0px 20px 40px',
-                  marginLeft: '10px'
-                }}>Name</th>
-                <th>Position</th> 
-                <th>Deparment</th>
-                <th>Status</th>
-                <th>Joining Date</th>
-                <th>Email address</th>
-                <th>Phone</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody style={{fontSize: '0.8vw', textAlign: 'center'}}>
-              {employees.map(employee => (
-                <tr key={employee.employeeID}>
-                  <td style={{ display: 'flex', alignItems: 'center', borderLeft: '1px solid #E0E4EA', padding: '20px' }}>
-                    <img
-                      src={employee.img}
-                      alt={`${employee.firstName}'s profile`}
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',
-                        marginRight: '10px'
-                      }}
-                    />
-                    <span>{employee.firstName}</span>
-                  </td>
-                  <td><span style={{
-                    backgroundColor: '#DDCBFC',
-                    color: 'black',
-                    borderRadius: '30px',
-                    padding: '8px 20px',
-                    display: 'inline-block'
-                  }}>{employee.designation}</span></td>
-                  <td>{employee.department}</td>
-                  <td><span style={{
-                    backgroundColor: employee.status === 'ACTIVE' ? '#DDFCE0' : '#FCE0E0',
-                    color: employee.status === 'ACTIVE' ? '#0EB01D' : '#B00E0E',
-                    borderRadius: '30px',
-                    padding: '8px 20px',
-                    display: 'inline-block'
-                  }}>{employee.status}</span></td>
-                  <td>{employee.createdAt}</td>
-                  <td><IoIosMail style={{marginRight: '5px' }}/>{employee.email}</td>
-                  <td><FaPhoneAlt style={{marginRight: '5px' }}/>{employee.phone}</td>
-                  <td style={{ borderRight: '1px solid #E0E4EA' }}>
-                    <BsThreeDotsVertical/>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+      <Box flexGrow={1} p={2}>
+        <Paper elevation={3} className="employee-detail-container">
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <Box className="section-container">
+                <Typography variant="h6">Personal Info</Typography>
+                <Box>
+                  <Typography variant="body1">Julia Maier</Typography>
+                  <Typography variant="body2">Project Manager</Typography>
+                  <Typography variant="body2">Sales & Marketing</Typography>
+                  <Typography variant="body2">Date of Joining: Jan 19, 2020</Typography>
+                  <Typography variant="body2">Email: o.williams@gmail.com</Typography>
+                  <Typography variant="body2">Joined: 12 Apr, 2020</Typography>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Box className="section-container">
+                <Typography variant="h6">Bank Information</Typography>
+                <Box>
+                  <Typography variant="body2">Bank Account No.: 00234552976293057</Typography>
+                  <Typography variant="body2">IFSC Code: CC128693311</Typography>
+                  <Typography variant="body2">PAN No.: 0012998383647383</Typography>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box className="section-container">
+                <Typography variant="h6">Skills</Typography>
+                <Box className="skills-container">
+                  {["Project Management", "Team Leadership", "Data Agile Methodologies", "Risk Management"].map(skill => (
+                    <Button key={skill} variant="outlined" className="skill-chip">{skill}</Button>
+                  ))}
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box className="section-container">
+                <Typography variant="h6">Experience</Typography>
+                <Box>
+                  <Typography variant="body2">Senior Project Manager (Aug 2023 - Present) - Frankfurt</Typography>
+                  <Typography variant="body2">Assistant Project Manager (Jul 2018 - Dec 2019) - Köln</Typography>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box className="section-container">
+                <Typography variant="h6">Salary Information</Typography>
+                <Box>
+                  <Typography variant="body2">Salary Basis: Monthly</Typography>
+                  <Typography variant="body2">Salary Amount Per Month: $1300</Typography>
+                  <Typography variant="body2">Effective Date: 13/06/2024</Typography>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box className="section-container">
+                <Typography variant="h6">Educations</Typography>
+                <Box>
+                  <Typography variant="body2">Bachelor of Science in Computer Science</Typography>
+                  <Typography variant="body2">University of Technology - Graduated May 2017</Typography>
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Box>
+    </Box>
   );
-}
+};
 
-export default Employee;
+export default EmployeeDetail;

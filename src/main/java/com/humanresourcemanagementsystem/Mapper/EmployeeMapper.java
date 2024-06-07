@@ -5,6 +5,9 @@ import com.humanresourcemanagementsystem.Entity.Employee;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Mapper(componentModel = "spring")
 public interface EmployeeMapper {
 
@@ -12,7 +15,7 @@ public interface EmployeeMapper {
     @Mapping(source = "person.firstName", target = "firstName")
     @Mapping(source = "person.lastName", target = "lastName")
     @Mapping(source = "person.address", target = "address")
-    @Mapping(source = "person.email", target = "email")
+    @Mapping(source = "person.personEmail", target = "email")
     @Mapping(source = "person.phone", target = "phone")
     @Mapping(source = "person.dateOfBirth", target = "dateOfBirth")
     @Mapping(source = "person.gender", target = "gender")
