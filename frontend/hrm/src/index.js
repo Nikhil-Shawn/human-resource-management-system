@@ -10,6 +10,9 @@ import Register from './Pages/Register';
 import Leaves from './Pages/Leaves';
 import CreateEmployee from './Pages/CreateEmployee';
 import Payroll from './Pages/Payroll';
+import Separation from './Pages/Separation';
+import Assets from './Pages/Assets';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,8 +25,9 @@ root.render(
     <Route path="/employee" element={<Employee/>}></Route>
     <Route path="/register" element={<Register/>}></Route>
     <Route path="/leaves" element={<Leaves/>}></Route>
-    <Route path="/create-employee" element={<CreateEmployee/>}></Route>
-    <Route path="/employee" element={<Employee/>}></Route>
+    <Route path="/payroll" element={<Payroll/>}></Route>
+    <Route path="/separation" element={<Separation/>}></Route>
+    <Route path="/assets" element={<Assets/>}></Route>
     </Routes>
   </React.StrictMode>
   </BrowserRouter>

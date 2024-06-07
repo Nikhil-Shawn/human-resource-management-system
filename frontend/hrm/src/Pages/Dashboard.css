@@ -2,25 +2,27 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-  }
-  
-  .dashboard-container {
+    height: 100%;
+}
+
+.dashboard-container {
     display: flex;
-  }
-  
-  .dashboard-content {
+    height: 100vh; /* Ensure the container takes full viewport height */
+}
+
+.dashboard-content {
     flex: 1;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
- 
-  .dashboard-header  {
+    margin-left: 250px; /* Account for the sidebar width */
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.dashboard-header {
     display: flex;
     justify-content: space-between;
-    
-  }
+}
 
-  .logout-button-container button {
+.logout-button-container button {
     padding: 10px 20px;
     font-size: 16px; /* Adjust font size as needed */
     cursor: pointer;
@@ -28,143 +30,140 @@ body, html {
     color: #fff;
     border: none;
     border-radius: 4px;
-  }
+}
 
-  .logout-button-container button:hover {
+.logout-button-container button:hover {
     background-color: #0056b3; /* Adjust hover color as needed */
-  }
-  
-  .dashboard-main {
+}
+
+.dashboard-main {
     display: grid;
     grid-template-columns: 3fr 1fr;
     gap: 20px;
-  }
-  
-  .dashboard-grid {
+    padding-left: 40px ;
+}
+
+.dashboard-grid {
     display: grid;
     /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
     grid-template-columns: repeat(3, 1fr); /* Fixed number of columns */
     gap: 20px;
-  }
+}
 
-  .dashboard-grid > div:hover {
+.dashboard-grid > div:hover {
     color: white;
-  }
+}
 
-
-  
-  .dashboard-card {
+.dashboard-card {
     background: rgb(237, 233, 233);
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-  }
+}
 
-  .dashboard-grid :hover{
+.dashboard-grid :hover {
     background-color: #a7a2a2;
-  }
-  
-  .card-icon {
+}
+
+.card-icon {
     height: 90px;
     margin-top: 25px;
-  }
-  
- .employee-icon {
+}
+
+.employee-icon {
     background: url('../images/employeeIcon.png') no-repeat center center;
     background-size: contain;
-    
-  }
-  
-    
-  .leaves-icon {
+}
+
+.leaves-icon {
     background: url('../images/leavesIcon.png') no-repeat center center;
     background-size: contain;
-  }
-  
-  .payroll-icon {
+}
+
+.payroll-icon {
     background: url('../images/wagesIcon.png') no-repeat center center;
     background-size: contain;
-  }
-  
-  .assets-icon {
+}
+
+.assets-icon {
     background: url('../images/assetsIcon.png') no-repeat center center;
     background-size: contain;
-  }
-  
-  .separation-icon {
+}
+
+.separation-icon {
     background: url('../images/firedIcon.png') no-repeat center center;
     background-size: contain;
-  }
-  
-  .applicants-icon {
+}
+
+.applicants-icon {
     background: url('../images/applicantsIcon.png') no-repeat center center;
     background-size: contain;
-  }
-  
-  .card-title {
+}
+
+.card-title {
     font-size: 18px;
     font-weight: bold;
     text-align: start;
-  }
-  
-  .card-subtitle {
+}
+
+.card-subtitle {
     font-size: 14px;
     color: gray;
     margin-top: 20px;
-  }
-  
-  .dashboard-calendar {
-    
-    background: rgb(237, 233, 233);;
+}
+
+.dashboard-calendar {
+    background: rgb(237, 233, 233);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  .react-calender{
+}
+
+.react-calender {
     width: unset;
-  }
-  .calendar-header h2 {
+}
+
+.calendar-header h2 {
     margin-bottom: 10px;
-  }
-  
-  .calendar-body {
+}
+
+.calendar-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  table {
+}
+
+table {
     border-collapse: collapse;
     width: 100%;
-  }
-  
+}
 
-  .active {
+.active {
     background-color: purple;
     color: white;
     border-radius: 50%;
-  }
+}
 
-  td:hover {
-    background-color:  #a7a2a2; 
+td:hover {
+    background-color: #a7a2a2;
     cursor: pointer;
-  }
-  
-  /* Responsive Styling */
-  @media (max-width: 1024px) {
+}
+
+/* Responsive Styling */
+@media (max-width: 1024px) {
     .dashboard-main {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
-  
+
     .dashboard-calendar {
-      margin-top: 20px;
+        margin-top: 20px;
     }
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .dashboard-grid {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
-  }
+}

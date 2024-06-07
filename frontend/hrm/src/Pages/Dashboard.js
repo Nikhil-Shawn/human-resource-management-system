@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Sidebar from "../Components/Sidebar.jsx";
-import HeaderComponent from "../Components/HeaderComponent.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import "./Dashboard.css";
-import "../App.css";
 import { useNavigate } from "react-router-dom";
+import "../App.css";
+import HeaderComponent from "../Components/HeaderComponent.js";
+import Sidebar from "../Components/Sidebar.jsx";
+import "./Dashboard.css";
+
 
 function Dashboard() {
     const [date, setDate] = useState(new Date());
@@ -22,6 +23,14 @@ function Dashboard() {
     const displayPayroll = () => {
         navigate('/payroll')
     }
+
+    const displaySeparation = () => {
+        navigate('/separation')
+    }
+    const displayAssets = () => {
+        navigate('/assets')
+    }
+
     return (
         <div className="dashboard-container">
             <Sidebar />
@@ -44,12 +53,12 @@ function Dashboard() {
                             <div className="card-icon payroll-icon"></div>
                             <div className="card-subtitle">Payroll details</div>
                         </div>
-                        <div className="dashboard-card">
+                        <div className="dashboard-card" onClick={displayAssets}>
                             <div className="card-title">Asset</div>
                             <div className="card-icon assets-icon"></div>
-                            <div className="card-subtitle">Asset management</div>
+                            <div className="card-subtitle">Asset Management</div>
                         </div>
-                        <div className="dashboard-card">
+                        <div className="dashboard-card" onClick={displaySeparation}>
                             <div className="card-title">Separation</div>
                             <div className="card-icon separation-icon"></div>
                             <div className="card-subtitle">Contract Termination</div>
@@ -66,7 +75,7 @@ function Dashboard() {
                 </div>
             </div>
         </div>
-    );
+    );   
 }
 
 export default Dashboard;

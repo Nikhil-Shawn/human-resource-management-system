@@ -1,7 +1,9 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
 import com.humanresourcemanagementsystem.Dto.AssetDTO;
+import com.humanresourcemanagementsystem.Dto.BenefitDTO;
 import com.humanresourcemanagementsystem.Entity.Asset;
+import com.humanresourcemanagementsystem.Entity.Benefit;
 import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Repo.AssetRepository;
 import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
@@ -71,23 +73,6 @@ public class AssetIMPL implements AssetService {
                 })
                 .collect(Collectors.toList());
     }
-//
-//    @Override
-//    public void deleteAssetById(long id) {
-//        assetRepository.deleteById(id);
-//    }
-
-    @Override
-    @Transactional
-    public String deleteAssetById(long id) {
-        Optional<Asset> assetOpt = assetRepository.findById(id);
-        if (assetOpt.isPresent()) {
-            assetRepository.deleteById(id);
-            return "Asset deleted successfully";
-        } else {
-            return "Asset not found";
-        }
-    }
 
     @Override
     public String addAsset(AssetDTO assetDTO) {
@@ -116,5 +101,57 @@ public class AssetIMPL implements AssetService {
 
         assetRepository.save(asset);
         return "Asset added successfully";
+    }
+
+    @Override
+    public String addMultipleAsset(List<AssetDTO> assetDTOs) {
+        for (AssetDTO assetDTO : assetDTOs) {
+            // Fetch and set the employee
+            Employee employee = employeeRepository.findById(assetDTO.getEmployee_id()).orElse(null);
+            if (employee == null) {
+                return "Employee not found";
+            }
+
+            Asset asset = new Asset();
+            asset.setAsset_type(assetDTO.getAsset_type());
+            asset.setSerial_number(assetDTO.getSerial_number());
+            asset.setIssued_date(assetDTO.getIssued_date());
+            asset.setReturn_date(assetDTO.getReturn_date());
+            asset.setCreated_at(new Date());
+            asset.setUpdated_at(new Date());
+
+            // Set the employee in the asset
+            asset.setEmployee(employee);
+
+            assetRepository.save(asset);
+        }
+        return "Assets records added successfully";
+    }
+
+
+    @Override
+    @Transactional
+    public String updateAssetById(int id, AssetDTO assetDTO) {
+        Optional<Asset> assetOpt = assetRepository.findById((long) id);
+        if (assetOpt.isPresent()) {
+            Asset asset = assetOpt.get();
+            asset.setAsset_type(assetDTO.getAsset_type());
+            asset.setSerial_number(assetDTO.getSerial_number());
+            asset.setIssued_date(assetDTO.getIssued_date());
+            asset.setReturn_date(assetDTO.getReturn_date());
+            asset.setUpdated_at(new Date());
+
+            // Fetch and set the employee
+            Employee employee = employeeRepository.findById(assetDTO.getEmployee_id()).orElse(null);
+            if (employee == null) {
+                return "Employee not found";
+            }
+            // Set the employee in the asset
+            asset.setEmployee(employee);
+            assetRepository.save(asset);
+            return "Asset updated successfully";
+        } else {
+            return "Asset not found";
+        }
     }
 }

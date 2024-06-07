@@ -1,13 +1,40 @@
-.employee-container {
+.leaves-container {
     padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    margin-left: 30px;
+    padding-right : 20px;
+    padding-bottom: 20px;;
   }
 
-  .employee-text{
+  .leaves-text{
     font-size: 32px;
     font-weight: 700;
+  }
+
+  .leaves-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .add-leave-button-container button{
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 7px;
+    width: 140px;
+  
+  }
+
+  .add-leave-button-container button:hover{
+background-color: #80aaff;
+  }
+
+  .logo img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: unset;
   }
   
   .employee-table {

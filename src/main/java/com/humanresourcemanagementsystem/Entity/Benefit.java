@@ -14,7 +14,7 @@ public class Benefit {
     private int benefit_id;
 
     @ManyToOne
-    @JoinColumn(name = "EmployeeID", referencedColumnName = "EmployeeID", nullable = false)
+    @JoinColumn(name = "EmployeeID", referencedColumnName = "EmployeeID")
     private Employee employee;
 
     @Column(name = "benefit_type", nullable = false)

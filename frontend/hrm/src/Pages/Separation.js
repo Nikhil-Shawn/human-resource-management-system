@@ -1,10 +1,10 @@
 import React from "react";
-import "./Leaves.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from "../Components/Sidebar";
 import HeaderComponent from "../Components/HeaderComponent";
+import "./Separation.css";
 
-function Leaves() {
+function Separation() {
 	// Example data
 	const employees = [
 		{
@@ -21,6 +21,12 @@ function Leaves() {
 			period: "Sep 9,2022 - Jan 15,2023",
 			Reason: "Maternity Leave",
 			leaveStatus: "REJECTED",
+			bonus: "$2400",
+			payrollStatus: "COMPLETED",
+			separationDate: "01-05-2024",
+			separationType: "Resignation",
+			separationReason: "Found better job",
+			separationStatus: "IN PROGRESS",
 		},
 		{
 			id: "2",
@@ -36,6 +42,12 @@ function Leaves() {
 			period: "Aug 9-15,2023",
 			Reason: "Medical Reason",
 			leaveStatus: "APPROVED",
+			bonus: "$2400",
+			payrollStatus: "IN PROGRESS",
+			separationDate: "01-05-2024",
+			separationType: "Resignation",
+			separationReason: "Found better job",
+			separationStatus: "PENDING",
 		},
 		{
 			id: "3",
@@ -51,6 +63,12 @@ function Leaves() {
 			period: "Aug 24,2023",
 			Reason: "Personal Reasons",
 			leaveStatus: "PENDING",
+			bonus: "$2400",
+			payrollStatus: "PENDING",
+			separationDate: "01-05-2024",
+			separationType: "Termination",
+			separationReason: "Lay off",
+			separationStatus: "COMPLETED",
 		},
 		{
 			id: "4",
@@ -66,107 +84,22 @@ function Leaves() {
 			period: "Jul 12, 2023",
 			Reason: "Work Related",
 			leaveStatus: "NEW LEAVE",
+			bonus: "$2400",
+			payrollStatus: "COMPLETED",
+			separationDate: "01-05-2024",
+			separationType: "Resignation",
+			separationReason: "Found better job",
+			separationStatus: "IN PROGRESS",
 		},
-		{
-			id: "3",
-			name: "AS Smith",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			position: "Project Manager",
-			department: "Development",
-			status: "REMOTE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Casual Leave",
-			period: "Aug 24,2023",
-			Reason: "Personal Reasons",
-			leaveStatus: "PENDING",
-		},
-		{
-			id: "3",
-			name: "AS Smith",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			position: "Project Manager",
-			department: "Development",
-			status: "REMOTE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Casual Leave",
-			period: "Aug 24,2023",
-			Reason: "Personal Reasons",
-			leaveStatus: "PENDING",
-		},
-		{
-			id: "3",
-			name: "AS Smith",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			position: "Project Manager",
-			department: "Development",
-			status: "REMOTE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Casual Leave",
-			period: "Aug 24,2023",
-			Reason: "Personal Reasons",
-			leaveStatus: "PENDING",
-		},
-		{
-			id: "3",
-			name: "AS Smith",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			position: "Project Manager",
-			department: "Development",
-			status: "REMOTE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Casual Leave",
-			period: "Aug 24,2023",
-			Reason: "Personal Reasons",
-			leaveStatus: "PENDING",
-		},
-		{
-			id: "3",
-			name: "AS Smith",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			position: "Project Manager",
-			department: "Development",
-			status: "REMOTE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Casual Leave",
-			period: "Aug 24,2023",
-			Reason: "Personal Reasons",
-			leaveStatus: "PENDING",
-		},
-		{
-			id: "3",
-			name: "AS Smith",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			position: "Project Manager",
-			department: "Development",
-			status: "REMOTE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Casual Leave",
-			period: "Aug 24,2023",
-			Reason: "Personal Reasons",
-			leaveStatus: "PENDING",
-		},
+		// Add more employees as needed
 	];
 
-	const getStatusStyle = (status) => {
-		switch (status) {
-			case "APPROVED":
+	const getSeparationStyle = (separationStatus) => {
+		switch (separationStatus) {
+			case "COMPLETED":
 				return { backgroundColor: "#DDFCE0", color: "#0EB01D" };
-			case "NEW LEAVE":
+			case "IN PROGRESS":
 				return { backgroundColor: "#FFF9C4", color: "#FF9800" };
-			case "REJECTED":
-				return { backgroundColor: "#F8D7DA", color: "#DC3545" };
 			case "PENDING":
 				return { backgroundColor: "#E0BBFF", color: "#6F42C1" };
 			default:
@@ -181,9 +114,9 @@ function Leaves() {
 				<HeaderComponent />
 				<div className="leaves-container">
 					<div className="leaves-heading">
-						<div className="leaves-text">Leaves</div>
+						<div className="leaves-text">Employment Separation</div>
 						<div className="add-leave-button-container">
-							<button>+ Add Leave</button>
+							<button>+ Add Separation</button>
 						</div>
 					</div>
 					<table className="employee-table">
@@ -204,9 +137,8 @@ function Leaves() {
 									Name
 								</th>
 								<th>Position</th>
-								<th>Deparment</th>
-								<th>Leave Type</th>
-								<th>Period</th>
+								<th>Date of Separation</th>
+								<th>Type</th>
 								<th>Reason</th>
 								<th>Status</th>
 								<th></th>
@@ -248,20 +180,20 @@ function Leaves() {
 											{employee.position}
 										</span>
 									</td>
-									<td>{employee.department}</td>
-									<td>{employee.leaveType}</td>
-									<td>{employee.period}</td>
-									<td>{employee.Reason}</td>
+									<td>{employee.separationDate}</td>
+
+									<td>{employee.separationType}</td>
+									<td>{employee.separationReason}</td>
 									<td>
 										<span
 											style={{
-												...getStatusStyle(employee.leaveStatus),
+												...getSeparationStyle(employee.separationStatus),
 												borderRadius: "30px",
 												padding: "8px 20px",
 												display: "inline-block",
 											}}
 										>
-											{employee.leaveStatus}
+											{employee.separationStatus}
 										</span>
 									</td>
 									<td style={{ borderRight: "1px solid #E0E4EA" }}>
@@ -277,4 +209,4 @@ function Leaves() {
 	);
 }
 
-export default Leaves;
+export default Separation;

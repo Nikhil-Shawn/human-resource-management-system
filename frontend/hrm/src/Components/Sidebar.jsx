@@ -1,8 +1,38 @@
 import React from 'react';
+import { FaBriefcase, FaChartPie, FaDollarSign, FaLaptop, FaSignOutAlt, FaUserTie, FaUsers } from 'react-icons/fa';
 import './Sidebar.css';
-import { FaUsers, FaBriefcase, FaDollarSign, FaSignOutAlt, FaLaptop, FaUserTie, FaChartPie } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 
 function Sidebar() {
+
+  const navigate = useNavigate();
+
+  const displayDashboard = () => {
+    navigate('/dashboard')
+  }
+
+  const displayEmployeee = () => {
+    navigate('/employee')
+}
+
+const displayLeaves = () =>{
+    navigate('/leaves')
+}
+
+const displayPayroll = () => {
+    navigate('/payroll')
+}
+
+const displaySeparation = () => {
+    navigate('/separation')
+}
+
+const displayAssets = () => {
+  navigate('/assets')
+}
+
+
   return (
     <div className="sidebar">
       <div className="sidebar-header">
@@ -14,39 +44,31 @@ function Sidebar() {
         </div>
       </div>
       <div className="sidebar-menu">
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={displayDashboard}>
           <FaChartPie className="sidebar-icon" />
           <span>Overview</span>
         </div>
-        <div className="sidebar-item">
-          <span>Employee Detail</span>
-        </div>
-        <div className="sidebar-item">
-          <span>Create Employee</span>
-        </div>
-        <div className="sidebar-item">
-          <span>Leaves</span>
-        </div>
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={displayEmployeee}>
           <FaUsers className="sidebar-icon" />
           <span>Employees</span>
         </div>
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={displayLeaves}>
           <FaBriefcase className="sidebar-icon" />
           <span>Leaves</span>
         </div>
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={displayPayroll}>
           <FaDollarSign className="sidebar-icon" />
           <span>Payroll</span>
         </div>
-        <div className="sidebar-item">
-          <FaSignOutAlt className="sidebar-icon" />
-          <span>Separation</span>
-        </div>
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={displayAssets}>
           <FaLaptop className="sidebar-icon" />
           <span>Assets</span>
         </div>
+        <div className="sidebar-item" onClick={displaySeparation}>
+          <FaSignOutAlt className="sidebar-icon" />
+          <span>Separation</span>
+        </div>
+        
         <div className="sidebar-item">
           <FaUserTie className="sidebar-icon" />
           <span>Applicants</span>

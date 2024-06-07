@@ -13,6 +13,10 @@ public class Experience {
     @Column(name = "experience_id")
     private int  experienceID;
 
+    @ManyToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "person_id")
+    private Person person;
+
     @Column(name = "company_name")
     private String company_name;
 
@@ -31,18 +35,10 @@ public class Experience {
     @Column(name = "end_date")
     private Date end_date;
 
-//    @ManyToOne
-//    @JoinColumn(name = "person_id", referencedColumnName = "person_id")
-////    private Person person;
-//    private int personID;
-
-    @Column(name = "person_id")
-    private int personID;
-
     public Experience() {
     }
 
-    public Experience(int experienceID, String company_name, String employment_type, String no_of_years, String position, Date start_date, Date end_date, int personID) {
+    public Experience(int experienceID, String company_name, String employment_type, String no_of_years, String position, Date start_date, Date end_date, Person person) {
         this.experienceID = experienceID;
         this.company_name = company_name;
         this.employment_type = employment_type;
@@ -50,7 +46,7 @@ public class Experience {
         this.position = position;
         this.start_date = start_date;
         this.end_date = end_date;
-        this.personID = personID;
+        this.person = person;
     }
 
     public int getExperienceID() {
@@ -108,21 +104,13 @@ public class Experience {
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
-//
-//    public int getPerson() {
-//        return person;
-//    }
-//
-//    public void setPerson(Person person) {
-//        this.person = person;
-//    }
 
-    public int getPersonID() {
-        return personID;
+    public int getPerson() {
+        return person.getPersonID();
     }
 
-    public void setPersonID(int personID) {
-        this.personID = personID;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }
 

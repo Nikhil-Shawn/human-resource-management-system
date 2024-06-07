@@ -5,6 +5,7 @@ import Sidebar from '../Components/Sidebar';
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaPhoneAlt } from 'react-icons/fa';
 import { IoIosMail } from "react-icons/io";
+import HeaderComponent from './Components/HeaderComponent';
 
 function Employee() {
   const [employees, setEmployees] = useState([]);
@@ -24,8 +25,9 @@ function Employee() {
     <div className="app">
       <Sidebar />
       <div className="main-content">
+        <HeaderComponent/>
         <div className="employee-container">
-          <h1>Employee List</h1>
+          <div className="employee-text">Employee List</div>
           <table className="employee-table">
             <thead>
               <tr style={{
