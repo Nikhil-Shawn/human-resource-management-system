@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from '../Components/Sidebar';
 import Drawer from '../Components/Drawer'; // Import the Drawer component
-import './EmployeeList';
+import '../Pages/EmployeeList';
 
 function CreateEmployee() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
