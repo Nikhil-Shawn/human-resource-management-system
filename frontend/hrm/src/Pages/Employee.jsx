@@ -5,7 +5,7 @@ import Sidebar from '../Components/Sidebar';
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaPhoneAlt } from 'react-icons/fa';
 import { IoIosMail } from "react-icons/io";
-import HeaderComponent from './Components/HeaderComponent';
+import HeaderComponent from '../Components/HeaderComponent';
 
 function Employee() {
   const [employees, setEmployees] = useState([]);
