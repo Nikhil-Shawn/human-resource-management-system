@@ -32,6 +32,10 @@ const displayAssets = () => {
   navigate('/assets')
 }
 
+const displayApplicantList = () => {
+  navigate('/applicantList')
+}
+
 
   return (
     <div className="sidebar">
@@ -68,8 +72,7 @@ const displayAssets = () => {
           <FaSignOutAlt className="sidebar-icon" />
           <span>Separation</span>
         </div>
-        
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={displayApplicantList}>
           <FaUserTie className="sidebar-icon" />
           <span>Applicants</span>
         </div>
