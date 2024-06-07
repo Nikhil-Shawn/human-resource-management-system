@@ -3,13 +3,12 @@ package com.humanresourcemanagementsystem.Entity;
 import jakarta.persistence.*;
 import java.util.Date;
 
-
 @Entity
 @Table(name = "hrm_vacation")
 public class Vacation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long vacation_id;
+    private int vacation_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
@@ -52,11 +51,11 @@ public class Vacation {
         this.employee = employee;
     }
 
-    public Long getVacationId() {
+    public int getVacationId() {
         return vacation_id;
     }
 
-    public void setVacationId(Long vacation_id) {
+    public void setVacationId(int vacation_id) {
         this.vacation_id = vacation_id;
     }
 
