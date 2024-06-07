@@ -9,7 +9,8 @@ import java.util.Date;
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long departmentId;
+    @Column(name = "department_id" , nullable = false)
+    private int departmentId;
 
     @Column(unique = true, nullable = false)
     private String departmentName;
@@ -34,11 +35,11 @@ public class Department {
         updatedAt = new Date();
     }
 
-    public Long getDepartmentId() {
+    public int getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(Long departmentId) {
+    public void setDepartmentId(int departmentId) {
         this.departmentId = departmentId;
     }
 

@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class DepartmentDTO {
 
-    private Long departmentId;
+    private int departmentId;
     private String departmentName;
     private String departmentStatus;
     private Date createdAt;
     private Date updatedAt;
 
-    public Long getDepartmentId() {
+    public int getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(Long departmentId) {
+    public void setDepartmentId(int departmentId) {
         this.departmentId = departmentId;
     }
 
