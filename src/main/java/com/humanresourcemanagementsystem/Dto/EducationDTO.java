@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class EducationDTO {
 
+    // Education entity fields
     private int education_id;
     private int person_id; // Added PersonID field
     private String degree;
@@ -14,12 +15,13 @@ public class EducationDTO {
     private Date created_at;
     private Date updated_at;
 
-    // Constructors
+    // Default constructor initializes created at and updated at field with current date
     public EducationDTO() {
         this.created_at = new Date();
         this.updated_at = new Date();
     }
 
+    //Parameterized constructor initializes all fields with provided values
     public EducationDTO(int education_id, int person_id, String degree, String institution, String major, Date graduation_start_date, Date graduation_end_date, Date created_at, Date updated_at) {
         this.education_id = education_id;
         this.person_id = person_id;
@@ -32,6 +34,7 @@ public class EducationDTO {
         this.updated_at = updated_at;
     }
 
+    // Getter and Setter provide access to the private fields
     public int getEducation_id() {
         return education_id;
     }
@@ -76,9 +79,7 @@ public class EducationDTO {
         return graduation_start_date;
     }
 
-    public void setGraduation_start_date(Date graduation_start_date) {
-        this.graduation_start_date = graduation_start_date;
-    }
+    public void setGraduation_start_date(Date graduation_start_date) {this.graduation_start_date = graduation_start_date;}
 
     public Date getGraduation_end_date() {
         return graduation_end_date;
@@ -105,6 +106,7 @@ public class EducationDTO {
     }
 
     @Override
+    //Provides detailed and formatted information about the object’s current state.
     public String toString() {
         return "EducationDTO{" +
                 "education_id=" + education_id +

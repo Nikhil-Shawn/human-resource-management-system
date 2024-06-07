@@ -1,8 +1,6 @@
 package com.humanresourcemanagementsystem.Controller.BenefitController;
 
-import com.humanresourcemanagementsystem.Dto.AssetDTO;
 import com.humanresourcemanagementsystem.Dto.BenefitDTO;
-import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Service.BenefitService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +15,14 @@ public class BenefitController
 {
     @Autowired
     private BenefitService benefitService;
+
+    //Save single benefit
     @PostMapping("/save")
     public String saveAsset(@RequestBody BenefitDTO benefitDTO) {
         return benefitService.addBenefit(benefitDTO);
     }
 
-
+    //Save multiple benefits
     @PostMapping("/multi")
     public ResponseEntity<?> createMultipleBenefit(@RequestBody List<BenefitDTO> benefitDTOs) {
         String response = benefitService.addMultipleBenefit(benefitDTOs);

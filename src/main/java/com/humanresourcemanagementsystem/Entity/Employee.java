@@ -58,7 +58,5 @@ public class Employee {
         return asset;
     }
 
-    public void setAsset(Asset asset) {
-        this.asset = asset;
-    }
+    public void setAsset(Asset asset) { this.asset = asset; }
 }
