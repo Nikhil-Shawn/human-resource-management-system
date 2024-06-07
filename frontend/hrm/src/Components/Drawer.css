@@ -1,0 +1,70 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -44%;
+  width: 36%;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  padding: 20px;
+  z-index: 1000;
+  font-size: 15px; 
+
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.head-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.button-group{
+  width: unset;
+  height: 40%;
+}
+
+.save-button{
+  width: 100%;
+}
+
+.drawer-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.date-fields {
+  display: flex;
+  justify-content: space-between;
+  gap:20px;
+}
+
+.date-field:focus {
+  border-color: #1F74EC;
+  box-shadow: 0 0 0 0.2rem rgba(31, 116, 236, 0.25);
+}
+
+.date-fields > * {
+  font-size: 12px;
+  padding: 16px;
+  border: 0.4px solid #E0E4EA;
+  border-radius: 20px;
+  outline: none;
+  width: 48%;
+  box-sizing: border-box;
+  font-family: inherit;
+}

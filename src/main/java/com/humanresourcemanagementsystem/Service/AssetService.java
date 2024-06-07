@@ -1,15 +1,22 @@
 package com.humanresourcemanagementsystem.Service;
 import com.humanresourcemanagementsystem.Dto.AssetDTO;
-import com.humanresourcemanagementsystem.Dto.BenefitDTO;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface AssetService {
-    @Transactional
+
+    // Add Single Asset
     String addAsset(AssetDTO assetDTO);
+
+    //Add Multiple Assets
     String addMultipleAsset(List<AssetDTO> assetDTOs);
+
+    //Display Asset By ID
     AssetDTO getAssetById(int id);
+
+    //Display All Assets
     List<AssetDTO> getAllAsset();
+
+    //Update Asset By ID
     String updateAssetById(int id, AssetDTO assetDTO);
 }

@@ -5,9 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './Pages/Dashboard';
-import Employee from './Employee';
+import Employee from './Pages/Employee';
 import Register from './Pages/Register';
 import Leaves from './Pages/Leaves';
+import CreateEmployee from './Pages/CreateEmployee';
 import Payroll from './Pages/Payroll';
 import Separation from './Pages/Separation';
 import Assets from './Pages/Assets';
@@ -27,6 +28,8 @@ root.render(
     <Route path="/payroll" element={<Payroll/>}></Route>
     <Route path="/separation" element={<Separation/>}></Route>
     <Route path="/assets" element={<Assets/>}></Route>
+    <Route path="/create-employee" element={<CreateEmployee/>}></Route>
+    <Route path="/employee" element={<Employee/>}></Route>
     </Routes>
   </React.StrictMode>
   </BrowserRouter>

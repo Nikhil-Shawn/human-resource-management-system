@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class BenefitDTO {
 
+    // Benefit entity fields
         private int benefit_id ;
         private int employee_id; // Added EmployeeID field
         private String benefit_type ;
@@ -13,11 +14,13 @@ public class BenefitDTO {
         private Date created_at ;
         private Date updated_at ;
 
+    // Default constructor initializes created at and updated at field with current date
     public BenefitDTO() {
         this.created_at = new Date();
         this.updated_at = new Date();
     }
 
+    //Parameterized constructor initializes all fields with provided values
     public BenefitDTO(int employee_id, int benefit_id, String benefit_type, Date start_date, String coverage_details, Date end_date, Date created_at, Date updated_at) {
         this.employee_id = employee_id ;
         this.benefit_id = benefit_id;
@@ -29,6 +32,7 @@ public class BenefitDTO {
         this.updated_at = updated_at;
     }
 
+    // Getter and Setter provide access to the private fields
     public int getBenefit_id() {
         return benefit_id;
     }
@@ -93,6 +97,7 @@ public class BenefitDTO {
         this.updated_at = updated_at;
     }
 
+    //Provides detailed and formatted information about the object’s current state.
     @Override
     public String toString() {
         return "BenefitDTO{" +

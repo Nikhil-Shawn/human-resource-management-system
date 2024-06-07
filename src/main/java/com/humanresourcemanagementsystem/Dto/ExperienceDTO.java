@@ -2,9 +2,9 @@ package com.humanresourcemanagementsystem.Dto;
 
 import java.util.Date;
 
-//public class ExperienceDTO extends PersonDTO {
 public class ExperienceDTO {
 
+    // Experience entity fields
     private int experience_id;
         private int person_id ;
         private String company_name;
@@ -14,9 +14,11 @@ public class ExperienceDTO {
         private Date start_date;
         private Date end_date;
 
+    // Default constructor initializes created at and updated at field with current date
     public ExperienceDTO(){
     }
 
+    //Parameterized constructor initializes all fields with provided values
     public ExperienceDTO(int experience_id, int person_id, String company_name, String employment_type, String no_of_years, String position, Date start_date, Date end_date) {
         this.experience_id = experience_id;
         this. person_id =  person_id ;
@@ -28,6 +30,7 @@ public class ExperienceDTO {
         this.end_date = end_date;
     }
 
+    // Getter and Setter provide access to the private fields
     public int getExperience_id() {
         return experience_id;
     }
@@ -91,7 +94,9 @@ public class ExperienceDTO {
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
+
     @Override
+    //Provides detailed and formatted information about the object’s current state.
     public String toString() {
         return "ExperienceDTO{" +
                 "experience_id=" + experience_id +

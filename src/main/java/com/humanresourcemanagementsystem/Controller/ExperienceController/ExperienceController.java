@@ -1,7 +1,5 @@
 package com.humanresourcemanagementsystem.Controller.ExperienceController;
 
-import com.humanresourcemanagementsystem.Dto.BenefitDTO;
-import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Dto.ExperienceDTO;
 import com.humanresourcemanagementsystem.Service.ExperienceService;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +11,19 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("api/v1/experience")
+
 public class ExperienceController
 {
     @Autowired
     private ExperienceService experienceService;
+
+    //Save single experience
     @PostMapping("/save")
     public String saveAsset(@RequestBody ExperienceDTO experienceDTO) {
         return experienceService.addExperience(experienceDTO);
     }
 
+    //Save multiple experiences
     @PostMapping("/multi")
     public ResponseEntity<?> createMultipleExperience(@RequestBody List<ExperienceDTO> experienceDTOs) {
         String response = experienceService.addMultipleExperience(experienceDTOs);
