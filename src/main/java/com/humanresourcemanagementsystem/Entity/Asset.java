@@ -17,7 +17,7 @@ public class Asset {
 
     //One Employee can have multiple assets
     @ManyToOne
-    @JoinColumn(name = "EmployeeID", referencedColumnName = "EmployeeID")
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
     private Employee employee;
 
     @Column(name = "asset_type", nullable = false)

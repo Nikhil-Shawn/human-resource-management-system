@@ -17,7 +17,7 @@ public class Benefit {
 
     //One Employee can have multiple benefits
     @ManyToOne
-    @JoinColumn(name = "EmployeeID", referencedColumnName = "EmployeeID")
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
     private Employee employee;
 
     @Column(name = "benefit_type", nullable = false)

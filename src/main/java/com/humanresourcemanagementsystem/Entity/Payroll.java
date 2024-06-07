@@ -12,7 +12,7 @@ public class Payroll {
     private Long payroll_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "EmployeeID", referencedColumnName = "EmployeeID")
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
     private Employee employee;
 
     @Column(name = "pay_amount")

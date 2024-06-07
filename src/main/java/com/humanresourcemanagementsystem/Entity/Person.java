@@ -23,11 +23,11 @@ public class Person {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "person_email", nullable = false, unique = true)
-    private String email;
+    @Column(name = "person_email", unique = true, nullable = false)
+    private String personEmail;
 
     @Column(name = "person_password")
-    private String password;
+    private String personPassword;
 
     @Column(name = "phone")
     private String phone;
@@ -73,8 +73,8 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.email = email;
-        this.password = password;
+        this.personEmail = email;
+        this.personPassword = password;
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -114,22 +114,6 @@ public class Person {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getPhone() {
@@ -204,6 +188,21 @@ public class Person {
         this.employees = employees;
     }
 
+    public String getPersonEmail() {
+        return personEmail;
+    }
+
+    public void setPersonEmail(String personEmail) {
+        this.personEmail = personEmail;
+    }
+
+    public String getPersonPassword() {
+        return personPassword;
+    }
+
+    public void setPersonPassword(String personPassword) {
+        this.personPassword = personPassword;
+    }
 //    public Set<Experience> getExperiences() {
 //        return experiences;
 //    }
