@@ -5,6 +5,9 @@ import java.util.Date;
 public class EmployeePersonDTO {
     private int employeeID;
     private String designation;
+    private String workLocation;
+    private String manageWhom;
+    private String employmentStatus;
     private int personID;
     private String firstName;
     private String lastName;
@@ -25,9 +28,12 @@ public class EmployeePersonDTO {
     }
 
     // Parameterized constructor
-    public EmployeePersonDTO(int employeeID, String designation, int personID, String firstName, String lastName, String address, String email, String password, String phone, Date dateOfBirth, String gender, String nationality, String maritalStatus, String personType, Date createdAt, Date updatedAt) {
+    public EmployeePersonDTO(int employeeID, String employmentStatus, String workLocation, String manageWhom, String designation, int personID, String firstName, String lastName, String address, String email, String password, String phone, Date dateOfBirth, String gender, String nationality, String maritalStatus, String personType, Date createdAt, Date updatedAt) {
         this.employeeID = employeeID;
         this.designation = designation;
+        this.workLocation = workLocation;
+        this.employmentStatus = employmentStatus;
+        this.manageWhom = manageWhom;
         this.personID = personID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -57,8 +63,32 @@ public class EmployeePersonDTO {
         return designation;
     }
 
+    public String getWorkLocation() {
+        return workLocation;
+    }
+
+    public void setWorkLocation(String workLocation) {
+        this.workLocation = workLocation;
+    }
+
+    public String getManageWhom() {
+        return manageWhom;
+    }
+
+    public void setManageWhom(String manageWhom) {
+        this.manageWhom = manageWhom;
+    }
+
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public String getEmploymentStatus() {
+        return employmentStatus;
+    }
+
+    public void setEmploymentStatus(String employmentStatus) {
+        this.employmentStatus = employmentStatus;
     }
 
     public int getPersonID() {
