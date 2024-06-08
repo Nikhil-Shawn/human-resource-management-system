@@ -1,0 +1,96 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -44%;
+  width: 36%;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  padding: 40px;
+  z-index: 1000;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.head-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.head-group h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.button-group {
+  display: center;
+  gap: 500px;
+}
+
+.save-button {
+  background-color: #0056b3;
+  color: white;
+  padding: 1px 2px;  /* Decrease size */
+  font-size: 14px;     /* Decrease font size */
+}
+
+.cancel-button {
+  background-color: #23272C;
+  color: #0056b3;
+  padding: 10px 20px;  /* Decrease size */
+  font-size: 14px;     /* Decrease font size */
+}
+
+.drawer-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;  /* Align to the right edge */
+  background-color: #ffffff;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #0056b3;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;  /* Reduce gap */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group p {
+  margin: 0 0 3px;  /* Reduce space below labels */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.MuiOutlinedInput-root {
+  background-color: #f8f9fa;
+}
+
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #e0e0e0;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #b0b0b0;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #007bff;
+}
