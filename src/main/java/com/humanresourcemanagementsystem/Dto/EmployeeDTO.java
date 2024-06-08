@@ -34,9 +34,8 @@ public class EmployeeDTO extends PersonDTO {
     // Constructors
     public EmployeeDTO() {}
 
-    public EmployeeDTO(int employeeID, int supervisorId, Boolean isSupervisor, String manageWhom, String employmentType, Boolean isAdmin, String empEmail, String empPassword, String designation, Date hireDate, Date terminationDate, String employmentStatus, String workLocation, Date createdAt, Date updatedAt) {
+    public EmployeeDTO(int employeeID, Boolean isSupervisor, String manageWhom, String employmentType, Boolean isAdmin, String empEmail, String empPassword, String designation, Date hireDate, Date terminationDate, String employmentStatus, String workLocation, Date createdAt, Date updatedAt) {
         this.employeeID = employeeID;
-        this.supervisorId = supervisorId;
         this.isSupervisor = isSupervisor;
         this.manageWhom = manageWhom;
         this.employmentType = employmentType;
