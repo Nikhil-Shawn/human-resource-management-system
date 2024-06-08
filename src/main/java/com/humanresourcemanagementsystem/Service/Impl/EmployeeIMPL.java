@@ -139,7 +139,7 @@ public class EmployeeIMPL implements EmployeeService {
 //        employee.setDepartment(department);
 //        employee.setExperience(experience);
 //        employee.setEducation(education);
-//        employee.setSupervisor(supervisor);
+          employee.setSupervisorId(employeeDTO.getSupervisorId());
 //        employee.setSupervisor(employeeDTO.getSupervisor());
         employee.setManageWhom(employeeDTO.getManageWhom());
         employee.setEmploymentType(employeeDTO.getEmploymentType());

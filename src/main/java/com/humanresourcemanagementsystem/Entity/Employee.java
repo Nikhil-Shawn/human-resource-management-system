@@ -30,9 +30,8 @@ public class Employee {
     @JoinColumn(name = "education_id", referencedColumnName = "education_id")
     private Education education;
 
-    @ManyToOne
-    @JoinColumn(name = "supervisor_id", referencedColumnName = "employee_id")
-    private Employee supervisor;
+    @Column(name = "supervisor_id")
+    private int supervisorId;
 
     @Column(name = "is_supervisor")
     private Boolean isSupervisor;
@@ -133,12 +132,12 @@ public class Employee {
         this.education = education;
     }
 
-    public Employee getSupervisor() {
-        return supervisor;
+    public int getSupervisorId() {
+        return supervisorId;
     }
 
-    public void setSupervisor(Employee supervisor) {
-        this.supervisor = supervisor;
+    public void setSupervisorId(int supervisorId) {
+        this.supervisorId = supervisorId;
     }
 
     public Boolean getIsSupervisor() {
