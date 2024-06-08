@@ -55,6 +55,10 @@ public class SecurityConfig {
                                 //For Experience
                                 "/api/v1/experience/save",
 
+                                // For Asset
+                                "/api/v1/assets/save",
+                                "/api/v1/assets/all",
+
                                 //For Logout
                                 "/api/logout",
 
