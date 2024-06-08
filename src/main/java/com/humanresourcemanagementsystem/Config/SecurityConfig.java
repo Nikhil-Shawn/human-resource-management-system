@@ -55,6 +55,11 @@ public class SecurityConfig {
                                 //For Experience
                                 "/api/v1/experience/save",
 
+                                // For Asset
+                                "/api/v1/assets/save", // Ensure this line is correct
+                                "/api/v1/assets/all", // Ensure this line is correct
+
+
                                 //For Logout
                                 "/api/logout",
 

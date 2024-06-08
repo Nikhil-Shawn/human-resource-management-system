@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Asset Benefit Experience Education Update and Many to one relationship">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/VacationController/VacationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/VacationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/VacationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/VacationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/VacationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Vacation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Vacation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/AssetController/AssetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/AssetController/AssetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,12 +39,15 @@
     &quot;assignee&quot;: &quot;poojasanjaypatil&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Nikhil-Shawn/human-resource-management-system.git&quot;,
-    &quot;accountId&quot;: &quot;2059bb61-9395-40a0-a185-0e83ccf63b60&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Nikhil-Shawn/human-resource-management-system.git",
+    "accountId": "0a2e58cf-9452-4ef4-a99f-1fbb845f3714"
   }
-}</component>
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -63,7 +66,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.HumanResourceManagementSystemApplication.executor": "Run",
-    "git-widget-placeholder": "Vacation",
+    "git-widget-placeholder": "development",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system",
     "node.js.selected.package.tslint": "(autodetect)",
