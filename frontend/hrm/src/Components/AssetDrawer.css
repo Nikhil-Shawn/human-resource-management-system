@@ -23,7 +23,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 0; /* Remove space below the header */
 }
 
 .head-group h2 {
@@ -33,22 +33,23 @@
 }
 
 .button-group {
-  display: center;
-  gap: 500px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .save-button {
   background-color: #0056b3;
   color: white;
-  padding: 1px 2px;  /* Decrease size */
-  font-size: 14px;     /* Decrease font size */
+  padding: 5px 10px;  /* Adjust size */
+  font-size: 14px;     /* Adjust font size */
 }
 
 .cancel-button {
   background-color: #23272C;
   color: #0056b3;
-  padding: 10px 20px;  /* Decrease size */
-  font-size: 14px;     /* Decrease font size */
+  padding: 5px 10px;  /* Adjust size */
+  font-size: 14px;     /* Adjust font size */
 }
 
 .drawer-close-button {
@@ -65,22 +66,27 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;  /* Reduce gap */
+  gap: 5px;  /* Reduce gap between form groups */
+  margin-top: 10px; /* Add space between header and form fields */
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  margin: 0;  /* Remove margin */
+  padding: 0; /* Remove padding */
 }
 
 .form-group p {
-  margin: 0 0 3px;  /* Reduce space below labels */
+  margin: 0 0 2px;  /* Further reduce space below labels */
   font-size: 14px;
   font-weight: bold;
 }
 
 .MuiOutlinedInput-root {
   background-color: #f8f9fa;
+  margin-top: 0; /* Remove top margin */
+  padding-top: 0; /* Ensure no padding on top */
 }
 
 .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {

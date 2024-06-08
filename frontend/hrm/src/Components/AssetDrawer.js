@@ -44,6 +44,10 @@ const Drawer = ({ isOpen, onClose, onSave }) => {
     <div className={`drawer ${isOpen ? 'open' : ''}`}>
       <div className="head-group">
         <h2>Add Asset to Employee</h2>
+        <div className="button-group">
+          <Button variant="text" onClick={onClose} className="cancel-button">Cancel</Button>
+          <Button variant="contained" onClick={handleSave} className="save-button">Save</Button>
+        </div>
         <button className="drawer-close-button" onClick={onClose}>&times;</button>
       </div>
       <div className="form-container">
@@ -112,10 +116,6 @@ const Drawer = ({ isOpen, onClose, onSave }) => {
               shrink: true,
             }}
           />
-        </div>
-        <div className="button-group">
-          <Button variant="text" onClick={onClose} className="cancel-button">Cancel</Button>
-          <Button variant="contained" onClick={handleSave} className="save-button">Save</Button>
         </div>
       </div>
     </div>
