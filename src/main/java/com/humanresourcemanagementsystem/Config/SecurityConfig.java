@@ -58,6 +58,8 @@ public class SecurityConfig {
                                 //For Logout
                                 "/api/logout",
 
+                                //For Employee
+                                "api/v1/employee/all",
                                 "api/v1/employee/save"
 
 
