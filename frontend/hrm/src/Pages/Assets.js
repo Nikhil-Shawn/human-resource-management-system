@@ -1,86 +1,73 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState, useRef } from 'react';
 import { BsThreeDotsVertical } from "react-icons/bs";
+import AssetDrawer from '../Components/AssetDrawer';
 import HeaderComponent from '../Components/HeaderComponent';
 import Sidebar from '../Components/Sidebar';
 import './Assets.css';
 
-
 function Assets() {
-const assetsData = [
-  {
-    name: 'Kallie Towne',
-    position: 'PHP Web Developer',
-    department: 'Development',
-    issuedDate: 'Nov, 12 2024',
-    returnDate: 'Dec, 12 2024',
-    email: 'felix.maier@nexus.com',
-    serialNumber: 'LAP123456789'
-  },
-  {
-    name: 'Chester Wiza',
-    position: 'Full Stack Developer',
-    department: 'Sales & Marketing',
-    issuedDate: 'Oct, 2 2024',
-    returnDate: 'Dec, 2 2024',
-    email: 'wiza1234@nexus.com',
-    serialNumber: 'LAP987654321'
-  },
-  {
-    name: 'Max Mustermann',
-    position: 'UI/UX Designer',
-    department: 'Development',
-    issuedDate: 'Sep, 12 2024',
-    returnDate: 'Nov, 12 2024',
-    email: 'max.mustermannn@nexus.com',
-    serialNumber: 'MOB123456789'
-  },
-  {
-    name: 'Zechariah Botsford',
-    position: 'Data Analyst',
-    department: 'Analytics & Data',
-    issuedDate: 'Aug, 5 2024',
-    returnDate: 'Oct, 5 2024',
-    email: 'bitsfor-z@nexus.com',
-    serialNumber: 'MOB987654321'
-  },
-  {
-    name: 'Triston Bode',
-    position: 'Frontend Developer',
-    department: 'Development',
-    issuedDate: 'Jul, 11 2024',
-    returnDate: 'Sep, 11 2024',
-    email: 'tristonbode@nexus.com',
-    serialNumber: 'TAB123456789'
-  },
-  {
-    name: 'Graham Rice',
-    position: 'C++ Game Developer',
-    department: 'Development',
-    issuedDate: 'Jun, 29 2024',
-    returnDate: 'Aug, 29 2024',
-    email: 'graham-ric@nexus.com',
-    serialNumber: 'TAB987654321'
-  },
-  {
-    name: 'Annette Jast',
-    position: 'Project Manager',
-    department: 'Analytics & Data',
-    issuedDate: 'May, 18 2024',
-    returnDate: 'Jul, 18 2024',
-    email: 'ann.jast@nexus.com',
-    serialNumber: 'LAP112233445'
-  },
-  {
-    name: 'Kallie Towne',
-    position: 'Graphic Designer',
-    department: 'Sales & Marketing',
-    issuedDate: 'Apr, 10 2024',
-    returnDate: 'Jun, 10 2024',
-    email: 'towne2209@example.com',
-    serialNumber: 'MOB223344556'
-  }
-];
+  const [assetsData, setAssetsData] = useState([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [currentAsset, setCurrentAsset] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+  const dropdownRef = useRef(null);
 
+  useEffect(() => {
+    fetchAssets();
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const fetchAssets = () => {
+    axios.get('http://localhost:8080/api/v1/assets/all')
+      .then(response => {
+        setAssetsData(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the assets data!', error);
+      });
+  };
+
+  const handleDrawerOpen = (asset) => {
+    setCurrentAsset(asset);
+    setIsDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+    setCurrentAsset(null);
+  };
+
+  const handleSave = (newAsset) => {
+    if (currentAsset) {
+      setAssetsData(assetsData.map(asset => asset.id === newAsset.id ? newAsset : asset));
+    } else {
+      setAssetsData([...assetsData, newAsset]);
+    }
+  };
+
+  const handleDelete = (assetId) => {
+    axios.delete(`http://localhost:8080/api/v1/assets/${assetId}`)
+      .then(response => {
+        setAssetsData(assetsData.filter(asset => asset.id !== assetId));
+      })
+      .catch(error => {
+        console.error('There was an error deleting the asset!', error);
+      });
+  };
+
+  const toggleDropdown = (index) => {
+    setDropdownOpen(dropdownOpen === index ? null : index);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(null);
+    }
+  };
 
   return (
     <div className="app">
@@ -91,25 +78,25 @@ const assetsData = [
           <div className="assets-heading">
             <div className="assets-text">Assets</div>
             <div className="add-asset-button-container">
-              <button>+ Add Asset</button>
+              <button onClick={() => handleDrawerOpen(null)}>+ Add Asset</button>
             </div>
           </div>
           <table className="employee-table">
             <thead>
-            <tr
-								style={{
-									fontWeight: "0",
-									fontSize: "0.8vw",
-									color: "black",
-								}}
-							>
-								<th
-									style={{
-										padding: "20px 0px 20px 40px",
-										marginLeft: "10px",
-									}}
-								>
-									Name</th>
+              <tr
+                style={{
+                  fontWeight: "0",
+                  fontSize: "0.8vw",
+                  color: "black",
+                }}
+              >
+                <th
+                  style={{
+                    padding: "20px 0px 20px 40px",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Name</th>
                 <th>Position</th>
                 <th>Department</th>
                 <th>Issued Date</th>
@@ -119,7 +106,7 @@ const assetsData = [
                 <th></th>
               </tr>
             </thead>
-						<tbody style={{ fontSize: "0.8vw", textAlign: "center" }}>
+            <tbody style={{ fontSize: "0.8vw", textAlign: "center" }}>
               {assetsData.map((asset, index) => (
                 <tr key={index}>
                   <td style={{
@@ -138,7 +125,7 @@ const assetsData = [
                         marginRight: "10px",
                       }}
                     />
-                    <span>{asset.name}</span>
+                    <span>{asset.employeeName}</span>
                   </td>
                   <td>
                     <span style={{
@@ -147,15 +134,23 @@ const assetsData = [
                       borderRadius: "30px",
                       padding: "8px 20px",
                       display: "inline-block",
-                    }}>{asset.position}</span>
+                    }}>{asset.employeePosition}</span>
                   </td>
                   <td>{asset.department}</td>
                   <td>{asset.issuedDate}</td>
                   <td>{asset.returnDate}</td>
-                  <td>{asset.email}</td>
+                  <td>{asset.employeeEmail}</td>
                   <td>{asset.serialNumber}</td>
                   <td style={{ borderRight: "1px solid #E0E4EA" }}>
-                    <BsThreeDotsVertical />
+                    <div className="dropdown-container" ref={dropdownOpen === index ? dropdownRef : null}>
+                      <BsThreeDotsVertical onClick={() => toggleDropdown(index)} />
+                      {dropdownOpen === index && (
+                        <div className="dropdown-menu">
+                          <div className="dropdown-item" onClick={() => handleDrawerOpen(asset)}>Edit</div>
+                          <div className="dropdown-item" onClick={() => handleDelete(asset.id)}>Delete</div>
+                        </div>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -163,6 +158,7 @@ const assetsData = [
           </table>
         </div>
       </div>
+      <AssetDrawer isOpen={isDrawerOpen} onClose={handleDrawerClose} onSave={handleSave} asset={currentAsset} />
     </div>
   );
 }
