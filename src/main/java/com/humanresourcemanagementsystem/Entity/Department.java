@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
+//Mapping of Department class to database table hrm_department
 @Table(name = "hrm_department")
 public class Department {
     @Id
@@ -25,11 +26,13 @@ public class Department {
     private Date updatedAt;
 
     @PrePersist
+    // Default constructor initializes created at and updated at field with current date
     protected void onCreate() {
         createdAt = new Date();
         updatedAt = new Date();
     }
 
+    // Getter and Setter provide access to the private fields
     @PreUpdate
     protected void onUpdate() {
         updatedAt = new Date();

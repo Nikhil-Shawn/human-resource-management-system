@@ -1,13 +1,10 @@
 package com.humanresourcemanagementsystem.Dto;
 
-import com.humanresourcemanagementsystem.Entity.Employee;
-import jakarta.persistence.*;
-
 import java.util.Date;
-import java.util.Set;
 
 public class PersonDTO {
 
+    // Person entity fields
     private int personID;
     private String firstName;
     private String lastName;
@@ -23,12 +20,13 @@ public class PersonDTO {
     private Date createdAt;
     private Date updatedAt;
 
-    // Constructors
+    // Default constructor initializes created at and updated at field with current date
     public PersonDTO() {
         this.createdAt = new Date();
         this.updatedAt = new Date();
     }
 
+    //Parameterized constructor initializes all fields with provided values
     public PersonDTO(String firstName, String lastName, String address, String email, String password, String phone, Date dateOfBirth, String gender, String nationality, String maritalStatus, String personType) {
         this();
         this.firstName = firstName;
@@ -44,7 +42,7 @@ public class PersonDTO {
         this.personType = personType;
     }
 
-    // Getters and Setters
+    // Getter and Setter provide access to the private fields
     public int getPersonID() {
         return personID;
     }
@@ -156,6 +154,8 @@ public class PersonDTO {
     public void setPersonEmail(String personEmail) {
         this.personEmail = personEmail;
     }
+
+    //Provides detailed and formatted information about the object’s current state.
     @Override
     public String toString() {
         return "PersonDTO{" +

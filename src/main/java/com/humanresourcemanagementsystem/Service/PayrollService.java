@@ -8,7 +8,6 @@ import com.humanresourcemanagementsystem.Repo.PayrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,16 +21,19 @@ public class PayrollService {
     @Autowired
     private EmployeeRepository employeeRepo;
 
+    //Display all payrolls
     public List<PayrollDTO> getAllPayrolls() {
         return payrollRepository.findAll().stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
+    //Display payroll by ID
     public PayrollDTO getPayrollById(Long id) {
         return payrollRepository.findById(id).map(this::convertToDTO).orElse(null);
     }
 
+    //Save payroll
     public PayrollDTO createPayroll(Long employeeId, PayrollDTO payrollDTO) {
         Optional<Employee> employeeOptional = employeeRepo.findById(employeeId.intValue());
         if (employeeOptional.isPresent()) {
@@ -53,6 +55,7 @@ public class PayrollService {
 
     }
 
+    //Update payroll by ID
     public PayrollDTO updatePayroll(Long id, PayrollDTO payrollDTO) {
         if (payrollRepository.existsById(id)) {
             Payroll payroll = payrollRepository.findById(id).orElseThrow();
@@ -69,10 +72,12 @@ public class PayrollService {
         return null;
     }
 
+    //Delete payroll by ID
     public void deletePayroll(Long id) {
         payrollRepository.deleteById(id);
     }
 
+    //Copies attributes from the Payroll entity to PayrollDTO
     private PayrollDTO convertToDTO(Payroll payroll) {
         PayrollDTO payrollDTO = new PayrollDTO();
         payrollDTO.setPayroll_id(payroll.getPayroll_id());

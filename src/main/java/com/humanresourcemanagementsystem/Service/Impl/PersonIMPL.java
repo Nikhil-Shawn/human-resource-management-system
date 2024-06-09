@@ -1,6 +1,5 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
-import com.humanresourcemanagementsystem.Dto.PersonDTO;
 import com.humanresourcemanagementsystem.Entity.Person;
 import com.humanresourcemanagementsystem.Repo.PersonRepository;
 import com.humanresourcemanagementsystem.Service.PersonService;
@@ -17,11 +16,13 @@ public class PersonIMPL implements PersonService {
     private PersonRepository personRepository;
 
     @Override
+    //Save person
     public Person savePerson(Person person) {
         return personRepository.save(person);
     }
 
     @Override
+    //Display Person details by ID
     public Person getPersonById(int id) {
         Optional<Person> personOpt = personRepository.findById(id);
         if (personOpt.isPresent()) {

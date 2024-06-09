@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class PayrollDTO {
+
+    // Payroll entity fields
     private Long payroll_id;
     private int employeeId;
     private BigDecimal payAmount;
@@ -14,6 +16,7 @@ public class PayrollDTO {
     private Date createdAt;
     private Date updatedAt;
 
+    // Getter and Setter provide access to the private fields
     public Long getPayroll_id() {
         return payroll_id;
     }

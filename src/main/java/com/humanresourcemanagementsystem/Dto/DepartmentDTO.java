@@ -4,12 +4,14 @@ import java.util.Date;
 
 public class DepartmentDTO {
 
+    // Department entity fields
     private int departmentId;
     private String departmentName;
     private String departmentStatus;
     private Date createdAt;
     private Date updatedAt;
 
+    // Getter and Setter provide access to the private fields
     public int getDepartmentId() {
         return departmentId;
     }
@@ -33,6 +35,7 @@ public class DepartmentDTO {
     public void setDepartmentStatus(String departmentStatus) {
         this.departmentStatus = departmentStatus;
     }
+
     public Date getUpdatedAt() {
         return updatedAt;
     }

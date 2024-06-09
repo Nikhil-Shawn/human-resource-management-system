@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+//Mapping the HTTP requests to the methods in the experience controller
 @RequestMapping("api/v1/experience")
 
 public class ExperienceController
@@ -20,12 +21,14 @@ public class ExperienceController
     //Save single experience
     @PostMapping("/save")
     public String saveAsset(@RequestBody ExperienceDTO experienceDTO) {
+        // Calls the service to add the experience
         return experienceService.addExperience(experienceDTO);
     }
 
     //Save multiple experiences
     @PostMapping("/multi")
     public ResponseEntity<?> createMultipleExperience(@RequestBody List<ExperienceDTO> experienceDTOs) {
+        // Calls the service to add the experiences
         String response = experienceService.addMultipleExperience(experienceDTOs);
         return ResponseEntity.ok(response);
     }
@@ -33,18 +36,21 @@ public class ExperienceController
     // Get experience by ID
     @GetMapping("/{id}")
     public ExperienceDTO getExperienceById(@PathVariable int id) {
+        // Fetches Experience using the service
         return experienceService.getExperienceById(id);
     }
 
     // Get all experiences
     @GetMapping("/all")
     public List<ExperienceDTO> getAllExperience() {
+        // Fetches Experience using the service
         return experienceService.getAllExperience();
     }
 
     // Update experience by id
     @PutMapping("/update/{id}")
     public String updateExperienceById(@PathVariable int id, @RequestBody ExperienceDTO experienceDTO) {
+        // Calls the service to update the experiences
         return experienceService.updateExperienceById(id, experienceDTO);
     }
 

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
-
+    //This method finds a department entity by its email address
     Optional<Department> findByDepartmentName(String departmentName);
 }
 

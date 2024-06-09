@@ -1,11 +1,12 @@
 package com.humanresourcemanagementsystem.Service;
 
-import com.humanresourcemanagementsystem.Dto.PersonDTO;
 import com.humanresourcemanagementsystem.Entity.Person;
 
-import java.util.List;
-
 public interface PersonService {
+
+    //Save single person
     Person savePerson(Person person);
+
+    //Display person by ID
     Person getPersonById(int id);
 }
