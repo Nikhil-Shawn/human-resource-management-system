@@ -4,8 +4,10 @@ import Drawer from "../Components/Drawer";
 import "./EmployeeList";
 import HeaderComponent from "../Components/HeaderComponent";
 import "./CreateEmployee.css";
+import { useNavigate } from "react-router-dom";
 
 function CreateEmployee() {
+	const navigate = useNavigate();
 	const [firstname, setFirstname] = useState("");
 	const [lastname, setLastname] = useState("");
 	const [dob, setDob] = useState("");
@@ -66,6 +68,8 @@ function CreateEmployee() {
 			isAdmin,
 			isSupervisor,
 		});
+		navigate('/add-education');
+		
 	};
 
 	return (
