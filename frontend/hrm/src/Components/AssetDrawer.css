@@ -23,7 +23,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 0; /* Remove space below the header */
+  margin-bottom: 30px; /* Remove space below the header */
 }
 
 .head-group h2 {
@@ -34,69 +34,64 @@
 
 .button-group {
   display: flex;
-  gap: 10px;
+  gap: 40px;
   align-items: center;
+  margin-left: 10px; /* Add margin to move buttons to the left */
+  margin-right: 120px;
 }
 
 .save-button {
   background-color: #0056b3;
   color: white;
-  padding: 5px 10px;  /* Adjust size */
-  font-size: 14px;     /* Adjust font size */
+  padding: 5px 10px;  
+  font-size: 14px;    
 }
 
-.cancel-button {
-  background-color: #23272C;
-  color: #0056b3;
-  padding: 5px 10px;  /* Adjust size */
-  font-size: 14px;     /* Adjust font size */
+.assets-cancel-button {
+  background-color: #23272C;  /* Set background color */
+  border: #23272C;  /* Remove border */
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #ffffff;   
 }
 
-.drawer-close-button {
+.assets-drawer-close-button {
   position: absolute;
   top: 10px;
   right: 10px;  /* Align to the right edge */
-  background-color: #ffffff;
-  border: none;
+  background-color: #23272C;  /* Set background color */
+  border: #23272C;  /* Remove border */
   font-size: 1.5em;
   cursor: pointer;
-  color: #0056b3;
+  color: #ffffff;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 5px;  /* Reduce gap between form groups */
-  margin-top: 10px; /* Add space between header and form fields */
+  gap: 0px; 
+  margin-top: 30px;
 }
 
-.form-group {
+.assets-form-group {
   display: flex;
   flex-direction: column;
-  margin: 0;  /* Remove margin */
-  padding: 0; /* Remove padding */
-}
-
-.form-group p {
-  margin: 0 0 2px;  /* Further reduce space below labels */
-  font-size: 14px;
-  font-weight: bold;
+  margin-bottom: 30px; 
+  gap: 0px;
 }
 
 .MuiOutlinedInput-root {
-  background-color: #f8f9fa;
-  margin-top: 0; /* Remove top margin */
-  padding-top: 0; /* Ensure no padding on top */
+  margin: 0; /* Ensure no margin */
+  padding: 0; /* Ensure no padding */
 }
+
 
 .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
   border-color: #e0e0e0;
 }
-
 .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
   border-color: #b0b0b0;
 }
-
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: #007bff;
 }

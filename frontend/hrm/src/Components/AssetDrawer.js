@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import './AssetDrawer.css';
+import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import React, { useState } from 'react';
+import './AssetDrawer.css';
 
 const Drawer = ({ isOpen, onClose, onSave }) => {
   const [employeeName, setEmployeeName] = useState('');
@@ -45,13 +45,13 @@ const Drawer = ({ isOpen, onClose, onSave }) => {
       <div className="head-group">
         <h2>Add Asset to Employee</h2>
         <div className="button-group">
-          <Button variant="text" onClick={onClose} className="cancel-button">Cancel</Button>
+          <Button variant="text" onClick={onClose} className="assets-cancel-button">Cancel</Button>
           <Button variant="contained" onClick={handleSave} className="save-button">Save</Button>
         </div>
-        <button className="drawer-close-button" onClick={onClose}>&times;</button>
+        <button className="assets-drawer-close-button" onClick={onClose}>&times;</button>
       </div>
       <div className="form-container">
-        <div className="form-group">
+        <div className="assets-form-group">
           <p>Select Staff</p>
           <TextField
             id="employee-name"
@@ -63,7 +63,7 @@ const Drawer = ({ isOpen, onClose, onSave }) => {
             sx={textFieldStyles}
           />
         </div>
-        <div className="form-group">
+        <div className="assets-form-group">
           <p>Employee Email</p>
           <TextField
             id="employee-email"
@@ -75,7 +75,7 @@ const Drawer = ({ isOpen, onClose, onSave }) => {
             sx={textFieldStyles}
           />
         </div>
-        <div className="form-group">
+        <div className="assets-form-group">
           <p>Employee Position</p>
           <TextField
             id="employee-position"
@@ -87,7 +87,7 @@ const Drawer = ({ isOpen, onClose, onSave }) => {
             sx={textFieldStyles}
           />
         </div>
-        <div className="form-group">
+        <div className="assets-form-group">
           <p>Issued Date</p>
           <TextField
             id="issued-date"
@@ -102,7 +102,7 @@ const Drawer = ({ isOpen, onClose, onSave }) => {
             }}
           />
         </div>
-        <div className="form-group">
+        <div className="assets-form-group">
           <p>Return Date</p>
           <TextField
             id="return-date"
