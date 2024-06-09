@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Sidebar from "../Components/Sidebar";
-import Drawer from "../Components/Drawer";
-import "./EmployeeList";
 import HeaderComponent from "../Components/HeaderComponent";
 import "./CreateEmployee.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function CreateEmployee() {
 	const navigate = useNavigate();
@@ -15,61 +14,71 @@ function CreateEmployee() {
 	const [gender, setGender] = useState("");
 	const [phone, setPhone] = useState("");
 	const [email, setEmail] = useState("");
-	const [department, setDepartment] = useState("");
+	const [address, setAddress] = useState("");
+	const [maritalStatus, setMaritalStatus] = useState("");
+	const [personType, setPersonType] = useState("");
+	const [departmentId, setDepartmentId] = useState("");
+	const [experienceId, setExperienceId] = useState("");
 	const [dateOfJoining, setDateOfJoining] = useState("");
 	const [dateOfTermination, setDateOfTermination] = useState("");
-	const [maritalStatus, setMaritalStatus] = useState("");
-	const [street, setStreet] = useState("");
-	const [streetNo, setStreetNo] = useState("");
-	const [postcode, setPostcode] = useState("");
-	const [city, setCity] = useState("");
-	const [country, setCountry] = useState("");
-	const [workLocation, setworkLocation] = useState("");
-	const [passportExpDate, setPassportExpDate] = useState("");
-	const [personType, setPersonType] = useState("");
+	const [workLocation, setWorkLocation] = useState("");
 	const [designation, setDesignation] = useState("");
-	const [employment, setEmploymentType] = useState("");
-	const [mangeWhom, setManageWhom] = useState("");
+	const [employmentType, setEmploymentType] = useState("");
+	const [manageWhom, setManageWhom] = useState("");
+	const [successMessage, setSuccessMessage] = useState("");
 	const [isSupervisor, setIsSupervisor] = useState(false);
 	const [isAdmin, setIsAdmin] = useState(false);
 
 	const handleSupervisorChange = (e) => {
-		console.log(e.target.checked);
 		setIsSupervisor(e.target.checked);
 	};
 
 	const handleAdminChange = (e) => {
-		console.log(e.target.checked);
 		setIsAdmin(e.target.checked);
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("Form submitted:", {
-			firstname,
-			lastname,
-			email,
-			phone,
-			dob,
-			gender,
-			nationality,
-			maritalStatus,
-			city,
-			postcode,
-			country,
-			workLocation,
-			dateOfJoining,
-			dateOfTermination,
-			personType,
-			department,
-			designation,
-			employment,
-			mangeWhom,
-			isAdmin,
-			isSupervisor,
-		});
-		navigate('/add-education');
-		
+		const employeeData = {
+			firstName: firstname,
+			lastName: lastname,
+			address: address,
+			personEmail: email,
+			personPassword: "123", 
+			phone: phone,
+			dateOfBirth: dob,
+			gender: gender,
+			nationality: nationality,
+			maritalStatus: maritalStatus,
+			personType: personType,
+			departmentId: departmentId,
+			experienceId: experienceId,
+			isSupervisor: isSupervisor,
+			manageWhom: manageWhom,
+			employmentType: employmentType,
+			isAdmin: isAdmin,
+			empEmail: email,
+			empPassword: "123",  
+			designation: designation,
+			hireDate: dateOfJoining,
+			terminationDate: dateOfTermination,
+			employmentStatus: "Active",
+			workLocation: workLocation
+		};
+
+		try {
+			const response = await axios.post("http://localhost:8080/api/v1/employee/save", employeeData);
+			if (response.status === 200) {
+				setSuccessMessage("Employee created successfully!");
+				setTimeout(() => {
+					navigate("/add-education");
+				}, 2000);
+			} else {
+				console.error("Failed to create employee:", response.status, response.data);
+			}
+		} catch (error) {
+			console.error("Error creating employee:", error);
+		}
 	};
 
 	return (
@@ -84,6 +93,11 @@ function CreateEmployee() {
 							<button onClick={handleSubmit}>Save and continue</button>
 						</div>
 					</div>
+					{successMessage && (
+						<div className="success-message">
+							{successMessage}
+						</div>
+					)}
 					<div className="form-cont">
 						<form>
 							<div className="form-section-wrapper">
@@ -121,7 +135,6 @@ function CreateEmployee() {
 										Date of Birth
 										<input
 											type="date"
-											placeholder="Date of Birth"
 											value={dob}
 											onChange={(e) => setDob(e.target.value)}
 											required
@@ -137,7 +150,7 @@ function CreateEmployee() {
 									<input
 										type="text"
 										placeholder="Marital Status"
-										value={nationality}
+										value={maritalStatus}
 										onChange={(e) => setMaritalStatus(e.target.value)}
 										required
 									/>
@@ -150,32 +163,16 @@ function CreateEmployee() {
 									/>
 									<input
 										type="text"
-										placeholder="City"
-										value={city}
-										onChange={(e) => setCity(e.target.value)}
-										required
-									/>
-
-									<input
-										type="text"
-										placeholder="Postcode"
-										value={postcode}
-										onChange={(e) => setPostcode(e.target.value)}
-										required
-									/>
-
-									<input
-										type="text"
-										placeholder="Country"
-										value={country}
-										onChange={(e) => setCountry(e.target.value)}
+										placeholder="Address"
+										value={address}
+										onChange={(e) => setAddress(e.target.value)}
 										required
 									/>
 									<input
 										type="text"
 										placeholder="Work location"
 										value={workLocation}
-										onChange={(e) => setworkLocation(e.target.value)}
+										onChange={(e) => setWorkLocation(e.target.value)}
 										required
 									/>
 								</div>
@@ -187,7 +184,6 @@ function CreateEmployee() {
 										Joining Date
 										<input
 											type="date"
-											placeholder="Date of Joining"
 											value={dateOfJoining}
 											onChange={(e) => setDateOfJoining(e.target.value)}
 											required
@@ -197,46 +193,50 @@ function CreateEmployee() {
 										Termination Date
 										<input
 											type="date"
-											placeholder="Date of Termination"
 											value={dateOfTermination}
 											onChange={(e) => setDateOfTermination(e.target.value)}
-											required
 										/>
 									</label>
 
 									<input
 										type="text"
 										placeholder="Person Type"
-										value={nationality}
+										value={personType}
 										onChange={(e) => setPersonType(e.target.value)}
 										required
 									/>
-
 									<input
-										type="text"
-										placeholder="Department"
-										value={department}
-										onChange={(e) => setDepartment(e.target.value)}
+										type="number"
+										placeholder="Department ID"
+										value={departmentId}
+										onChange={(e) => setDepartmentId(e.target.value)}
+										required
+									/>
+									<input
+										type="number"
+										placeholder="Experience ID"
+										value={experienceId}
+										onChange={(e) => setExperienceId(e.target.value)}
 										required
 									/>
 									<input
 										type="text"
 										placeholder="Designation"
-										value={department}
+										value={designation}
 										onChange={(e) => setDesignation(e.target.value)}
 										required
 									/>
 									<input
 										type="text"
-										placeholder="Employee Type"
-										value={department}
+										placeholder="Employment Type"
+										value={employmentType}
 										onChange={(e) => setEmploymentType(e.target.value)}
 										required
 									/>
 									<input
 										type="text"
 										placeholder="Manage whom"
-										value={department}
+										value={manageWhom}
 										onChange={(e) => setManageWhom(e.target.value)}
 										required
 									/>
@@ -247,7 +247,7 @@ function CreateEmployee() {
 											checked={isSupervisor}
 											onChange={handleSupervisorChange}
 										/>
-										<label>Supervisor</label>
+										<label htmlFor="isSupervisor">Supervisor</label>
 										<input
 											className="adminCheckbox"
 											type="checkbox"
@@ -255,7 +255,7 @@ function CreateEmployee() {
 											checked={isAdmin}
 											onChange={handleAdminChange}
 										/>
-										<label>Admin</label>
+										<label htmlFor="isAdmin">Admin</label>
 									</div>
 								</div>
 							</div>
