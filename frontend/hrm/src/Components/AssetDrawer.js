@@ -1,31 +1,48 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AssetDrawer.css';
 
-const Drawer = ({ isOpen, onClose, onSave }) => {
+const Drawer = ({ isOpen, onClose, onSave, asset }) => {
   const [employeeName, setEmployeeName] = useState('');
   const [employeeEmail, setEmployeeEmail] = useState('');
   const [employeePosition, setEmployeePosition] = useState('');
   const [issuedDate, setIssuedDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
 
+  useEffect(() => {
+    if (asset) {
+      setEmployeeName(asset.employeeName);
+      setEmployeeEmail(asset.employeeEmail);
+      setEmployeePosition(asset.employeePosition);
+      setIssuedDate(asset.issuedDate);
+      setReturnDate(asset.returnDate);
+    } else {
+      setEmployeeName('');
+      setEmployeeEmail('');
+      setEmployeePosition('');
+      setIssuedDate('');
+      setReturnDate('');
+    }
+  }, [asset]);
+
   const handleSave = async () => {
     const assetData = {
+      ...asset,
       employeeName,
       employeeEmail,
       employeePosition,
       issuedDate,
-      returnDate
+      returnDate,
     };
 
-    console.log('Asset Data:', assetData);
-
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/assets/save', assetData);
-      console.log('Asset saved successfully:', response.data);
-      onSave(response.data); // Call the onSave function to update the asset list
+      const response = asset
+        ? await axios.put(`http://localhost:8080/api/v1/assets/${asset.id}`, assetData)
+        : await axios.post('http://localhost:8080/api/v1/assets/save', assetData);
+
+      onSave(response.data);
       onClose();
     } catch (error) {
       console.error('Error saving asset:', error);
@@ -43,7 +60,7 @@ const Drawer = ({ isOpen, onClose, onSave }) => {
   return (
     <div className={`drawer ${isOpen ? 'open' : ''}`}>
       <div className="head-group">
-        <h2>Add Asset to Employee</h2>
+        <h2>{asset ? 'Edit Asset' : 'Add Asset'} to Employee</h2>
         <div className="button-group">
           <Button variant="text" onClick={onClose} className="assets-cancel-button">Cancel</Button>
           <Button variant="contained" onClick={handleSave} className="save-button">Save</Button>

@@ -23,7 +23,6 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 30px; /* Remove space below the header */
 }
 
 .head-group h2 {
@@ -76,7 +75,7 @@
 .assets-form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px; 
+  margin-bottom: 10px; 
   gap: 0px;
 }
 
