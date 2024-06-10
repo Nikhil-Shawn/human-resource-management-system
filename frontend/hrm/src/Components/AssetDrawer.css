@@ -12,6 +12,7 @@
   font-size: 15px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .drawer.open {
@@ -22,7 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 90%;
 }
 
 .head-group h2 {
@@ -33,10 +34,8 @@
 
 .button-group {
   display: flex;
-  gap: 40px;
+  gap: 10px; /* Reduce gap between buttons */
   align-items: center;
-  margin-left: 10px; /* Add margin to move buttons to the left */
-  margin-right: 120px;
 }
 
 .save-button {
@@ -49,9 +48,10 @@
 .assets-cancel-button {
   background-color: #23272C;  /* Set background color */
   border: #23272C;  /* Remove border */
-  font-size: 1.5em;
+  font-size: 14px;
+  padding: 5px 10px;
   cursor: pointer;
-  color: #ffffff;   
+  color: #ffffff;
 }
 
 .assets-drawer-close-button {
@@ -68,22 +68,20 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  gap: 0px; 
+  gap: 10px; 
   margin-top: 30px;
 }
 
 .assets-form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px; 
-  gap: 0px;
+  margin-bottom: 5px; 
 }
 
 .MuiOutlinedInput-root {
   margin: 0; /* Ensure no margin */
   padding: 0; /* Ensure no padding */
 }
-
 
 .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
   border-color: #e0e0e0;
@@ -93,4 +91,8 @@
 }
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: #007bff;
+}
+
+.MuiOutlinedInput-input {
+  padding: 8px 10px; /* Reduce input field height */
 }
