@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Employee get API optimized">
+    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Code clean up. Employee pendind">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/CreateEmployee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/CreateEmployee.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Employee-detail-UI" />
+        <entry key="$PROJECT_DIR$" value="Code-Cleanup" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Nikhil-Shawn/human-resource-management-system.git&quot;,
-    &quot;accountId&quot;: &quot;2059bb61-9395-40a0-a185-0e83ccf63b60&quot;
+    &quot;accountId&quot;: &quot;23c0e279-3fae-484f-8b50-7d6371f90027&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -53,16 +55,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HumanResourceManagementSystemApplication.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.HumanResourceManagementSystemApplication.executor": "Run",
-    "git-widget-placeholder": "Nikhil-Register-API-Connection",
+    "git-widget-placeholder": "Security-Education-changes",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system",
-    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -141,19 +137,19 @@
     </task>
     <task id="LOCAL-00009" summary="Asset Benefit Experience Education Update and Many to one relationship">
       <option name="closed" value="true" />
-      <created>1717790866522</created>
+      <created>1717782665031</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1717790866522</updated>
+      <updated>1717782665031</updated>
     </task>
-    <task id="LOCAL-00010" summary="Asset Benefit Experience Education Update and Many to one relationship">
+    <task id="LOCAL-00010" summary="Code clean up. Employee pendind">
       <option name="closed" value="true" />
-      <created>1717858755136</created>
+      <created>1717954865795</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1717858755136</updated>
+      <updated>1717954865795</updated>
     </task>
     <option name="localTasksCounter" value="11" />
     <servers />
@@ -177,7 +173,18 @@
     <MESSAGE value="Education Multiple Post" />
     <MESSAGE value="Education Multiple and by id tested and completed" />
     <MESSAGE value="Asset Benefit Experience Education Update and Many to one relationship" />
-    <MESSAGE value="Employee get API optimized" />
-    <option name="LAST_COMMIT_MESSAGE" value="Employee get API optimized" />
+    <MESSAGE value="Code clean up. Employee pendind" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code clean up. Employee pendind" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Experience.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
