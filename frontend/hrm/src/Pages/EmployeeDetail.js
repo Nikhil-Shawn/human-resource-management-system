@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Sidebar from '../Components/Sidebar';
 import HeaderComponent from '../Components/HeaderComponent';
+import Sidebar from '../Components/Sidebar';
 import './EmployeeDetail.css';
 
 function EmployeeDetail() {
@@ -16,18 +16,12 @@ function EmployeeDetail() {
       <div className="main-content">
         <HeaderComponent />
         <div className="content-area">
-          <div className="profile-section">
-            <img src="profile-picture.png" alt="Profile" className="profile-picture" />
-            <div className="profile-info">
-              <h1>Julia Maier</h1>
-              <span className="position">Project Manager</span>
-              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
-            </div>
-          </div>
           <div className="info-section">
-            <div className="info-card profile-info-card">
-              <h2>Julia Maier</h2>
-              <span>Project Manager</span>
+            
+          <div className="info-card profile-info-card">
+              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
+              <h1 className="employee-name-card">Julia Maier</h1>
+              <span className="badge">Project Manager</span>
               <div className="info-group">
                 <label>Department:</label>
                 <span>Sales & Marketing</span>
@@ -45,7 +39,36 @@ function EmployeeDetail() {
                 <span>12 Apr, 2020</span>
               </div>
             </div>
-            <div className="info-card">
+
+
+            <div className="info-card salary-info-card">
+              <h2>Salary Information</h2>
+              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
+              <div className="info-group">
+                <label>Salary Basis:</label>
+                <span>Monthly</span>
+              </div>
+              <div className="info-group">
+                <label>Salary Amount Per Month:</label>
+                <span>$1300</span>
+              </div>
+              <div className="info-group">
+                <label>Effective Date:</label>
+                <span>13/06/2024</span>
+              </div>
+              <div className="info-group">
+                <label>Payment Type:</label>
+                <span>Transfer</span>
+              </div>
+              <div className="info-group">
+                <label>Bill Rate:</label>
+                <span>20%</span>
+              </div>
+            </div>
+
+         
+
+            <div className="info-card personal-info-card">
               <h2>Personal Info</h2>
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
               <div className="info-group">
@@ -81,51 +104,9 @@ function EmployeeDetail() {
                 <span>Heidelberg</span>
               </div>
             </div>
-            <div className="info-card">
-              <h2>Salary Information</h2>
-              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
-              <div className="info-group">
-                <label>Salary Basis:</label>
-                <span>Monthly</span>
-              </div>
-              <div className="info-group">
-                <label>Salary Amount Per Month:</label>
-                <span>$1300</span>
-              </div>
-              <div className="info-group">
-                <label>Effective Date:</label>
-                <span>13/06/2024</span>
-              </div>
-              <div className="info-group">
-                <label>Payment Type:</label>
-                <span>Transfer</span>
-              </div>
-              <div className="info-group">
-                <label>Bill Rate:</label>
-                <span>20%</span>
-              </div>
-            </div>
-            <div className="info-card skills-card">
-              <h2>Skills</h2>
-              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
-              <div className="skills">
-                <span>Project Management</span>
-                <span>Team Leadership</span>
-                <span>Data Agile Methodologies</span>
-                <span>Risk Management</span>
-                <span>Budgeting and Financial Management</span>
-                <span>Stakeholder Communication</span>
-                <span>Process Improvement</span>
-                <span>Scope Management</span>
-                <span>Quality Assurance</span>
-                <span>Presentation Skills</span>
-                <span>Conflict Resolution</span>
-                <span>Data Analytics Tools</span>
-                <span>Trello</span>
-                <span>JIRA</span>
-                <span>Microsoft Project</span>
-              </div>
-            </div>
+
+          
+
             <div className="info-card education-card">
               <h2>Educations</h2>
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
@@ -150,6 +131,7 @@ function EmployeeDetail() {
                 <span>Graduated June 2020</span>
               </div>
             </div>
+
             <div className="info-card experience-card">
               <h2>Experience</h2>
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
@@ -173,6 +155,28 @@ function EmployeeDetail() {
                 <span>Aug 2023 - Present</span>
                 <span>Software Solutions</span>
                 <p>Assisted Project Managers in coordinating project activities and ensuring adherence to timelines. Prepared and delivered project status reports.</p>
+              </div>
+            </div>
+
+            <div className="info-card skills-card">
+              <h2>Skills</h2>
+              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
+              <div className="skills">
+                <span>Project Management</span>
+                <span>Team Leadership</span>
+                <span>Data Agile Methodologies</span>
+                <span>Risk Management</span>
+                <span>Budgeting and Financial Management</span>
+                <span>Stakeholder Communication</span>
+                <span>Process Improvement</span>
+                <span>Scope Management</span>
+                <span>Quality Assurance</span>
+                <span>Presentation Skills</span>
+                <span>Conflict Resolution</span>
+                <span>Data Analytics Tools</span>
+                <span>Trello</span>
+                <span>JIRA</span>
+                <span>Microsoft Project</span>
               </div>
             </div>
           </div>
