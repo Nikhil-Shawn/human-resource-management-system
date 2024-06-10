@@ -5,41 +5,44 @@ import React, { useState, useEffect } from 'react';
 import './AssetDrawer.css';
 
 const Drawer = ({ isOpen, onClose, onSave, asset }) => {
-  const [employeeName, setEmployeeName] = useState('');
-  const [employeeEmail, setEmployeeEmail] = useState('');
-  const [employeePosition, setEmployeePosition] = useState('');
+  const [assetType, setAssetType] = useState('');
+  const [serialNumber, setSerialNumber] = useState('');
+  const [employeeId, setEmployeeId] = useState('');
   const [issuedDate, setIssuedDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
+  const [assetId, setAssetId] = useState();
 
   useEffect(() => {
     if (asset) {
-      setEmployeeName(asset.employeeName);
-      setEmployeeEmail(asset.employeeEmail);
-      setEmployeePosition(asset.employeePosition);
-      setIssuedDate(asset.issuedDate);
-      setReturnDate(asset.returnDate);
+      setAssetType(asset.asset_type);
+      setSerialNumber(asset.serial_number);
+      setEmployeeId(asset.employee_id);
+      setIssuedDate(asset.issued_date);
+      setReturnDate(asset.return_date);
+      setAssetId(asset.asset_id);
+     
     } else {
-      setEmployeeName('');
-      setEmployeeEmail('');
-      setEmployeePosition('');
+      setAssetType('');
+      setSerialNumber('');
+      setEmployeeId('');
       setIssuedDate('');
       setReturnDate('');
+      setAssetId('');
     }
   }, [asset]);
 
   const handleSave = async () => {
     const assetData = {
-      ...asset,
-      employeeName,
-      employeeEmail,
-      employeePosition,
-      issuedDate,
-      returnDate,
+      asset_type: assetType,
+      serial_number: serialNumber,
+      issued_date: issuedDate,
+      return_date: returnDate,
+      employee_id: employeeId,
     };
-
+console.log("new assetId = ",assetId)
     try {
-      const response = asset
-        ? await axios.put(`http://localhost:8080/api/v1/assets/${asset.id}`, assetData)
+      const response = assetId
+        ? await axios.put(`http://localhost:8080/api/v1/assets/update/${assetId}`, assetData)
         : await axios.post('http://localhost:8080/api/v1/assets/save', assetData);
 
       onSave(response.data);
@@ -60,7 +63,7 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
   return (
     <div className={`drawer ${isOpen ? 'open' : ''}`}>
       <div className="head-group">
-        <h2>{asset ? 'Edit Asset' : 'Add Asset'} to Employee</h2>
+        <h2>{asset ? 'Edit Asset' : 'Add Asset'}</h2>
         <div className="button-group">
           <Button variant="text" onClick={onClose} className="assets-cancel-button">Cancel</Button>
           <Button variant="contained" onClick={handleSave} className="save-button">Save</Button>
@@ -69,38 +72,38 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       </div>
       <div className="form-container">
         <div className="assets-form-group">
-          <p>Select Staff</p>
+          <p>Asset Type</p>
           <TextField
-            id="employee-name"
-            label="Type in Name"
+            id="asset-type"
+            label="Asset Type"
             variant="outlined"
             fullWidth
-            value={employeeName}
-            onChange={(e) => setEmployeeName(e.target.value)}
+            value={assetType}
+            onChange={(e) => setAssetType(e.target.value)}
             sx={textFieldStyles}
           />
         </div>
         <div className="assets-form-group">
-          <p>Employee Email</p>
+          <p>Serial Number</p>
           <TextField
-            id="employee-email"
-            label="@example.com"
+            id="serial-number"
+            label="Serial Number"
             variant="outlined"
             fullWidth
-            value={employeeEmail}
-            onChange={(e) => setEmployeeEmail(e.target.value)}
+            value={serialNumber}
+            onChange={(e) => setSerialNumber(e.target.value)}
             sx={textFieldStyles}
           />
         </div>
         <div className="assets-form-group">
-          <p>Employee Position</p>
+          <p>Employee ID</p>
           <TextField
-            id="employee-position"
-            label="Type in Employee Position"
+            id="employee-id"
+            label="Employee ID"
             variant="outlined"
             fullWidth
-            value={employeePosition}
-            onChange={(e) => setEmployeePosition(e.target.value)}
+            value={employeeId}
+            onChange={(e) => setEmployeeId(e.target.value)}
             sx={textFieldStyles}
           />
         </div>
