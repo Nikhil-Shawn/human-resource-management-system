@@ -1,0 +1,100 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -44%;
+  width: 36%;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  padding: 40px;
+  z-index: 1000;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Changed from overflow-y: auto; to overflow: hidden; */
+}
+
+  
+  .drawer.open {
+    right: 0;
+  }
+  
+  .head-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+  }
+  
+  .head-group h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .save-button {
+    background-color: #0056b3;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  .department-cancel-button {
+    background-color: #23272C;
+    border: #23272C;
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #ffffff;
+  }
+  
+  .department-drawer-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #23272C;
+    border: #23272C;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #ffffff;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  
+  .department-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+  
+  .MuiOutlinedInput-root {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+    border-color: #e0e0e0;
+  }
+  .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #b0b0b0;
+  }
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #007bff;
+  }
+  
+  .MuiOutlinedInput-input {
+    padding: 8px 10px;
+  }
+  
