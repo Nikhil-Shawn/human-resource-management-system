@@ -44,6 +44,7 @@ public class SecurityConfig {
                                 "/api/payrolls/addPayroll/{id}",
                                 "/api/payrolls/updatePayroll/{id}",
                                 "/api/payrolls/deletePayroll/{id}",
+                                "/api/payrolls/employee/{employeeId}",
 
                                 //For Department
                                 "/api/departments",
