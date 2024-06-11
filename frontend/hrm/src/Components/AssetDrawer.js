@@ -46,6 +46,7 @@ console.log("new assetId = ",assetId)
         : await axios.post('http://localhost:8080/api/v1/assets/save', assetData);
 
       onSave(response.data);
+      console.log(response.data);
       onClose();
     } catch (error) {
       console.error('Error saving asset:', error);
