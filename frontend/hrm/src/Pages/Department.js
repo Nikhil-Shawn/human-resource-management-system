@@ -22,12 +22,27 @@ function Department() {
   }, []);
 
   const fetchDepartments = () => {
-    axios.get('http://localhost:8080/api/departments')
+    axios.get('http://localhost:8080/api/departments', {
+      // Include authentication headers if required
+      headers: {
+        // 'Authorization': 'Bearer YOUR_TOKEN',
+        // or any other necessary headers
+      }
+    })
       .then(response => {
-        setDepartmentsData(response.data);
+        // Ensure that the response data is an array
+        if (Array.isArray(response.data)) {
+          setDepartmentsData(response.data);
+        } else {
+          console.error('Expected an array but got:', response.data);
+        }
       })
       .catch(error => {
-        console.error('There was an error fetching the departments data!', error);
+        if (error.response && error.response.status === 403) {
+          console.error('Access forbidden: You do not have permission to access this resource.');
+        } else {
+          console.error('There was an error fetching the departments data!', error);
+        }
       });
   };
 
@@ -90,23 +105,29 @@ function Department() {
               </tr>
             </thead>
             <tbody>
-              {departmentsData.map((department, index) => (
-                <tr key={index}>
-                  <td>{department.departmentName}</td>
-                  <td>{department.departmentStatus}</td>
-                  <td>
-                    <div className="dropdown-container" ref={dropdownOpen === index ? dropdownRef : null}>
-                      <BsThreeDotsVertical onClick={() => toggleDropdown(index)} />
-                      {dropdownOpen === index && (
-                        <div className="dropdown-menu">
-                          <div className="dropdown-item" onClick={() => handleDrawerOpen(department)}>Edit</div>
-                          <div className="dropdown-item" onClick={() => handleDelete(department.departmentId)}>Delete</div>
-                        </div>
-                      )}
-                    </div>
-                  </td>
+              {Array.isArray(departmentsData) ? (
+                departmentsData.map((department, index) => (
+                  <tr key={index}>
+                    <td>{department.departmentName}</td>
+                    <td>{department.departmentStatus}</td>
+                    <td>
+                      <div className="dropdown-container" ref={dropdownOpen === index ? dropdownRef : null}>
+                        <BsThreeDotsVertical onClick={() => toggleDropdown(index)} />
+                        {dropdownOpen === index && (
+                          <div className="dropdown-menu">
+                            <div className="dropdown-item" onClick={() => handleDrawerOpen(department)}>Edit</div>
+                            <div className="dropdown-item" onClick={() => handleDelete(department.departmentId)}>Delete</div>
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="3">No departments available</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
