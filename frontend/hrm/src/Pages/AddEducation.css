@@ -1,89 +1,68 @@
+.app {
+  display: flex;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
 .education-container {
-    padding: 20px;
-  }
-  
-  h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
+  margin: 20px;
+}
 
-  .add-education-text{
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    padding-left: 20px;
+.add-education-text {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 
-  }
-  
-  .input-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 200px;
-    padding-left: 20px;
-  }
-  
-  .input-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  textarea {
-    width: 100%;
-    height: 250px;
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #0056b3;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-  }
-  
-  button:hover {
-    background-color: #80aaff;
-  }
-  
-  .list-section {
-    width: 100%;
-  }
-  
-  .list-item {
-    background-color: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .save-button {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  
-  .save-button button {
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #0056b3;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-  }
-  
-  .save-button button:hover {
-    background-color: #80aaff;
-  }
-  
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.input-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-section h3 {
+  margin-bottom: 10px;
+}
+
+.input-section label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input-section input {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.button-group button {
+  margin-top: 20px;
+}
+
+.list-section {
+  margin-top: 10px;
+}
+
+.list-item {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+
+.save-button {
+  margin-top: 20px;
+}
+
+.save-button button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
