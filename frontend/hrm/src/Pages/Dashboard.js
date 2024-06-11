@@ -1,34 +1,34 @@
 import React, { useState } from "react";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 import HeaderComponent from "../Components/HeaderComponent.js";
 import Sidebar from "../Components/Sidebar.jsx";
 import "./Dashboard.css";
 
-
 function Dashboard() {
-    const [date, setDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date());
     const navigate = useNavigate();
 
-    const displayEmployeee = () => {
-        navigate('/employee')
+    const displayEmployee = () => {
+        navigate('/employee');
     }
 
-    const displayLeaves = () =>{
-        navigate('/leaves')
+    const displayLeaves = () => {
+        navigate('/leaves');
     }
 
     const displayPayroll = () => {
-        navigate('/payroll')
+        navigate('/payroll');
     }
 
     const displaySeparation = () => {
-        navigate('/separation')
+        navigate('/separation');
     }
+
     const displayAssets = () => {
-        navigate('/assets')
+        navigate('/assets');
     }
 
     return (
@@ -38,7 +38,7 @@ function Dashboard() {
                 <HeaderComponent />
                 <div className="dashboard-main">
                     <div className="dashboard-grid">
-                        <div className="dashboard-card" onClick={displayEmployeee}>
+                        <div className="dashboard-card" onClick={displayEmployee}>
                             <div className="card-title">Employee</div>
                             <div className="card-icon employee-icon"></div>
                             <div className="card-subtitle">No. of Employees</div>
@@ -70,12 +70,16 @@ function Dashboard() {
                         </div>
                     </div>
                     <div className="dashboard-calendar">
-                        <Calendar onChange={setDate} value={date} />
+                        <DatePicker
+                            selected={startDate}
+                            onChange={date => setStartDate(date)}
+                            inline
+                        />
                     </div>
                 </div>
             </div>
         </div>
-    );   
+    );
 }
 
 export default Dashboard;

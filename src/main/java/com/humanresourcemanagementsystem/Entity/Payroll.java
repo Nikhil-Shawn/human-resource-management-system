@@ -46,7 +46,6 @@ public class Payroll {
         updatedAt = new Date();
     }
 
-
     public Long getPayroll_id() {
         return payroll_id;
     }

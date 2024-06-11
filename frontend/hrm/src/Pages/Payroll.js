@@ -1,196 +1,127 @@
-import React from "react";
+import axios from 'axios';
+import React, { useEffect, useRef, useState } from 'react';
 import { BsThreeDotsVertical } from "react-icons/bs";
-import Sidebar from "../Components/Sidebar";
-import HeaderComponent from "../Components/HeaderComponent";
+import HeaderComponent from '../Components/HeaderComponent';
+import PayrollDrawer from '../Components/PayrollDrawer';
+import Sidebar from '../Components/Sidebar';
+import './Payroll.css';
 
 function Payroll() {
-	// Example data
-	const employees = [
-		{
-			id: "1",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			name: "John Smith",
-			position: "Project Manager",
-			department: "Development",
-			status: "ACTIVE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Maternity Leave",
-			period: "Sep 9,2022 - Jan 15,2023",
-			Reason: "Maternity Leave",
-			leaveStatus: "REJECTED",
-            bonus : "$2400",
-            payrollStatus : "COMPLETED"
-		},
-		{
-			id: "2",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			name: "Jane Smith",
-			position: "Project Manager",
-			department: "Development",
-			status: "ACTIVE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Sick Leave",
-			period: "Aug 9-15,2023",
-			Reason: "Medical Reason",
-			leaveStatus: "APPROVED",
-            bonus : "$2400",
-            payrollStatus : "IN PROGRESS"
-		},
-		{
-			id: "3",
-			name: "AS Smith",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			position: "Project Manager",
-			department: "Development",
-			status: "REMOTE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Casual Leave",
-			period: "Aug 24,2023",
-			Reason: "Personal Reasons",
-			leaveStatus: "PENDING",
-            bonus : "$2400",
-            payrollStatus : "PENDING"
+  const [payrollData, setPayrollData] = useState([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [currentPayroll, setCurrentPayroll] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+  const dropdownRef = useRef(null);
 
-		},
-		{
-			id: "4",
-			name: "Jane Smith",
-			img: "https://startup.telangana.gov.in/wp-content/uploads/2021/07/male-placeholder-1000x960.jpg",
-			position: "Project Manager",
-			department: "Development",
-			status: "ON LEAVE",
-			joiningdate: "Sep 12, 2023",
-			email: "jane.smith@hr-nexus.com",
-			phone: "0149 421 4219",
-			leaveType: "Paid Leave",
-			period: "Jul 12, 2023",
-			Reason: "Work Related",
-			leaveStatus: "NEW LEAVE",
-            bonus : "$2400",
-            payrollStatus : "COMPLETED"
-		},
-		// Add more employees as needed
-	];
+  useEffect(() => {
+    fetchPayrolls();
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
-	const getPayrollStyle = (payrollStatus) => {
-		switch (payrollStatus) {
-			case "COMPLETED":
-				return { backgroundColor: "#DDFCE0", color: "#0EB01D" };
-			case "IN PROGRESS":
-				return { backgroundColor: "#FFF9C4", color: "#FF9800" };
-			case "PENDING":
-				return { backgroundColor: "#E0BBFF", color: "#6F42C1" };
-			default:
-				return { backgroundColor: "#E0E0E0", color: "#000000" };
-		}
-	};
+  const fetchPayrolls = () => {
+    axios.get('http://localhost:8080/api/payrolls')
+      .then(response => {
+        setPayrollData(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the payroll data!', error);
+      });
+  };
 
-	return (
-		<div className="app">
-			<Sidebar />
-			<div className="main-content">
-				<HeaderComponent />
-				<div className="leaves-container">
-					<div className="leaves-heading">
-						<div className="leaves-text">Payroll</div>
-						<div className="add-leave-button-container">
-							<button>+ Add Salary</button>
-						</div>
-					</div>
-					<table className="employee-table">
-						<thead>
-							<tr
-								style={{
-									fontWeight: "0",
-									fontSize: "0.8vw",
-									color: "black",
-								}}
-							>
-								<th
-									style={{
-										padding: "20px 0px 20px 40px",
-										marginLeft: "10px",
-									}}
-								>
-									Name
-								</th>
-								<th>Position</th>
-								<th>Deparment</th>
-								<th>Period</th>
-								<th>Bonus</th>
-								<th>Status</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody style={{ fontSize: "0.8vw", textAlign: "center" }}>
-							{employees.map((employee) => (
-								<tr key={employee.id}>
-									<td
-										style={{
-											display: "flex",
-											alignItems: "center",
-											borderLeft: "1px solid #E0E4EA",
-											padding: "20px",
-										}}
-									>
-										<img
-											src={employee.img}
-											alt={`${employee.name}'s profile`}
-											style={{
-												width: "40px",
-												height: "40px",
-												borderRadius: "50%",
-												marginRight: "10px",
-											}}
-										/>
-										<span>{employee.name}</span>
-									</td>
-									<td>
-										<span
-											style={{
-												backgroundColor: "#DDCBFC",
-												color: "black",
-												borderRadius: "30px",
-												padding: "8px 20px",
-												display: "inline-block",
-											}}
-										>
-											{employee.position}
-										</span>
-									</td>
-									<td>{employee.department}</td>
-									
-									<td>{employee.period}</td>
-									<td>{employee.bonus}</td>
-									<td>
-										<span
-											style={{
-												...getPayrollStyle(employee.payrollStatus),
-												borderRadius: "30px",
-												padding: "8px 20px",
-												display: "inline-block",
-											}}
-										>
-											{employee.payrollStatus}
-										</span>
-									</td>
-									<td style={{ borderRight: "1px solid #E0E4EA" }}>
-										<BsThreeDotsVertical />
-									</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	);
+  const handleDrawerOpen = (payroll) => {
+    setCurrentPayroll(payroll);
+    setIsDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+    setCurrentPayroll(null);
+  };
+
+  const handleSave = (newPayroll) => {
+    if (currentPayroll) {
+      setPayrollData(payrollData.map(payroll => payroll.payrollId === newPayroll.payrollId ? newPayroll : payroll));
+    } else {
+      setPayrollData([...payrollData, newPayroll]);
+    }
+  };
+
+  const handleDelete = (payrollId) => {
+    axios.delete(`http://localhost:8080/api/payrolls/deletePayroll/${payrollId}`)
+      .then(response => {
+        setPayrollData(payrollData.filter(payroll => payroll.payrollId !== payrollId));
+      })
+      .catch(error => {
+        console.error('There was an error deleting the payroll!', error);
+      });
+  };
+
+  const toggleDropdown = (index) => {
+    setDropdownOpen(dropdownOpen === index ? null : index);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(null);
+    }
+  };
+
+  return (
+    <div className="app">
+      <Sidebar />
+      <div className="main-content">
+        <HeaderComponent />
+        <div className="payroll-container">
+          <div className="payroll-heading">
+            <div className="payroll-text">Payroll</div>
+            <div className="add-payroll-button-container">
+              <button onClick={() => handleDrawerOpen(null)}>+ Add Payroll</button>
+            </div>
+          </div>
+          <table className="payroll-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Department</th>
+                <th>Period</th>
+                <th>Bonus</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {payrollData.map((payroll, index) => (
+                <tr key={index}>
+                  <td>{payroll.employeeName}</td>
+                  <td>{payroll.position}</td>
+                  <td>{payroll.department}</td>
+                  <td>{payroll.period}</td>
+                  <td>{payroll.bonus}</td>
+                  <td>{payroll.status}</td>
+                  <td>
+                    <div className="dropdown-container" ref={dropdownOpen === index ? dropdownRef : null}>
+                      <BsThreeDotsVertical onClick={() => toggleDropdown(index)} />
+                      {dropdownOpen === index && (
+                        <div className="dropdown-menu">
+                          <div className="dropdown-item" onClick={() => handleDrawerOpen(payroll)}>Edit</div>
+                          <div className="dropdown-item" onClick={() => handleDelete(payroll.payrollId)}>Delete</div>
+                        </div>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <PayrollDrawer isOpen={isDrawerOpen} onClose={handleDrawerClose} onSave={handleSave} payroll={currentPayroll} />
+    </div>
+  );
 }
 
 export default Payroll;

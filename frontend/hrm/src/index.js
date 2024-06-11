@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './Pages/Dashboard';
-import Employee from './Pages/Employee';
+import Employee from './Pages/EmployeeDetail';
 import EmployeeList from './Pages/EmployeeList';
 import Register from './Pages/Register';
 import Leaves from './Pages/Leaves';
