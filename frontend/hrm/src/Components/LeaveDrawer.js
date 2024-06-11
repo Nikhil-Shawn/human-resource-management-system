@@ -4,49 +4,47 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './LeaveDrawer.css';
 
-const Drawer = ({ isOpen, onClose, onSave, leave }) => {
-
-  const [employee_id, setEmployeeId] = useState('');
-  const [leaveType, setleaveType] = useState('');
+const LeaveDrawer = ({ isOpen, onClose, onSave, leave, currentVacationId}) => {
   const [reason, setReason] = useState('');
-  const [startDate, setstartDate] = useState('');
+  const [leaveType, setLeaveType] = useState('');
+  const [startDate, setStartDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
 
   useEffect(() => {
     if (leave) {
-      setEmployeeId(leave.employee_id);
-      setleaveType(leave.employeeEmail);
-      setReason(leave.employeePosition);
-      setstartDate(leave.startDate);
+      setReason(leave.reason);
+      setLeaveType(leave.leaveType);
+      setStartDate(leave.startDate);
       setReturnDate(leave.returnDate);
     } else {
-      setEmployeeId('1');
-      setleaveType('');
       setReason('');
-      setstartDate('');
+      setLeaveType('');
+      setStartDate('');
       setReturnDate('');
     }
   }, [leave]);
 
   const handleSave = async () => {
-    console.log("employeeID= ",startDate);
     const leaveData = {
       ...leave,
-      employee_id,
-      leaveType,
       reason,
+      leaveType,
       startDate,
       returnDate,
+      vacationId: currentVacationId, // Include the vacation ID in the leave data
     };
+    console.log("Leave data:", leaveData);
 
     try {
-      console.log(employee_id)
       const response = leave
-        ? await axios.put(`http://localhost:8080/api/vacations/updateVacation/${leave.id}`, leaveData)
-        : await axios.post(`http://localhost:8080/api/vacations/addVacation/${leave.employee_id}`, leaveData);
+        ? await axios.put(`http://localhost:8080/api/vacations/updateVacation/${leave.vacationId}`, leaveData)
+        : await axios.post(`http://localhost:8080/api/vacations/addVacation`, leaveData);
+
+        
 
       onSave(response.data);
       onClose();
+      console.log(response.data);
     } catch (error) {
       console.error('Error saving leave', error);
     }
@@ -71,8 +69,7 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
         <button className="assets-drawer-close-button" onClick={onClose}>&times;</button>
       </div>
       <div className="form-container">
-   
-      <div className="assets-form-group">
+        <div className="assets-form-group">
           <p>Reason</p>
           <TextField
             id="employee-reason"
@@ -93,20 +90,20 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
             variant="outlined"
             fullWidth
             value={leaveType}
-            onChange={(e) => setleaveType(e.target.value)}
+            onChange={(e) => setLeaveType(e.target.value)}
             sx={textFieldStyles}
           />
         </div>
       
         <div className="assets-form-group">
-          <p>Leave starting Date</p>
+          <p>Leave Starting Date</p>
           <TextField
             id="start-date"
             type="date"
             variant="outlined"
             fullWidth
             value={startDate}
-            onChange={(e) => setstartDate(e.target.value)}
+            onChange={(e) => setStartDate(e.target.value)}
             sx={textFieldStyles}
             InputLabelProps={{
               shrink: true,
@@ -133,4 +130,4 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
   );
 };
 
-export default Drawer;
+export default LeaveDrawer;

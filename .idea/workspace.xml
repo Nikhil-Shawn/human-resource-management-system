@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Employee get API optimized">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/CreateEmployee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/CreateEmployee.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Components/AssetDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Components/AssetDrawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Components/LeaveDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Components/LeaveDrawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/Assets.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/Assets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/Leaves.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/Leaves.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +64,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.HumanResourceManagementSystemApplication.executor": "Run",
-    "git-widget-placeholder": "Nikhil-Register-API-Connection",
+    "git-widget-placeholder": "anirudh/leave-api",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system",
     "node.js.selected.package.tslint": "(autodetect)",

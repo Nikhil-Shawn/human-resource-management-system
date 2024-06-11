@@ -50,6 +50,7 @@ function Assets() {
   };
 
   const handleDelete = (assetId) => {
+    console.log(assetId)
     axios.delete(`http://localhost:8080/api/v1/assets/${assetId}`)
       .then(response => {
         setAssetsData(assetsData.filter(asset => asset.id !== assetId));
