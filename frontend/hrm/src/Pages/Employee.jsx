@@ -1,87 +1,185 @@
-import React from 'react';
-import { Box, Grid, Paper, Typography, Button, TextField, MenuItem } from '@mui/material';
-import Sidebar from '../Components/Sidebar'; // Assuming you have a Sidebar component
-import './Employee.css'; // Create CSS for custom styles
+import React, { useState } from 'react';
+import Sidebar from '../Components/Sidebar';
+import HeaderComponent from '../Components/HeaderComponent';
+import './EmployeeDetail.css';
 
-const industries = [
-  { value: 'Information Technology', label: 'Information Technology' },
-  { value: 'Finance', label: 'Finance' },
-  { value: 'Healthcare', label: 'Healthcare' },
-];
+function EmployeeDetail() {
+  const [isEditing, setIsEditing] = useState(false);
 
-const EmployeeDetail = () => {
+  const handleEditToggle = () => {
+    setIsEditing(!isEditing);
+  };
+
   return (
-    <Box display="flex">
+    <div className="employee-detail">
       <Sidebar />
-      <Box flexGrow={1} p={2}>
-        <Paper elevation={3} className="employee-detail-container">
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <Box className="section-container">
-                <Typography variant="h6">Personal Info</Typography>
-                <Box>
-                  <Typography variant="body1">Julia Maier</Typography>
-                  <Typography variant="body2">Project Manager</Typography>
-                  <Typography variant="body2">Sales & Marketing</Typography>
-                  <Typography variant="body2">Date of Joining: Jan 19, 2020</Typography>
-                  <Typography variant="body2">Email: o.williams@gmail.com</Typography>
-                  <Typography variant="body2">Joined: 12 Apr, 2020</Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Box className="section-container">
-                <Typography variant="h6">Bank Information</Typography>
-                <Box>
-                  <Typography variant="body2">Bank Account No.: 00234552976293057</Typography>
-                  <Typography variant="body2">IFSC Code: CC128693311</Typography>
-                  <Typography variant="body2">PAN No.: 0012998383647383</Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box className="section-container">
-                <Typography variant="h6">Skills</Typography>
-                <Box className="skills-container">
-                  {["Project Management", "Team Leadership", "Data Agile Methodologies", "Risk Management"].map(skill => (
-                    <Button key={skill} variant="outlined" className="skill-chip">{skill}</Button>
-                  ))}
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box className="section-container">
-                <Typography variant="h6">Experience</Typography>
-                <Box>
-                  <Typography variant="body2">Senior Project Manager (Aug 2023 - Present) - Frankfurt</Typography>
-                  <Typography variant="body2">Assistant Project Manager (Jul 2018 - Dec 2019) - Köln</Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box className="section-container">
-                <Typography variant="h6">Salary Information</Typography>
-                <Box>
-                  <Typography variant="body2">Salary Basis: Monthly</Typography>
-                  <Typography variant="body2">Salary Amount Per Month: $1300</Typography>
-                  <Typography variant="body2">Effective Date: 13/06/2024</Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box className="section-container">
-                <Typography variant="h6">Educations</Typography>
-                <Box>
-                  <Typography variant="body2">Bachelor of Science in Computer Science</Typography>
-                  <Typography variant="body2">University of Technology - Graduated May 2017</Typography>
-                </Box>
-              </Box>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Box>
-    </Box>
+      <div className="main-content">
+        <HeaderComponent />
+        <div className="content-area">
+          <div className="profile-section">
+            <img src="profile-picture.png" alt="Profile" className="profile-picture" />
+            <div className="profile-info">
+              <h1>Julia Maier</h1>
+              <span className="position">Project Manager</span>
+              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
+            </div>
+          </div>
+          <div className="info-section">
+            <div className="info-card profile-info-card">
+              <h2>Julia Maier</h2>
+              <span>Project Manager</span>
+              <div className="info-group">
+                <label>Department:</label>
+                <span>Sales & Marketing</span>
+              </div>
+              <div className="info-group">
+                <label>Date of Joining:</label>
+                <span>Jan 19, 2020</span>
+              </div>
+              <div className="info-group">
+                <label>Email:</label>
+                <span>o.williams@gmail.com</span>
+              </div>
+              <div className="info-group">
+                <label>Last Promotion:</label>
+                <span>12 Apr, 2020</span>
+              </div>
+            </div>
+            <div className="info-card">
+              <h2>Personal Info</h2>
+              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
+              <div className="info-group">
+                <label>Gender:</label>
+                <span>Female</span>
+              </div>
+              <div className="info-group">
+                <label>Date of Birth:</label>
+                <span>12/07/1998</span>
+              </div>
+              <div className="info-group">
+                <label>Phone Number:</label>
+                <span>+49 151 42611442</span>
+              </div>
+              <div className="info-group">
+                <label>Marital Status:</label>
+                <span>Married</span>
+              </div>
+              <div className="info-group">
+                <label>Nationality:</label>
+                <span>German</span>
+              </div>
+              <div className="info-group">
+                <label>Street Name:</label>
+                <span>Eppelheimer Str. 12</span>
+              </div>
+              <div className="info-group">
+                <label>Postcode:</label>
+                <span>69115</span>
+              </div>
+              <div className="info-group">
+                <label>City:</label>
+                <span>Heidelberg</span>
+              </div>
+            </div>
+            <div className="info-card">
+              <h2>Salary Information</h2>
+              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
+              <div className="info-group">
+                <label>Salary Basis:</label>
+                <span>Monthly</span>
+              </div>
+              <div className="info-group">
+                <label>Salary Amount Per Month:</label>
+                <span>$1300</span>
+              </div>
+              <div className="info-group">
+                <label>Effective Date:</label>
+                <span>13/06/2024</span>
+              </div>
+              <div className="info-group">
+                <label>Payment Type:</label>
+                <span>Transfer</span>
+              </div>
+              <div className="info-group">
+                <label>Bill Rate:</label>
+                <span>20%</span>
+              </div>
+            </div>
+            <div className="info-card skills-card">
+              <h2>Skills</h2>
+              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
+              <div className="skills">
+                <span>Project Management</span>
+                <span>Team Leadership</span>
+                <span>Data Agile Methodologies</span>
+                <span>Risk Management</span>
+                <span>Budgeting and Financial Management</span>
+                <span>Stakeholder Communication</span>
+                <span>Process Improvement</span>
+                <span>Scope Management</span>
+                <span>Quality Assurance</span>
+                <span>Presentation Skills</span>
+                <span>Conflict Resolution</span>
+                <span>Data Analytics Tools</span>
+                <span>Trello</span>
+                <span>JIRA</span>
+                <span>Microsoft Project</span>
+              </div>
+            </div>
+            <div className="info-card education-card">
+              <h2>Educations</h2>
+              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
+              <div className="education-group">
+                <label>Bachelor of Science in Computer Science</label>
+                <span>University of Technology</span>
+                <span>Graduated May 2017</span>
+              </div>
+              <div className="education-group">
+                <label>Master of Science in Computer Science</label>
+                <span>University of Technology</span>
+                <span>Graduated April 2019</span>
+              </div>
+              <div className="education-group">
+                <label>Certification in Full Stack Web Development</label>
+                <span>Coding Academy</span>
+                <span>Graduated June 2020</span>
+              </div>
+              <div className="education-group">
+                <label>Certification as Scrum-Master</label>
+                <span>Coding Academy</span>
+                <span>Graduated June 2020</span>
+              </div>
+            </div>
+            <div className="info-card experience-card">
+              <h2>Experience</h2>
+              <button className="edit-button" onClick={handleEditToggle}>Edit</button>
+              <div className="experience-group">
+                <label>Senior Project Manager</label>
+                <span>Frankfurt</span>
+                <span>Aug 2023 - Present</span>
+                <span>Tech Solutions Pro</span>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. When an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+              </div>
+              <div className="experience-group">
+                <label>Assistant Project Manager</label>
+                <span>Köln</span>
+                <span>Jul 2018 - Dec 2019</span>
+                <span>Tech Innovators Ltd.</span>
+                <p>Assisted Project Managers in coordinating project activities, resources, and timelines. Prepared project status reports, tracked progress, and managed project documentation.</p>
+              </div>
+              <div className="experience-group">
+                <label>Project Coordinator</label>
+                <span>Mainz</span>
+                <span>Aug 2023 - Present</span>
+                <span>Software Solutions</span>
+                <p>Assisted Project Managers in coordinating project activities and ensuring adherence to timelines. Prepared and delivered project status reports.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-};
+}
 
 export default EmployeeDetail;

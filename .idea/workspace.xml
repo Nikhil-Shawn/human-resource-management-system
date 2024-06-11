@@ -12,6 +12,11 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/SeparationIMPL.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/SeparationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/Employee.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/Employee.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/Employee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/Employee.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/AssetController/AssetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/AssetController/AssetController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
@@ -58,6 +63,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HumanResourceManagementSystemApplication.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.HumanResourceManagementSystemApplication.executor": "Run",
+    "git-widget-placeholder": "Nikhil-Employee-detail-API-connection",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.HumanResourceManagementSystemApplication.executor&quot;: &quot;Run&quot;,

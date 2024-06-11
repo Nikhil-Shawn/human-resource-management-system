@@ -1,22 +1,26 @@
-.payroll-container {
+/* Container for the departments table */
+.departments-container {
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
   margin-left: 30px;
 }
 
-.payroll-text {
+/* Styling for the departments text */
+.departments-text {
   font-size: 32px;
   font-weight: 700;
 }
 
-.payroll-heading {
+/* Styling for the departments heading */
+.departments-heading {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.add-payroll-button-container button {
+/* Styling for the add department button */
+.add-department-button-container button {
   font-size: 16px;
   cursor: pointer;
   background-color: #0056b3;
@@ -24,41 +28,51 @@
   border: none;
   border-radius: 4px;
   padding: 5px;
-  width: 137px;
-  height: 33px;
+  width: 140px;
+  height: 40px;
 }
 
-.add-payroll-button-container button:hover {
+.add-department-button-container button:hover {
   background-color: #80aaff;
 }
 
-.payroll-table {
+/* Styling for the department table */
+.department-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   margin-top: 20px;
 }
 
-.payroll-table th {
-  background: #F4F5F7;
-  padding: 16px 8px;
-  text-align: left;
-}
-
-.payroll-table td {
-  border-bottom: 1px solid #E0E4EA;
-  padding: 8px;
+.department-table th,
+.department-table td {
+  padding: 16px 8px; /* Add padding to increase spacing inside cells */
   text-align: left;
   background: white;
+  border-bottom: 1px solid #E0E4EA;
+  border-top: 1px solid #E0E4EA;
 }
 
-.payroll-table tr:hover {
+.department-table th {
+  background: #F4F5F7;
+}
+
+.department-table tr:hover {
   background-color: #f1f1f1;
 }
 
+/* Dropdown menu styles */
 .dropdown-container {
   position: relative;
   display: inline-block;
+}
+
+.department-table thead tr:first-child th:first-child {
+  border-top-left-radius: 15px;
+}
+
+.department-table thead tr:first-child th:last-child {
+  border-top-right-radius: 15px;
 }
 
 .dropdown-menu {
@@ -81,3 +95,5 @@
 .dropdown-item:hover {
   background-color: #f1f1f1;
 }
+
+

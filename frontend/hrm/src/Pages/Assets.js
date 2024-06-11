@@ -63,17 +63,6 @@ function Assets() {
     }
   };
 
-  const handleDelete = (assetId) => {
-    axios.delete(`http://localhost:8080/api/v1/assets/${assetId}`)
-      .then(response => {
-        console.log(response)
-        setAssetsData(assetsData.filter(asset => asset.id !== assetId));
-      })
-      .catch(error => {
-        console.error('There was an error deleting the asset!', error);
-      });
-  };
-
   const toggleDropdown = (index) => {
     setDropdownOpen(dropdownOpen === index ? null : index);
   };
@@ -142,7 +131,6 @@ function Assets() {
                       {dropdownOpen === index && (
                         <div className="dropdown-menu">
                           <div className="dropdown-item" onClick={() => handleDrawerOpen(asset)}>Edit</div>
-                          <div className="dropdown-item" onClick={() => handleDelete(asset.id)}>Delete</div>
                         </div>
                       )}
                     </div>
