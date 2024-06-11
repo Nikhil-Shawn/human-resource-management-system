@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import Department from "./Pages/Department";
+import Login from "./Pages/Login";
 
 function App() {
 	return (
 		<div className="wrapper">
-			<Department />
+			<Login />
 		</div>
 	);
 }

@@ -1,84 +1,99 @@
+/* Container for the departments table */
 .departments-container {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    margin-left: 30px;
-  }
-  
-  .departments-text {
-    font-size: 32px;
-    font-weight: 700;
-  }
-  
-  .departments-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  
-  .add-department-button-container button {
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #0056b3;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
-    height: 40px;
-  }
-  
-  .add-department-button-container button:hover {
-    background-color: #80aaff;
-  }
-  
-  .department-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-top: 20px;
-  }
-  
-  .department-table th {
-    background: #F4F5F7;
-    padding: 16px 8px;
-    text-align: left;
-  }
-  
-  .department-table td {
-    border-bottom: 1px solid #E0E4EA;
-    padding: 8px;
-    text-align: left;
-    background: white;
-  }
-  
-  .department-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .dropdown-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-menu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 20px;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-item {
-    padding: 8px 16px;
-    cursor: pointer;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #f1f1f1;
-  }
-  
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-left: 30px;
+}
+
+/* Styling for the departments text */
+.departments-text {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Styling for the departments heading */
+.departments-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Styling for the add department button */
+.add-department-button-container button {
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  width: 140px;
+  height: 40px;
+}
+
+.add-department-button-container button:hover {
+  background-color: #80aaff;
+}
+
+/* Styling for the department table */
+.department-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+}
+
+.department-table th,
+.department-table td {
+  padding: 16px 8px; /* Add padding to increase spacing inside cells */
+  text-align: left;
+  background: white;
+  border-bottom: 1px solid #E0E4EA;
+  border-top: 1px solid #E0E4EA;
+}
+
+.department-table th {
+  background: #F4F5F7;
+}
+
+.department-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Dropdown menu styles */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.department-table thead tr:first-child th:first-child {
+  border-top-left-radius: 15px;
+}
+
+.department-table thead tr:first-child th:last-child {
+  border-top-right-radius: 15px;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+
