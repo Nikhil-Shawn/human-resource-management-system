@@ -31,7 +31,7 @@ public class SecurityConfig {
                                 "/api/login",
                                 "/api/employee/addEmployee",
 
-                                //For Vacation
+                                //Vacation
                                 "/api/vacations",
                                 "/api/vacations/{id}",
                                 "/api/vacations/addVacation/{id}",
@@ -52,17 +52,39 @@ public class SecurityConfig {
                                 "/api/departments/updateDepartment/{id}",
                                 "/api/departments/deleteDepartment/{id}",
 
+                                //For Asset
+                                "/api/v1/assets/all",
+                                "/api/v1/assets/save",
+                                "/api/v1/assets/update/{id}",
+                                "/api/v1/assets/{id}",
+                                "/api/v1/assets/multi ",
+
                                 //For Experience
                                 "/api/v1/experience/save",
+                                "/api/v1/experience/all",
+                                "/api/v1/experience/{id}",
+                                "/api/v1/experience/update/{id}",
+                                "/api/v1/experience/multi",
 
                                 //For Logout
                                 "/api/logout",
 
                                 //For Employee
                                 "api/v1/employee/all",
-                                "api/v1/employee/save"
+                                "api/v1/employee/save",
 
+                                //For Education
+                                "api/v1/education/all",
+                                "api/v1/education/save",
+                                "/api/v1/education/update/{id}",
+                                "/api/v1/education/{id}",
+                                "/api/v1/education/multi",
 
+                                //For Separation
+                                "/api/v1/separation/save",
+                                "/api/v1/separation/{id}",
+                                "api/v1/separation/all",
+                                "/api/v1/separation/update/{id}"
 
                                 ).permitAll()
                         .anyRequest().authenticated()
