@@ -27,15 +27,36 @@ const Drawer = ({ isOpen, onClose, onSave, department }) => {
       departmentStatus
     };
 
+    const url = departmentId
+      ? `http://localhost:8080/api/departments/updateDepartment/${departmentId}`
+      : 'http://localhost:8080/api/departments/addDepartment';
+
+    console.log('Making request to:', url, 'with data:', departmentData);
+
     try {
       const response = departmentId
-        ? await axios.put(`http://localhost:8080/api/departments/updateDepartment/${departmentId}`, departmentData)
-        : await axios.post('http://localhost:8080/api/departments/addDepartment', departmentData);
+        ? await axios.put(url, departmentData)
+        : await axios.post(url, departmentData);
 
-      onSave(response.data);
+      console.log('Response:', response);
+
+      if (response.data && response.data.data) {
+        onSave(response.data.data.department || response.data.data);
+      } else {
+        console.error('Unexpected response format:', response.data);
+      }
       onClose();
     } catch (error) {
-      console.error('Error saving department:', error);
+      if (error.response) {
+        console.error('Error response:', error.response.data);
+        console.error('Status:', error.response.status);
+        console.error('Headers:', error.response.headers);
+      } else if (error.request) {
+        console.error('No response received:', error.request);
+      } else {
+        console.error('Error setting up request:', error.message);
+      }
+      console.error('Config:', error.config);
     }
   };
 

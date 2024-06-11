@@ -23,16 +23,15 @@ function Department() {
 
   const fetchDepartments = () => {
     axios.get('http://localhost:8080/api/departments', {
-      // Include authentication headers if required
       headers: {
+        // Include authentication headers if required
         // 'Authorization': 'Bearer YOUR_TOKEN',
-        // or any other necessary headers
       }
     })
       .then(response => {
-        // Ensure that the response data is an array
-        if (Array.isArray(response.data)) {
-          setDepartmentsData(response.data);
+        console.log('Expected data : ', response.data);
+        if (response.data && response.data.data && Array.isArray(response.data.data.departments)) {
+          setDepartmentsData(response.data.data.departments);
         } else {
           console.error('Expected an array but got:', response.data);
         }
