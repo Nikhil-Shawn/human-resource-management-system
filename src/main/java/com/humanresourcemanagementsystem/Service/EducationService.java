@@ -14,6 +14,14 @@ public interface EducationService {
     //Display Education By ID
     EducationDTO getEducationById(int id);
 
+    //Display Education By Person ID
+    EducationDTO getEducationByPersonId(int id);
+
+    //Display Education By Employee ID
+    EducationDTO getEducationByEmployeeId(int id);
+
+//    List<EducationDTO> getEducationByEmployeeId(Long employeeId);
+//
     //Display All Education
     List<EducationDTO> getAllEducation();
 
