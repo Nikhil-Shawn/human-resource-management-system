@@ -81,10 +81,9 @@ public class DepartmentService {
         DepartmentDTO departmentDTO = new DepartmentDTO();
         departmentDTO.setDepartmentId(department.getDepartmentId());
         departmentDTO.setDepartmentName(department.getDepartmentName());
-        departmentDTO.setDepartmentStatus(department.getDepartmentStatus().name());
+        departmentDTO.setDepartmentStatus(department.getDepartmentStatus().name()); // Ensure enum is converted to string
         departmentDTO.setCreatedAt(department.getCreatedAt());
         departmentDTO.setUpdatedAt(department.getUpdatedAt());
         return departmentDTO;
     }
 }
-

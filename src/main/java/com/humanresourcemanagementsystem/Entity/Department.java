@@ -4,9 +4,13 @@ import com.humanresourcemanagementsystem.util.DepartmentStatus;
 import jakarta.persistence.*;
 import java.util.Date;
 
+
+
 @Entity
 @Table(name = "hrm_department")
 public class Department {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "department_id" , nullable = false)
