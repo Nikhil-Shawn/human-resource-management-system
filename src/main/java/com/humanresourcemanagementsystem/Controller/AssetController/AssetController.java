@@ -44,7 +44,6 @@ public class AssetController
     @GetMapping("/all")
     public List<AssetDTO> getAllAsset() {
         return assetService.getAllAsset() ;
-
     }
 
     // Update Asset By ID
