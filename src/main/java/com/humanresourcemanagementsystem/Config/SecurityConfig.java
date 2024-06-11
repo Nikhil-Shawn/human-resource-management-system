@@ -58,6 +58,7 @@ public class SecurityConfig {
                                 "/api/v1/assets/update/{id}",
                                 "/api/v1/assets/{id}",
                                 "/api/v1/assets/multi ",
+                                "api/v1/assets/employee/{employeeId}",
 
                                 //For Experience
                                 "/api/v1/experience/save",

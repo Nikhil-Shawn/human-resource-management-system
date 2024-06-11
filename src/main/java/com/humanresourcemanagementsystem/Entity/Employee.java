@@ -20,7 +20,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "department_id", referencedColumnName = "department_id")
-    private Department department;
+    private Department departmentId;
 
     @ManyToOne
     @JoinColumn(name = "experience_id", referencedColumnName = "experience_id")
@@ -28,7 +28,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "education_id", referencedColumnName = "education_id")
-    private Education education;
+    private Education educationId;
 
     @Column(name = "supervisor_id")
     private int supervisorId;
@@ -107,12 +107,20 @@ public class Employee {
         this.person = person;
     }
 
-    public Department getDepartment() {
-        return department;
+    public Department getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartmentId(Department departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public Education getEducationId() {
+        return educationId;
+    }
+
+    public void setEducationId(Education educationId) {
+        this.educationId = educationId;
     }
 
     public Experience getExperience() {
@@ -123,13 +131,6 @@ public class Employee {
         this.experience = experience;
     }
 
-    public Education getEducation() {
-        return education;
-    }
-
-    public void setEducation(Education education) {
-        this.education = education;
-    }
 
     public int getSupervisorId() {
         return supervisorId;
