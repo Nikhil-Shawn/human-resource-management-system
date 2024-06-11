@@ -1,8 +1,10 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
+import com.humanresourcemanagementsystem.Dto.AssetDTO;
 import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Entity.*;
 import com.humanresourcemanagementsystem.Repo.EducationRepository;
+import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
 import com.humanresourcemanagementsystem.Repo.PersonRepository;
 import com.humanresourcemanagementsystem.Service.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +27,19 @@ public class EducationIMPL implements EducationService {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @Override
     //Save single education
     public String addEducation(EducationDTO educationDTO) {
 
-        // Checks if the associated person exists
-        Person person = personRepository.findById(educationDTO.getPerson_id()).orElse(null);
-        if (person == null) {
-            return "Person not found";
-        }
+//       // Checks if the associated person exists
+       Person person = personRepository.findById(educationDTO.getPerson_id()).orElse(null);
+       Employee employee = employeeRepository.findById(educationDTO.getEmployee_id()).orElse(null);
+//        if (person == null) {
+//            return "Person not found";
+//        }
 
         Education education = new Education();
 
@@ -46,6 +52,7 @@ public class EducationIMPL implements EducationService {
         education.setCreated_at(educationDTO.getCreated_at());
         education.setUpdated_at(educationDTO.getUpdated_at());
         education.setPerson(person);
+        education.setEmployee(employee);
 
         //Save education details
         educationRepository.save(education);
@@ -93,6 +100,58 @@ public class EducationIMPL implements EducationService {
             EducationDTO educationDTO = new EducationDTO();
             educationDTO.setEducation_id(education.getEducation_id());
             educationDTO.setPerson_id(education.getPerson());
+            educationDTO.setDegree(education.getDegree());
+            educationDTO.setInstitution(education.getInstitution());
+            educationDTO.setMajor(education.getMajor());
+            educationDTO.setGraduation_start_date(education.getGraduation_start_date());
+            educationDTO.setGraduation_end_date(education.getGraduation_end_date());
+            educationDTO.setCreated_at(education.getCreated_at());
+            educationDTO.setUpdated_at(education.getUpdated_at());
+
+            return educationDTO;
+        } else {
+            throw new RuntimeException("Education not found with id: " + id);
+        }
+    }
+
+    @Override
+    //Display education by ID
+    public EducationDTO getEducationByPersonId(int id) {
+        Optional<Education> educationOpt = educationRepository.findById(id);
+        if (educationOpt.isPresent()) {
+
+            Education education = educationOpt.get();
+
+            // Fetch associated education information
+            EducationDTO educationDTO = new EducationDTO();
+            educationDTO.setEducation_id(education.getEducation_id());
+            educationDTO.setPerson_id(education.getPerson());
+            educationDTO.setDegree(education.getDegree());
+            educationDTO.setInstitution(education.getInstitution());
+            educationDTO.setMajor(education.getMajor());
+            educationDTO.setGraduation_start_date(education.getGraduation_start_date());
+            educationDTO.setGraduation_end_date(education.getGraduation_end_date());
+            educationDTO.setCreated_at(education.getCreated_at());
+            educationDTO.setUpdated_at(education.getUpdated_at());
+
+            return educationDTO;
+        } else {
+            throw new RuntimeException("Education not found with id: " + id);
+        }
+    }
+
+    @Override
+    //Display education by ID
+    public EducationDTO getEducationByEmployeeId(int id) {
+        Optional<Education> educationOpt = educationRepository.findById(id);
+        if (educationOpt.isPresent()) {
+
+            Education education = educationOpt.get();
+
+            // Fetch associated education information
+            EducationDTO educationDTO = new EducationDTO();
+            educationDTO.setEducation_id(education.getEducation_id());
+            educationDTO.setEmployee_id(education.getEducation_id());
             educationDTO.setDegree(education.getDegree());
             educationDTO.setInstitution(education.getInstitution());
             educationDTO.setMajor(education.getMajor());

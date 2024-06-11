@@ -7,6 +7,7 @@ public class EducationDTO {
     // Education entity fields
     private int education_id;
     private int person_id; // Added PersonID field
+    private int employee_id; // Added EmployeeID field
     private String degree;
     private String institution;
     private String major;
@@ -22,11 +23,12 @@ public class EducationDTO {
     }
 
     //Parameterized constructor initializes all fields with provided values
-    public EducationDTO(int education_id, int person_id, String degree, String institution, String major, Date graduation_start_date, Date graduation_end_date, Date created_at, Date updated_at) {
+    public EducationDTO(int education_id, int person_id, int employee_id, String institution, String degree, String major, Date graduation_start_date, Date graduation_end_date, Date created_at, Date updated_at) {
         this.education_id = education_id;
         this.person_id = person_id;
-        this.degree = degree;
+        this.employee_id = employee_id;
         this.institution = institution;
+        this.degree = degree;
         this.major = major;
         this.graduation_start_date = graduation_start_date;
         this.graduation_end_date = graduation_end_date;
@@ -49,6 +51,14 @@ public class EducationDTO {
 
     public void setPerson_id(int person_id) {
         this.person_id = person_id;
+    }
+
+    public int getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
     }
 
     public String getDegree() {
@@ -79,7 +89,9 @@ public class EducationDTO {
         return graduation_start_date;
     }
 
-    public void setGraduation_start_date(Date graduation_start_date) {this.graduation_start_date = graduation_start_date;}
+    public void setGraduation_start_date(Date graduation_start_date) {
+        this.graduation_start_date = graduation_start_date;
+    }
 
     public Date getGraduation_end_date() {
         return graduation_end_date;
@@ -111,6 +123,7 @@ public class EducationDTO {
         return "EducationDTO{" +
                 "education_id=" + education_id +
                 ", person_id=" + person_id +
+                ", employee_id=" + employee_id +
                 ", degree='" + degree + '\'' +
                 ", institution='" + institution + '\'' +
                 ", major='" + major + '\'' +

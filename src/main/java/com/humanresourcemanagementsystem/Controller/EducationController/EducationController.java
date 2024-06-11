@@ -1,5 +1,6 @@
 package com.humanresourcemanagementsystem.Controller.EducationController;
 
+import com.humanresourcemanagementsystem.Dto.AssetDTO;
 import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Service.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +30,25 @@ public class EducationController {
         return ResponseEntity.ok(response);
     }
 
-    // Get benefit by ID
+    // Get education by ID
      @GetMapping("/{id}")
      public EducationDTO getEducationById(@PathVariable int id) {
          return educationService.getEducationById(id);
      }
 
-    // Get all benefits
+    // Get education by person ID
+    @GetMapping("/byperson/{id}")
+    public EducationDTO getEducationByPersonId(@PathVariable int id) {
+        return educationService.getEducationByPersonId(id);
+    }
+
+    // Get education by ID
+    @GetMapping("/byemployee/{id}")
+    public EducationDTO getEducationByEmployeeId(@PathVariable int id) {
+        return educationService.getEducationByEmployeeId(id);
+    }
+
+    // Get all educations
      @GetMapping("/all")
      public List<EducationDTO> getAllEducation() {
          return educationService.getAllEducation();

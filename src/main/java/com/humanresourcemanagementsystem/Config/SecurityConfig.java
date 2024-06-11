@@ -78,6 +78,8 @@ public class SecurityConfig {
                                 "api/v1/education/save",
                                 "/api/v1/education/update/{id}",
                                 "/api/v1/education/{id}",
+                                "/api/v1/education/byperson/{id}",
+                                "/api/v1/education/byemployee/{id}",
                                 "/api/v1/education/multi",
 
                                 //For Separation
