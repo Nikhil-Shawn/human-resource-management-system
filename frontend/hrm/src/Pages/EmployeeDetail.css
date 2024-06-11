@@ -1,14 +1,17 @@
 .employee-detail {
   display: flex;
+  height: 100vh; 
+  overflow: hidden; 
 }
+
 
 .main-content {
   flex-grow: 1;
   margin-left: 250px;
   padding: 20px;
   background-color: #F8F9FA;
-  height: 100vh;
-  overflow-y: auto;
+  height: 100%;
+  overflow: hidden; 
 }
 
 .content-area {
@@ -16,15 +19,16 @@
   padding: 20px;
   margin-bottom: 20px;
   margin-left: 20px;
+  overflow: hidden; 
 }
 
 .info-section {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
-  gap: 20px;
+  gap: 20px; 
+  overflow: hidden; 
 }
-
 .info-card {
   background-color: white;
   border: 1px solid #ddd;
@@ -35,45 +39,49 @@
   box-sizing: border-box;
 }
 
+.info-group, .education-group, .experience-group {
+  margin: 20px 0; 
+}
+
 .profile-info-card {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  height: 300px;
-  width: 350px;
-}
-
-.personal-info-card {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  height: 600px; /* Salary Info + Profile Info + gap */
-  width: 350px;
-}
-
-.education-card {
-  grid-column: 3 / 4;
-  grid-row: 1 / 2;
-  height: 600px; /* Personal Info + Skills + gap */
-  width: 350px;
-}
-
-.experience-card {
-  grid-column: 1 / 2;
-  grid-row: 5 / 6;
-  height: 600px; /* Personal Info + Skills + gap */
-  width: 350px;
+  height: auto;
+  width: auto;
 }
 
 .salary-info-card {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  height: 300px;
-  width: 350px;
+  height: auto;
+  width: auto;
+}
+
+.personal-info-card {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3; 
+  height: auto;
+  width: auto;
+}
+
+.education-card {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  height: auto;
+  width: auto;
+}
+
+.experience-card {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  height: auto;
+  width: auto;
 }
 
 .skills-card {
-  grid-column: 1 / 3;
-  grid-row: 4 / 5;
-  height: 200px;
+  grid-column: 1 / 4; 
+  grid-row: 3 / 4;
+  height: auto;
 }
 
 .edit-button {
@@ -104,3 +112,4 @@
   padding: 5px 10px;
   color: white;
 }
+
