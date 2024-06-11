@@ -14,9 +14,12 @@ public interface AssetService {
     //Display Asset By ID
     AssetDTO getAssetById(int id);
 
+    List<AssetDTO> getAssetsByEmployeeId(Long employeeId);
+
     //Display All Assets
     List<AssetDTO> getAllAsset();
 
     //Update Asset By ID
     String updateAssetById(int id, AssetDTO assetDTO);
+
 }

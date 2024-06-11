@@ -34,11 +34,16 @@ public class AssetController
         return assetService.getAssetById(id);
     }
 
+    // Get assets by employee ID
+    @GetMapping("/employee/{employeeId}")
+    public List<AssetDTO> getAssetsByEmployeeId(@PathVariable Long employeeId) {
+        return assetService.getAssetsByEmployeeId(employeeId);
+    }
+
     // Get All Assets
     @GetMapping("/all")
     public List<AssetDTO> getAllAsset() {
         return assetService.getAllAsset() ;
-
     }
 
     // Update Asset By ID

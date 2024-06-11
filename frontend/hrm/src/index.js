@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './Pages/Dashboard';
-import Employee from './Pages/Employee';
+import Employee from './Pages/EmployeeDetail';
 import EmployeeList from './Pages/EmployeeList';
 import Register from './Pages/Register';
 import Leaves from './Pages/Leaves';
@@ -14,6 +14,7 @@ import Payroll from './Pages/Payroll';
 import Separation from './Pages/Separation';
 import Assets from './Pages/Assets';
 import ApplicantList from './Pages/ApplicantList';
+import AddEducation from './Pages/AddEducation';
 
 
 
@@ -34,6 +35,8 @@ root.render(
     <Route path="/employee-list" element={<EmployeeList/>}></Route>
     <Route path="/employee" element={<Employee/>}></Route>
     <Route path="/applicantList" element={<ApplicantList/>}></Route>
+    <Route path="/add-education" element={<AddEducation />} />
+
     </Routes>
   </React.StrictMode>
   </BrowserRouter>
