@@ -1,6 +1,8 @@
 package com.humanresourcemanagementsystem.Service;
 
+import com.humanresourcemanagementsystem.Dto.AssetDTO;
 import com.humanresourcemanagementsystem.Dto.PayrollDTO;
+import com.humanresourcemanagementsystem.Entity.Asset;
 import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Entity.Payroll;
 import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
@@ -8,7 +10,6 @@ import com.humanresourcemanagementsystem.Repo.PayrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,6 +31,23 @@ public class PayrollService {
 
     public PayrollDTO getPayrollById(Long id) {
         return payrollRepository.findById(id).map(this::convertToDTO).orElse(null);
+    }
+
+    public List<PayrollDTO> getPayrollByEmployeeId(Long employeeId) {
+        List<Payroll> payrolls = payrollRepository.findByEmployeeId(employeeId);
+        return payrolls.stream().map(payroll -> {
+            PayrollDTO payrollDTO = new PayrollDTO();
+            payrollDTO.setPayroll_id(payroll.getPayroll_id());
+            payrollDTO.setPayAmount(payroll.getPayAmount());
+            payrollDTO.setPayFrequency(payroll.getPayFrequency());
+            payrollDTO.setBonus(payroll.getBonus());
+            payrollDTO.setIncrementApplicable(payroll.getIncrementApplicable());
+            payrollDTO.setPercentageIncrement(payroll.getPercentageIncrement());
+            payrollDTO.setCreatedAt(payroll.getCreatedAt());
+            payrollDTO.setUpdatedAt(payroll.getUpdatedAt());
+            payrollDTO.setEmployeeId(payroll.getEmployee().getEmployeeID());
+            return payrollDTO;
+        }).collect(Collectors.toList());
     }
 
     public PayrollDTO createPayroll(Long employeeId, PayrollDTO payrollDTO) {
