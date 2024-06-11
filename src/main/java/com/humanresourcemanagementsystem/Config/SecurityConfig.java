@@ -52,12 +52,13 @@ public class SecurityConfig {
                                 "/api/departments/updateDepartment/{id}",
                                 "/api/departments/deleteDepartment/{id}",
 
-                                //For Asset
-                                "/api/v1/assets/all",
-                                "/api/v1/assets/save",
-                                "/api/v1/assets/update/{id}",
-                                "/api/v1/assets/{id}",
-                                "/api/v1/assets/multi ",
+                                //For Assets
+                                "/api/departments",
+                                "/api/departments/{id}",
+                                "/api/departments/addDepartment",
+                                "/api/departments/updateDepartment/{id}",
+                                "/api/departments/deleteDepartment/{id}",
+                                "api/v1/assets/employee/{employeeId}",
 
                                 //For Experience
                                 "/api/v1/experience/save",

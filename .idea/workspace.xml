@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Added security and Education changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/SeparationController/SeparationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/SeparationDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Separation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/SeparationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/SeparationIMPL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/SeparationService.java" afterDir="false" />
+    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Separation working and tested">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/Employee.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/Employee.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/Employee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/Employee.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/AssetController/AssetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/AssetController/AssetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/PayrollController/PayrollController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/PayrollController/PayrollController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Payroll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Payroll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/PayrollRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/PayrollRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/PayrollService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/PayrollService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Security-Education-changes" />
+        <entry key="$PROJECT_DIR$" value="Seperation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,27 +59,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HumanResourceManagementSystemApplication.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.HumanResourceManagementSystemApplication.executor": "Run",
-    "git-widget-placeholder": "Nikhil-Employee-detail-API-connection",
+    "git-widget-placeholder": "Payroll-by-employee",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system",
-    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "preferences.pluginManager"
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HumanResourceManagementSystemApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Seperation&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/pooja/IdeaProjects/human-resource-management-system&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -184,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718039671954</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Separation working and tested">
+      <option name="closed" value="true" />
+      <created>1718116046910</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1718116046910</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,6 +195,7 @@
     <MESSAGE value="Asset Benefit Experience Education Update and Many to one relationship" />
     <MESSAGE value="Code clean up. Employee pendind" />
     <MESSAGE value="Added security and Education changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added security and Education changes" />
+    <MESSAGE value="Separation working and tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separation working and tested" />
   </component>
 </project>
