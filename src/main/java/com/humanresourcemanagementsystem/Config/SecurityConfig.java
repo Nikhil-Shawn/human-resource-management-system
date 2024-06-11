@@ -35,7 +35,7 @@ public class SecurityConfig {
                                 "/api/vacations",
                                 "/api/vacations/{id}",
                                 "/api/vacations/addVacation/{id}",
-                                "/api/vacations/updateVacation/{id}",
+                                    "/api/vacations/updateVacation/{id}",
                                 "/api/vacations/deleteVacation/{id}",
 
                                 //For Payroll
@@ -60,7 +60,8 @@ public class SecurityConfig {
 
                                 //For Employee
                                 "api/v1/employee/all",
-                                "api/v1/employee/save"
+                                "api/v1/employee/save",
+                                "api/v1/employee/{id}"
 
 
 

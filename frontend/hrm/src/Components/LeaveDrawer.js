@@ -5,7 +5,8 @@ import React, { useState, useEffect } from 'react';
 import './LeaveDrawer.css';
 
 const Drawer = ({ isOpen, onClose, onSave, leave }) => {
-  const [employeeName, setEmployeeName] = useState('');
+
+  const [employee_id, setEmployeeId] = useState('');
   const [leaveType, setleaveType] = useState('');
   const [reason, setReason] = useState('');
   const [startDate, setstartDate] = useState('');
@@ -13,13 +14,13 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
 
   useEffect(() => {
     if (leave) {
-      setEmployeeName(leave.employeeName);
+      setEmployeeId(leave.employee_id);
       setleaveType(leave.employeeEmail);
       setReason(leave.employeePosition);
       setstartDate(leave.startDate);
       setReturnDate(leave.returnDate);
     } else {
-      setEmployeeName('');
+      setEmployeeId('1');
       setleaveType('');
       setReason('');
       setstartDate('');
@@ -28,9 +29,10 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
   }, [leave]);
 
   const handleSave = async () => {
+    console.log("employeeID= ",startDate);
     const leaveData = {
       ...leave,
-      employeeName,
+      employee_id,
       leaveType,
       reason,
       startDate,
@@ -38,6 +40,7 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
     };
 
     try {
+      console.log(employee_id)
       const response = leave
         ? await axios.put(`http://localhost:8080/api/vacations/updateVacation/${leave.id}`, leaveData)
         : await axios.post(`http://localhost:8080/api/vacations/addVacation/${leave.employee_id}`, leaveData);
