@@ -7,13 +7,11 @@ import com.humanresourcemanagementsystem.Entity.Person;
 
 import java.util.Date;
 
-import java.util.Date;
-
 public class EmployeeDTO extends PersonDTO {
 
     private int employeeID;
     private Person person;
-    private Department department;
+    private Department departmentId;
     private Experience experience;
     private Education education;
     private int supervisorId;
@@ -67,12 +65,12 @@ public class EmployeeDTO extends PersonDTO {
         this.person = person;
     }
 
-    public Department getDepartment() {
-        return department;
+    public Department getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartmentId(Department departmentId) {
+        this.departmentId = departmentId;
     }
 
     public Experience getExperience() {
@@ -207,7 +205,7 @@ public class EmployeeDTO extends PersonDTO {
         return "EmployeeDTO{" +
                 "employeeID=" + employeeID +
                 ", person=" + person +
-                ", department=" + department +
+                ", department=" + departmentId +
                 ", experience=" + experience +
                 ", education=" + education +
                 ", supervisorId=" + supervisorId +

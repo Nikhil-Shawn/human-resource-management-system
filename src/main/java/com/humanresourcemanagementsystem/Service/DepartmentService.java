@@ -39,7 +39,7 @@ public class DepartmentService {
 
         Department department = new Department();
         department.setDepartmentName(departmentDTO.getDepartmentName());
-        department.setDepartmentStatus(DepartmentStatus.valueOf(departmentDTO.getDepartmentStatus().toUpperCase()));
+        department.setDepartmentStatus(DepartmentStatus.valueOf(departmentDTO.getDepartmentStatus().toLowerCase()));
 
         Department savedDepartment = departmentRepository.save(department);
         Map<String, Object> responseData = new HashMap<>();
@@ -56,7 +56,7 @@ public class DepartmentService {
         if (departmentRepository.existsById(id)) {
             Department department = departmentRepository.findById(id).orElseThrow();
             department.setDepartmentName(departmentDTO.getDepartmentName());
-            department.setDepartmentStatus(DepartmentStatus.valueOf(departmentDTO.getDepartmentStatus().toUpperCase()));
+            department.setDepartmentStatus(DepartmentStatus.valueOf(departmentDTO.getDepartmentStatus().toLowerCase()));
 
             Department updatedDepartment = departmentRepository.save(department);
             return convertToDTO(updatedDepartment);
@@ -87,4 +87,3 @@ public class DepartmentService {
         return departmentDTO;
     }
 }
-

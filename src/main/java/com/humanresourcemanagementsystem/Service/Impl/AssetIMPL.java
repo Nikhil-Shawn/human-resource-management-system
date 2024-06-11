@@ -117,6 +117,23 @@ public class AssetIMPL implements AssetService {
     }
 
     @Override
+    public List<AssetDTO> getAssetsByEmployeeId(Long employeeId) {
+        List<Asset> assets = assetRepository.findByEmployeeEmployeeID(employeeId);
+        return assets.stream().map(asset -> {
+            AssetDTO assetDTO = new AssetDTO();
+            assetDTO.setAsset_id(asset.getAsset_id());
+            assetDTO.setAsset_type(asset.getAsset_type());
+            assetDTO.setSerial_number(asset.getSerial_number());
+            assetDTO.setIssued_date(asset.getIssued_date());
+            assetDTO.setReturn_date(asset.getReturn_date());
+            assetDTO.setCreated_at(asset.getCreated_at());
+            assetDTO.setUpdated_at(asset.getUpdated_at());
+            assetDTO.setEmployee_id(asset.getEmployee().getEmployeeID());
+            return assetDTO;
+        }).collect(Collectors.toList());
+    }
+
+    @Override
     //Display all assets
     public List<AssetDTO> getAllAsset() {
         List<Asset> assets = assetRepository.findAll();

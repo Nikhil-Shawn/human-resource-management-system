@@ -21,7 +21,10 @@ function Assets() {
     };
   }, []);
 
-  const fetchAssets = () => {
+  const fetchAssets = (refresh = false) => {
+    if (refresh) {
+      console.log("Refreshing asset data...");
+    }
     axios.get('http://localhost:8080/api/v1/assets/all')
       .then(response => {
         console.log("response", response);
@@ -38,7 +41,9 @@ function Assets() {
   };
 
   const formatDate = (dateString) => {
+    if (!dateString) return '';
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) return '';
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
     const year = date.getFullYear();
@@ -55,12 +60,32 @@ function Assets() {
     setCurrentAsset(null);
   };
 
-  const handleSave = (newAsset) => {
+  const handleSave = (savedAsset) => {
+    const formattedAsset = {
+      ...savedAsset,
+      issued_date: formatDate(savedAsset.issued_date),
+      return_date: formatDate(savedAsset.return_date),
+    };
+    console.log("formattedAsset = ", formattedAsset);
     if (currentAsset) {
-      setAssetsData(assetsData.map(asset => asset.id === newAsset.id ? newAsset : asset));
+      setAssetsData(assetsData.map(asset => asset.asset_id === formattedAsset.asset_id ? formattedAsset : asset));
     } else {
-      setAssetsData([...assetsData, newAsset]);
+      setAssetsData([...assetsData, formattedAsset]);
     }
+    setIsDrawerOpen(false);
+    setCurrentAsset(null);
+    fetchAssets(true); // Refresh assets after saving
+  };
+
+  const handleDelete = (assetId) => {
+    axios.delete(`http://localhost:8080/api/v1/assets/${assetId}`)
+      .then(response => {
+        console.log(response);
+        setAssetsData(assetsData.filter(asset => asset.asset_id !== assetId));
+      })
+      .catch(error => {
+        console.error('There was an error deleting the asset!', error);
+      });
   };
 
   const toggleDropdown = (index) => {
@@ -102,6 +127,7 @@ function Assets() {
                   }}
                 >
                   Employee ID</th>
+                <th>Asset ID</th>
                 <th>Asset Type</th>
                 <th>Serial Number</th>
                 <th>Issued Date</th>
@@ -119,8 +145,8 @@ function Assets() {
                     padding: "20px",
                   }}>
                     <span>{asset.employee_id}</span>
-                    
                   </td>
+                  <td>{asset.asset_id}</td>
                   <td>{asset.asset_type}</td>
                   <td>{asset.serial_number}</td>
                   <td>{asset.issued_date}</td>
@@ -131,6 +157,7 @@ function Assets() {
                       {dropdownOpen === index && (
                         <div className="dropdown-menu">
                           <div className="dropdown-item" onClick={() => handleDrawerOpen(asset)}>Edit</div>
+                          <div className="dropdown-item" onClick={() => handleDelete(asset.asset_id)}>Delete</div>
                         </div>
                       )}
                     </div>
