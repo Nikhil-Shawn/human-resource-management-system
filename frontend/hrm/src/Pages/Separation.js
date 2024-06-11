@@ -1,14 +1,63 @@
-import React from "react";
+import axios from 'axios';
+import React, { useEffect, useState, useRef } from 'react';
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from "../Components/Sidebar";
 import HeaderComponent from "../Components/HeaderComponent";
-import "./Separation.css";
+import SeparationDrawer from '../Components/SeparationDrawer';
+import './Separation.css';
 
 function Separation() {
-    // Example data
-    const employees = [
-        // Add your employee data here
-    ];
+    const [employees, setEmployees] = useState([]);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [currentSeparation, setCurrentSeparation] = useState(null);
+    const [dropdownOpen, setDropdownOpen] = useState(null);
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        fetchSeparations();
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    const fetchSeparations = () => {
+        axios.get('http://localhost:8080/api/v1/separation/all')
+            .then(response => {
+                setEmployees(response.data);
+            })
+            .catch(error => {
+                console.error('There was an error fetching the separations data!', error);
+            });
+    };
+
+    const handleDrawerOpen = (separation) => {
+        setCurrentSeparation(separation);
+        setIsDrawerOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setIsDrawerOpen(false);
+        setCurrentSeparation(null);
+    };
+
+    const handleSave = (newSeparation) => {
+        if (currentSeparation) {
+            setEmployees(employees.map(emp => emp.id === newSeparation.id ? newSeparation : emp));
+        } else {
+            setEmployees([...employees, newSeparation]);
+        }
+    };
+
+    const toggleDropdown = (index) => {
+        setDropdownOpen(dropdownOpen === index ? null : index);
+    };
+
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setDropdownOpen(null);
+        }
+    };
 
     const getSeparationStyle = (separationStatus) => {
         switch (separationStatus) {
@@ -32,15 +81,13 @@ function Separation() {
                     <div className="leaves-heading">
                         <div className="leaves-text">Employment Separation</div>
                         <div className="add-leave-button-container">
-                            <button>+ Add Separation</button>
+                            <button onClick={() => handleDrawerOpen(null)}>+ Add Separation</button>
                         </div>
                     </div>
                     <table className="employee-table">
                         <thead>
                             <tr style={{ fontWeight: "0", fontSize: "0.8vw", color: "black" }}>
-                                <th style={{ padding: "20px 0px 20px 40px", marginLeft: "10px" }}>
-                                    Name
-                                </th>
+                                <th style={{ padding: "20px 0px 20px 40px", marginLeft: "10px" }}>Name</th>
                                 <th>Position</th>
                                 <th>Date of Separation</th>
                                 <th>Type</th>
@@ -50,8 +97,8 @@ function Separation() {
                             </tr>
                         </thead>
                         <tbody style={{ fontSize: "0.8vw", textAlign: "center" }}>
-                            {employees.map((employee) => (
-                                <tr key={employee.id}>
+                            {employees.map((employee, index) => (
+                                <tr key={index}>
                                     <td style={{ display: "flex", alignItems: "center", borderLeft: "1px solid #E0E4EA", padding: "20px" }}>
                                         <img
                                             src={employee.img}
@@ -60,11 +107,7 @@ function Separation() {
                                         />
                                         <span>{employee.name}</span>
                                     </td>
-                                    <td>
-                                        <span style={{ backgroundColor: "#DDCBFC", color: "black", borderRadius: "30px", padding: "8px 20px", display: "inline-block" }}>
-                                            {employee.position}
-                                        </span>
-                                    </td>
+                                    <td>{employee.position}</td>
                                     <td>{employee.separationDate}</td>
                                     <td>{employee.separationType}</td>
                                     <td>{employee.separationReason}</td>
@@ -74,7 +117,14 @@ function Separation() {
                                         </span>
                                     </td>
                                     <td style={{ borderRight: "1px solid #E0E4EA" }}>
-                                        <BsThreeDotsVertical />
+                                        <div className="dropdown-container" ref={dropdownOpen === index ? dropdownRef : null}>
+                                            <BsThreeDotsVertical onClick={() => toggleDropdown(index)} />
+                                            {dropdownOpen === index && (
+                                                <div className="dropdown-menu">
+                                                    <div className="dropdown-item" onClick={() => handleDrawerOpen(employee)}>Edit</div>
+                                                </div>
+                                            )}
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
@@ -82,6 +132,7 @@ function Separation() {
                     </table>
                 </div>
             </div>
+            <SeparationDrawer isOpen={isDrawerOpen} onClose={handleDrawerClose} onSave={handleSave} separation={currentSeparation} />
         </div>
     );
 }
