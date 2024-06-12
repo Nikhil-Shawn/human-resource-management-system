@@ -12,7 +12,7 @@
     font-size: 15px;
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-y: auto;
   }
   
   .drawer.open {
@@ -34,7 +34,7 @@
   
   .button-group {
     display: flex;
-    gap: 10px; /* Reduce gap between buttons */
+    gap: 10px;
     align-items: center;
   }
   
@@ -46,8 +46,8 @@
   }
   
   .separation-cancel-button {
-    background-color: #23272C;  /* Set background color */
-    border: #23272C;  /* Remove border */
+    background-color: #23272C;
+    border: #23272C;
     font-size: 14px;
     padding: 5px 10px;
     cursor: pointer;
@@ -57,9 +57,9 @@
   .separation-drawer-close-button {
     position: absolute;
     top: 10px;
-    right: 10px;  /* Align to the right edge */
-    background-color: #23272C;  /* Set background color */
-    border: #23272C;  /* Remove border */
+    right: 10px;
+    background-color: #23272C;
+    border: #23272C;
     font-size: 1.5em;
     cursor: pointer;
     color: #ffffff;
@@ -79,8 +79,8 @@
   }
   
   .MuiOutlinedInput-root {
-    margin: 0; /* Ensure no margin */
-    padding: 0; /* Ensure no padding */
+    margin: 0;
+    padding: 0;
   }
   
   .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
@@ -94,6 +94,6 @@
   }
   
   .MuiOutlinedInput-input {
-    padding: 8px 10px; /* Reduce input field height */
+    padding: 8px 10px;
   }
   
