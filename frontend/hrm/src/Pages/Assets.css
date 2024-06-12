@@ -1,4 +1,3 @@
-/* Container for the assets table */
 .assets-container {
   padding-left: 20px;
   padding-right: 20px;
@@ -6,20 +5,17 @@
   margin-left: 30px;
 }
 
-/* Styling for the assets text */
 .assets-text {
   font-size: 32px;
   font-weight: 700;
 }
 
-/* Styling for the assets heading */
 .assets-heading {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-/* Styling for the add asset button */
 .add-asset-button-container button {
   font-size: 16px;
   cursor: pointer;
@@ -43,25 +39,24 @@
   margin-left: 20px;
 }
 
-/* Styling for the employee table */
 .employee-table {
   width: 100%;
-  border-collapse: separate; /* Ensure separate borders for radius to work */
-  border-spacing: 0; /* Optional, to control spacing between cells */
+  border-collapse: separate;
+  border-spacing: 0;
   margin-top: 20px;
 }
 
 .employee-table th {
   background: #F4F5F7;
   padding: 16px 8px;
-  text-align: left;
+  text-align: center;
   margin-left: 20px;
 }
 
 .employee-table thead:after {
   content: '';
   display: block;
-  height: 20px; /* Adjust the height to your needs */
+  height: 20px;
 }
 
 .employee-table thead tr:first-child th:first-child {
@@ -100,7 +95,7 @@
   border-bottom: 1px solid #E0E4EA;
   border-top: 1px solid #E0E4EA;
   padding: 8px;
-  text-align: left;
+  text-align: center;
   background: white;
 }
 

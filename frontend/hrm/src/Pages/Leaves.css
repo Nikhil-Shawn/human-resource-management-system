@@ -1,10 +1,10 @@
 .app {
   display: flex;
-  height: 100vh; /* Ensure the app takes full viewport height */
+  height: 100vh;
 }
 
 .main-content {
-  margin-left: 250px; /* Account for the sidebar width */
+  margin-left: 250px;
   flex-grow: 1;
   overflow-y: auto;
   padding: 20px;

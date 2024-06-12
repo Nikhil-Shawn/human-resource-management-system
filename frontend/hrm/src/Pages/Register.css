@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  position: relative; /* To position the back button relative to the form section */
+  position: relative;
 }
 
 .form-section .logo {
@@ -62,7 +62,7 @@
 .form-group {
   display: flex;
   justify-content: space-between;
-  gap: 40px; /* Added space between columns */
+  gap: 40px;
 }
 
 .personal-info,

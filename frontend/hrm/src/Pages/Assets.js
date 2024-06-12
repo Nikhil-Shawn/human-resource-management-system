@@ -30,8 +30,8 @@ function Assets() {
         console.log("response", response);
         const formattedAssets = response.data.map(asset => ({
           ...asset,
-          issued_date: formatDate(asset.issued_date), // Format issued date
-          return_date: formatDate(asset.return_date), // Format return date
+          issued_date: formatDate(asset.issued_date),
+          return_date: formatDate(asset.return_date),
         }));
         setAssetsData(formattedAssets);
       })
@@ -45,7 +45,7 @@ function Assets() {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) return '';
     const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
@@ -74,7 +74,7 @@ function Assets() {
     }
     setIsDrawerOpen(false);
     setCurrentAsset(null);
-    fetchAssets(true); // Refresh assets after saving
+    fetchAssets(true);
   };
 
   const handleDelete = (assetId) => {
@@ -97,6 +97,26 @@ function Assets() {
       setDropdownOpen(null);
     }
   };
+
+  const assetArrray = [
+    {
+      name: 'Brendan Bradt',
+      position: 'UI/UX Designer',
+      applicationDate: 'Sep. 12 2023',
+      status: 'New Applicant',
+      email: 'b.bradtk@example.com',
+      img: 'path/to/image1.jpg',
+      employee_id:1,
+      asset_id:420,
+      asset_type:'laptop',
+      serial_number:111,
+      issued_date:'12/10/2023',
+      return_date:'12/10/2023',
+
+
+    },
+    
+  ];
 
   return (
     <div className="app">
@@ -136,16 +156,10 @@ function Assets() {
               </tr>
             </thead>
             <tbody style={{ fontSize: "0.8vw", textAlign: "center" }}>
-              {assetsData.map((asset, index) => (
+              {assetArrray.map((asset, index) => (
                 <tr key={index}>
-                  <td style={{
-                    display: "flex",
-                    alignItems: "center",
-                    borderLeft: "1px solid #E0E4EA",
-                    padding: "20px",
-                  }}>
-                    <span>{asset.employee_id}</span>
-                  </td>
+                                    <td>{asset.employee_id}</td>
+
                   <td>{asset.asset_id}</td>
                   <td>{asset.asset_type}</td>
                   <td>{asset.serial_number}</td>

@@ -107,7 +107,7 @@ function Leaves() {
                         </div>
                     </div>
 			
-                    <table className="vacation-table">
+                    <table className="employee-table">
                         <thead>
                             <tr
                                 style={{
