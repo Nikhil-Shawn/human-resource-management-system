@@ -65,6 +65,8 @@ public class SecurityConfig {
                                 "/api/v1/experience/{id}",
                                 "/api/v1/experience/update/{id}",
                                 "/api/v1/experience/multi",
+                                "/api/v1/experience/byperson/{id}",
+                                "/api/v1/experience/byemployee/{id}",
 
                                 //For Logout
                                 "/api/logout",
