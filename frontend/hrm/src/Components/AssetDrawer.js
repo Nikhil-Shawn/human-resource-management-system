@@ -1,5 +1,9 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './AssetDrawer.css';
@@ -84,15 +88,21 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       <div className="form-container">
         <div className="assets-form-group">
           <p>Asset Type</p>
-          <TextField
-            id="asset-type"
-            label="Asset Type"
-            variant="outlined"
-            fullWidth
-            value={assetType}
-            onChange={(e) => setAssetType(e.target.value)}
-            sx={textFieldStyles}
-          />
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel id="asset-type-label">Asset Type</InputLabel>
+            <Select
+              labelId="asset-type-label"
+              id="asset-type"
+              value={assetType}
+              onChange={(e) => setAssetType(e.target.value)}
+              label="Asset Type"
+            >
+              <MenuItem value="Laptop">Laptop</MenuItem>
+              <MenuItem value="SmartPhone">Smart Phone</MenuItem>
+              <MenuItem value="Tablet">Tablet</MenuItem>
+              <MenuItem value="Headset">Headset</MenuItem>
+            </Select>
+          </FormControl>
         </div>
         <div className="assets-form-group">
           <p>Serial Number</p>
