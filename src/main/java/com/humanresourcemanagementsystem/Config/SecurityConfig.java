@@ -92,7 +92,7 @@ public class SecurityConfig {
                                 "/api/v1/education/{id}",
                                 "/api/v1/education/byperson/{id}",
                                 "/api/v1/education/byemployee/{id}",
-                                "/api/v1/education/multi"
+                                "/api/v1/education/multi",
 
                                 //For Asset
                                 "/api/v1/assets/all",

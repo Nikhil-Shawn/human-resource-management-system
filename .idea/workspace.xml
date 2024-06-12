@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c647e788-f21c-4538-8055-531640ff09b1" name="Changes" comment="Employee get API optimized">
+    <list default="true" id="c647e788-f21c-4538-8055-531640ff09b1" name="Changes" comment="Connected education, experience, salary api and also added sidebar components and also adding departmentID in employee post">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/EmployeeDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/EmployeeDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/AddEducation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,18 +15,57 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2hmfL2jXMle7DxKULTxQddib3PY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HumanResourceManagementSystemApplication.executor": "Run",
-    "git-widget-placeholder": "Login-and-whole-app-flow"
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HumanResourceManagementSystemApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Login-and-whole-app-flow&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c647e788-f21c-4538-8055-531640ff09b1" name="Changes" comment="Employee get API optimized" />
+      <created>1718204132316</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718204132316</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Connected education, experience, salary api and also added sidebar components and also adding departmentID in employee post">
+      <option name="closed" value="true" />
+      <created>1718219056585</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718219056585</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Connected education, experience, salary api and also added sidebar components and also adding departmentID in employee post">
+      <option name="closed" value="true" />
+      <created>1718224099147</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718224099147</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Employee get API optimized" />
-    <option name="LAST_COMMIT_MESSAGE" value="Employee get API optimized" />
+    <MESSAGE value="Connected education, experience, salary api and also added sidebar components and also adding departmentID in employee post" />
+    <option name="LAST_COMMIT_MESSAGE" value="Connected education, experience, salary api and also added sidebar components and also adding departmentID in employee post" />
   </component>
 </project>
