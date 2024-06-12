@@ -1,8 +1,13 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './LeaveDrawer.css';
+import { FormControl } from '@mui/material';
+import InputLabel from '@mui/material/InputLabel';
+
 
 const LeaveDrawer = ({ isOpen, onClose, onSave, leave }) => {
   const [employeeId, setEmployeeId] = useState('');
@@ -14,14 +19,14 @@ const LeaveDrawer = ({ isOpen, onClose, onSave, leave }) => {
   const [status, setStatus] = useState('');
 
   useEffect(() => {
-    console.log("mz current vacation= ",leave)
+    console.log("mz current vacation= ", leave);
     if (leave) {
       setEmployeeId(leave.employeeId || '');
       setVacationType(leave.vacationType || '');
       setReason(leave.reason || '');
       setStartDate(leave.startDate || '');
       setEndDate(leave.endDate || '');
-      setVacationId(leave.vacationId  || null);
+      setVacationId(leave.vacationId || null);
       setStatus(leave.status || '');
     } else {
       setEmployeeId('');
@@ -45,7 +50,7 @@ const LeaveDrawer = ({ isOpen, onClose, onSave, leave }) => {
     };
 
     try {
-      console.log("my vacationID= ",leaveData)
+      console.log("my vacationID= ", leaveData);
       const response = leave
         ? await axios.put(`http://localhost:8080/api/vacations/updateVacation/${vacationId}`, leaveData)
         : await axios.post(`http://localhost:8080/api/vacations/addVacation/${employeeId}`, leaveData);
@@ -102,15 +107,23 @@ const LeaveDrawer = ({ isOpen, onClose, onSave, leave }) => {
         </div>
         <div className="assets-form-group">
           <p>Leave Type</p>
-          <TextField
+          <FormControl variant="outlined" fullWidth>
+          <InputLabel id="asset-type-label">Leave Type</InputLabel>
+          <Select
             id="leave-type"
-            label="Enter Leave Type"
+            label="Leave Type"
             variant="outlined"
             fullWidth
             value={vacationType}
             onChange={(e) => setVacationType(e.target.value)}
             sx={textFieldStyles}
-          />
+          >
+            <MenuItem value="paid leave">Paid Leave</MenuItem>
+            <MenuItem value="unpaid leave">Unpaid Leave</MenuItem>
+            <MenuItem value="sick leave">Sick Leave</MenuItem>
+            <MenuItem value="maternity leave">Maternity Leave</MenuItem>
+          </Select>
+          </FormControl>
         </div>
         <div className="assets-form-group">
           <p>Status</p>
