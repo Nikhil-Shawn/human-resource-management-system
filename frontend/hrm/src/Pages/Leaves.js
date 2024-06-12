@@ -7,49 +7,32 @@ import HeaderComponent from "../Components/HeaderComponent";
 import LeaveDrawer from "../Components/LeaveDrawer";
 
 function Leaves() {
-    const [vacations, setVacations] = useState(null); // Initialize as null
+    const [vacations, setVacations] = useState(null);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [currentLeave, setCurrentLeave] = useState(null);
     const [dropdownOpen, setDropdownOpen] = useState(null);
     const dropdownRef = useRef(null);
-	const [employees, setEmployees] = useState([]);
 
+    const fetchVacations = () => {
+        axios.get("http://localhost:8080/api/vacations")
+            .then((response) => {
+                const data = response.data;
+                const vacationsData = data.data.vacations;
+                setVacations(vacationsData);
+                console.log("Response data:", vacationsData);
+            })
+            .catch((error) => {
+                console.error("Error fetching vacation data:", error);
+            });
+    };
 
-
-	useEffect(() => {
-
-		axios.get('http://localhost:8080/api/v1/employee/1')
-		  .then(response => {
-			setEmployees(response.data);
-			console.log(response.data)
-		  })
-		  .catch(error => {
-			console.error("There was an error fetching the employee data!", error);
-		  });
-
-
-		axios.get("http://localhost:8080/api/vacations")
-			.then((response) => {
-				const data = response.data;
-				console.log("Response data:", data);
-				// Extract the vacations array from the response data
-				const vacationsData = data.data.vacations;
-				setVacations(vacationsData);
-			})
-			.catch((error) => {
-				console.error("Error fetching vacation data:", error);
-			});
-	}, []);
-
-
-	
-	
-	
-	
+    useEffect(() => {
+        fetchVacations();
+    }, []);
 
     const handleDrawerOpen = (leave) => {
         setIsDrawerOpen(true);
-        setCurrentLeave(leave);
+        setCurrentLeave(leave || null);
     };
 
     const handleDrawerClose = () => {
@@ -60,15 +43,17 @@ function Leaves() {
     const handleSave = (newLeave) => {
         if (currentLeave) {
             setVacations(vacations.map(leave => leave.id === newLeave.id ? newLeave : leave));
+            console.log("currentLeave= ", currentLeave);
         } else {
             setVacations([...vacations, newLeave]);
         }
+        fetchVacations(); // Refresh the data after save
     };
 
     const handleDelete = (leaveId) => {
         axios.delete(`http://localhost:8080/api/vacations/deleteVacation/${leaveId}`)
             .then(response => {
-                setVacations(vacations.filter(leave => leave.id !== leaveId));
+                fetchVacations(); // Refresh the data after delete
             })
             .catch(error => {
                 console.error('There was an error deleting the leave!', error);
@@ -106,24 +91,11 @@ function Leaves() {
                             <button onClick={() => handleDrawerOpen()}>+ Add Leave</button>
                         </div>
                     </div>
-			
+
                     <table className="employee-table">
                         <thead>
-                            <tr
-                                style={{
-                                    fontWeight: "0",
-                                    fontSize: "0.8vw",
-                                    color: "black",
-                                }}
-                            >
-                                <th
-                                    style={{
-                                        padding: "20px 0px 20px 40px",
-                                        marginLeft: "10px",
-                                    }}
-                                >
-                                    Name
-                                </th>
+                            <tr style={{ fontWeight: "0", fontSize: "0.8vw", color: "black" }}>
+                                <th style={{ padding: "20px 0px 20px 40px", marginLeft: "10px" }}>Name</th>
                                 <th>Reason</th>
                                 <th>Leave Type</th>
                                 <th>Start Date</th>
@@ -133,74 +105,42 @@ function Leaves() {
                             </tr>
                         </thead>
 
-
-
                         <tbody style={{ fontSize: "0.8vw", textAlign: "center" }}>
-						{vacations && vacations.map((vacation, index) => (
-    <tr key={index}>
-        <td
-            style={{
-                display: "flex",
-                alignItems: "center",
-                borderLeft: "1px solid #E0E4EA",
-                padding: "20px",
-            }}
-        >
-            <img
-                src={vacation.img}
-                alt={`${vacation.name}'s profile`}
-                style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                }}
-            />
-            {/* <span>{vacation.status}</span> */}
-        </td>
-        <td>
-            <span
-                style={{
-                    backgroundColor: "#DDCBFC",
-                    color: "black",
-                    borderRadius: "30px",
-                    padding: "8px 20px",
-                    display: "inline-block",
-                }}
-            >
-                {vacation.reason}
-            </span>
-        </td>
-        <td>{vacation.leaveType}</td>
-        <td>{vacation.startDate}</td>
-        <td>{vacation.endDate}</td>
-        <td>
-            <span
-                style={{
-                    ...getStatusStyle(vacation.status),
-                    borderRadius: "30px",
-                    padding: "8px 20px",
-                    display: "inline-block",
-                }}
-            >
-                {vacation.status}
-            </span>
-        </td>
-        <td> {/* Move this div outside of the <tr> */}
-            <div className="dropdown-container" ref={dropdownOpen === index ? dropdownRef : null}>
-                <BsThreeDotsVertical onClick={() => toggleDropdown(index)} />
-                {dropdownOpen === index && (
-                    <div className="dropdown-menu">
-                        <div className="dropdown-item" onClick={() => handleDrawerOpen(vacation)}>Edit</div>
-                        <div className="dropdown-item" onClick={() => handleDelete(vacation.id)}>Delete</div>
-                    </div>
-                )}
-            </div>
-        </td>
-    </tr>
-))}
-
-
+                            {vacations && vacations.map((vacation, index) => (
+                                <tr key={index}>
+                                    <td style={{ display: "flex", alignItems: "center", borderLeft: "1px solid #E0E4EA", padding: "20px" }}>
+                                        <img
+                                            src={vacation.img}
+                                            alt={`${vacation.name}'s profile`}
+                                            style={{ width: "40px", height: "40px", borderRadius: "50%", marginRight: "10px" }}
+                                        />
+                                    </td>
+                                    <td>
+                                        <span style={{ backgroundColor: "#DDCBFC", color: "black", borderRadius: "30px", padding: "8px 20px", display: "inline-block" }}>
+                                            {vacation.reason}
+                                        </span>
+                                    </td>
+                                    <td>{vacation.vacationType}</td>
+                                    <td>{vacation.startDate}</td>
+                                    <td>{vacation.endDate}</td>
+                                    <td>
+                                        <span style={{ ...getStatusStyle(vacation.status), borderRadius: "30px", padding: "8px 20px", display: "inline-block" }}>
+                                            {vacation.status}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div className="dropdown-container" ref={dropdownOpen === index ? dropdownRef : null}>
+                                            <BsThreeDotsVertical onClick={() => toggleDropdown(index)} />
+                                            {dropdownOpen === index && (
+                                                <div className="dropdown-menu">
+                                                    <div className="dropdown-item" onClick={() => handleDrawerOpen(vacation)}>Edit</div>
+                                                    <div className="dropdown-item" onClick={() => handleDelete(vacation.vacationId)}>Delete</div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>

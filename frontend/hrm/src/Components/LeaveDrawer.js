@@ -4,46 +4,51 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './LeaveDrawer.css';
 
-const Drawer = ({ isOpen, onClose, onSave, leave }) => {
-
-  const [employee_id, setEmployeeId] = useState('');
-  const [leaveType, setleaveType] = useState('');
+const LeaveDrawer = ({ isOpen, onClose, onSave, leave }) => {
+  const [employeeId, setEmployeeId] = useState('');
+  const [vacationType, setVacationType] = useState('');
   const [reason, setReason] = useState('');
-  const [startDate, setstartDate] = useState('');
-  const [returnDate, setReturnDate] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [vacationId, setVacationId] = useState(null);
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
+    console.log("mz current vacation= ",leave)
     if (leave) {
-      setEmployeeId(leave.employee_id);
-      setleaveType(leave.employeeEmail);
-      setReason(leave.employeePosition);
-      setstartDate(leave.startDate);
-      setReturnDate(leave.returnDate);
+      setEmployeeId(leave.employeeId || '');
+      setVacationType(leave.vacationType || '');
+      setReason(leave.reason || '');
+      setStartDate(leave.startDate || '');
+      setEndDate(leave.endDate || '');
+      setVacationId(leave.vacationId  || null);
+      setStatus(leave.status || '');
     } else {
-      setEmployeeId('1');
-      setleaveType('');
+      setEmployeeId('');
+      setVacationType('');
       setReason('');
-      setstartDate('');
-      setReturnDate('');
+      setStartDate('');
+      setEndDate('');
+      setVacationId(null);
+      setStatus('');
     }
   }, [leave]);
 
   const handleSave = async () => {
-    console.log("employeeID= ",employee_id);
     const leaveData = {
-      ...leave,
-      employee_id,
-      leaveType,
+      employeeId,
+      vacationType,
       reason,
       startDate,
-      returnDate,
+      endDate,
+      status,
     };
 
     try {
-      console.log(employee_id)
+      console.log("my vacationID= ",leaveData)
       const response = leave
-        ? await axios.put(`http://localhost:8080/api/vacations/updateVacation/${leave.id}`, leaveData)
-        : await axios.post(`http://localhost:8080/api/vacations/addVacation/${leave.employee_id}`, leaveData);
+        ? await axios.put(`http://localhost:8080/api/vacations/updateVacation/${vacationId}`, leaveData)
+        : await axios.post(`http://localhost:8080/api/vacations/addVacation/${employeeId}`, leaveData);
 
       onSave(response.data);
       onClose();
@@ -71,8 +76,19 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
         <button className="assets-drawer-close-button" onClick={onClose}>&times;</button>
       </div>
       <div className="form-container">
-   
-      <div className="assets-form-group">
+        <div className="assets-form-group">
+          <p>Employee ID</p>
+          <TextField
+            id="employee-id"
+            label="Employee ID"
+            variant="outlined"
+            fullWidth
+            value={employeeId}
+            onChange={(e) => setEmployeeId(e.target.value)}
+            sx={textFieldStyles}
+          />
+        </div>
+        <div className="assets-form-group">
           <p>Reason</p>
           <TextField
             id="employee-reason"
@@ -84,7 +100,6 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
             sx={textFieldStyles}
           />
         </div>
-        
         <div className="assets-form-group">
           <p>Leave Type</p>
           <TextField
@@ -92,21 +107,32 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
             label="Enter Leave Type"
             variant="outlined"
             fullWidth
-            value={leaveType}
-            onChange={(e) => setleaveType(e.target.value)}
+            value={vacationType}
+            onChange={(e) => setVacationType(e.target.value)}
             sx={textFieldStyles}
           />
         </div>
-      
         <div className="assets-form-group">
-          <p>Leave starting Date</p>
+          <p>Status</p>
+          <TextField
+            id="status"
+            label="Enter Status"
+            variant="outlined"
+            fullWidth
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            sx={textFieldStyles}
+          />
+        </div>
+        <div className="assets-form-group">
+          <p>Leave Starting Date</p>
           <TextField
             id="start-date"
             type="date"
             variant="outlined"
             fullWidth
             value={startDate}
-            onChange={(e) => setstartDate(e.target.value)}
+            onChange={(e) => setStartDate(e.target.value)}
             sx={textFieldStyles}
             InputLabelProps={{
               shrink: true,
@@ -120,8 +146,8 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
             type="date"
             variant="outlined"
             fullWidth
-            value={returnDate}
-            onChange={(e) => setReturnDate(e.target.value)}
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
             sx={textFieldStyles}
             InputLabelProps={{
               shrink: true,
@@ -133,4 +159,4 @@ const Drawer = ({ isOpen, onClose, onSave, leave }) => {
   );
 };
 
-export default Drawer;
+export default LeaveDrawer;
