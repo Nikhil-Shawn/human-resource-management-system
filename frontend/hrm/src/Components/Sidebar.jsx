@@ -45,11 +45,11 @@ function Sidebar() {
     };
 
     const displayCreateEmployee = () => {
-        navigate('/createEmployee');
+        navigate('/create-employee');
     };
 
     const displayEmployeeDetail = () => {
-        navigate('/employeeDetail');
+        navigate('/employee');
     };
 
     const displayLeaves = () => {
