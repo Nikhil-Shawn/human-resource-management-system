@@ -5,7 +5,7 @@ import "./AddEducation.css";
 
 function AddEducation() {
   const [education, setEducation] = useState({
-    person_id: "",
+    employee_id: "",
     degree: "",
     institution: "",
     major: "",
@@ -14,22 +14,23 @@ function AddEducation() {
   });
 
   const [experience, setExperience] = useState({
+    employee_id: "",
     company_name: "",
     employment_type: "",
     no_of_years: "",
     position: "",
     start_date: "",
     end_date: "",
-    person_id: "",
   });
 
   const [educations, setEducations] = useState([]);
   const [experiences, setExperiences] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleAddEducation = async () => {
     if (education.degree && education.institution && education.major) {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/education/save', {
+        const response = await fetch('http://localhost:8080/api/v1/education/save', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -40,13 +41,15 @@ function AddEducation() {
         if (response.ok) {
           setEducations([...educations, education]);
           setEducation({
-            person_id: "",
+            employee_id: "",
             degree: "",
             institution: "",
             major: "",
             graduation_start_date: "",
             graduation_end_date: "",
           });
+          setSuccessMessage('Successfully added education');
+          setTimeout(() => setSuccessMessage(''), 3000); // Clear message after 3 seconds
         } else {
           console.error('Failed to save education.');
         }
@@ -59,7 +62,7 @@ function AddEducation() {
   const handleAddExperience = async () => {
     if (experience.company_name && experience.position) {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/experience/save', {
+        const response = await fetch('http://localhost:8080/api/v1/experience/save', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -70,14 +73,16 @@ function AddEducation() {
         if (response.ok) {
           setExperiences([...experiences, experience]);
           setExperience({
+            employee_id: "",
             company_name: "",
             employment_type: "",
             no_of_years: "",
             position: "",
             start_date: "",
             end_date: "",
-            person_id: "",
           });
+          setSuccessMessage(`Successfully added experience - ${experience.position} at ${experience.company_name}`);
+          setTimeout(() => setSuccessMessage(''), 3000); // Clear message after 3 seconds
         } else {
           console.error('Failed to save experience.');
         }
@@ -107,11 +112,11 @@ function AddEducation() {
           <div className="form-section-wrapper">
             <div className="personal-info">
               <h3>Add Education</h3>
-              <label>Person ID</label>
+              <label>Employee ID</label>
               <input
                 type="text"
-                name="person_id"
-                value={education.person_id}
+                name="employee_id"
+                value={education.employee_id}
                 onChange={handleEducationChange}
               />
               <label>Degree</label>
@@ -160,6 +165,13 @@ function AddEducation() {
             </div>
             <div className="address-info">
               <h3>Add Experience</h3>
+              <label>Employee ID</label>
+              <input
+                type="text"
+                name="employee_id"
+                value={experience.employee_id}
+                onChange={handleExperienceChange}
+              />
               <label>Company Name</label>
               <input
                 type="text"
@@ -202,13 +214,6 @@ function AddEducation() {
                 value={experience.end_date}
                 onChange={handleExperienceChange}
               />
-              <label>Person ID</label>
-              <input
-                type="text"
-                name="person_id"
-                value={experience.person_id}
-                onChange={handleExperienceChange}
-              />
               <button className="save-button" onClick={handleAddExperience}>Add Experience</button>
               <div className="list-section">
                 {experiences.map((exp, index) => (
@@ -219,6 +224,7 @@ function AddEducation() {
               </div>
             </div>
           </div>
+          {successMessage && <div className="success-message">{successMessage}</div>}
         </div>
       </div>
     </div>
