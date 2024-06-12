@@ -1,4 +1,3 @@
-/* Separation.css */
 .leaves-container {
   padding-left: 20px;
   padding-right: 20px;
@@ -35,9 +34,8 @@
 
 .employee-table {
   width: 100%;
-  border-collapse: separate; /* Ensure separate borders for radius to work */
-  border-spacing: 0; /* Optional, to control spacing between cells */
-  margin-top: 20px;
+  border-collapse: separate;
+  border-spacing: 0; 
 }
 
 .employee-table th {
@@ -47,7 +45,6 @@
   margin-left: 20px;
 }
 
-/* Additional styles for table cells */
 .employee-table td {
   border-bottom: 1px solid #E0E4EA;
   border-top: 1px solid #E0E4EA;
