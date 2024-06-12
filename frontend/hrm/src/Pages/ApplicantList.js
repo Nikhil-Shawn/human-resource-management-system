@@ -14,7 +14,7 @@ function getProgressSteps(status) {
     'in-progress': 2,
     'on-hold': 3,
     'accepted': 4,
-    'rejected': 4 // Both 'accepted' and 'rejected' represent 100% progress
+    'rejected': 4
   };
   return steps[getStatusClass(status)] || 1;
 }
@@ -152,7 +152,7 @@ function ApplicantList() {
                         width: "40px",
                         height: "40px",
                         borderRadius: "50%",
-                        marginRight: "20px", // Increased margin for more space
+                        marginRight: "20px",
                       }}
                     />
                     <span>{applicant.name}</span>

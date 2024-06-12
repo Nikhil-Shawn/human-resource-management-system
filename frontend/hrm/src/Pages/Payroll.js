@@ -1,39 +1,43 @@
-import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
+import "./Payroll.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import HeaderComponent from '../Components/HeaderComponent';
-import PayrollDrawer from '../Components/PayrollDrawer';
-import Sidebar from '../Components/Sidebar';
-import './Payroll.css';
+import Sidebar from "../Components/Sidebar";
+import HeaderComponent from "../Components/HeaderComponent";
+import PayrollDrawer from "../Components/PayrollDrawer";
 
 function Payroll() {
-  const [payrollData, setPayrollData] = useState([]);
+  const [payrolls, setPayrolls] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [currentPayroll, setCurrentPayroll] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    fetchPayrolls();
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
   const fetchPayrolls = () => {
-    axios.get('http://localhost:8080/api/payrolls')
-      .then(response => {
-        setPayrollData(response.data);
+    axios.get("http://localhost:8080/api/payrolls")
+      .then((response) => {
+        const data = response.data;
+        console.log("Full response data:", data); // Log the full response data
+        setPayrolls(data); // Ensure this matches the response structure
+        console.log("Payrolls data:", data); // Log the payrolls data
       })
-      .catch(error => {
-        console.error('There was an error fetching the payroll data!', error);
+      .catch((error) => {
+        console.error("Error fetching payroll data:", error);
+        if (error.response && error.response.status === 403) {
+          console.error("Access forbidden: You don't have permission to access this resource.");
+        } else {
+          console.error("An error occurred while fetching payroll data.");
+        }
       });
   };
 
+  useEffect(() => {
+    fetchPayrolls();
+  }, []);
+
   const handleDrawerOpen = (payroll) => {
-    setCurrentPayroll(payroll);
     setIsDrawerOpen(true);
+    setCurrentPayroll(payroll || null);
   };
 
   const handleDrawerClose = () => {
@@ -43,19 +47,27 @@ function Payroll() {
 
   const handleSave = (newPayroll) => {
     if (currentPayroll) {
-      setPayrollData(payrollData.map(payroll => payroll.payrollId === newPayroll.payrollId ? newPayroll : payroll));
+      setPayrolls(payrolls.map(payroll => payroll.payrollId === newPayroll.payrollId ? newPayroll : payroll));
+      console.log("currentPayroll= ", currentPayroll);
     } else {
-      setPayrollData([...payrollData, newPayroll]);
+      setPayrolls([...payrolls, newPayroll]);
     }
+    fetchPayrolls(); // Refresh the data after save
   };
 
   const handleDelete = (payrollId) => {
+  
     axios.delete(`http://localhost:8080/api/payrolls/deletePayroll/${payrollId}`)
       .then(response => {
-        setPayrollData(payrollData.filter(payroll => payroll.payrollId !== payrollId));
+        fetchPayrolls(); // Refresh the data after delete
       })
       .catch(error => {
         console.error('There was an error deleting the payroll!', error);
+        if (error.response && error.response.status === 403) {
+          console.error("Access forbidden: You don't have permission to access this resource.");
+        } else {
+          console.error("An error occurred while deleting the payroll.");
+        }
       });
   };
 
@@ -81,34 +93,36 @@ function Payroll() {
               <button onClick={() => handleDrawerOpen(null)}>+ Add Payroll</button>
             </div>
           </div>
+
           <table className="payroll-table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Department</th>
-                <th>Period</th>
+                <th>Employee ID</th>
+                <th>Pay Amount</th>
+                <th>Pay Frequency</th>
                 <th>Bonus</th>
-                <th>Status</th>
+                <th>Increment Applicable</th>
+                <th>Percentage Increment</th>
                 <th></th>
               </tr>
             </thead>
+
             <tbody>
-              {payrollData.map((payroll, index) => (
+              {payrolls && payrolls.map((payroll, index) => (
                 <tr key={index}>
-                  <td>{payroll.employeeName}</td>
-                  <td>{payroll.position}</td>
-                  <td>{payroll.department}</td>
-                  <td>{payroll.period}</td>
+                  <td>{payroll.employeeId}</td>
+                  <td>{payroll.payAmount}</td>
+                  <td>{payroll.payFrequency}</td>
                   <td>{payroll.bonus}</td>
-                  <td>{payroll.status}</td>
+                  <td>{payroll.incrementApplicable ? 'Yes' : 'No'}</td>
+                  <td>{payroll.percentageIncrement}</td>
                   <td>
                     <div className="dropdown-container" ref={dropdownOpen === index ? dropdownRef : null}>
                       <BsThreeDotsVertical onClick={() => toggleDropdown(index)} />
                       {dropdownOpen === index && (
                         <div className="dropdown-menu">
                           <div className="dropdown-item" onClick={() => handleDrawerOpen(payroll)}>Edit</div>
-                          <div className="dropdown-item" onClick={() => handleDelete(payroll.payrollId)}>Delete</div>
+                          <div className="dropdown-item" onClick={() => handleDelete(payroll.payroll_id)}>Delete</div>
                         </div>
                       )}
                     </div>

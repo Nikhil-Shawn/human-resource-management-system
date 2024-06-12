@@ -33,24 +33,20 @@ const Register = () => {
     return passwordRegex.test(password);
   };
 
-  // Function to handle the first form submission
   const handleFirstSubmit = (e) => {
     e.preventDefault();
-    // Check if passwords match
     if (password !== confirmPassword) {
-      setPasswordError('Passwords do not match'); // Set error message if passwords do not match
+      setPasswordError('Passwords do not match'); 
     } else if (!validatePassword(password)) {
       setPasswordError('Password must be at least 8 characters long and contain at least one uppercase letter, one number, and one special character'); // Set error message if password is not strong enough
     } else {
-      setPasswordError(''); // Clear error message if passwords match and are strong enough
-      setStep(2); // Move to the second form
+      setPasswordError(''); 
+      setStep(2);
     }
   };
 
-  // Function to handle the second form submission
   const handleSecondSubmit = (e) => {
     e.preventDefault();
-    // Process form data (e.g., send to server)
     console.log('Form submitted', {
       email, password, confirmPassword,
       firstname, lastname, dob, nationality,
@@ -59,7 +55,6 @@ const Register = () => {
     });
   };
 
-  // Function to handle going back to the first page
   const handleBack = () => {
     setStep(1);
   };
@@ -67,7 +62,6 @@ const Register = () => {
   return (
     <div className="register-container">
       {step === 1 ? (
-        // First form for email and password
         <>
           <div className="image-section">
             <img src={loginImage} alt="Human Resource System" />
@@ -104,7 +98,6 @@ const Register = () => {
           </div>
         </>
       ) : (
-        // Second form for personal information and address
         <>
           <div className="form-section">
             <button className="back-button" type="button" onClick={handleBack}>Back</button>

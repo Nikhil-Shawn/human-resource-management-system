@@ -42,7 +42,7 @@ public class EducationController {
         return educationService.getEducationByPersonId(id);
     }
 
-    // Get education by ID
+    // Get education by employee ID
     @GetMapping("/byemployee/{id}")
     public EducationDTO getEducationByEmployeeId(@PathVariable int id) {
         return educationService.getEducationByEmployeeId(id);

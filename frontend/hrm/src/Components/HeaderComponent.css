@@ -36,7 +36,7 @@
     }
 
     .logout-button-container button {
-        width: 100%; /* Make the button take full width */
+        width: 100%;
         text-align: center;
     }
 }
@@ -49,6 +49,6 @@
     }
 
     .logout-button-container button {
-        font-size: 14px; /* Adjust font size for smaller screens */
+        font-size: 14px;
     }
 }

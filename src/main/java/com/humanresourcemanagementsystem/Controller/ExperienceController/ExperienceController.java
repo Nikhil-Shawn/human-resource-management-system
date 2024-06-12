@@ -1,5 +1,6 @@
 package com.humanresourcemanagementsystem.Controller.ExperienceController;
 
+import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Dto.ExperienceDTO;
 import com.humanresourcemanagementsystem.Service.ExperienceService;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,18 @@ public class ExperienceController
     @GetMapping("/{id}")
     public ExperienceDTO getExperienceById(@PathVariable int id) {
         return experienceService.getExperienceById(id);
+    }
+
+    // Get experience by person ID
+    @GetMapping("/byperson/{id}")
+    public ExperienceDTO getExperienceByPersonId(@PathVariable int id) {
+        return experienceService.getExperienceByPersonId(id);
+    }
+
+    // Get experience by employee ID
+    @GetMapping("/byemployee/{id}")
+    public ExperienceDTO getExperienceByEmployeeId(@PathVariable int id) {
+        return experienceService.getExperienceByEmployeeId(id);
     }
 
     // Get all experiences
