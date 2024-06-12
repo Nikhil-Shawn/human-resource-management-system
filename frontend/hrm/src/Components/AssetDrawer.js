@@ -59,7 +59,7 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       onClose();
     } catch (error) {
       console.error('Error saving asset:', error);
-      console.log(error.response); // Add this line to get more details about the error response
+      console.log(error.response);
     }
   };
 
