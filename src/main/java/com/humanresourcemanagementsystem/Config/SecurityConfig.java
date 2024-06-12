@@ -69,6 +69,14 @@ public class SecurityConfig {
                                 "/api/v1/experience/byperson/{id}",
                                 "/api/v1/experience/byemployee/{id}",
 
+                                // For Asset
+                                "/api/v1/assets/save", // Ensure this line is correct
+                                "/api/v1/assets/all", // Ensure this line is correct
+                                "/api/v1/assets/multi",
+                                "/api/v1/assets/{id}",
+                                "/api/v1/assets/update/{id}",
+
+
                                 //For Logout
                                 "/api/logout",
 
@@ -84,7 +92,7 @@ public class SecurityConfig {
                                 "/api/v1/education/{id}",
                                 "/api/v1/education/byperson/{id}",
                                 "/api/v1/education/byemployee/{id}",
-                                "/api/v1/education/multi",
+                                "/api/v1/education/multi"
 
                                 //For Asset
                                 "/api/v1/assets/all",

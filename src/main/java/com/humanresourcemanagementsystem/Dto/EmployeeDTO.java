@@ -7,11 +7,13 @@ import com.humanresourcemanagementsystem.Entity.Person;
 
 import java.util.Date;
 
+import java.util.Date;
+
 public class EmployeeDTO extends PersonDTO {
 
     private int employeeID;
     private Person person;
-    private Department department; // Updated field
+    private Department department;
     private Experience experience;
     private Education education;
     private int supervisorId;
@@ -32,11 +34,11 @@ public class EmployeeDTO extends PersonDTO {
     // Constructors
     public EmployeeDTO() {}
 
-    public EmployeeDTO(int employeeID, Boolean isSupervisor, String manageWhom, Department department, String employmentType, Boolean isAdmin, String empEmail, String empPassword, String designation, Date hireDate, Date terminationDate, String employmentStatus, String workLocation, Date createdAt, Date updatedAt) {
+    public EmployeeDTO(int employeeID, Boolean isSupervisor, String manageWhom, String employmentType, Boolean isAdmin, String empEmail, String empPassword, String designation, Date hireDate, Date terminationDate, String employmentStatus, String workLocation, Date createdAt, Date updatedAt) {
         this.employeeID = employeeID;
+        this.supervisorId = employeeID;
         this.isSupervisor = isSupervisor;
         this.manageWhom = manageWhom;
-        this.department = department; // Updated field
         this.employmentType = employmentType;
         this.isAdmin = isAdmin;
         this.empEmail = empEmail;
@@ -51,15 +53,6 @@ public class EmployeeDTO extends PersonDTO {
     }
 
     // Getters and Setters
-
-    public Department getDepartment() {
-        return department; // Updated getter
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department; // Updated setter
-    }
-
     public int getEmployeeID() {
         return employeeID;
     }
@@ -67,13 +60,20 @@ public class EmployeeDTO extends PersonDTO {
     public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
     }
-
     public Person getPerson() {
         return person;
     }
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Experience getExperience() {
@@ -196,11 +196,36 @@ public class EmployeeDTO extends PersonDTO {
         this.createdAt = createdAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public Date getUpdatedAt() {
         return updatedAt;
     }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+    @Override
+    public String toString() {
+        return "EmployeeDTO{" +
+                "employeeID=" + employeeID +
+                ", person=" + person +
+                ", department=" + department +
+                ", experience=" + experience +
+                ", education=" + education +
+                ", supervisorId=" + supervisorId +
+                ", isSupervisor=" + isSupervisor +
+                ", manageWhom='" + manageWhom + '\'' +
+                ", employmentType='" + employmentType + '\'' +
+                ", isAdmin=" + isAdmin +
+                ", empEmail='" + empEmail + '\'' +
+                ", empPassword='" + empPassword + '\'' +
+                ", designation='" + designation + '\'' +
+                ", hireDate=" + hireDate +
+                ", terminationDate=" + terminationDate +
+                ", employmentStatus='" + employmentStatus + '\'' +
+                ", workLocation='" + workLocation + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }
+
