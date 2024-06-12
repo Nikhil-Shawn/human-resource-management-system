@@ -70,6 +70,7 @@
   flex-direction: column;
   gap: 10px; 
   margin-top: 30px;
+  margin-bottom: 100px;
 }
 
 .assets-form-group {

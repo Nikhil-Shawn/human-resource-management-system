@@ -96,7 +96,6 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
           <Button variant="text" onClick={onClose} className="assets-cancel-button">Cancel</Button>
           <Button variant="contained" onClick={handleSave} className="save-button">Save</Button>
         </div>
-        <button className="assets-drawer-close-button" onClick={onClose}>&times;</button>
       </div>
       <div className="form-container">
         <div className="assets-form-group">
