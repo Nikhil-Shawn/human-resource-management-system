@@ -9,23 +9,42 @@ import HeaderComponent from '../Components/HeaderComponent';
 
 function Employee() {
   const [employees, setEmployees] = useState([]);
+  const [departments, setDepartments] = useState({});
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/v1/employee/all')
       .then(response => {
-        setEmployees(response.data);
-        console.log(response.data)
+        const employeeData = response.data;
+        setEmployees(employeeData);
+        employeeData.forEach(employee => {
+          fetchDepartment(employee.departmentId);
+        });
       })
       .catch(error => {
         console.error("There was an error fetching the employee data!", error);
       });
   }, []);
 
+  const fetchDepartment = (departmentId) => {
+    if (!departments[departmentId]) {
+      axios.get(`http://localhost:8080/api/departments/${departmentId}`)
+        .then(response => {
+          setDepartments(prevDepartments => ({
+            ...prevDepartments,
+            [departmentId]: response.data.name
+          }));
+        })
+        .catch(error => {
+          console.error(`There was an error fetching the department data for ID ${departmentId}!`, error);
+        });
+    }
+  };
+
   return (
     <div className="app">
       <Sidebar />
       <div className="main-content">
-        <HeaderComponent/>
+        <HeaderComponent />
         <div className="employee-container">
           <div className="employee-text">Employee List</div>
           <table className="employee-table">
@@ -39,8 +58,8 @@ function Employee() {
                   padding: '20px 0px 20px 40px',
                   marginLeft: '10px'
                 }}>Name</th>
-                <th>Position</th> 
-                <th>Deparment</th>
+                <th>Position</th>
+                <th>Department</th>
                 <th>Status</th>
                 <th>Joining Date</th>
                 <th>Email address</th>
@@ -48,7 +67,7 @@ function Employee() {
                 <th></th>
               </tr>
             </thead>
-            <tbody style={{fontSize: '0.8vw', textAlign: 'center'}}>
+            <tbody style={{ fontSize: '0.8vw', textAlign: 'center' }}>
               {employees.map(employee => (
                 <tr key={employee.employeeID}>
                   <td style={{ display: 'flex', alignItems: 'center', borderLeft: '1px solid #E0E4EA', padding: '20px' }}>
@@ -71,7 +90,9 @@ function Employee() {
                     padding: '8px 20px',
                     display: 'inline-block'
                   }}>{employee.designation}</span></td>
-                  <td>{employee.department}</td>
+                  <td>{departments.map(department =>(
+                    department.department_name
+                  ))}</td>
                   <td><span style={{
                     backgroundColor: employee.employmentStatus === 'Active' ? '#DDFCE0' : '#FCE0E0',
                     color: employee.employmentStatus === 'Active' ? '#0EB01D' : '#B00E0E',
@@ -80,10 +101,10 @@ function Employee() {
                     display: 'inline-block'
                   }}>{employee.employmentStatus}</span></td>
                   <td>{employee.createdAt}</td>
-                  <td><IoIosMail style={{marginRight: '5px' }}/>{employee.email}</td>
-                  <td><FaPhoneAlt style={{marginRight: '5px' }}/>{employee.phone}</td>
+                  <td><IoIosMail style={{ marginRight: '5px' }} />{employee.email}</td>
+                  <td><FaPhoneAlt style={{ marginRight: '5px' }} />{employee.phone}</td>
                   <td style={{ borderRight: '1px solid #E0E4EA' }}>
-                    <BsThreeDotsVertical/>
+                    <BsThreeDotsVertical />
                   </td>
                 </tr>
               ))}

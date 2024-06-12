@@ -39,7 +39,7 @@ public class DepartmentService {
 
         Department department = new Department();
         department.setDepartmentName(departmentDTO.getDepartmentName());
-        department.setDepartmentStatus(DepartmentStatus.valueOf(departmentDTO.getDepartmentStatus().toUpperCase()));
+        department.setDepartmentStatus(DepartmentStatus.valueOf(departmentDTO.getDepartmentStatus().toLowerCase()));
 
         Department savedDepartment = departmentRepository.save(department);
         Map<String, Object> responseData = new HashMap<>();
@@ -56,7 +56,7 @@ public class DepartmentService {
         if (departmentRepository.existsById(id)) {
             Department department = departmentRepository.findById(id).orElseThrow();
             department.setDepartmentName(departmentDTO.getDepartmentName());
-            department.setDepartmentStatus(DepartmentStatus.valueOf(departmentDTO.getDepartmentStatus().toUpperCase()));
+            department.setDepartmentStatus(DepartmentStatus.valueOf(departmentDTO.getDepartmentStatus().toLowerCase()));
 
             Department updatedDepartment = departmentRepository.save(department);
             return convertToDTO(updatedDepartment);
@@ -81,7 +81,7 @@ public class DepartmentService {
         DepartmentDTO departmentDTO = new DepartmentDTO();
         departmentDTO.setDepartmentId(department.getDepartmentId());
         departmentDTO.setDepartmentName(department.getDepartmentName());
-        departmentDTO.setDepartmentStatus(department.getDepartmentStatus().name()); // Ensure enum is converted to string
+        departmentDTO.setDepartmentStatus(department.getDepartmentStatus().name());
         departmentDTO.setCreatedAt(department.getCreatedAt());
         departmentDTO.setUpdatedAt(department.getUpdatedAt());
         return departmentDTO;

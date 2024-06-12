@@ -25,7 +25,8 @@
   border: none;
   border-radius: 4px;
   padding: 7px;
-  width: 140px;
+  width: 170px;
+  height: 50px;
 }
 
 .add-leave-button-container button:hover {

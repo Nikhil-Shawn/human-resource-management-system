@@ -35,11 +35,11 @@ public class AssetIMPL implements AssetService {
         if (employee == null) {
             return "Employee not found";
         }
-
-        // Check if the employee already has an asset assigned
-        if (assetRepository.existsByEmployee(employee)) {
-            return "Employee already has an asset assigned";
-        }
+//
+//        // Check if the employee already has an asset assigned
+//        if (assetRepository.existsByEmployee(employee)) {
+//            return "Employee already has an asset assigned";
+//        }
 
         Asset asset = new Asset();
         // Add associated asset information

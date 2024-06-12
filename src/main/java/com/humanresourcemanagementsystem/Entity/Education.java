@@ -20,6 +20,11 @@ public class Education {
     @JoinColumn(name = "person_id", referencedColumnName = "person_id")
     private Person person;
 
+    //One employee can have multiple benefits
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
+    private Employee employee;
+
     @Column(name = "degree", nullable = false)
     private String degree;
 
@@ -50,9 +55,12 @@ public class Education {
     }
 
     //Parameterized constructor initializes all fields with provided values
-    public Education(int education_id, Person person, String degree, String institution, String major, Date graduation_start_date, Date graduation_end_date, Date created_at, Date updated_at) {
+
+
+    public Education(int education_id, Person person, Employee employee, String degree, String institution, String major, Date graduation_start_date, Date graduation_end_date, Date created_at, Date updated_at) {
         this.education_id = education_id;
         this.person = person;
+        this.employee = employee;
         this.degree = degree;
         this.institution = institution;
         this.major = major;
@@ -63,7 +71,10 @@ public class Education {
     }
 
     // Getter and Setter provide access to the private fields
-    public int getEducation_id() { return education_id;}
+
+    public int getEducation_id() {
+        return education_id;
+    }
 
     public void setEducation_id(int education_id) {
         this.education_id = education_id;
@@ -75,6 +86,14 @@ public class Education {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public String getDegree() {
@@ -105,7 +124,9 @@ public class Education {
         return graduation_start_date;
     }
 
-    public void setGraduation_start_date(Date graduation_start_date) { this.graduation_start_date = graduation_start_date;}
+    public void setGraduation_start_date(Date graduation_start_date) {
+        this.graduation_start_date = graduation_start_date;
+    }
 
     public Date getGraduation_end_date() {
         return graduation_end_date;
@@ -130,6 +151,5 @@ public class Education {
     public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
     }
-
 }
 

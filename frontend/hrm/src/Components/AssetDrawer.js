@@ -10,7 +10,7 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
   const [employeeId, setEmployeeId] = useState('');
   const [issuedDate, setIssuedDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
-  const [assetId, setAssetId] = useState();
+  const [assetId, setAssetId] = useState(null);
 
   useEffect(() => {
     if (asset) {
@@ -20,14 +20,13 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       setIssuedDate(asset.issued_date);
       setReturnDate(asset.return_date);
       setAssetId(asset.asset_id);
-     
     } else {
       setAssetType('');
       setSerialNumber('');
       setEmployeeId('');
       setIssuedDate('');
       setReturnDate('');
-      setAssetId('');
+      setAssetId(null);
     }
   }, [asset]);
 
@@ -39,16 +38,28 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       return_date: returnDate,
       employee_id: employeeId,
     };
-console.log("new assetId = ",assetId)
+
+    console.log("new assetId = ", assetId);
+    console.log("assetData = ", assetData);
+
     try {
       const response = assetId
-        ? await axios.put(`http://localhost:8080/api/v1/assets/update/${assetId}`, assetData)
-        : await axios.post('http://localhost:8080/api/v1/assets/save', assetData);
+        ? await axios.put(`http://localhost:8080/api/v1/assets/update/${assetId}`, assetData, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+        : await axios.post('http://localhost:8080/api/v1/assets/save', assetData, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
 
       onSave(response.data);
       onClose();
     } catch (error) {
       console.error('Error saving asset:', error);
+      console.log(error.response); // Add this line to get more details about the error response
     }
   };
 
