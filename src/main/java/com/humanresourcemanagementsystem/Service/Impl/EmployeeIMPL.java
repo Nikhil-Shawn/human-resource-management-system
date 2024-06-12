@@ -34,24 +34,38 @@ public class EmployeeIMPL implements EmployeeService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
     @Override
     public EmployeeDTO getEmployeeById(int id) {
         Optional<Employee> employeeOpt = employeeRepository.findById(id);
         if (employeeOpt.isPresent()) {
             Employee employee = employeeOpt.get();
-            // Fetch associated person information
-            EmployeeDTO employeeDTO = new EmployeeDTO();
-            employeeDTO.setEmployeeID(employee.getEmployeeID());
-            employeeDTO.setDesignation(employee.getDesignation());
-            // Fetch associated person details
-            Person person = personService.getPersonById(employee.getPerson().getPersonID());
-            employeeDTO.setPerson(person);
-            return employeeDTO;
+            // Map the Employee entity to EmployeeDTO using the mapper
+            return employeeMapper.toEmployeeDTO(employee);
         } else {
             throw new RuntimeException("Employee not found with id: " + id);
         }
     }
 
+//    @Override
+//    public EmployeeDTO getEmployeeById(int id) {
+//        Optional<Employee> employeeOpt = employeeRepository.findById(id);
+//        if (employeeOpt.isPresent()) {
+//            Employee employee = employeeOpt.get();
+//            // Fetch associated person information
+//            EmployeeDTO employeeDTO = new EmployeeDTO();
+//            employeeDTO.setEmployeeID(employee.getEmployeeID());
+//            employeeDTO.setDesignation(employee.getDesignation());
+//            // Fetch associated person details
+//            Person person = personService.getPersonById(employee.getPerson().getPersonID());
+//            employeeDTO.setPerson(person);
+//            return employeeDTO;
+//        } else {
+//            throw new RuntimeException("Employee not found with id: " + id);
+//        }
+//    }
+
+// Backup code in case of failure
 //    @Override
 //    public List<EmployeeDTO> getAllEmployees() {
 //        List<Employee> employees = employeeRepository.findAll();

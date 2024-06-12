@@ -4,17 +4,32 @@ import Sidebar from '../Components/Sidebar';
 import dateDot from '../images/dateIcon.png';
 import locationDot from '../images/locationIcon.png';
 import './EmployeeDetail.css';
+import axios from 'axios';
+import { useAuth } from './AuthContext';
 
 function EmployeeDetail() {
+  const { authData } = useAuth();
   const [employeeData, setEmployeeData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/v1/employee/save')
-      .then(response => response.json())
-      .then(data => setEmployeeData(data))
-      .catch(error => console.error('Error fetching employee data:', error));
-  }, []);
+    const fetchEmployeeData = async () => {
+      try {
+        const employeeId = authData.data.employeeId;
+        console.log("is id proper?", employeeId);
+        const response = await axios.get(`http://localhost:8080/api/v1/employee/${employeeId}`);
+        const { person, designation } = response.data;
+        setEmployeeData({ ...person, designation });
+        console.log("Employee data:", employeeData.designation);
+      } catch (error) {
+        console.error("Error fetching employee data:", error);
+      }
+    };
+
+    if (authData) {
+      fetchEmployeeData();
+    }
+  }, [authData]);
 
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
@@ -38,15 +53,15 @@ function EmployeeDetail() {
               </div>
               <div className="info-group">
                 <label>Date of Joining:</label>
-                <span>{employeeData.hireDate}</span>
+                <span>{employeeData.createdAt}</span>
               </div>
               <div className="info-group">
                 <label>Email:</label>
-                <span>{employeeData.empEmail}</span>
+                <span>{employeeData.personEmail}</span>
               </div>
               <div className="info-group">
                 <label>Designation:</label>
-                <span>{employeeData.Designation}</span>
+                <span>{employeeData.designation}</span>
               </div>
             </div>
 
