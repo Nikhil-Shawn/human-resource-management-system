@@ -15,7 +15,7 @@ public class PayrollController {
     @Autowired
     private PayrollService payrollService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<PayrollDTO> getAllPayrolls() {
         return payrollService.getAllPayrolls();
     }
@@ -39,13 +39,13 @@ public class PayrollController {
     }
 
     //Update payroll by ID
-    @PutMapping("/{id}")
+    @PutMapping("/updatePayroll/{id}")
     public PayrollDTO updatePayroll(@PathVariable Long id, @RequestBody PayrollDTO payrollDTO) {
         return payrollService.updatePayroll(id, payrollDTO);
     }
 
     //Delete payroll by ID
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletePayroll/{id}")
     public void deletePayroll(@PathVariable Long id) {
         payrollService.deletePayroll(id);
     }
