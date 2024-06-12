@@ -44,6 +44,7 @@ public class SecurityConfig {
                                 "/api/payrolls/addPayroll/{id}",
                                 "/api/payrolls/updatePayroll/{id}",
                                 "/api/payrolls/deletePayroll/{id}",
+                                "/api/payrolls/employee/{employeeId}",
 
                                 //For Department
                                 "/api/departments",
@@ -74,6 +75,8 @@ public class SecurityConfig {
                                 //For Employee
                                 "api/v1/employee/all",
                                 "api/v1/employee/save",
+                                "api/v1/employee/{id}",
+                                "api/v1/employee/employeeget/{id}",
 
                                 //For Education
                                 "api/v1/education/all",
@@ -84,11 +87,20 @@ public class SecurityConfig {
                                 "/api/v1/education/byemployee/{id}",
                                 "/api/v1/education/multi",
 
+                                //For Asset
+                                "/api/v1/assets/all",
+                                "/api/v1/assets/save",
+                                "/api/v1/assets/update/{id}",
+                                "/api/v1/assets/{id}",
+                                "/api/v1/assets/multi ",
+                                
                                 //For Separation
                                 "/api/v1/separation/save",
                                 "/api/v1/separation/{id}",
                                 "api/v1/separation/all",
                                 "/api/v1/separation/update/{id}"
+
+
 
                                 ).permitAll()
                         .anyRequest().authenticated()

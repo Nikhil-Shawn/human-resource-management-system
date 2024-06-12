@@ -10,6 +10,8 @@ public interface EmployeeService {
     String addEmployee(EmployeeDTO employeeDTO);
     //Display employee by ID
     EmployeeDTO getEmployeeById(int id);
+    //Display employee
+    EmployeeDTO getEmployee(int id);
     //Display all employees
     List<EmployeePersonDTO> getAllEmployees();
     //Update Employee

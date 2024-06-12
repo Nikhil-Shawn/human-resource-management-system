@@ -36,6 +36,11 @@ public class AssetIMPL implements AssetService {
             return "Employee not found";
         }
 
+        // Check if the employee already has an asset assigned
+        //if (assetRepository.existsByEmployee(employee)) {
+        //  return "Employee already has an asset assigned";
+        //}
+
         Asset asset = new Asset();
         // Add associated asset information
         asset.setAsset_type(assetDTO.getAsset_type());
@@ -112,6 +117,7 @@ public class AssetIMPL implements AssetService {
     }
 
     @Override
+    //Get Asset By Employee ID
     public List<AssetDTO> getAssetsByEmployeeId(Long employeeId) {
         List<Asset> assets = assetRepository.findByEmployeeEmployeeID(employeeId);
         return assets.stream().map(asset -> {

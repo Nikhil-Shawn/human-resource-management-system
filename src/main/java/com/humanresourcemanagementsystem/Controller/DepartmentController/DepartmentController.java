@@ -27,7 +27,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseData> getDepartmentById(@PathVariable Long id) {
+    public ResponseEntity<ResponseData> getDepartmentById(@PathVariable int id) {
         DepartmentDTO departmentDTO = departmentService.getDepartmentById(id);
         if (departmentDTO != null) {
             Map<String, Object> responseData = new HashMap<>();
@@ -46,7 +46,7 @@ public class DepartmentController {
 
 
     @PutMapping("/updateDepartment/{id}")
-    public ResponseEntity<ResponseData> updateDepartment(@PathVariable Long id, @RequestBody DepartmentDTO departmentDTO) {
+    public ResponseEntity<ResponseData> updateDepartment(@PathVariable int id, @RequestBody DepartmentDTO departmentDTO) {
         DepartmentDTO updatedDepartment = departmentService.updateDepartment(id, departmentDTO);
         if (updatedDepartment != null) {
             Map<String, Object> responseData = new HashMap<>();
@@ -58,7 +58,7 @@ public class DepartmentController {
     }
 
     @DeleteMapping("/deleteDepartment/{id}")
-    public ResponseEntity<ResponseData> deleteDepartment(@PathVariable Long id) {
+    public ResponseEntity<ResponseData> deleteDepartment(@PathVariable int id) {
         String message = departmentService.deleteDepartment(id);
         Map<String, Object> responseData = new HashMap<>();
         responseData.put("message", message);

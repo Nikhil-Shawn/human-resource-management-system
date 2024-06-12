@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
@@ -6,30 +6,43 @@ import "../App.css";
 import HeaderComponent from "../Components/HeaderComponent.js";
 import Sidebar from "../Components/Sidebar.jsx";
 import "./Dashboard.css";
+import { useAuth } from "./AuthContext";
 
 function Dashboard() {
+    const { authData } = useAuth();
     const [startDate, setStartDate] = useState(new Date());
     const navigate = useNavigate();
 
+    console.log("AUTHDATA HERE", authData.data.employeeId);
+    const employeeId = authData.data.employeeId;
+    console.log(employeeId);
+
+    
+
+
     const displayEmployee = () => {
         navigate('/employee');
-    }
+    };
 
     const displayLeaves = () => {
         navigate('/leaves');
-    }
+    };
+
+    const displayDepartment = () => {
+        navigate('/department');
+    };
 
     const displayPayroll = () => {
         navigate('/payroll');
-    }
+    };
 
     const displaySeparation = () => {
         navigate('/separation');
-    }
+    };
 
     const displayAssets = () => {
         navigate('/assets');
-    }
+    };
 
     return (
         <div className="dashboard-container">
@@ -57,6 +70,11 @@ function Dashboard() {
                             <div className="card-title">Asset</div>
                             <div className="card-icon assets-icon"></div>
                             <div className="card-subtitle">Asset Management</div>
+                        </div>
+                        <div className="dashboard-card" onClick={displayDepartment}>
+                            <div className="card-title">Department</div>
+                            <div className="card-icon assets-icon"></div>
+                            <div className="card-subtitle">Depatment Details</div>
                         </div>
                         <div className="dashboard-card" onClick={displaySeparation}>
                             <div className="card-title">Separation</div>
