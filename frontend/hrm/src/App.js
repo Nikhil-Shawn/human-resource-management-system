@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 import Login from "./Pages/Login";
-import Separation from "./Pages/Separation";
+import Payroll from "./Pages/Payroll";
 
 function App() {
 	return (
 		<div className="wrapper">
-			<Separation />
+			<Payroll />
 		</div>
 	);
 }
