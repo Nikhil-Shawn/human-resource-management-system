@@ -1,5 +1,10 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import FormHelperText from '@mui/material/FormHelperText';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './AssetDrawer.css';
@@ -11,6 +16,7 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
   const [issuedDate, setIssuedDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
   const [assetId, setAssetId] = useState(null);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (asset) {
@@ -28,19 +34,30 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       setReturnDate('');
       setAssetId(null);
     }
+    setErrors({});
   }, [asset]);
 
-  const handleSave = async () => {
-    const assetData = {
-      asset_type: assetType,
-      serial_number: serialNumber,
-      issued_date: issuedDate,
-      return_date: returnDate,
-      employee_id: employeeId,
-    };
+  const validate = () => {
+    const newErrors = {};
+    if (!assetType.trim()) newErrors.assetType = 'Please enter this field';
+    if (!serialNumber.trim()) newErrors.serialNumber = 'Please enter this field';
+    if (!employeeId.trim()) newErrors.employeeId = 'Please enter this field';
+    if (!issuedDate.trim()) newErrors.issuedDate = 'Please enter this field';
+    if (!returnDate.trim()) newErrors.returnDate = 'Please enter this field';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-    console.log("new assetId = ", assetId);
-    console.log("assetData = ", assetData);
+  const handleSave = async () => {
+    if (!validate()) return;
+
+    const assetData = {
+      asset_type: assetType.trim(),
+      serial_number: serialNumber.trim(),
+      issued_date: issuedDate.trim(),
+      return_date: returnDate.trim(),
+      employee_id: employeeId.trim(),
+    };
 
     try {
       const response = assetId
@@ -59,7 +76,7 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       onClose();
     } catch (error) {
       console.error('Error saving asset:', error);
-      console.log(error.response); // Add this line to get more details about the error response
+      console.log(error.response);
     }
   };
 
@@ -84,15 +101,22 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       <div className="form-container">
         <div className="assets-form-group">
           <p>Asset Type</p>
-          <TextField
-            id="asset-type"
-            label="Asset Type"
-            variant="outlined"
-            fullWidth
-            value={assetType}
-            onChange={(e) => setAssetType(e.target.value)}
-            sx={textFieldStyles}
-          />
+          <FormControl variant="outlined" fullWidth error={!!errors.assetType}>
+            <InputLabel id="asset-type-label">Asset Type</InputLabel>
+            <Select
+              labelId="asset-type-label"
+              id="asset-type"
+              value={assetType}
+              onChange={(e) => setAssetType(e.target.value)}
+              label="Asset Type"
+            >
+              <MenuItem value="Laptop">Laptop</MenuItem>
+              <MenuItem value="SmartPhone">Smart Phone</MenuItem>
+              <MenuItem value="Tablet">Tablet</MenuItem>
+              <MenuItem value="Headset">Headset</MenuItem>
+            </Select>
+            {errors.assetType && <FormHelperText>{errors.assetType}</FormHelperText>}
+          </FormControl>
         </div>
         <div className="assets-form-group">
           <p>Serial Number</p>
@@ -103,6 +127,8 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
             fullWidth
             value={serialNumber}
             onChange={(e) => setSerialNumber(e.target.value)}
+            error={!!errors.serialNumber}
+            helperText={errors.serialNumber}
             sx={textFieldStyles}
           />
         </div>
@@ -115,6 +141,8 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
             fullWidth
             value={employeeId}
             onChange={(e) => setEmployeeId(e.target.value)}
+            error={!!errors.employeeId}
+            helperText={errors.employeeId}
             sx={textFieldStyles}
           />
         </div>
@@ -127,6 +155,8 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
             fullWidth
             value={issuedDate}
             onChange={(e) => setIssuedDate(e.target.value)}
+            error={!!errors.issuedDate}
+            helperText={errors.issuedDate}
             sx={textFieldStyles}
             InputLabelProps={{
               shrink: true,
@@ -142,6 +172,8 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
             fullWidth
             value={returnDate}
             onChange={(e) => setReturnDate(e.target.value)}
+            error={!!errors.returnDate}
+            helperText={errors.returnDate}
             sx={textFieldStyles}
             InputLabelProps={{
               shrink: true,

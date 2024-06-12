@@ -2,6 +2,7 @@ package com.humanresourcemanagementsystem.Service.Impl;
 
 import com.humanresourcemanagementsystem.Dto.ExperienceDTO;
 import com.humanresourcemanagementsystem.Entity.*;
+import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
 import com.humanresourcemanagementsystem.Repo.ExperienceRepository;
 import com.humanresourcemanagementsystem.Repo.PersonRepository;
 import com.humanresourcemanagementsystem.Service.ExperienceService;
@@ -25,6 +26,10 @@ public class ExperienceIMPL implements ExperienceService {
     @Autowired
     private PersonRepository personRepository;
 
+    //Provide data access operations for Employee entity
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @Autowired
     private PersonService personService;
 
@@ -35,9 +40,7 @@ public class ExperienceIMPL implements ExperienceService {
     {
         // Checks if the associated person exists
         Person person = personRepository.findById(experienceDTO.getPerson_id()).orElse(null);
-        if (person == null) {
-            return "Person not found";
-        }
+        Employee employee = employeeRepository.findById(experienceDTO.getEmployee_id()).orElse(null);
 
         // set experience details
         Experience experience = new Experience();
@@ -48,7 +51,8 @@ public class ExperienceIMPL implements ExperienceService {
         experience.setStart_date(experienceDTO.getStart_date());
         experience.setEnd_date(experienceDTO.getEnd_date());
         experience.setPerson(person);
-        System.out.println(experience);
+        experience.setEmployee(employee);
+
         //Save experience details
         experienceRepository.save(experience);
         return "Experience added successfully";
@@ -93,6 +97,52 @@ public class ExperienceIMPL implements ExperienceService {
             ExperienceDTO experienceDTO = new ExperienceDTO();
             experienceDTO.setExperience_id(experience.getExperienceID());
             experienceDTO.setPerson_id(experience.getPerson());
+            experienceDTO.setCompany_name(experience.getCompany_name());
+            experienceDTO.setEmployment_type(experience.getEmployment_type());
+            experienceDTO.setNo_of_years(experience.getNo_of_years());
+            experienceDTO.setPosition(experience.getPosition());
+            experienceDTO.setStart_date(experience.getStart_date());
+            experienceDTO.setEnd_date(experience.getEnd_date());
+            return experienceDTO;
+        } else {
+            throw new RuntimeException("Experience not found with id: " + id);
+        }
+    }
+
+    @Override
+    //Display experience by person ID
+    public ExperienceDTO getExperienceByPersonId(int id) {
+        Optional<Experience> experienceOpt = experienceRepository.findById(id);
+        if (experienceOpt.isPresent()) {
+            Experience experience = experienceOpt.get();
+
+            // Fetch associated experience information
+            ExperienceDTO experienceDTO = new ExperienceDTO();
+            experienceDTO.setExperience_id(experience.getExperienceID());
+            experienceDTO.setPerson_id(experience.getPerson());
+            experienceDTO.setCompany_name(experience.getCompany_name());
+            experienceDTO.setEmployment_type(experience.getEmployment_type());
+            experienceDTO.setNo_of_years(experience.getNo_of_years());
+            experienceDTO.setPosition(experience.getPosition());
+            experienceDTO.setStart_date(experience.getStart_date());
+            experienceDTO.setEnd_date(experience.getEnd_date());
+            return experienceDTO;
+        } else {
+            throw new RuntimeException("Experience not found with id: " + id);
+        }
+    }
+
+    @Override
+    //Display experience by employee ID
+    public ExperienceDTO getExperienceByEmployeeId(int id) {
+        Optional<Experience> experienceOpt = experienceRepository.findById(id);
+        if (experienceOpt.isPresent()) {
+            Experience experience = experienceOpt.get();
+
+            // Fetch associated experience information
+            ExperienceDTO experienceDTO = new ExperienceDTO();
+            experienceDTO.setExperience_id(experience.getExperienceID());
+            experienceDTO.setEmployee_id(experience.getExperienceID());
             experienceDTO.setCompany_name(experience.getCompany_name());
             experienceDTO.setEmployment_type(experience.getEmployment_type());
             experienceDTO.setNo_of_years(experience.getNo_of_years());

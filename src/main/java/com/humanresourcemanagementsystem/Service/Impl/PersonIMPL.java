@@ -1,6 +1,5 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
-import com.humanresourcemanagementsystem.Dto.PersonDTO;
 import com.humanresourcemanagementsystem.Entity.Person;
 import com.humanresourcemanagementsystem.Repo.PersonRepository;
 import com.humanresourcemanagementsystem.Service.PersonService;

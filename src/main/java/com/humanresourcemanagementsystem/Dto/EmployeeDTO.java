@@ -11,6 +11,7 @@ import java.util.Date;
 
 public class EmployeeDTO extends PersonDTO {
 
+    // Employee entity fields
     private int employeeID;
     private Person person;
     private Department department;
@@ -31,9 +32,10 @@ public class EmployeeDTO extends PersonDTO {
     private Date createdAt;
     private Date updatedAt;
 
-    // Constructors
+    // Default constructor initializes created at and updated at field with current date
     public EmployeeDTO() {}
 
+    //Parameterized constructor initializes all fields with provided values
     public EmployeeDTO(int employeeID, Boolean isSupervisor, String manageWhom, String employmentType, Boolean isAdmin, String empEmail, String empPassword, String designation, Date hireDate, Date terminationDate, String employmentStatus, String workLocation, Date createdAt, Date updatedAt) {
         this.employeeID = employeeID;
         this.supervisorId = employeeID;
@@ -52,7 +54,7 @@ public class EmployeeDTO extends PersonDTO {
         this.updatedAt = updatedAt;
     }
 
-    // Getters and Setters
+    // Getter and Setter provide access to the private fields
     public int getEmployeeID() {
         return employeeID;
     }
@@ -203,6 +205,8 @@ public class EmployeeDTO extends PersonDTO {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    //Provides detailed and formatted information about the object’s current state.
     @Override
     public String toString() {
         return "EmployeeDTO{" +

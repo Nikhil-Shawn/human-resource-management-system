@@ -1,5 +1,9 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './DepartmentDrawer.css';
@@ -84,14 +88,19 @@ const Drawer = ({ isOpen, onClose, onSave, department }) => {
         </div>
         <div className="department-form-group">
           <p>STATUS</p>
-          <TextField
-            id="department-status"
-            label="Type in Active or Inactive"
-            variant="outlined"
-            fullWidth
-            value={departmentStatus}
-            onChange={(e) => setDepartmentStatus(e.target.value)}
-          />
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel id="department-status-label">Status</InputLabel>
+            <Select
+              labelId="department-status-label"
+              id="department-status"
+              value={departmentStatus}
+              onChange={(e) => setDepartmentStatus(e.target.value)}
+              label="Status"
+            >
+              <MenuItem value="Active">Active</MenuItem>
+              <MenuItem value="Inactive">Inactive</MenuItem>
+            </Select>
+          </FormControl>
         </div>
       </div>
     </div>

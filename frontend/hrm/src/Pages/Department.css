@@ -1,4 +1,3 @@
-/* Container for the departments table */
 .departments-container {
   padding-left: 20px;
   padding-right: 20px;
@@ -6,20 +5,17 @@
   margin-left: 30px;
 }
 
-/* Styling for the departments text */
 .departments-text {
   font-size: 32px;
   font-weight: 700;
 }
 
-/* Styling for the departments heading */
 .departments-heading {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-/* Styling for the add department button */
 .add-department-button-container button {
   font-size: 16px;
   cursor: pointer;
@@ -36,7 +32,6 @@
   background-color: #80aaff;
 }
 
-/* Styling for the department table */
 .department-table {
   width: 100%;
   border-collapse: separate;
@@ -46,7 +41,7 @@
 
 .department-table th,
 .department-table td {
-  padding: 16px 8px; /* Add padding to increase spacing inside cells */
+  padding: 16px 8px;
   text-align: left;
   background: white;
   border-bottom: 1px solid #E0E4EA;
@@ -61,7 +56,6 @@
   background-color: #f1f1f1;
 }
 
-/* Dropdown menu styles */
 .dropdown-container {
   position: relative;
   display: inline-block;

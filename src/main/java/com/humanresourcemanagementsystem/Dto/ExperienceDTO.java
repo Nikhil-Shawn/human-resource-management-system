@@ -7,6 +7,7 @@ public class ExperienceDTO {
     // Experience entity fields
     private int experience_id;
         private int person_id ;
+        private int employee_id ;
         private String company_name;
         private String employment_type;
         private String  no_of_years;
@@ -19,9 +20,10 @@ public class ExperienceDTO {
     }
 
     //Parameterized constructor initializes all fields with provided values
-    public ExperienceDTO(int experience_id, int person_id, String company_name, String employment_type, String no_of_years, String position, Date start_date, Date end_date) {
+    public ExperienceDTO(int experience_id, int person_id, int employee_id, String company_name, String employment_type, String no_of_years, String position, Date start_date, Date end_date) {
         this.experience_id = experience_id;
-        this. person_id =  person_id ;
+        this.person_id = person_id;
+        this.employee_id = employee_id;
         this.company_name = company_name;
         this.employment_type = employment_type;
         this.no_of_years = no_of_years;
@@ -39,12 +41,20 @@ public class ExperienceDTO {
         this.experience_id = experience_id;
     }
 
-    public Integer getPerson_id() {
+    public int getPerson_id() {
         return person_id;
     }
 
     public void setPerson_id(int person_id) {
         this.person_id = person_id;
+    }
+
+    public int getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
     }
 
     public String getCompany_name() {
@@ -101,6 +111,7 @@ public class ExperienceDTO {
         return "ExperienceDTO{" +
                 "experience_id=" + experience_id +
                 ",person_id=" + person_id +
+                ",employee_id=" + employee_id +
                 ",company_name=" + company_name +
                 ",employment_type='" + employment_type + '\'' +
                 ",no_of_years='" + no_of_years + '\'' +

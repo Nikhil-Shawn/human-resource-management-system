@@ -24,16 +24,19 @@ public class VacationService {
     @Autowired
     private EmployeeRepository employeeRepo;
 
+    //Display all vacations
     public List<VacationDTO> getAllVacations() {
         return vacationRepository.findAll().stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
+    //Display vacations by ID
     public VacationDTO getVacationById(Long id) {
         return vacationRepository.findById(id).map(this::convertToDTO).orElse(null);
     }
 
+    //Create Vacations
     public ResponseData createVacation(Long employeeId, VacationDTO vacationDTO) {
         Optional<Employee> employeeOptional = employeeRepo.findById(Math.toIntExact(employeeId));
         if (employeeOptional.isPresent()) {
@@ -64,6 +67,7 @@ public class VacationService {
         }
     }
 
+    //Update vacation
     public ResponseData updateVacation(Long id, VacationDTO vacationDTO) {
         Optional<Vacation> vacationOptional = vacationRepository.findById(id);
         if (vacationOptional.isPresent()) {
@@ -92,6 +96,7 @@ public class VacationService {
         }
     }
 
+    //Delete vacation
     public ResponseData deleteVacation(Long id) {
         Optional<Vacation> vacationOptional = vacationRepository.findById(id);
         if (vacationOptional.isPresent()) {

@@ -1,6 +1,5 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
-import com.humanresourcemanagementsystem.Dto.AssetDTO;
 import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Entity.*;
 import com.humanresourcemanagementsystem.Repo.EducationRepository;
@@ -34,12 +33,9 @@ public class EducationIMPL implements EducationService {
     //Save single education
     public String addEducation(EducationDTO educationDTO) {
 
-//       // Checks if the associated person exists
+      // Checks if the associated person exists
        Person person = personRepository.findById(educationDTO.getPerson_id()).orElse(null);
        Employee employee = employeeRepository.findById(educationDTO.getEmployee_id()).orElse(null);
-//        if (person == null) {
-//            return "Person not found";
-//        }
 
         Education education = new Education();
 

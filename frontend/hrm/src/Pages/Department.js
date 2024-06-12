@@ -24,8 +24,7 @@ function Department() {
   const fetchDepartments = () => {
     axios.get('http://localhost:8080/api/departments', {
       headers: {
-        // Include authentication headers if required
-        // 'Authorization': 'Bearer YOUR_TOKEN',
+        
       }
     })
       .then(response => {

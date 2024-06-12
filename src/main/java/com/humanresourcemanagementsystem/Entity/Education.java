@@ -15,12 +15,12 @@ public class Education {
     @Column(name = "education_id")
     private int education_id;
 
-    //One person can have multiple benefits
+    //One person can have multiple educations
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "person_id")
     private Person person;
 
-    //One employee can have multiple benefits
+    //One employee can have multiple educations
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
     private Employee employee;
@@ -55,8 +55,6 @@ public class Education {
     }
 
     //Parameterized constructor initializes all fields with provided values
-
-
     public Education(int education_id, Person person, Employee employee, String degree, String institution, String major, Date graduation_start_date, Date graduation_end_date, Date created_at, Date updated_at) {
         this.education_id = education_id;
         this.person = person;
@@ -71,7 +69,6 @@ public class Education {
     }
 
     // Getter and Setter provide access to the private fields
-
     public int getEducation_id() {
         return education_id;
     }
