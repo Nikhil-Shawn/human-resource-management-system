@@ -31,11 +31,11 @@ public class SecurityConfig {
                                 "/api/login",
                                 "/api/employee/addEmployee",
 
-                                //For Vacation
+                                //Vacation
                                 "/api/vacations",
                                 "/api/vacations/{id}",
                                 "/api/vacations/addVacation/{id}",
-                                    "/api/vacations/updateVacation/{id}",
+                                "/api/vacations/updateVacation/{id}",
                                 "/api/vacations/deleteVacation/{id}",
 
                                 //For Payroll
@@ -53,16 +53,21 @@ public class SecurityConfig {
                                 "/api/departments/updateDepartment/{id}",
                                 "/api/departments/deleteDepartment/{id}",
 
+                                //For Asset
+                                "/api/v1/assets/all",
+                                "/api/v1/assets/save",
+                                "/api/v1/assets/update/{id}",
+                                "/api/v1/assets/{id}",
+                                "/api/v1/assets/multi ",
+
                                 //For Experience
                                 "/api/v1/experience/save",
-
-                                // For Asset
-                                "/api/v1/assets/save", // Ensure this line is correct
-                                "/api/v1/assets/all", // Ensure this line is correct
-                                "/api/v1/assets/multi",
-                                "/api/v1/assets/{id}",
-                                "/api/v1/assets/update/{id}",
-
+                                "/api/v1/experience/all",
+                                "/api/v1/experience/{id}",
+                                "/api/v1/experience/update/{id}",
+                                "/api/v1/experience/multi",
+                                "/api/v1/experience/byperson/{id}",
+                                "/api/v1/experience/byemployee/{id}",
 
                                 //For Logout
                                 "/api/logout",
@@ -79,7 +84,21 @@ public class SecurityConfig {
                                 "/api/v1/education/{id}",
                                 "/api/v1/education/byperson/{id}",
                                 "/api/v1/education/byemployee/{id}",
-                                "/api/v1/education/multi"
+                                "/api/v1/education/multi",
+
+                                //For Asset
+                                "/api/v1/assets/all",
+                                "/api/v1/assets/save",
+                                "/api/v1/assets/update/{id}",
+                                "/api/v1/assets/{id}",
+                                "/api/v1/assets/multi ",
+                                
+                                //For Separation
+                                "/api/v1/separation/save",
+                                "/api/v1/separation/{id}",
+                                "api/v1/separation/all",
+                                "/api/v1/separation/update/{id}"
+
 
 
                                 ).permitAll()

@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-//Mapping of Employee class to database table hrm_employee
 @Table(name = "hrm_employee")
 public class Employee {
 
@@ -20,7 +19,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "department_id", referencedColumnName = "department_id")
-    private Department department;
+    private Department department; // Changed from int to Department
 
     @ManyToOne
     @JoinColumn(name = "experience_id", referencedColumnName = "experience_id")
@@ -28,7 +27,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "education_id", referencedColumnName = "education_id")
-    private Education education;
+    private Education educationId;
 
     @Column(name = "supervisor_id")
     private int supervisorId;
@@ -86,9 +85,8 @@ public class Employee {
     // Constructors
     public Employee() {}
 
-    public Employee(Person person, String designation) {
+    public Employee(Person person) {
         this.person = person;
-        this.designation = designation;
     }
 
     // Getters and Setters
@@ -109,11 +107,19 @@ public class Employee {
     }
 
     public Department getDepartment() {
-        return department;
+        return department; // Updated getter
     }
 
     public void setDepartment(Department department) {
-        this.department = department;
+        this.department = department; // Updated setter
+    }
+
+    public Education getEducationId() {
+        return educationId;
+    }
+
+    public void setEducationId(Education educationId) {
+        this.educationId = educationId;
     }
 
     public Experience getExperience() {
@@ -122,14 +128,6 @@ public class Employee {
 
     public void setExperience(Experience experience) {
         this.experience = experience;
-    }
-
-    public Education getEducation() {
-        return education;
-    }
-
-    public void setEducation(Education education) {
-        this.education = education;
     }
 
     public int getSupervisorId() {
@@ -144,8 +142,8 @@ public class Employee {
         return isSupervisor;
     }
 
-    public void setIsSupervisor(Boolean IsSupervisor) {
-        isSupervisor = IsSupervisor;
+    public void setIsSupervisor(Boolean isSupervisor) {
+        this.isSupervisor = isSupervisor;
     }
 
     public String getManageWhom() {
@@ -243,6 +241,4 @@ public class Employee {
     public Date getUpdatedAt() {
         return updatedAt;
     }
-
-
 }

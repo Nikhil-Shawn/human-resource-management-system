@@ -18,6 +18,7 @@ function Employee() {
         setEmployees(employeeData);
         employeeData.forEach(employee => {
           fetchDepartment(employee.departmentId);
+          console.log(employee)
         });
       })
       .catch(error => {
@@ -33,6 +34,7 @@ function Employee() {
             ...prevDepartments,
             [departmentId]: response.data.name
           }));
+          console.log(response)
         })
         .catch(error => {
           console.error(`There was an error fetching the department data for ID ${departmentId}!`, error);
@@ -83,23 +85,25 @@ function Employee() {
                     />
                     <span>{employee.firstName}</span>
                   </td>
-                  <td><span style={{
-                    backgroundColor: '#DDCBFC',
-                    color: 'black',
-                    borderRadius: '30px',
-                    padding: '8px 20px',
-                    display: 'inline-block'
-                  }}>{employee.designation}</span></td>
-                  <td>{departments.map(department =>(
-                    department.department_name
-                  ))}</td>
-                  <td><span style={{
-                    backgroundColor: employee.employmentStatus === 'Active' ? '#DDFCE0' : '#FCE0E0',
-                    color: employee.employmentStatus === 'Active' ? '#0EB01D' : '#B00E0E',
-                    borderRadius: '30px',
-                    padding: '8px 20px',
-                    display: 'inline-block'
-                  }}>{employee.employmentStatus}</span></td>
+                  <td>
+                    <span style={{
+                      backgroundColor: '#DDCBFC',
+                      color: 'black',
+                      borderRadius: '30px',
+                      padding: '8px 20px',
+                      display: 'inline-block'
+                    }}>{employee.designation}</span>
+                  </td>
+                  <td>{departments[employee.departmentId]}</td>
+                  <td>
+                    <span style={{
+                      backgroundColor: employee.employmentStatus === 'Active' ? '#DDFCE0' : '#FCE0E0',
+                      color: employee.employmentStatus === 'Active' ? '#0EB01D' : '#B00E0E',
+                      borderRadius: '30px',
+                      padding: '8px 20px',
+                      display: 'inline-block'
+                    }}>{employee.employmentStatus}</span>
+                  </td>
                   <td>{employee.createdAt}</td>
                   <td><IoIosMail style={{ marginRight: '5px' }} />{employee.email}</td>
                   <td><FaPhoneAlt style={{ marginRight: '5px' }} />{employee.phone}</td>
