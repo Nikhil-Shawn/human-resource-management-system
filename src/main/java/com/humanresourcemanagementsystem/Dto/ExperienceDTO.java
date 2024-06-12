@@ -1,7 +1,5 @@
 package com.humanresourcemanagementsystem.Dto;
 
-import com.humanresourcemanagementsystem.Entity.Employee;
-
 import java.util.Date;
 
 public class ExperienceDTO {

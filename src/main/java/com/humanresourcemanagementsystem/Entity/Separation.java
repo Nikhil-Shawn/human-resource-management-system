@@ -50,7 +50,6 @@ public class Separation {
     }
 
     //Parameterized constructor initializes all fields with provided values
-
     public Separation(int separation_id, Employee employee, String employee_department, Date separate_date, String separation_type, String separation_reason, String settlement, Date created_at, Date updated_at) {
         this.separation_id = separation_id;
         this.employee = employee;

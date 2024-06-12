@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+//Mapping of Payroll class to database table hrm_payroll
 @Table(name = "hrm_payroll")
 public class Payroll {
     @Id
@@ -35,12 +36,14 @@ public class Payroll {
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
+    // Default constructor initializes created at and updated at field with current date
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
         updatedAt = new Date();
     }
 
+    // Getter and Setter provide access to the private fields
     @PreUpdate
     protected void onUpdate() {
         updatedAt = new Date();
