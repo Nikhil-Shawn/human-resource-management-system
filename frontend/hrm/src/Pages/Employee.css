@@ -4,7 +4,7 @@
 
 .main-content {
   flex-grow: 1;
-  margin-left: 250px; /* Adjust to the sidebar width */
+  margin-left: 250px;
   padding: 20px;
   background-color: #f4f4f4;
   height: 100vh;
