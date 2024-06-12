@@ -20,16 +20,19 @@ public class DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
+    //Display all Departments
     public List<DepartmentDTO> getAllDepartments() {
         return departmentRepository.findAll().stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
+    //Display department by ID
     public DepartmentDTO getDepartmentById(Long id) {
         return departmentRepository.findById(id).map(this::convertToDTO).orElse(null);
     }
 
+    //Create Department
     public ResponseData createDepartment(DepartmentDTO departmentDTO) {
         Optional<Department> existingDepartment = departmentRepository.findByDepartmentName(departmentDTO.getDepartmentName());
 
@@ -52,6 +55,7 @@ public class DepartmentService {
         return new ResponseData("Department created successfully.", true, responseData);
     }
 
+    //Update department by ID
     public DepartmentDTO updateDepartment(Long id, DepartmentDTO departmentDTO) {
         if (departmentRepository.existsById(id)) {
             Department department = departmentRepository.findById(id).orElseThrow();
@@ -64,6 +68,7 @@ public class DepartmentService {
         return null;
     }
 
+    //Delete department by ID
     public String deleteDepartment(Long id) {
         Optional<Department> departmentOptional = departmentRepository.findById(id);
 

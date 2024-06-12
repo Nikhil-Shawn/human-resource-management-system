@@ -48,8 +48,6 @@ public class Experience {
     }
 
     //Parameterized constructor initializes all fields with provided values
-
-
     public Experience(int experienceID, Person person, Employee employee, String company_name, String employment_type, String no_of_years, String position, Date start_date, Date end_date) {
         this.experienceID = experienceID;
         this.person = person;
@@ -63,7 +61,6 @@ public class Experience {
     }
 
     // Getter and Setter provide access to the private fields
-
     public int getExperienceID() {
         return experienceID;
     }

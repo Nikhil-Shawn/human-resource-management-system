@@ -1,11 +1,11 @@
 package com.humanresourcemanagementsystem.Entity;
 
-
 import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
+//Mapping of Employee class to database table hrm_employee
 @Table(name = "hrm_employee")
 public class Employee {
 
