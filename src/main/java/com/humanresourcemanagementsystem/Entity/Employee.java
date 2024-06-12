@@ -1,6 +1,5 @@
 package com.humanresourcemanagementsystem.Entity;
 
-
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -20,7 +19,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "department_id", referencedColumnName = "department_id")
-    private Department departmentId;
+    private Department department; // Changed from int to Department
 
     @ManyToOne
     @JoinColumn(name = "experience_id", referencedColumnName = "experience_id")
@@ -107,12 +106,12 @@ public class Employee {
         this.person = person;
     }
 
-    public Department getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department; // Updated getter
     }
 
-    public void setDepartmentId(Department departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) {
+        this.department = department; // Updated setter
     }
 
     public Education getEducationId() {
@@ -131,7 +130,6 @@ public class Employee {
         this.experience = experience;
     }
 
-
     public int getSupervisorId() {
         return supervisorId;
     }
@@ -144,8 +142,8 @@ public class Employee {
         return isSupervisor;
     }
 
-    public void setIsSupervisor(Boolean IsSupervisor) {
-        isSupervisor = IsSupervisor;
+    public void setIsSupervisor(Boolean isSupervisor) {
+        this.isSupervisor = isSupervisor;
     }
 
     public String getManageWhom() {
@@ -243,6 +241,4 @@ public class Employee {
     public Date getUpdatedAt() {
         return updatedAt;
     }
-
-
 }

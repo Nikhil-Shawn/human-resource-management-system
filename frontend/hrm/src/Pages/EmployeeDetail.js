@@ -13,6 +13,7 @@ function EmployeeDetail() {
   const [isEditing, setIsEditing] = useState(false);
   const [educationData, setEducationData] = useState([]);
   const [experienceData, setExperienceData] = useState([]);
+  const [payrollData, setPayrollData] = useState([]);
 
   useEffect(() => {
     const fetchEmployeeData = async () => {
@@ -20,9 +21,9 @@ function EmployeeDetail() {
         const employeeId = authData.data.employeeId;
         console.log("is id proper?", employeeId);
         const response = await axios.get(`http://localhost:8080/api/v1/employee/${employeeId}`);
-        const { person, designation } = response.data;
-        setEmployeeData({ ...person, designation });
-        console.log("Employee data:", employeeData.designation);
+        const { person, designation, workLocation, employmentStatus, employmentType, hireDate} = response.data;
+        setEmployeeData({ ...person, designation, workLocation, employmentStatus, employmentType, hireDate});
+        console.log("Employee data:", response.data);
 
         const educationResponse = await axios.get(`http://localhost:8080/api/v1/education/byemployee/${employeeId}`);
         setEducationData(educationResponse.data);
@@ -31,6 +32,10 @@ function EmployeeDetail() {
         const experienceResponse = await axios.get(`http://localhost:8080/api/v1/experience/byemployee/${employeeId}`);
         setExperienceData(experienceResponse.data);
         console.log("Experience data:", experienceResponse.data);
+
+        const payRollResponse = await axios.get(`http://localhost:8080/api/payrolls/employee/${employeeId}`);
+        setPayrollData(payRollResponse.data);
+        console.log("Payroll datas:", payRollResponse.data);
 
       } catch (error) {
         console.error("Error fetching employee data:", error);
@@ -58,11 +63,18 @@ function EmployeeDetail() {
 
             <div className="info-card profile-info-card">
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
-              <h1> Nikhil the Allrounder</h1>  {/* Use this for API maybe-->  className="employee-name-card">{employeeData.firstName} {employeeData.lastName} */}
-              <span className="badge">{employeeData.designation}</span>
+              <h1> Nikhil the Allrounder</h1> 
               <div className="info-group">
-                <label>Department:</label>
-                <span>{employeeData.departmentId}</span>
+                <label>First Name:</label>
+                <span>{employeeData.firstName}</span>
+              </div>
+              <div className="info-group">
+                <label>Last Name:</label>
+                <span>{employeeData.lastName}</span>
+              </div>
+              <div className="info-group">
+                <label>Work Location:</label>
+                <span>{employeeData.workLocation}</span>
               </div>
               <div className="info-group">
                 <label>Date of Joining:</label>
@@ -81,26 +93,27 @@ function EmployeeDetail() {
             <div className="info-card salary-info-card">
               <h2>Salary Information</h2>
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
-              <div className="info-group">
-                <label>Salary Basis:</label>
-                <span>{employeeData.salaryBasis}</span>
-              </div>
-              <div className="info-group">
-                <label>Salary Amount Per Month:</label>
-                <span>{employeeData.salaryAmount}</span>
-              </div>
-              <div className="info-group">
-                <label>Effective Date:</label>
-                <span>{employeeData.effectiveDate}</span>
-              </div>
-              <div className="info-group">
-                <label>Payment Type:</label>
-                <span>{employeeData.paymentType}</span>
-              </div>
-              <div className="info-group">
-                <label>Bill Rate:</label>
-                <span>{employeeData.billRate}</span>
-              </div>
+              {payrollData.map((payroll, index) => (
+                
+                <div key={index} className="info-group">
+                  <div className="info-group">
+                    <label>Salary Basis:</label>
+                    <span>{payroll.payFrequency}</span>
+                  </div>
+                  <div className="info-group">
+                    <label>Salary Amount Per Month:</label>
+                    <span>{payroll.payAmount}</span>
+                  </div>
+                  <div className="info-group">
+                    <label>Bonus:</label>
+                    <span>{payroll.bonus}</span>
+                  </div>
+                  <div className="info-group">
+                    <label>Increment Precentage:</label>
+                    <span>{payroll.percentageIncrement}</span>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <div className="info-card personal-info-card">
@@ -131,12 +144,16 @@ function EmployeeDetail() {
                 <span>{employeeData.address}</span>
               </div>
               <div className="info-group">
-                <label>Postcode:</label>
-                <span>{employeeData.postcode}</span>
+                <label>Status:</label>
+                <span>{employeeData.employmentStatus}</span>
               </div>
               <div className="info-group">
-                <label>City:</label>
-                <span>{employeeData.city}</span>
+                <label>Employment Type:</label>
+                <span>{employeeData.employmentType}</span>
+              </div>
+              <div className="info-group">
+                <label>Hire Date:</label>
+                <span>{employeeData.hireDate}</span>
               </div>
             </div>
 

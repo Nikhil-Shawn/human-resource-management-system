@@ -44,6 +44,7 @@ public class SecurityConfig {
                                 "/api/payrolls/addPayroll/{id}",
                                 "/api/payrolls/updatePayroll/{id}",
                                 "/api/payrolls/deletePayroll/{id}",
+                                "/api/payrolls/employee/{employeeId}",
 
                                 //For Department
                                 "/api/departments",
@@ -97,6 +98,8 @@ public class SecurityConfig {
                                 "/api/v1/separation/{id}",
                                 "api/v1/separation/all",
                                 "/api/v1/separation/update/{id}"
+
+
 
                                 ).permitAll()
                         .anyRequest().authenticated()

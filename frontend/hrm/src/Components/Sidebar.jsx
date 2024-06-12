@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { FaBriefcase, FaChartPie, FaDollarSign, FaLaptop, FaSignOutAlt, FaUserTie, FaUsers, FaRegBuilding } from 'react-icons/fa';
+import { FaBriefcase, FaChartPie, FaDollarSign, FaLaptop, FaSignOutAlt, FaUserTie, FaUsers, FaRegBuilding, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import './Sidebar.css';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Pages/AuthContext'; // Ensure this is correctly imported
 import axios from 'axios';
-import Department from '../Pages/Department';
 
 function Sidebar() {
     const { authData } = useAuth();
     const [employeeData, setEmployeeData] = useState({});
+    const [isEmployeeDropdownOpen, setIsEmployeeDropdownOpen] = useState(false);
     const navigate = useNavigate();
 
     const employeeId = authData.data.employeeId;
@@ -28,40 +28,53 @@ function Sidebar() {
         if (authData && employeeId) {
             fetchEmployeeData();
         }
-    }, [authData]);
+    }, [authData, employeeId]);
+
+    const toggleEmployeeDropdown = (event) => {
+        // Prevent the parent click event from triggering
+        event.stopPropagation();
+        setIsEmployeeDropdownOpen(!isEmployeeDropdownOpen);
+    };
 
     const displayDashboard = () => {
-        navigate('/dashboard')
-    }
+        navigate('/dashboard');
+    };
 
     const displayEmployee = () => {
-        navigate('/employee')
-    }
+        navigate('/employee-list');
+    };
+
+    const displayCreateEmployee = () => {
+        navigate('/createEmployee');
+    };
+
+    const displayEmployeeDetail = () => {
+        navigate('/employeeDetail');
+    };
 
     const displayLeaves = () => {
-        navigate('/leaves')
-    }
+        navigate('/leaves');
+    };
 
     const displayPayroll = () => {
-        navigate('/payroll')
-    }
+        navigate('/payroll');
+    };
 
     const displaySeparation = () => {
-        navigate('/separation')
-    }
+        navigate('/separation');
+    };
 
     const displayAssets = () => {
-        navigate('/assets')
-    }
+        navigate('/assets');
+    };
 
     const displayDepartment = () => {
-      navigate('/department')
-  }
+        navigate('/department');
+    };
 
     const displayApplicantList = () => {
-        navigate('/applicantList')
-    }
-
+        navigate('/applicantList');
+    };
 
     return (
         <div className="sidebar">
@@ -74,14 +87,27 @@ function Sidebar() {
                 </div>
             </div>
             <div className="sidebar-menu">
-                <div className="sidebar-item" onClick={displayDashboard}>
-                    <FaChartPie className="sidebar-icon" />
-                    <span>Overview</span>
+                <div className="sidebar-item">
+                    <FaChartPie className="sidebar-icon" onClick={displayDashboard} />
+                    <span onClick={displayDashboard}>Overview</span>
                 </div>
-                <div className="sidebar-item" onClick={displayEmployee}>
-                    <FaUsers className="sidebar-icon" />
-                    <span>Employees</span>
+                <div className="sidebar-item">
+                    <FaUsers className="sidebar-icon" onClick={displayEmployee} />
+                    <span onClick={displayEmployee}>Employees</span>
+                    <span className="dropdown-icon" onClick={toggleEmployeeDropdown}>
+                        {isEmployeeDropdownOpen ? <FaChevronUp className="sidebar-icon" /> : <FaChevronDown className="sidebar-icon" />}
+                    </span>
                 </div>
+                {isEmployeeDropdownOpen && (
+                    <div className="sidebar-dropdown">
+                        <div className="sidebar-item" onClick={displayCreateEmployee}>
+                            <span>Create Employee</span>
+                        </div>
+                        <div className="sidebar-item" onClick={displayEmployeeDetail}>
+                            <span>Employee Detail</span>
+                        </div>
+                    </div>
+                )}
                 <div className="sidebar-item" onClick={displayLeaves}>
                     <FaBriefcase className="sidebar-icon" />
                     <span>Leaves</span>

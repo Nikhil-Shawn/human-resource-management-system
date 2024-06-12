@@ -26,7 +26,7 @@ public class DepartmentService {
                 .collect(Collectors.toList());
     }
 
-    public DepartmentDTO getDepartmentById(Long id) {
+    public DepartmentDTO getDepartmentById(int id) {
         return departmentRepository.findById(id).map(this::convertToDTO).orElse(null);
     }
 
@@ -52,7 +52,7 @@ public class DepartmentService {
         return new ResponseData("Department created successfully.", true, responseData);
     }
 
-    public DepartmentDTO updateDepartment(Long id, DepartmentDTO departmentDTO) {
+    public DepartmentDTO updateDepartment(int id, DepartmentDTO departmentDTO) {
         if (departmentRepository.existsById(id)) {
             Department department = departmentRepository.findById(id).orElseThrow();
             department.setDepartmentName(departmentDTO.getDepartmentName());
@@ -64,7 +64,7 @@ public class DepartmentService {
         return null;
     }
 
-    public String deleteDepartment(Long id) {
+    public String deleteDepartment(int id) {
         Optional<Department> departmentOptional = departmentRepository.findById(id);
 
         if (departmentOptional.isPresent()) {

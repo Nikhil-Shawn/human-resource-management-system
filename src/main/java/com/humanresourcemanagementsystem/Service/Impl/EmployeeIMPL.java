@@ -2,9 +2,11 @@ package com.humanresourcemanagementsystem.Service.Impl;
 
 import com.humanresourcemanagementsystem.Dto.EmployeeDTO;
 import com.humanresourcemanagementsystem.Dto.EmployeePersonDTO;
+import com.humanresourcemanagementsystem.Entity.Department;
 import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Entity.Person;
 import com.humanresourcemanagementsystem.Mapper.EmployeeMapper;
+import com.humanresourcemanagementsystem.Repo.DepartmentRepository;
 import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
 import com.humanresourcemanagementsystem.Repo.PersonRepository;
 import com.humanresourcemanagementsystem.Service.EmployeeService;
@@ -24,6 +26,8 @@ public class EmployeeIMPL implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
     @Autowired
     private PersonService personService;
@@ -195,6 +199,7 @@ public class EmployeeIMPL implements EmployeeService {
 //            // set person
 //        }else { // employee and person
 //             }
+
         Person person = new Person(
                 employeeDTO.getPersonID(),
                 employeeDTO.getFirstName(),
@@ -218,9 +223,14 @@ public class EmployeeIMPL implements EmployeeService {
 
         // Initially set the supervisorId to 0
         employee.setSupervisorId(0);
+        System.out.println(employeeDTO.getDepartment().getDepartmentId());
+        Department department = departmentRepository.findById(employeeDTO.getDepartment().getDepartmentId()).orElseThrow(() -> new RuntimeException("Department not found"));
+
+
 
 
         // Set other employee details from the DTO
+        employee.setDepartment(department);
         employee.setManageWhom(employeeDTO.getManageWhom());
         employee.setEmploymentType(employeeDTO.getEmploymentType());
         employee.setAdmin(employeeDTO.getAdmin());
