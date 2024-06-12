@@ -76,6 +76,7 @@ public class SecurityConfig {
                                 "api/v1/employee/all",
                                 "api/v1/employee/save",
                                 "api/v1/employee/{id}",
+                                "api/v1/employee/employeeget/{id}",
 
                                 //For Education
                                 "api/v1/education/all",

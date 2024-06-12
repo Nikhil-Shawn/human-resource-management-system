@@ -1,10 +1,6 @@
 package com.humanresourcemanagementsystem.Dto;
 
-import com.humanresourcemanagementsystem.Entity.Employee;
-import jakarta.persistence.*;
-
 import java.util.Date;
-import java.util.Set;
 
 public class PersonDTO {
 

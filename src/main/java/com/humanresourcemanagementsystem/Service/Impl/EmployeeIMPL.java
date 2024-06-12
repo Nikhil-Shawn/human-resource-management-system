@@ -1,8 +1,10 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
+import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Dto.EmployeeDTO;
 import com.humanresourcemanagementsystem.Dto.EmployeePersonDTO;
 import com.humanresourcemanagementsystem.Entity.Department;
+import com.humanresourcemanagementsystem.Entity.Education;
 import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Entity.Person;
 import com.humanresourcemanagementsystem.Mapper.EmployeeMapper;
@@ -50,6 +52,41 @@ public class EmployeeIMPL implements EmployeeService {
             Employee employee = employeeOpt.get();
             // Map the Employee entity to EmployeeDTO using the mapper
             return employeeMapper.toEmployeeDTO(employee);
+        } else {
+            throw new RuntimeException("Employee not found with id: " + id);
+        }
+    }
+
+    @Override
+    //Display education by ID
+    public EmployeeDTO getEmployee(int id) {
+        Optional<Employee> employeeOpt = employeeRepository.findById(id);
+        if (employeeOpt.isPresent()) {
+
+            Employee employee = employeeOpt.get();
+
+            // Fetch associated education information
+            EmployeeDTO employeeDTO = new EmployeeDTO();
+            employeeDTO.setEmployeeID(employee.getEmployeeID());
+            employeeDTO.setExperience(employee.getExperience());
+            employeeDTO.setEducation(employee.getEducationId());
+            employeeDTO.setSupervisorId(employee.getSupervisorId());
+            employeeDTO.setDepartmentId(employee.getDepartment());
+            employeeDTO.setSupervisor(employee.getIsSupervisor());
+            employeeDTO.setManageWhom(employee.getManageWhom());
+            employeeDTO.setEmploymentType(employee.getEmploymentType());
+            employeeDTO.setAdmin(employee.getAdmin());
+            employeeDTO.setEmpEmail(employee.getEmpEmail());
+            employeeDTO.setEmpPassword(employee.getEmpPassword());
+            employeeDTO.setDesignation(employee.getDesignation());
+            employeeDTO.setHireDate(employee.getHireDate());
+            employeeDTO.setTerminationDate(employee.getTerminationDate());
+            employeeDTO.setEmploymentStatus(employee.getEmploymentStatus());
+            employeeDTO.setWorkLocation(employee.getWorkLocation());
+            employeeDTO.setSupervisor(employee.getIsSupervisor());
+            employeeDTO.setAdmin(employee.getAdmin());
+
+            return employeeDTO;
         } else {
             throw new RuntimeException("Employee not found with id: " + id);
         }
