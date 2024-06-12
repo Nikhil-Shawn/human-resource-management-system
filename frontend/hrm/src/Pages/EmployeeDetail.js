@@ -11,6 +11,8 @@ function EmployeeDetail() {
   const { authData } = useAuth();
   const [employeeData, setEmployeeData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+  const [educationData, setEducationData] = useState([]);
+  const [experienceData, setExperienceData] = useState([]);
 
   useEffect(() => {
     const fetchEmployeeData = async () => {
@@ -21,10 +23,21 @@ function EmployeeDetail() {
         const { person, designation } = response.data;
         setEmployeeData({ ...person, designation });
         console.log("Employee data:", employeeData.designation);
+
+        const educationResponse = await axios.get(`http://localhost:8080/api/v1/education/byemployee/${employeeId}`);
+        setEducationData(educationResponse.data);
+        console.log("Education data:", educationResponse.data);
+
+        const experienceResponse = await axios.get(`http://localhost:8080/api/v1/experience/byemployee/${employeeId}`);
+        setExperienceData(experienceResponse.data);
+        console.log("Experience data:", experienceResponse.data);
+
       } catch (error) {
         console.error("Error fetching employee data:", error);
       }
     };
+
+
 
     if (authData) {
       fetchEmployeeData();
@@ -42,7 +55,7 @@ function EmployeeDetail() {
         <HeaderComponent />
         <div className="content-area">
           <div className="info-section">
-            
+
             <div className="info-card profile-info-card">
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
               <h1> Nikhil the Allrounder</h1>  {/* Use this for API maybe-->  className="employee-name-card">{employeeData.firstName} {employeeData.lastName} */}
@@ -131,46 +144,46 @@ function EmployeeDetail() {
               <h2>Education</h2>
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
               <div className="education-group">
-                <label>Bachelor of Science in Computer Science</label>
+                <label>Institution</label>
                 <div className="education-detail">
-                  <img src={locationDot} alt="location icon" className="icon"/>
-                  <span>{employeeData.bachelorUniversity}</span>
+                  <img src={locationDot} alt="location icon" className="icon" />
+                  <span>{educationData.institution}</span>
                 </div>
                 <div className="education-detail">
-                  <img src={dateDot} alt="date icon" className="icon"/>
-                  <span>Graduated {employeeData.bachelorGraduationDate}</span>
+                  <img src={dateDot} alt="date icon" className="icon" />
+                  <span>Degree {educationData.degree}</span>
                 </div>
               </div>
               <div className="education-group">
-                <label>Master of Science in Computer Science</label>
+                <label>Degree</label>
                 <div className="education-detail">
-                  <img src={locationDot} alt="location icon" className="icon"/>
-                  <span>{employeeData.masterUniversity}</span>
+                  <img src={locationDot} alt="location icon" className="icon" />
+                  <span>{educationData.degree}</span>
                 </div>
                 <div className="education-detail">
-                  <img src={dateDot} alt="date icon" className="icon"/>
+                  <img src={dateDot} alt="date icon" className="icon" />
                   <span>Graduated {employeeData.masterGraduationDate}</span>
                 </div>
               </div>
               <div className="education-group">
-                <label>Certification in Full Stack Web Development</label>
+                <label>Major</label>
                 <div className="education-detail">
-                  <img src={locationDot} alt="location icon" className="icon"/>
-                  <span>{employeeData.certificationInstitution}</span>
+                  <img src={locationDot} alt="location icon" className="icon" />
+                  <span>{educationData.major}</span>
                 </div>
                 <div className="education-detail">
-                  <img src={dateDot} alt="date icon" className="icon"/>
-                  <span>Graduated {employeeData.certificationDate}</span>
+                  <img src={dateDot} alt="date icon" className="icon" />
+                  <span>Graduated {educationData.major}</span>
                 </div>
               </div>
               <div className="education-group">
-                <label>Certification as Scrum-Master</label>
+                <label>Graduation Date</label>
                 <div className="education-detail">
-                  <img src={locationDot} alt="location icon" className="icon"/>
-                  <span>{employeeData.scrumInstitution}</span>
+                  <img src={locationDot} alt="location icon" className="icon" />
+                  <span>{educationData.graduation_end_date}</span>
                 </div>
                 <div className="education-detail">
-                  <img src={dateDot} alt="date icon" className="icon"/>
+                  <img src={dateDot} alt="date icon" className="icon" />
                   <span>Graduated {employeeData.scrumDate}</span>
                 </div>
               </div>
@@ -180,39 +193,39 @@ function EmployeeDetail() {
               <h2>Experience</h2>
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
               <div className="experience-group">
-                <label>Senior Project Manager</label>
+                <label>Company Name</label>
                 <div className="experience-detail">
-                  <img src={locationDot} alt="location icon" className="icon"/>
-                  <span>{employeeData.seniorLocation}</span>
+                  <img src={locationDot} alt="location icon" className="icon" />
+                  <span>{experienceData.company_name}</span>
                 </div>
                 <div className="experience-detail">
-                  <img src={dateDot} alt="date icon" className="icon"/>
+                  <img src={dateDot} alt="date icon" className="icon" />
                   <span>{employeeData.seniorDate}</span>
                 </div>
                 <span>{employeeData.seniorCompany}</span>
                 <p>{employeeData.seniorDescription}</p>
               </div>
               <div className="experience-group">
-                <label>Assistant Project Manager</label>
+                <label>Position</label>
                 <div className="experience-detail">
-                  <img src={locationDot} alt="location icon" className="icon"/>
-                  <span>{employeeData.assistantLocation}</span>
+                  <img src={locationDot} alt="location icon" className="icon" />
+                  <span>{experienceData.position}</span>
                 </div>
                 <div className="experience-detail">
-                  <img src={dateDot} alt="date icon" className="icon"/>
+                  <img src={dateDot} alt="date icon" className="icon" />
                   <span>{employeeData.assistantDate}</span>
                 </div>
                 <span>{employeeData.assistantCompany}</span>
                 <p>{employeeData.assistantDescription}</p>
               </div>
               <div className="experience-group">
-                <label>Project Coordinator</label>
+                <label>Employement Type</label>
                 <div className="experience-detail">
-                  <img src={locationDot} alt="location icon" className="icon"/>
-                  <span>{employeeData.coordinatorLocation}</span>
+                  <img src={locationDot} alt="location icon" className="icon" />
+                  <span>{experienceData.employment_type}</span>
                 </div>
                 <div className="experience-detail">
-                  <img src={dateDot} alt="date icon" className="icon"/>
+                  <img src={dateDot} alt="date icon" className="icon" />
                   <span>{employeeData.coordinatorDate}</span>
                 </div>
                 <span>{employeeData.coordinatorCompany}</span>

@@ -4,210 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Employee get API optimized">
+    <list default="true" id="c647e788-f21c-4538-8055-531640ff09b1" name="Changes" comment="Employee get API optimized">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EducationController/EducationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EducationController/EducationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/EducationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/EducationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Education.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Education.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/EducationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/EducationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/EducationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/EducationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/AssetIMPL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/AssetIMPL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EducationIMPL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EducationIMPL.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/EmployeeDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/EmployeeDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="Payroll-by-employee" />
-
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;poojasanjaypatil&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Nikhil-Shawn/human-resource-management-system.git&quot;,
-    &quot;accountId&quot;: &quot;23c0e279-3fae-484f-8b50-7d6371f90027&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2gs63AsI3vw6wUxbwPZEHQzFIUl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HumanResourceManagementSystemApplication.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Education-and-Experience-byexperience",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "git-widget-placeholder": "Login-and-whole-app-flow"
   }
-}</component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+}]]></component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="" />
-      <created>1716473737037</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1716473737037</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Benefit details displayed and tested 29/05/2024">
-      <option name="closed" value="true" />
-      <created>1716977282209</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1716977282209</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Benefit details displayed and tested 29/05/2024">
-      <option name="closed" value="true" />
-      <created>1717168142790</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1717168142790</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Employee get">
-      <option name="closed" value="true" />
-      <created>1717168630228</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1717168630228</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Payroll Post completed and tested">
-      <option name="closed" value="true" />
-      <created>1717433594187</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1717433594187</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Education Post">
-      <option name="closed" value="true" />
-      <created>1717595576877</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1717595576877</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Education Multiple Post">
-      <option name="closed" value="true" />
-      <created>1717599013998</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1717599013998</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Education Multiple and by id tested and completed">
-      <option name="closed" value="true" />
-      <created>1717608047995</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1717608047995</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Asset Benefit Experience Education Update and Many to one relationship">
-      <option name="closed" value="true" />
-      <created>1717687166865</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1717687166865</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Asset Benefit Experience Education Update and Many to one relationship">
-      <option name="closed" value="true" />
-      <created>1717782665031</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1717782665031</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Code clean up. Employee pendind">
-      <option name="closed" value="true" />
-      <created>1717954865795</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1717954865795</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Added security and Education changes">
-      <option name="closed" value="true" />
-      <created>1718039671954</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1718039671954</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Employee get API optimized">
-      <option name="closed" value="true" />
-      <created>1718139170002</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1718139170002</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Employee get API optimized">
-      <option name="closed" value="true" />
-      <created>1718139589314</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1718139589314</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Benefit details displayed and tested 29/05/2024" />
-    <MESSAGE value="Employee get" />
-    <MESSAGE value="Payroll Post completed and tested" />
-    <MESSAGE value="Education Post" />
-    <MESSAGE value="Education Multiple Post" />
-    <MESSAGE value="Education Multiple and by id tested and completed" />
-    <MESSAGE value="Asset Benefit Experience Education Update and Many to one relationship" />
-    <MESSAGE value="Code clean up. Employee pendind" />
-    <MESSAGE value="Added security and Education changes" />
-    <MESSAGE value="Separation working and tested" />
-    <MESSAGE value="Payroll to be tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payroll to be tested" />
+    <MESSAGE value="Employee get API optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="Employee get API optimized" />
   </component>
 </project>
