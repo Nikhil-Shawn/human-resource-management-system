@@ -52,22 +52,6 @@ public class EmployeeIMPL implements EmployeeService {
         }
     }
 
-//    @Override
-//    public List<EmployeeDTO> getAllEmployees() {
-//        List<Employee> employees = employeeRepository.findAll();
-//        return employees.stream()
-//                .map(employee -> {
-//                    EmployeeDTO employeeDTO = new EmployeeDTO();
-//                    employeeDTO.setEmployeeID(employee.getEmployeeID());
-//                    employeeDTO.setDesignation(employee.getDesignation());
-//                    // Fetch associated person details
-//                    Person person = personService.getPersonById(employee.getPerson().getPersonID());
-//                    employeeDTO.setPerson(person);
-//                    return employeeDTO;
-//                })
-//                .collect(Collectors.toList());
-//    }
-
     //Filtered Get all employees
     @Override
     public List<EmployeePersonDTO> getAllEmployees() {
@@ -109,78 +93,9 @@ public class EmployeeIMPL implements EmployeeService {
         return null;
     }
 
-
-//    @Override
-//    public String addEmployee(EmployeeDTO employeeDTO) {
-//
-//        // Create a Person entity from the DTO
-//        Person person = new Person(
-//                employeeDTO.getPersonID(),
-//                employeeDTO.getFirstName(),
-//                employeeDTO.getLastName(),
-//                employeeDTO.getAddress(),
-//                employeeDTO.getPersonEmail(),
-//                passwordEncoder.encode(employeeDTO.getPersonPassword()),
-//                employeeDTO.getPhone(),
-//                employeeDTO.getDateOfBirth(),
-//                employeeDTO.getGender(),
-//                employeeDTO.getNationality(),
-//                employeeDTO.getMaritalStatus(),
-//                employeeDTO.getPersonType()
-//        );
-//
-//        // Save the Person entity
-//        Person savedPerson = personService.savePerson(person);
-//
-//        // Create an Employee entity and set the person
-//        Employee employee = new Employee(savedPerson, employeeDTO.getDesignation());
-//
-//        // Set supervisorId if provided and valid
-//        if (employeeDTO.getSupervisorId() != 0) {
-//            Optional<Employee> supervisorOptional = employeeRepository.findById(employeeDTO.getSupervisorId());
-//            if (supervisorOptional.isPresent()) {
-//                employee.setSupervisorId(employeeDTO.getSupervisorId());
-//            } else {
-//                // Handle case where supervisorId does not exist
-//                // You can throw an exception or handle it according to your application logic
-//                throw new RuntimeException("Supervisor with ID " + employeeDTO.getSupervisorId() + " not found.");
-//            }
-//        }
-//        employee.setEmployeeID(employeeDTO.getEmployeeID());
-//        employee.setPerson(person);
-////        employee.setDepartment(department);
-////        employee.setExperience(experience);
-////        employee.setEducation(education);
-////        employee.setSupervisor(supervisor);
-//        employee.setSupervisorId(employeeDTO.getSupervisorId());
-//        employee.setManageWhom(employeeDTO.getManageWhom());
-//        employee.setEmploymentType(employeeDTO.getEmploymentType());
-//        employee.setAdmin(employeeDTO.getAdmin());
-//        employee.setEmpEmail(employeeDTO.getEmpEmail());
-//        employee.setEmpPassword(passwordEncoder.encode(employeeDTO.getEmpPassword()));
-//        employee.setDesignation(employeeDTO.getDesignation());
-//        employee.setHireDate(employeeDTO.getHireDate());
-//        employee.setTerminationDate(employeeDTO.getTerminationDate());
-//        employee.setEmploymentStatus(employeeDTO.getEmploymentStatus());
-//        employee.setWorkLocation(employeeDTO.getWorkLocation());
-//        employee.setCreatedAt(employeeDTO.getCreatedAt());
-//        employee.setUpdatedAt(employeeDTO.getUpdatedAt());
-//
-//        // Save the Employee entity
-//        employeeRepository.save(employee);
-//
-//        return employee.getPerson().getFirstName();
-//
-//
-//    }
-
     @Override
     public String addEmployee(EmployeeDTO employeeDTO) {
-        // Create a Person entity from the DTO
-//        if (EmployeePersonDTO().equalsIgnoreCase("applicant")) {
-//            // set person
-//        }else { // employee and person
-//             }
+
         Person person = new Person(
                 employeeDTO.getPersonID(),
                 employeeDTO.getFirstName(),

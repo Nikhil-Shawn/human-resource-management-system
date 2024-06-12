@@ -3,6 +3,8 @@ package com.humanresourcemanagementsystem.Dto;
 import java.util.Date;
 
 public class VacationDTO {
+
+    // Vacation entity fields
     private int vacation_id;
     private int employeeId;
     private Date startDate;
@@ -13,7 +15,7 @@ public class VacationDTO {
     private Date createdAt;
     private Date updatedAt;
 
-
+    // Getter and Setter provide access to the private fields
     public int getVacationId() {
         return vacation_id;
     }

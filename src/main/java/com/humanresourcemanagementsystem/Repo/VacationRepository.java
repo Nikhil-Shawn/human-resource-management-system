@@ -1,6 +1,5 @@
 package com.humanresourcemanagementsystem.Repo;
 
-
 import com.humanresourcemanagementsystem.Entity.Vacation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

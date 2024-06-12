@@ -1,8 +1,6 @@
 package com.humanresourcemanagementsystem.Service;
 
-import com.humanresourcemanagementsystem.Dto.AssetDTO;
 import com.humanresourcemanagementsystem.Dto.PayrollDTO;
-import com.humanresourcemanagementsystem.Entity.Asset;
 import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Entity.Payroll;
 import com.humanresourcemanagementsystem.Repo.EmployeeRepository;

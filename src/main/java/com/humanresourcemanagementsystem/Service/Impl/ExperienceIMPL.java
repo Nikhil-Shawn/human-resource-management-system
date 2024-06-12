@@ -42,11 +42,6 @@ public class ExperienceIMPL implements ExperienceService {
         Person person = personRepository.findById(experienceDTO.getPerson_id()).orElse(null);
         Employee employee = employeeRepository.findById(experienceDTO.getEmployee_id()).orElse(null);
 
-        //Experience experience = experienceRepository.findById(experienceDTO.getEmployee_id()).orElse(null);
-//        if (person == null) {
-//            return "Person not found";
-//        }
-
         // set experience details
         Experience experience = new Experience();
         experience.setCompany_name(experienceDTO.getCompany_name());

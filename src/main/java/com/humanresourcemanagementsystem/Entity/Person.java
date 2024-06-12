@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.Date;
 
 @Entity
+//Mapping of Person class to database table hrm_person
 @Table(name = "hrm_person")
 public class Person {
 
@@ -59,15 +60,13 @@ public class Person {
     @JsonIgnore
     private Set<Employee> employees;
 
-//    @OneToMany(mappedBy = "person")
-//    private Set<Experience> experiences;
-
-    // Constructors
+    // Default constructor initializes created at and updated at field with current date
     public Person() {
         this.createdAt = new Date();
         this.updatedAt = new Date();
     }
 
+    //Parameterized constructor initializes all fields with provided values
     public Person(int PersonID, String firstName, String lastName, String address, String email, String password, String phone, Date dateOfBirth, String gender, String nationality, String maritalStatus, String personType) {
         this();
         this.firstName = firstName;
@@ -83,7 +82,7 @@ public class Person {
         this.personType = personType;
     }
 
-    // Getters and Setters
+    // Getter and Setter provide access to the private fields
     public int getPersonID() {
         return personID;
     }
@@ -203,19 +202,5 @@ public class Person {
     public void setPersonPassword(String personPassword) {
         this.personPassword = personPassword;
     }
-//    public Set<Experience> getExperiences() {
-//        return experiences;
-//    }
-//
-//    public void setExperiences(Set<Experience> experiences) {
-//        this.experiences = experiences;
-//    }
 
-    //    public Experience getExperience() {
-//        return experience;
-//    }
-//
-//    public void setExperience(Experience experience) {
-//        this.experience = experience;
-//    }
 }
