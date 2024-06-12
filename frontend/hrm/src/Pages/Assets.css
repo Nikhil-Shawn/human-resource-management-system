@@ -54,7 +54,7 @@
 .employee-table th {
   background: #F4F5F7;
   padding: 16px 8px;
-  text-align: left;
+  text-align: center;
   margin-left: 20px;
 }
 
@@ -100,7 +100,7 @@
   border-bottom: 1px solid #E0E4EA;
   border-top: 1px solid #E0E4EA;
   padding: 8px;
-  text-align: left;
+  text-align: center;
   background: white;
 }
 

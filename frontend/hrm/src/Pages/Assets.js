@@ -98,6 +98,26 @@ function Assets() {
     }
   };
 
+  const assetArrray = [
+    {
+      name: 'Brendan Bradt',
+      position: 'UI/UX Designer',
+      applicationDate: 'Sep. 12 2023',
+      status: 'New Applicant',
+      email: 'b.bradtk@example.com',
+      img: 'path/to/image1.jpg',
+      employee_id:1,
+      asset_id:420,
+      asset_type:'laptop',
+      serial_number:111,
+      issued_date:'12/10/2023',
+      return_date:'12/10/2023',
+
+
+    },
+    
+  ];
+
   return (
     <div className="app">
       <Sidebar />
@@ -136,16 +156,10 @@ function Assets() {
               </tr>
             </thead>
             <tbody style={{ fontSize: "0.8vw", textAlign: "center" }}>
-              {assetsData.map((asset, index) => (
+              {assetArrray.map((asset, index) => (
                 <tr key={index}>
-                  <td style={{
-                    display: "flex",
-                    alignItems: "center",
-                    borderLeft: "1px solid #E0E4EA",
-                    padding: "20px",
-                  }}>
-                    <span>{asset.employee_id}</span>
-                  </td>
+                                    <td>{asset.employee_id}</td>
+
                   <td>{asset.asset_id}</td>
                   <td>{asset.asset_type}</td>
                   <td>{asset.serial_number}</td>
