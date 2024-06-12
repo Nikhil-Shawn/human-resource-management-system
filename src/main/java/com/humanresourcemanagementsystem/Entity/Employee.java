@@ -19,7 +19,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "department_id", referencedColumnName = "department_id")
-    private Department department; // Changed from int to Department
+    private Department department;
 
     @ManyToOne
     @JoinColumn(name = "experience_id", referencedColumnName = "experience_id")
@@ -106,12 +106,12 @@ public class Employee {
         this.person = person;
     }
 
-    public Department getDepartment() {
-        return department; // Updated getter
+    public int getDepartment() {
+        return department.getDepartmentId();
     }
 
     public void setDepartment(Department department) {
-        this.department = department; // Updated setter
+        this.department = department;
     }
 
     public Education getEducationId() {

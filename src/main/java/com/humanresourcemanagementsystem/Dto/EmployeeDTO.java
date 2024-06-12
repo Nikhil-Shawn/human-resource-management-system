@@ -11,7 +11,7 @@ public class EmployeeDTO extends PersonDTO {
 
     private int employeeID;
     private Person person;
-    private Department department; // Updated field
+    private int departmentId; // Updated field
     private Experience experience;
     private Education education;
     private int supervisorId;
@@ -32,11 +32,11 @@ public class EmployeeDTO extends PersonDTO {
     // Constructors
     public EmployeeDTO() {}
 
-    public EmployeeDTO(int employeeID, Boolean isSupervisor, String manageWhom, Department department, String employmentType, Boolean isAdmin, String empEmail, String empPassword, String designation, Date hireDate, Date terminationDate, String employmentStatus, String workLocation, Date createdAt, Date updatedAt) {
+    public EmployeeDTO(int employeeID, Boolean isSupervisor, String manageWhom, int departmentId, String employmentType, Boolean isAdmin, String empEmail, String empPassword, String designation, Date hireDate, Date terminationDate, String employmentStatus, String workLocation, Date createdAt, Date updatedAt) {
         this.employeeID = employeeID;
         this.isSupervisor = isSupervisor;
         this.manageWhom = manageWhom;
-        this.department = department; // Updated field
+        this.departmentId = departmentId; // Updated field
         this.employmentType = employmentType;
         this.isAdmin = isAdmin;
         this.empEmail = empEmail;
@@ -52,12 +52,13 @@ public class EmployeeDTO extends PersonDTO {
 
     // Getters and Setters
 
-    public Department getDepartment() {
-        return department; // Updated getter
+
+    public int getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department; // Updated setter
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     public int getEmployeeID() {

@@ -32,7 +32,7 @@ public class SeparationIMPL implements SeparationService {
 
         // Checks if the associated employee exists
         Employee employee = employeeRepository.findById(separationDTO.getEmployee_id()).orElse(null);
-        if (employee == null) {
+        if (separationDTO.getEmployee_id() == null) {
             return "Employee not found";
         }
 
