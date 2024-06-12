@@ -1,48 +1,55 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PayrollDrawer.css';
 
-const Drawer = ({ isOpen, onClose, onSave, payroll }) => {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [reason, setReason] = useState('');
-  const [status, setStatus] = useState('');
-  const [vacationType, setVacationType] = useState('');
-  const [payrollId, setPayrollId] = useState();
+const PayrollDrawer = ({ isOpen, onClose, onSave, payroll }) => {
+  const [employeeId, setEmployeeId] = useState('');
+  const [payAmount, setPayAmount] = useState('');
+  const [payFrequency, setPayFrequency] = useState('');
+  const [bonus, setBonus] = useState('');
+  const [incrementApplicable, setIncrementApplicable] = useState(false);
+  const [percentageIncrement, setPercentageIncrement] = useState('');
+  const [payrollId, setPayrollId] = useState(null);
 
   useEffect(() => {
     if (payroll) {
-      setStartDate(payroll.startDate);
-      setEndDate(payroll.endDate);
-      setReason(payroll.reason);
-      setStatus(payroll.status);
-      setVacationType(payroll.vacationType);
-      setPayrollId(payroll.payrollId);
+      setEmployeeId(payroll.employeeId || '');
+      setPayAmount(payroll.payAmount || '');
+      setPayFrequency(payroll.payFrequency || '');
+      setBonus(payroll.bonus || '');
+      setIncrementApplicable(payroll.incrementApplicable || false);
+      setPercentageIncrement(payroll.percentageIncrement || '');
+      setPayrollId(payroll.payroll_id || null);
+      console.log("pazrollID= ",payroll.payroll_id);
     } else {
-      setStartDate('');
-      setEndDate('');
-      setReason('');
-      setStatus('');
-      setVacationType('');
-      setPayrollId('');
+      setEmployeeId('');
+      setPayAmount('');
+      setPayFrequency('');
+      setBonus('');
+      setIncrementApplicable(false);
+      setPercentageIncrement('');
+      setPayrollId(null);
     }
   }, [payroll]);
 
   const handleSave = async () => {
     const payrollData = {
-      startDate,
-      endDate,
-      reason,
-      status,
-      vacationType
+      employeeId,
+      payAmount,
+      payFrequency,
+      bonus,
+      incrementApplicable,
+      percentageIncrement,
     };
 
     try {
       const response = payrollId
         ? await axios.put(`http://localhost:8080/api/payrolls/updatePayroll/${payrollId}`, payrollData)
-        : await axios.post('http://localhost:8080/api/payrolls/addPayroll/{employee_id}', payrollData);
+        : await axios.post(`http://localhost:8080/api/payrolls/addPayroll/${employeeId}`, payrollData);
 
       onSave(response.data);
       onClose();
@@ -63,58 +70,73 @@ const Drawer = ({ isOpen, onClose, onSave, payroll }) => {
       </div>
       <div className="form-container">
         <div className="payroll-form-group">
-          <p>Start Date</p>
+          <p>Employee ID</p>
           <TextField
-            id="start-date"
-            type="date"
+            id="employee-id"
+            label="Employee ID"
             variant="outlined"
             fullWidth
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
+            value={employeeId}
+            onChange={(e) => setEmployeeId(e.target.value)}
+            disabled={!!payrollId} // Disable the field if updating
           />
         </div>
         <div className="payroll-form-group">
-          <p>End Date</p>
+          <p>Pay Amount</p>
           <TextField
-            id="end-date"
-            type="date"
+            id="pay-amount"
+            label="Pay Amount"
             variant="outlined"
             fullWidth
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
+            value={payAmount}
+            onChange={(e) => setPayAmount(e.target.value)}
           />
         </div>
         <div className="payroll-form-group">
-          <p>Reason</p>
+          <p>Pay Frequency</p>
           <TextField
-            id="reason"
-            label="Reason"
+            id="pay-frequency"
+            label="Pay Frequency"
             variant="outlined"
             fullWidth
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
+            value={payFrequency}
+            onChange={(e) => setPayFrequency(e.target.value)}
           />
         </div>
         <div className="payroll-form-group">
-          <p>Status</p>
+          <p>Bonus</p>
           <TextField
-            id="status"
-            label="Status"
+            id="bonus"
+            label="Bonus"
             variant="outlined"
             fullWidth
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            value={bonus}
+            onChange={(e) => setBonus(e.target.value)}
           />
         </div>
         <div className="payroll-form-group">
-          <p>Vacation Type</p>
+          <p>Increment Applicable</p>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={incrementApplicable}
+                onChange={(e) => setIncrementApplicable(e.target.checked)}
+                name="incrementApplicable"
+                color="primary"
+              />
+            }
+            label="Increment Applicable"
+          />
+        </div>
+        <div className="payroll-form-group">
+          <p>Percentage Increment</p>
           <TextField
-            id="vacation-type"
-            label="Vacation Type"
+            id="percentage-increment"
+            label="Percentage Increment"
             variant="outlined"
             fullWidth
-            value={vacationType}
-            onChange={(e) => setVacationType(e.target.value)}
+            value={percentageIncrement}
+            onChange={(e) => setPercentageIncrement(e.target.value)}
           />
         </div>
       </div>
@@ -122,4 +144,4 @@ const Drawer = ({ isOpen, onClose, onSave, payroll }) => {
   );
 };
 
-export default Drawer;
+export default PayrollDrawer;
