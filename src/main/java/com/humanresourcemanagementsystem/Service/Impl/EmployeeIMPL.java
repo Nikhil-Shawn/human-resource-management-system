@@ -1,10 +1,8 @@
 package com.humanresourcemanagementsystem.Service.Impl;
 
-import com.humanresourcemanagementsystem.Dto.EducationDTO;
 import com.humanresourcemanagementsystem.Dto.EmployeeDTO;
 import com.humanresourcemanagementsystem.Dto.EmployeePersonDTO;
 import com.humanresourcemanagementsystem.Entity.Department;
-import com.humanresourcemanagementsystem.Entity.Education;
 import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Entity.Person;
 import com.humanresourcemanagementsystem.Mapper.EmployeeMapper;
@@ -58,18 +56,15 @@ public class EmployeeIMPL implements EmployeeService {
     }
 
     @Override
-    //Display education by ID
+//Display education by ID
     public EmployeeDTO getEmployee(int id) {
         Optional<Employee> employeeOpt = employeeRepository.findById(id);
         if (employeeOpt.isPresent()) {
-
             Employee employee = employeeOpt.get();
 
             // Fetch associated education information
             EmployeeDTO employeeDTO = new EmployeeDTO();
             employeeDTO.setEmployeeID(employee.getEmployeeID());
-            employeeDTO.setExperience(employee.getExperience());
-            employeeDTO.setEducation(employee.getEducationId());
             employeeDTO.setSupervisorId(employee.getSupervisorId());
             employeeDTO.setDepartmentId(employee.getDepartment());
             employeeDTO.setSupervisor(employee.getIsSupervisor());
@@ -85,6 +80,24 @@ public class EmployeeIMPL implements EmployeeService {
             employeeDTO.setWorkLocation(employee.getWorkLocation());
             employeeDTO.setSupervisor(employee.getIsSupervisor());
             employeeDTO.setAdmin(employee.getAdmin());
+
+            // Set person fields
+            Person person = employee.getPerson();
+            if (person != null) {
+                employeeDTO.setPersonID(person.getPersonID());
+                employeeDTO.setFirstName(person.getFirstName());
+                employeeDTO.setLastName(person.getLastName());
+                employeeDTO.setAddress(person.getAddress());
+                employeeDTO.setPersonEmail(person.getPersonEmail());
+                employeeDTO.setPhone(person.getPhone());
+                employeeDTO.setDateOfBirth(person.getDateOfBirth());
+                employeeDTO.setGender(person.getGender());
+                employeeDTO.setNationality(person.getNationality());
+                employeeDTO.setMaritalStatus(person.getMaritalStatus());
+                employeeDTO.setPersonType(person.getPersonType());
+                employeeDTO.setCreatedAt(person.getCreatedAt());
+                employeeDTO.setUpdatedAt(person.getUpdatedAt());
+            }
 
             return employeeDTO;
         } else {

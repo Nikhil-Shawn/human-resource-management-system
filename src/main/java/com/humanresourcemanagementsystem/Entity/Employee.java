@@ -1,8 +1,8 @@
 package com.humanresourcemanagementsystem.Entity;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "hrm_employee")
@@ -20,14 +20,6 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "department_id", referencedColumnName = "department_id")
     private Department department;
-
-    @ManyToOne
-    @JoinColumn(name = "experience_id", referencedColumnName = "experience_id")
-    private Experience experience;
-
-    @ManyToOne
-    @JoinColumn(name = "education_id", referencedColumnName = "education_id")
-    private Education educationId;
 
     @Column(name = "supervisor_id")
     private int supervisorId;
@@ -71,6 +63,9 @@ public class Employee {
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Education> education;
+
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
@@ -112,22 +107,6 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
-    }
-
-    public Education getEducationId() {
-        return educationId;
-    }
-
-    public void setEducationId(Education educationId) {
-        this.educationId = educationId;
-    }
-
-    public Experience getExperience() {
-        return experience;
-    }
-
-    public void setExperience(Experience experience) {
-        this.experience = experience;
     }
 
     public int getSupervisorId() {
@@ -234,11 +213,19 @@ public class Employee {
         this.createdAt = createdAt;
     }
 
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public List<Education> getEducations() {
+        return education;
+    }
+
+    public void setEducations(List<Education> education) {
+        this.education = education;
     }
 }

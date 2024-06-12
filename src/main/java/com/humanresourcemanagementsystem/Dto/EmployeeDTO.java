@@ -1,7 +1,6 @@
 package com.humanresourcemanagementsystem.Dto;
 
 import com.humanresourcemanagementsystem.Entity.Department;
-import com.humanresourcemanagementsystem.Entity.Education;
 import com.humanresourcemanagementsystem.Entity.Experience;
 import com.humanresourcemanagementsystem.Entity.Person;
 
@@ -12,8 +11,6 @@ public class EmployeeDTO extends PersonDTO {
     private int employeeID;
     private Person person;
     private int departmentId; // Updated field
-    private Experience experience;
-    private Education education;
     private int supervisorId;
     private Boolean isSupervisor;
     private String manageWhom;
@@ -75,22 +72,6 @@ public class EmployeeDTO extends PersonDTO {
 
     public void setPerson(Person person) {
         this.person = person;
-    }
-
-    public Experience getExperience() {
-        return experience;
-    }
-
-    public void setExperience(Experience experience) {
-        this.experience = experience;
-    }
-
-    public Education getEducation() {
-        return education;
-    }
-
-    public void setEducation(Education education) {
-        this.education = education;
     }
 
     public int getSupervisorId() {
