@@ -14,6 +14,12 @@ public interface ExperienceService {
     //Display Experience By ID
     ExperienceDTO getExperienceById(int id);
 
+    //Display Experience By Person ID
+    ExperienceDTO getExperienceByPersonId(int id);
+
+    //Display Experience By Employee ID
+    ExperienceDTO getExperienceByEmployeeId(int id);
+
     //Display All Experiences
     List<ExperienceDTO> getAllExperience();
 

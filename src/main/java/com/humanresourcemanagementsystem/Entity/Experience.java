@@ -20,6 +20,11 @@ public class Experience {
     @JoinColumn(name = "person_id", referencedColumnName = "person_id")
     private Person person;
 
+    //One employee can have multiple experience
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
+    private Employee employee;
+
     @Column(name = "company_name")
     private String company_name;
 
@@ -43,24 +48,44 @@ public class Experience {
     }
 
     //Parameterized constructor initializes all fields with provided values
-    public Experience(int experienceID, String company_name, String employment_type, String no_of_years, String position, Date start_date, Date end_date, Person person) {
+
+
+    public Experience(int experienceID, Person person, Employee employee, String company_name, String employment_type, String no_of_years, String position, Date start_date, Date end_date) {
         this.experienceID = experienceID;
+        this.person = person;
+        this.employee = employee;
         this.company_name = company_name;
         this.employment_type = employment_type;
         this.no_of_years = no_of_years;
         this.position = position;
         this.start_date = start_date;
         this.end_date = end_date;
-        this.person = person;
     }
 
     // Getter and Setter provide access to the private fields
+
     public int getExperienceID() {
         return experienceID;
     }
 
     public void setExperienceID(int experienceID) {
         this.experienceID = experienceID;
+    }
+
+    public int getPerson() {
+        return person.getPersonID();
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public String getCompany_name() {
@@ -111,8 +136,5 @@ public class Experience {
         this.end_date = end_date;
     }
 
-    public int getPerson() { return person.getPersonID(); }
-
-    public void setPerson(Person person) { this.person = person;}
 }
 
