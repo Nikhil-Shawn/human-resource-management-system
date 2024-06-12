@@ -18,7 +18,6 @@ function Login() {
                 password,
                 personType: "employee"
             });
-            // Assuming the API response contains a success indicator or user info
             if (response.data.success) {
                 navigate("/dashboard");
             } else {

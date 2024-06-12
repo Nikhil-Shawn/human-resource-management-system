@@ -30,8 +30,8 @@ function Assets() {
         console.log("response", response);
         const formattedAssets = response.data.map(asset => ({
           ...asset,
-          issued_date: formatDate(asset.issued_date), // Format issued date
-          return_date: formatDate(asset.return_date), // Format return date
+          issued_date: formatDate(asset.issued_date),
+          return_date: formatDate(asset.return_date),
         }));
         setAssetsData(formattedAssets);
       })
@@ -45,7 +45,7 @@ function Assets() {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) return '';
     const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
@@ -74,7 +74,7 @@ function Assets() {
     }
     setIsDrawerOpen(false);
     setCurrentAsset(null);
-    fetchAssets(true); // Refresh assets after saving
+    fetchAssets(true);
   };
 
   const handleDelete = (assetId) => {

@@ -39,7 +39,7 @@
 
 .sidebar-menu {
   margin-top: 20px;
-  flex-grow: 1; /* Ensures the menu area grows to take up remaining space */
+  flex-grow: 1;
 }
 
 .sidebar-item {
