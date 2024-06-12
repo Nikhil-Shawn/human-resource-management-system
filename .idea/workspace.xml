@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Payroll to be tested">
+    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Employee get API optimized">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Components/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Components/Sidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EducationController/EducationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Controller/EducationController/EducationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/EducationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Dto/EducationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Education.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Entity/Education.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/EducationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Repo/EducationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/EducationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/EducationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/AssetIMPL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/AssetIMPL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EducationIMPL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/Impl/EducationIMPL.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcemanagementsystem/Service/LoginService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Payroll-by-employee" />
-
+        <entry key="$PROJECT_DIR$" value="Employee-detail-UI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -59,16 +55,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HumanResourceManagementSystemApplication.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Education-and-Experience-byexperience",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/pooja/IdeaProjects/human-resource-management-system",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HumanResourceManagementSystemApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.HumanResourceManagementSystemApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Login-and-whole-app-flow&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pooja/IdeaProjects/human-resource-management-system&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -158,23 +160,23 @@
       <option name="project" value="LOCAL" />
       <updated>1717858755136</updated>
     </task>
-    <task id="LOCAL-00012" summary="Separation working and tested">
+    <task id="LOCAL-00011" summary="Employee get API optimized">
       <option name="closed" value="true" />
-      <created>1718116046910</created>
+      <created>1718139170002</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1718139170002</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Employee get API optimized">
+      <option name="closed" value="true" />
+      <created>1718139589314</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1718116046910</updated>
+      <updated>1718139589314</updated>
     </task>
-    <task id="LOCAL-00013" summary="Payroll to be tested">
-      <option name="closed" value="true" />
-      <created>1718128995624</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1718128995624</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,10 +198,7 @@
     <MESSAGE value="Education Multiple Post" />
     <MESSAGE value="Education Multiple and by id tested and completed" />
     <MESSAGE value="Asset Benefit Experience Education Update and Many to one relationship" />
-    <MESSAGE value="Code clean up. Employee pendind" />
-    <MESSAGE value="Added security and Education changes" />
-    <MESSAGE value="Separation working and tested" />
-    <MESSAGE value="Payroll to be tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payroll to be tested" />
+    <MESSAGE value="Employee get API optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="Employee get API optimized" />
   </component>
 </project>

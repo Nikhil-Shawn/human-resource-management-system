@@ -6,7 +6,7 @@ import Separation from "./Pages/Separation";
 function App() {
 	return (
 		<div className="wrapper">
-			<Separation />
+			<Login />
 		</div>
 	);
 }

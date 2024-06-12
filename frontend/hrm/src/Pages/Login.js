@@ -1,36 +1,43 @@
-import React, { useState } from "react";
-import loginImage from "../images/loginImage.svg";
-import nexusLogo from "../images/nexusLogo.png";
-import "./Login.css";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import loginImage from '../images/loginImage.svg';
+import nexusLogo from '../images/nexusLogo.png';
+import './Login.css';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useAuth } from '../Pages/AuthContext'; // Adjust the import path as needed
 
 function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post("http://localhost:8080/api/login", {
+            const response = await axios.post('http://localhost:8080/api/login', {
                 email,
                 password,
-                personType: "employee"
+                personType: 'employee'
             });
-            // Assuming the API response contains a success indicator or user info
+
             if (response.data.success) {
-                navigate("/dashboard");
+                const authData = {
+                    employeeId: response.data.employeeId, // Assuming employeeId is in the response
+                    ...response.data
+                };
+                login(authData); // Store the authentication data
+                navigate('/dashboard');
             } else {
-                setError("Invalid email or password");
+                setError('Invalid email or password');
             }
         } catch (error) {
-            setError("An error occurred. Please try again.");
+            setError('An error occurred. Please try again.');
         }
     };
 
     const handleCreateAccount = () => {
-        navigate("/register");
+        navigate('/register');
     };
 
     return (
@@ -68,7 +75,7 @@ function Login() {
                         Login
                     </button>
                     <p className="create-account-message">
-                        No account?{" "}
+                        No account?{' '}
                         <span className="create-account-link" onClick={handleCreateAccount}>
                             Create an account here
                         </span>

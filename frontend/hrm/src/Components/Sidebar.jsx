@@ -1,84 +1,105 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaBriefcase, FaChartPie, FaDollarSign, FaLaptop, FaSignOutAlt, FaUserTie, FaUsers } from 'react-icons/fa';
 import './Sidebar.css';
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth } from '../Pages/AuthContext'; // Ensure this is correctly imported
+import axios from 'axios';
 
 function Sidebar() {
+    const { authData } = useAuth();
+    const [employeeData, setEmployeeData] = useState({});
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
+    const employeeId = authData.data.employeeId;
+    console.log("is id proper?", employeeId);
 
-  const displayDashboard = () => {
-    navigate('/dashboard')
-  }
+    useEffect(() => {
+        const fetchEmployeeData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/v1/employee/${employeeId}`);
+                setEmployeeData(response.data.person);
+                console.log(response.data.person.firstName)
+            } catch (error) {
+                console.error("Error fetching employee data:", error);
+            }
+        };
 
-  const displayEmployeee = () => {
-    navigate('/employee')
-}
+        if (authData && employeeId) {
+            fetchEmployeeData();
+        }
+    }, [authData]);
 
-const displayLeaves = () =>{
-    navigate('/leaves')
-}
+    const displayDashboard = () => {
+        navigate('/dashboard')
+    }
 
-const displayPayroll = () => {
-    navigate('/payroll')
-}
+    const displayEmployee = () => {
+        navigate('/employee')
+    }
 
-const displaySeparation = () => {
-    navigate('/separation')
-}
+    const displayLeaves = () => {
+        navigate('/leaves')
+    }
 
-const displayAssets = () => {
-  navigate('/assets')
-}
+    const displayPayroll = () => {
+        navigate('/payroll')
+    }
 
-const displayApplicantList = () => {
-  navigate('/applicantList')
-}
+    const displaySeparation = () => {
+        navigate('/separation')
+    }
+
+    const displayAssets = () => {
+        navigate('/assets')
+    }
+
+    const displayApplicantList = () => {
+        navigate('/applicantList')
+    }
 
 
-  return (
-    <div className="sidebar">
-      <div className="sidebar-header">
-        <h2>NEXUS Systems</h2>
-        <div className="sidebar-user">
-          <p>Logged in as</p>
-          <h3>Andreas Mueller</h3>
-          <p>andreas.mueller@hr-nexus.com</p>
+    return (
+        <div className="sidebar">
+            <div className="sidebar-header">
+                <h2>NEXUS Systems</h2>
+                <div className="sidebar-user">
+                    <p>Logged in as</p>
+                    <h3>{employeeData.firstName || 'Loading...'}</h3>
+                    <p>{employeeData.personEmail || 'Loading...'}</p>
+                </div>
+            </div>
+            <div className="sidebar-menu">
+                <div className="sidebar-item" onClick={displayDashboard}>
+                    <FaChartPie className="sidebar-icon" />
+                    <span>Overview</span>
+                </div>
+                <div className="sidebar-item" onClick={displayEmployee}>
+                    <FaUsers className="sidebar-icon" />
+                    <span>Employees</span>
+                </div>
+                <div className="sidebar-item" onClick={displayLeaves}>
+                    <FaBriefcase className="sidebar-icon" />
+                    <span>Leaves</span>
+                </div>
+                <div className="sidebar-item" onClick={displayPayroll}>
+                    <FaDollarSign className="sidebar-icon" />
+                    <span>Payroll</span>
+                </div>
+                <div className="sidebar-item" onClick={displayAssets}>
+                    <FaLaptop className="sidebar-icon" />
+                    <span>Assets</span>
+                </div>
+                <div className="sidebar-item" onClick={displaySeparation}>
+                    <FaSignOutAlt className="sidebar-icon" />
+                    <span>Separation</span>
+                </div>
+                <div className="sidebar-item" onClick={displayApplicantList}>
+                    <FaUserTie className="sidebar-icon" />
+                    <span>Applicants</span>
+                </div>
+            </div>
         </div>
-      </div>
-      <div className="sidebar-menu">
-        <div className="sidebar-item" onClick={displayDashboard}>
-          <FaChartPie className="sidebar-icon" />
-          <span>Overview</span>
-        </div>
-        <div className="sidebar-item" onClick={displayEmployeee}>
-          <FaUsers className="sidebar-icon" />
-          <span>Employees</span>
-        </div>
-        <div className="sidebar-item" onClick={displayLeaves}>
-          <FaBriefcase className="sidebar-icon" />
-          <span>Leaves</span>
-        </div>
-        <div className="sidebar-item" onClick={displayPayroll}>
-          <FaDollarSign className="sidebar-icon" />
-          <span>Payroll</span>
-        </div>
-        <div className="sidebar-item" onClick={displayAssets}>
-          <FaLaptop className="sidebar-icon" />
-          <span>Assets</span>
-        </div>
-        <div className="sidebar-item" onClick={displaySeparation}>
-          <FaSignOutAlt className="sidebar-icon" />
-          <span>Separation</span>
-        </div>
-        <div className="sidebar-item" onClick={displayApplicantList}>
-          <FaUserTie className="sidebar-icon" />
-          <span>Applicants</span>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Sidebar;

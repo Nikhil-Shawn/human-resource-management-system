@@ -1,6 +1,7 @@
 package com.humanresourcemanagementsystem.Service;
 
 import com.humanresourcemanagementsystem.Dto.LoginDTO;
+import com.humanresourcemanagementsystem.Entity.Employee;
 import com.humanresourcemanagementsystem.Entity.Person;
 import com.humanresourcemanagementsystem.Repo.EmployeeRepository;
 import com.humanresourcemanagementsystem.Repo.PersonRepository;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class LoginService {
@@ -67,8 +69,15 @@ public class LoginService {
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(loginDTO.getEmail());
         final String jwt = jwtUtil.generateToken(userDetails.getUsername());
+        // Fetch employee details
+        Optional<Employee> employee = employeeRepo.findByEmail(loginDTO.getEmail());
+        if (employee == null) {
+            return new ResponseData("Employee not found", false, null);
+        }
+
         Map<String, Object> responseData = new HashMap<>();
         responseData.put("token", jwt);
+        responseData.put("employeeId", employee.get().getEmployeeID());
         return new ResponseData("Login Success", true, responseData);
     }
 

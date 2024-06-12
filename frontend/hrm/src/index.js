@@ -15,35 +15,32 @@ import Separation from './Pages/Separation';
 import Assets from './Pages/Assets';
 import ApplicantList from './Pages/ApplicantList';
 import AddEducation from './Pages/AddEducation';
-
-
+import { AuthProvider } from './Pages/AuthContext'; // Ensure the path is correct
+import Department from './Pages/Department'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
   <React.StrictMode>
-    <Routes>
-    <Route path="/" element={<App />} />
-    <Route path="/dashboard" element={<Dashboard/>}></Route>
-    <Route path="/employee" element={<Employee/>}></Route>
-    <Route path="/register" element={<Register/>}></Route>
-    <Route path="/leaves" element={<Leaves/>}></Route>
-    <Route path="/payroll" element={<Payroll/>}></Route>
-    <Route path="/separation" element={<Separation/>}></Route>
-    <Route path="/assets" element={<Assets/>}></Route>
-    <Route path="/create-employee" element={<CreateEmployee/>}></Route>
-    <Route path="/employee-list" element={<EmployeeList/>}></Route>
-    <Route path="/employee" element={<Employee/>}></Route>
-    <Route path="/applicantList" element={<ApplicantList/>}></Route>
-    <Route path="/add-education" element={<AddEducation />} />
-
-    </Routes>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+        <Route path="/department" element={<Department />} />
+          <Route path="/" element={<App />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/employee" element={<Employee />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/leaves" element={<Leaves />} />
+          <Route path="/payroll" element={<Payroll />} />
+          <Route path="/separation" element={<Separation />} />
+          <Route path="/assets" element={<Assets />} />
+          <Route path="/create-employee" element={<CreateEmployee />} />
+          <Route path="/employee-list" element={<EmployeeList />} />
+          <Route path="/applicantList" element={<ApplicantList />} />
+          <Route path="/add-education" element={<AddEducation />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
-  </BrowserRouter>
 );
 
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

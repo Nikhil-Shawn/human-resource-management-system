@@ -62,7 +62,7 @@ public class SecurityConfig {
                                 //For Employee
                                 "api/v1/employee/all",
                                 "api/v1/employee/save",
-                                "api/v1/employee/{id}"
+                                "api/v1/employee/{id}",
 
                                 //For Education
                                 "api/v1/education/all",
@@ -73,6 +73,12 @@ public class SecurityConfig {
                                 "/api/v1/education/byemployee/{id}",
                                 "/api/v1/education/multi",
 
+                                //For Asset
+                                "/api/v1/assets/all",
+                                "/api/v1/assets/save",
+                                "/api/v1/assets/update/{id}",
+                                "/api/v1/assets/{id}",
+                                "/api/v1/assets/multi "
 
                                 ).permitAll()
                         .anyRequest().authenticated()
