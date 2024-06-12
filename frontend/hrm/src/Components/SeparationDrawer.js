@@ -4,22 +4,23 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './SeparationDrawer.css';
 
-const Drawer = ({ isOpen, onClose, onSave, separation }) => {
+const SeparationDrawer = ({ isOpen, onClose, onSave, separation }) => {
   const [employeeId, setEmployeeId] = useState('');
   const [separationDate, setSeparationDate] = useState('');
   const [separationType, setSeparationType] = useState('');
   const [separationReason, setSeparationReason] = useState('');
   const [separationStatus, setSeparationStatus] = useState('');
-  const [separationId, setSeparationId] = useState();
+  const [separationId, setSeparationId] = useState('');
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (separation) {
-      setEmployeeId(separation.employee_id);
-      setSeparationDate(separation.separation_date);
-      setSeparationType(separation.separation_type);
-      setSeparationReason(separation.separation_reason);
-      setSeparationStatus(separation.separation_status);
-      setSeparationId(separation.separation_id);
+      setEmployeeId(separation.employee_id || '');
+      setSeparationDate(separation.separation_date || '');
+      setSeparationType(separation.separation_type || '');
+      setSeparationReason(separation.separation_reason || '');
+      setSeparationStatus(separation.separation_status || '');
+      setSeparationId(separation.separation_id || '');
     } else {
       setEmployeeId('');
       setSeparationDate('');
@@ -28,15 +29,29 @@ const Drawer = ({ isOpen, onClose, onSave, separation }) => {
       setSeparationStatus('');
       setSeparationId('');
     }
+    setErrors({});
   }, [separation]);
 
+  const validate = () => {
+    const newErrors = {};
+    if (!employeeId.trim()) newErrors.employeeId = 'Please enter this field';
+    if (!separationDate.trim()) newErrors.separationDate = 'Please enter this field';
+    if (!separationType.trim()) newErrors.separationType = 'Please enter this field';
+    if (!separationReason.trim()) newErrors.separationReason = 'Please enter this field';
+    if (!separationStatus.trim()) newErrors.separationStatus = 'Please enter this field';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSave = async () => {
+    if (!validate()) return;
+
     const separationData = {
-      employee_id: employeeId,
-      separation_date: separationDate,
-      separation_type: separationType,
-      separation_reason: separationReason,
-      separation_status: separationStatus,
+      employee_id: employeeId.trim(),
+      separation_date: separationDate.trim(),
+      separation_type: separationType.trim(),
+      separation_reason: separationReason.trim(),
+      separation_status: separationStatus.trim(),
     };
 
     try {
@@ -80,6 +95,8 @@ const Drawer = ({ isOpen, onClose, onSave, separation }) => {
             value={employeeId}
             onChange={(e) => setEmployeeId(e.target.value)}
             sx={textFieldStyles}
+            error={!!errors.employeeId}
+            helperText={errors.employeeId}
           />
         </div>
         <div className="separation-form-group">
@@ -95,6 +112,8 @@ const Drawer = ({ isOpen, onClose, onSave, separation }) => {
             InputLabelProps={{
               shrink: true,
             }}
+            error={!!errors.separationDate}
+            helperText={errors.separationDate}
           />
         </div>
         <div className="separation-form-group">
@@ -107,6 +126,8 @@ const Drawer = ({ isOpen, onClose, onSave, separation }) => {
             value={separationType}
             onChange={(e) => setSeparationType(e.target.value)}
             sx={textFieldStyles}
+            error={!!errors.separationType}
+            helperText={errors.separationType}
           />
         </div>
         <div className="separation-form-group">
@@ -119,6 +140,8 @@ const Drawer = ({ isOpen, onClose, onSave, separation }) => {
             value={separationReason}
             onChange={(e) => setSeparationReason(e.target.value)}
             sx={textFieldStyles}
+            error={!!errors.separationReason}
+            helperText={errors.separationReason}
           />
         </div>
         <div className="separation-form-group">
@@ -131,6 +154,8 @@ const Drawer = ({ isOpen, onClose, onSave, separation }) => {
             value={separationStatus}
             onChange={(e) => setSeparationStatus(e.target.value)}
             sx={textFieldStyles}
+            error={!!errors.separationStatus}
+            helperText={errors.separationStatus}
           />
         </div>
       </div>
@@ -138,4 +163,4 @@ const Drawer = ({ isOpen, onClose, onSave, separation }) => {
   );
 };
 
-export default Drawer;
+export default SeparationDrawer;
