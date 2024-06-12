@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { FaBriefcase, FaChartPie, FaDollarSign, FaLaptop, FaSignOutAlt, FaUserTie, FaUsers } from 'react-icons/fa';
+import { FaBriefcase, FaChartPie, FaDollarSign, FaLaptop, FaSignOutAlt, FaUserTie, FaUsers, FaRegBuilding } from 'react-icons/fa';
 import './Sidebar.css';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Pages/AuthContext'; // Ensure this is correctly imported
 import axios from 'axios';
+import Department from '../Pages/Department';
 
 function Sidebar() {
     const { authData } = useAuth();
@@ -53,6 +54,10 @@ function Sidebar() {
         navigate('/assets')
     }
 
+    const displayDepartment = () => {
+      navigate('/department')
+  }
+
     const displayApplicantList = () => {
         navigate('/applicantList')
     }
@@ -88,6 +93,10 @@ function Sidebar() {
                 <div className="sidebar-item" onClick={displayAssets}>
                     <FaLaptop className="sidebar-icon" />
                     <span>Assets</span>
+                </div>
+                <div className="sidebar-item" onClick={displayDepartment}>
+                    <FaRegBuilding className="sidebar-icon" />
+                    <span>Department</span>
                 </div>
                 <div className="sidebar-item" onClick={displaySeparation}>
                     <FaSignOutAlt className="sidebar-icon" />
