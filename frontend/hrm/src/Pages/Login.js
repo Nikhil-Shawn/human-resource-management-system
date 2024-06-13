@@ -13,7 +13,30 @@ function Login() {
     const navigate = useNavigate();
     const { login } = useAuth();
 
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    };
+
+    const validatePassword = (password) => {
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasMinLength = password.length >= 8;
+        return hasUpperCase && hasLowerCase && hasNumber && hasMinLength;
+    };
+
     const handleLogin = async () => {
+        if (!validateEmail(email)) {
+            setError('Please enter a valid email address.');
+            return;
+        }
+
+        if (!validatePassword(password)) {
+            setError('Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one number.');
+            return;
+        }
+
         try {
             const response = await axios.post('http://localhost:8080/api/login', {
                 email,
@@ -87,3 +110,4 @@ function Login() {
 }
 
 export default Login;
+

@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Fixed Employee get api by ID">
+    <list default="true" id="00fe8036-88d5-47da-81a1-39f5b02b0c27" name="Changes" comment="Education working and tested&#10;Experience is working and tested">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Components/AssetDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Components/AssetDrawer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/hrm/src/Pages/EmployeeList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/hrm/src/Pages/EmployeeList.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
