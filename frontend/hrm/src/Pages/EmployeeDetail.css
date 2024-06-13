@@ -31,9 +31,9 @@
 }
 .info-card {
   background-color: white;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(161, 156, 156, 0.505);
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(113, 109, 109, 0.851);
   padding: 20px;
   position: relative;
   box-sizing: border-box;
@@ -89,7 +89,7 @@
   top: 10px;
   right: 10px;
   background-color: #007bff;
-  border: none;
+  border: rgba(19, 12, 12, 0.855);
   border-radius: 4px;
   cursor: pointer;
   padding: 5px 10px;

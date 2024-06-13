@@ -73,6 +73,12 @@ function Sidebar() {
     //     navigate('/applicantList');
     // };
 
+    // Work in progress
+    // const displaySeparation = () => {
+    //     navigate('/separation');
+    // };
+
+
     return (
         <div className="sidebar">
             <div className="sidebar-header">
@@ -121,6 +127,11 @@ function Sidebar() {
                     <FaRegBuilding className="sidebar-icon" />
                     <span>Department</span>
                 </div>
+                 {/* Work in Progress */}
+                {/* <div className="sidebar-item" onClick={displaySeparation}>
+                    <FaRegBuilding className="sidebar-icon" />
+                    <span>Separation</span>
+                </div> */}
                 {/* Work in Progress */}
                 {/* <div className="sidebar-item" onClick={displayApplicantList}>
                     <FaUserTie className="sidebar-icon" />

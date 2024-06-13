@@ -13,7 +13,30 @@ function Login() {
     const navigate = useNavigate();
     const { login } = useAuth();
 
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    };
+
+    const validatePassword = (password) => {
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasMinLength = password.length >= 8;
+        return hasUpperCase && hasLowerCase && hasNumber && hasMinLength;
+    };
+
     const handleLogin = async () => {
+        if (!validateEmail(email)) {
+            setError('Please enter a valid email address.');
+            return;
+        }
+
+        if (!validatePassword(password)) {
+            setError('Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one number.');
+            return;
+        }
+
         try {
             const response = await axios.post('http://localhost:8080/api/login', {
                 email,
@@ -49,10 +72,6 @@ function Login() {
                 <div className="logo">
                     <img src={nexusLogo} alt="HR Nexus logo" />
                 </div>
-                <div className="button-container">
-                    <button className="emp-button">Employee</button>
-                    <button className="applicant-button">Applicant</button>
-                </div>
                 <div className="form-container">
                     <h2>Login to your account</h2>
                     <p>Enter your email and password to sign in</p>
@@ -74,12 +93,12 @@ function Login() {
                     <button className="login-button" onClick={handleLogin}>
                         Login
                     </button>
-                    <p className="create-account-message">
+                    {/* <p className="create-account-message">
                         No account?{' '}
                         <span className="create-account-link" onClick={handleCreateAccount}>
                             Create an account here
                         </span>
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </div>
@@ -87,3 +106,4 @@ function Login() {
 }
 
 export default Login;
+

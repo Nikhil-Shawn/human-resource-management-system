@@ -41,12 +41,12 @@ const PayrollDrawer = ({ isOpen, onClose, onSave, payroll }) => {
 
 	const validate = () => {
 		const newErrors = {};
-		if (!employeeId.trim()) newErrors.employeeId = "Please enter this field";
-		if (!payAmount.trim()) newErrors.payAmount = "Please enter this field";
-		if (!payFrequency.trim())
+		if (!employeeId) newErrors.employeeId = "Please enter this field";
+		if (!payAmount) newErrors.payAmount = "Please enter this field";
+		if (!payFrequency)
 			newErrors.payFrequency = "Please enter this field";
-		if (!bonus.trim()) newErrors.bonus = "Please enter this field";
-		if (!percentageIncrement.trim())
+		if (!bonus) newErrors.bonus = "Please enter this field";
+		if (!percentageIncrement)
 			newErrors.percentageIncrement = "Please enter this field";
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
@@ -56,12 +56,12 @@ const PayrollDrawer = ({ isOpen, onClose, onSave, payroll }) => {
 		if (!validate()) return;
 
 		const payrollData = {
-			employeeId: employeeId.trim(),
-			payAmount: payAmount.trim(),
-			payFrequency: payFrequency.trim(),
-			bonus: bonus.trim(),
+			employeeId: employeeId,
+			payAmount: payAmount,
+			payFrequency: payFrequency,
+			bonus: bonus,
 			incrementApplicable,
-			percentageIncrement: percentageIncrement.trim(),
+			percentageIncrement: percentageIncrement,
 		};
 
 		try {

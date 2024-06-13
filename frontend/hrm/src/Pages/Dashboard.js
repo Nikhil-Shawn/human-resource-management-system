@@ -19,7 +19,7 @@ function Dashboard() {
 
 
     const displayEmployee = () => {
-        navigate('/employee');
+        navigate('/employee-list');
     };
 
     const displayLeaves = () => {
@@ -34,13 +34,18 @@ function Dashboard() {
         navigate('/payroll');
     };
 
-    const displaySeparation = () => {
-        navigate('/separation');
-    };
+    // const displaySeparation = () => {
+    //     navigate('/separation');
+    // };
 
     const displayAssets = () => {
         navigate('/assets');
     };
+
+    const displayCreateEmployee = () =>{
+        navigate('/create-employee');
+ 
+    }
 
     return (
         <div className="dashboard-container">
@@ -71,14 +76,20 @@ function Dashboard() {
                         </div>
                         <div className="dashboard-card" onClick={displayDepartment}>
                             <div className="card-title">Department</div>
-                            <div className="card-icon assets-icon"></div>
-                            <div className="card-subtitle">Depatment Details</div>
+                            <div className="card-icon department-icon"></div>
+                            <div className="card-subtitle">Department Details</div>
                         </div>
-                        <div className="dashboard-card" onClick={displaySeparation}>
+                        <div className="dashboard-card" onClick={displayCreateEmployee}>
+                            <div className="card-title">Create Employee</div>
+                            <div className="card-icon incorporation-icon"></div>
+                            <div className="card-subtitle">Add new employee</div>
+                        </div>
+                        {/* Work in Progress */}
+                        {/* <div className="dashboard-card" onClick={displaySeparation}>
                             <div className="card-title">Separation</div>
                             <div className="card-icon separation-icon"></div>
                             <div className="card-subtitle">Contract Termination</div>
-                        </div>
+                        </div> */}
                         {/* Work in Progress */}
                         {/* <div className="dashboard-card">
                             <div className="card-title">Applicants</div>

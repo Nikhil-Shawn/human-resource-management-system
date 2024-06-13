@@ -14,6 +14,7 @@ function CreateEmployee() {
     const [gender, setGender] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [address, setAddress] = useState("");
     const [maritalStatus, setMaritalStatus] = useState("");
     const [departmentId, setDepartmentId] = useState("");
@@ -35,8 +36,29 @@ function CreateEmployee() {
         setIsAdmin(e.target.checked);
     };
 
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    };
+
+    const validatePassword = (password) => {
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasMinLength = password.length >= 8;
+        return hasUpperCase && hasLowerCase && hasNumber && hasMinLength;
+    };
+
     const validateForm = () => {
-        if (!firstname || !lastname || !dob || !nationality || !gender || !phone || !email || !address || !maritalStatus || !departmentId || !dateOfJoining || !workLocation || !designation || !employmentType) {
+        if (!firstname || !lastname || !dob || !nationality || !gender || !phone || !email || !password || !address || !maritalStatus || !departmentId || !dateOfJoining || !workLocation || !designation || !employmentType) {
+            return false;
+        }
+        if (!validateEmail(email)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+        if (!validatePassword(password)) {
+            alert("Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one number.");
             return false;
         }
         return true;
@@ -45,7 +67,7 @@ function CreateEmployee() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) {
-            alert("Please fill in all required fields.");
+            alert("Please fill in all required fields and ensure email and password are valid.");
             return;
         }
 
@@ -54,7 +76,7 @@ function CreateEmployee() {
             lastName: lastname,
             address: address,
             personEmail: email,
-            personPassword: "123",
+            personPassword: password,
             phone: phone,
             dateOfBirth: dob,
             gender: gender,
@@ -67,7 +89,7 @@ function CreateEmployee() {
             employmentType: employmentType,
             isAdmin: isAdmin,
             empEmail: email,
-            empPassword: "123",
+            empPassword: password,
             designation: designation,
             hireDate: dateOfJoining,
             terminationDate: dateOfTermination,
@@ -131,6 +153,13 @@ function CreateEmployee() {
                                         placeholder="Email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                         required
                                     />
                                     <input
