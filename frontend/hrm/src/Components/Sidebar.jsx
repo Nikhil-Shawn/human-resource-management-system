@@ -68,9 +68,10 @@ function Sidebar() {
         navigate('/department');
     };
 
-    const displayApplicantList = () => {
-        navigate('/applicantList');
-    };
+    // Work in progress
+    // const displayApplicantList = () => {
+    //     navigate('/applicantList');
+    // };
 
     return (
         <div className="sidebar">
@@ -120,10 +121,11 @@ function Sidebar() {
                     <FaRegBuilding className="sidebar-icon" />
                     <span>Department</span>
                 </div>
-                <div className="sidebar-item" onClick={displayApplicantList}>
+                {/* Work in Progress */}
+                {/* <div className="sidebar-item" onClick={displayApplicantList}>
                     <FaUserTie className="sidebar-icon" />
                     <span>Applicants</span>
-                </div>
+                </div> */}
             </div>
         </div>
     );

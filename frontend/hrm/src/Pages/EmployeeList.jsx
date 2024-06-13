@@ -61,7 +61,7 @@ function Employee() {
                   marginLeft: '10px'
                 }}>Name</th>
                 <th>Position</th>
-                <th>Department</th>
+                <th>Employment Type</th>
                 <th>Status</th>
                 <th>Joining Date</th>
                 <th>Email address</th>
@@ -73,16 +73,7 @@ function Employee() {
               {employees.map(employee => (
                 <tr key={employee.employeeID}>
                   <td style={{ display: 'flex', alignItems: 'center', borderLeft: '1px solid #E0E4EA', padding: '20px' }}>
-                    <img
-                      src={employee.img}
-                      alt={`${employee.firstName}'s profile`}
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',
-                        marginRight: '10px'
-                      }}
-                    />
+                    
                     <span>{employee.firstName}</span>
                   </td>
                   <td>
@@ -94,7 +85,7 @@ function Employee() {
                       display: 'inline-block'
                     }}>{employee.designation}</span>
                   </td>
-                  <td>{departments[employee.departmentId]}</td>
+                  <td>{employee.employmentType}</td>
                   <td>
                     <span style={{
                       backgroundColor: employee.employmentStatus === 'Active' ? '#DDFCE0' : '#FCE0E0',

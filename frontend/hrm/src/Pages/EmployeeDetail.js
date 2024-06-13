@@ -309,7 +309,8 @@ function EmployeeDetail() {
                 <p>{employeeData.coordinatorDescription}</p>
               </div>
             </div>
-
+            {/* // Work in Progress */}
+{/* 
             <div className="info-card skills-card">
               <h2>Skills</h2>
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
@@ -318,7 +319,7 @@ function EmployeeDetail() {
                   <span key={index}>{skill}</span>
                 ))}
               </div>
-            </div>
+            </div> */}
 
           </div>
         </div>
