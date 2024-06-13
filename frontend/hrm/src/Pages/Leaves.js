@@ -95,7 +95,7 @@ function Leaves() {
                     <table className="employee-table">
                         <thead>
                             <tr style={{ fontWeight: "0", fontSize: "0.8vw", color: "black" }}>
-                                <th style={{ padding: "20px 0px 20px 40px", marginLeft: "10px" }}>Name</th>
+                                <th style={{ padding: "20px 0px 20px 40px", marginLeft: "10px" }}>ID</th>
                                 <th>Reason</th>
                                 <th>Leave Type</th>
                                 <th>Start Date</th>
@@ -109,11 +109,7 @@ function Leaves() {
                             {vacations && vacations.map((vacation, index) => (
                                 <tr key={index}>
                                     <td style={{ display: "flex", alignItems: "center", borderLeft: "1px solid #E0E4EA", padding: "20px" }}>
-                                        <img
-                                            src={vacation.img}
-                                            alt={`${vacation.name}'s profile`}
-                                            style={{ width: "40px", height: "40px", borderRadius: "50%", marginRight: "10px" }}
-                                        />
+                                        <td>{vacation.vacationId} </td> 
                                     </td>
                                     <td>
                                         <span style={{ backgroundColor: "#DDCBFC", color: "black", borderRadius: "30px", padding: "8px 20px", display: "inline-block" }}>

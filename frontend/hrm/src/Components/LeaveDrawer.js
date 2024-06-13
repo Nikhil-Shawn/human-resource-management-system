@@ -42,13 +42,13 @@ const LeaveDrawer = ({ isOpen, onClose, onSave, leave }) => {
 
 	const validate = () => {
 		const newErrors = {};
-		if (!employeeId.trim()) newErrors.employeeId = "Please enter this field";
-		if (!vacationType.trim())
+		if (!employeeId) newErrors.employeeId = "Please enter this field";
+		if (!vacationType)
 			newErrors.vacationType = "Please enter this field";
-		if (!reason.trim()) newErrors.reason = "Please enter this field";
-		if (!startDate.trim()) newErrors.startDate = "Please enter this field";
-		if (!endDate.trim()) newErrors.endDate = "Please enter this field";
-		if (!status.trim()) newErrors.status = "Please enter this field";
+		if (!reason) newErrors.reason = "Please enter this field";
+		if (!startDate) newErrors.startDate = "Please enter this field";
+		if (!endDate) newErrors.endDate = "Please enter this field";
+		if (!status) newErrors.status = "Please enter this field";
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
 	};
@@ -57,12 +57,12 @@ const LeaveDrawer = ({ isOpen, onClose, onSave, leave }) => {
 		if (!validate()) return;
 
 		const leaveData = {
-			employeeId: employeeId.trim(),
-			vacationType: vacationType.trim(),
-			reason: reason.trim(),
-			startDate: startDate.trim(),
-			endDate: endDate.trim(),
-			status: status.trim(),
+			employeeId: employeeId,
+			vacationType: vacationType,
+			reason: reason,
+			startDate: startDate,
+			endDate: endDate,
+			status: status,
 		};
 
 		try {

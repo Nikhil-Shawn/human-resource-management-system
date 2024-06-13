@@ -72,10 +72,6 @@ function Login() {
                 <div className="logo">
                     <img src={nexusLogo} alt="HR Nexus logo" />
                 </div>
-                <div className="button-container">
-                    <button className="emp-button">Employee</button>
-                    <button className="applicant-button">Applicant</button>
-                </div>
                 <div className="form-container">
                     <h2>Login to your account</h2>
                     <p>Enter your email and password to sign in</p>
@@ -97,12 +93,12 @@ function Login() {
                     <button className="login-button" onClick={handleLogin}>
                         Login
                     </button>
-                    <p className="create-account-message">
+                    {/* <p className="create-account-message">
                         No account?{' '}
                         <span className="create-account-link" onClick={handleCreateAccount}>
                             Create an account here
                         </span>
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </div>

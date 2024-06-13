@@ -4,6 +4,9 @@ import Sidebar from '../Components/Sidebar';
 import dateDot from '../images/dateIcon.png';
 import locationDot from '../images/locationIcon.png';
 import './EmployeeDetail.css';
+import { HiOutlineBuildingOffice } from "react-icons/hi2";
+import { MdOutlineCastForEducation } from "react-icons/md";
+
 import axios from 'axios';
 import { useAuth } from './AuthContext';
 
@@ -125,27 +128,27 @@ function EmployeeDetail() {
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
               <h1> Nikhil the Allrounder</h1> 
               <div className="info-group">
-                <label>First Name:</label>
+                <label>First Name: </label>
                 <span>{employeeData.firstName}</span>
               </div>
               <div className="info-group">
-                <label>Last Name:</label>
+                <label>Last Name: </label>
                 <span>{employeeData.lastName}</span>
               </div>
               <div className="info-group">
-                <label>Work Location:</label>
+                <label>Work Location: </label>
                 <span>{employeeData.workLocation}</span>
               </div>
               <div className="info-group">
-                <label>Date of Joining:</label>
+                <label>Date of Joining: </label>
                 <span>{employeeData.createdAt}</span>
               </div>
               <div className="info-group">
-                <label>Email:</label>
+                <label>Email: </label>
                 <span>{employeeData.personEmail}</span>
               </div>
               <div className="info-group">
-                <label>Designation:</label>
+                <label>Designation: </label>
                 <span>{employeeData.designation}</span>
               </div>
             </div>
@@ -157,19 +160,19 @@ function EmployeeDetail() {
                 
                 <div key={index} className="info-group">
                   <div className="info-group">
-                    <label>Salary Basis:</label>
+                    <label>Salary Basis: </label>
                     <span>{payroll.payFrequency}</span>
                   </div>
                   <div className="info-group">
-                    <label>Salary Amount Per Month:</label>
+                    <label>Salary Amount Per Month: </label>
                     <span>{payroll.payAmount}</span>
                   </div>
                   <div className="info-group">
-                    <label>Bonus:</label>
+                    <label>Bonus: </label>
                     <span>{payroll.bonus}</span>
                   </div>
                   <div className="info-group">
-                    <label>Increment Precentage:</label>
+                    <label>Increment Precentage: </label>
                     <span>{payroll.percentageIncrement}</span>
                   </div>
                 </div>
@@ -180,39 +183,39 @@ function EmployeeDetail() {
               <h2>Personal Info</h2>
               <button className="edit-button" onClick={handleEditToggle}>Edit</button>
               <div className="info-group">
-                <label>Gender:</label>
+                <label>Gender: </label>
                 <span>{employeeData.gender}</span>
               </div>
               <div className="info-group">
-                <label>Date of Birth:</label>
+                <label>Date of Birth: </label>
                 <span>{employeeData.dateOfBirth}</span>
               </div>
               <div className="info-group">
-                <label>Phone Number:</label>
+                <label>Phone Number: </label>
                 <span>{employeeData.phone}</span>
               </div>
               <div className="info-group">
-                <label>Marital Status:</label>
+                <label>Marital Status: </label>
                 <span>{employeeData.maritalStatus}</span>
               </div>
               <div className="info-group">
-                <label>Nationality:</label>
+                <label>Nationality: </label>
                 <span>{employeeData.nationality}</span>
               </div>
               <div className="info-group">
-                <label>Street Name:</label>
+                <label>Street Name: </label>
                 <span>{employeeData.address}</span>
               </div>
               <div className="info-group">
-                <label>Status:</label>
+                <label>Status: </label>
                 <span>{employeeData.employmentStatus}</span>
               </div>
               <div className="info-group">
-                <label>Employment Type:</label>
+                <label>Employment Type: </label>
                 <span>{employeeData.employmentType}</span>
               </div>
               <div className="info-group">
-                <label>Hire Date:</label>
+                <label>Hire Date: </label>
                 <span>{employeeData.hireDate}</span>
               </div>
             </div>
@@ -223,45 +226,36 @@ function EmployeeDetail() {
               <div className="education-group">
                 <label>Institution</label>
                 <div className="education-detail">
-                  <img src={locationDot} alt="location icon" className="icon" />
-                  <span>{educationData.institution}</span>
-                </div>
-                <div className="education-detail">
-                  <img src={dateDot} alt="date icon" className="icon" />
-                  <span>Degree {educationData.degree}</span>
+                <HiOutlineBuildingOffice />
+                  <span> {" " + educationData.institution}</span>
                 </div>
               </div>
               <div className="education-group">
+                
                 <label>Degree</label>
                 <div className="education-detail">
-                  <img src={locationDot} alt="location icon" className="icon" />
-                  <span>{educationData.degree}</span>
+              <HiOutlineBuildingOffice />
+                  <span>{" " + educationData.degree}</span>
                 </div>
-                <div className="education-detail">
+                {/* <div className="education-detail">
                   <img src={dateDot} alt="date icon" className="icon" />
                   <span>Graduated {employeeData.masterGraduationDate}</span>
-                </div>
+                </div> */}
               </div>
               <div className="education-group">
                 <label>Major</label>
+                
                 <div className="education-detail">
-                  <img src={locationDot} alt="location icon" className="icon" />
+                  
+              <MdOutlineCastForEducation/>
                   <span>{educationData.major}</span>
-                </div>
-                <div className="education-detail">
-                  <img src={dateDot} alt="date icon" className="icon" />
-                  <span>Graduated {educationData.major}</span>
                 </div>
               </div>
               <div className="education-group">
                 <label>Graduation Date</label>
                 <div className="education-detail">
-                  <img src={locationDot} alt="location icon" className="icon" />
+                <img src={dateDot} alt="date icon" className="icon" />
                   <span>{educationData.graduation_end_date}</span>
-                </div>
-                <div className="education-detail">
-                  <img src={dateDot} alt="date icon" className="icon" />
-                  <span>Graduated {employeeData.scrumDate}</span>
                 </div>
               </div>
             </div>
@@ -272,11 +266,10 @@ function EmployeeDetail() {
               <div className="experience-group">
                 <label>Company Name</label>
                 <div className="experience-detail">
-                  <img src={locationDot} alt="location icon" className="icon" />
+                <HiOutlineBuildingOffice />
                   <span>{experienceData.company_name}</span>
                 </div>
                 <div className="experience-detail">
-                  <img src={dateDot} alt="date icon" className="icon" />
                   <span>{employeeData.seniorDate}</span>
                 </div>
                 <span>{employeeData.seniorCompany}</span>
@@ -285,24 +278,22 @@ function EmployeeDetail() {
               <div className="experience-group">
                 <label>Position</label>
                 <div className="experience-detail">
-                  <img src={locationDot} alt="location icon" className="icon" />
+                <HiOutlineBuildingOffice />
                   <span>{experienceData.position}</span>
                 </div>
                 <div className="experience-detail">
-                  <img src={dateDot} alt="date icon" className="icon" />
                   <span>{employeeData.assistantDate}</span>
                 </div>
                 <span>{employeeData.assistantCompany}</span>
                 <p>{employeeData.assistantDescription}</p>
               </div>
               <div className="experience-group">
-                <label>Employement Type</label>
+                <label>Employment Type</label>
                 <div className="experience-detail">
-                  <img src={locationDot} alt="location icon" className="icon" />
+                <img src={dateDot} alt="date icon" className="icon" />
                   <span>{experienceData.employment_type}</span>
                 </div>
                 <div className="experience-detail">
-                  <img src={dateDot} alt="date icon" className="icon" />
                   <span>{employeeData.coordinatorDate}</span>
                 </div>
                 <span>{employeeData.coordinatorCompany}</span>

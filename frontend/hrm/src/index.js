@@ -37,6 +37,7 @@ root.render(
           <Route path="/employee-list" element={<EmployeeList />} />
           <Route path="/applicantList" element={<ApplicantList />} />
           <Route path="/add-education" element={<AddEducation />} />
+          {/* <Route path="/separation" element={<Separation />} /> */}
         </Routes>
       </BrowserRouter>
     </AuthProvider>
