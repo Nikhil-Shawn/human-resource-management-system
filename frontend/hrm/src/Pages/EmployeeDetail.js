@@ -20,10 +20,70 @@ function EmployeeDetail() {
       try {
         const employeeId = authData.data.employeeId;
         console.log("is id proper?", employeeId);
-        const response = await axios.get(`http://localhost:8080/api/v1/employee/${employeeId}`);
-        const { person, designation, workLocation, employmentStatus, employmentType, hireDate} = response.data;
-        setEmployeeData({ ...person, designation, workLocation, employmentStatus, employmentType, hireDate});
-        console.log("Employee data:", response.data);
+        const response = await axios.get(`http://localhost:8080/api/v1/employee/employeeget/${employeeId}`);
+        const employeeResponseData = response.data;
+        
+        const {
+          personID,
+          firstName,
+          lastName,
+          address,
+          personEmail,
+          phone,
+          dateOfBirth,
+          gender,
+          nationality,
+          maritalStatus,
+          personType,
+          createdAt,
+          updatedAt,
+          employeeID,
+          departmentId,
+          supervisorId,
+          manageWhom,
+          employmentType,
+          empEmail,
+          empPassword,
+          designation,
+          hireDate,
+          terminationDate,
+          employmentStatus,
+          workLocation,
+          supervisor,
+          admin
+        } = employeeResponseData;
+        
+        setEmployeeData({
+          personID,
+          firstName,
+          lastName,
+          address,
+          personEmail,
+          phone,
+          dateOfBirth,
+          gender,
+          nationality,
+          maritalStatus,
+          personType,
+          createdAt,
+          updatedAt,
+          employeeID,
+          departmentId,
+          supervisorId,
+          manageWhom,
+          employmentType,
+          empEmail,
+          empPassword,
+          designation,
+          hireDate,
+          terminationDate,
+          employmentStatus,
+          workLocation,
+          supervisor,
+          admin
+        });
+        
+        console.log("Employee data:", employeeResponseData);
 
         const educationResponse = await axios.get(`http://localhost:8080/api/v1/education/byemployee/${employeeId}`);
         setEducationData(educationResponse.data);

@@ -6,7 +6,7 @@ import Payroll from "./Pages/Payroll";
 function App() {
 	return (
 		<div className="wrapper">
-			<Payroll />
+			<Login />
 		</div>
 	);
 }

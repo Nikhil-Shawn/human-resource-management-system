@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
@@ -6,13 +7,12 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
 import './AssetDrawer.css';
 
 const Drawer = ({ isOpen, onClose, onSave, asset }) => {
   const [assetType, setAssetType] = useState('');
   const [serialNumber, setSerialNumber] = useState('');
-  const [employeeId, setEmployeeId] = useState('');
+  const [employeeId, setEmployeeId] = useState(''); // Initialize as empty string
   const [issuedDate, setIssuedDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
   const [assetId, setAssetId] = useState(null);
