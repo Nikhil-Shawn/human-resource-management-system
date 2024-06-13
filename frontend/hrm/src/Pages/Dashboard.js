@@ -17,8 +17,6 @@ function Dashboard() {
     const employeeId = authData.data.employeeId;
     console.log(employeeId);
 
-    
-
 
     const displayEmployee = () => {
         navigate('/employee');
@@ -81,11 +79,12 @@ function Dashboard() {
                             <div className="card-icon separation-icon"></div>
                             <div className="card-subtitle">Contract Termination</div>
                         </div>
-                        <div className="dashboard-card">
+                        {/* Work in Progress */}
+                        {/* <div className="dashboard-card">
                             <div className="card-title">Applicants</div>
                             <div className="card-icon applicants-icon"></div>
                             <div className="card-subtitle">Applicant information</div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="dashboard-calendar">
                         <DatePicker

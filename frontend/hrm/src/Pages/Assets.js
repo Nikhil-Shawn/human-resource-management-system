@@ -21,10 +21,7 @@ function Assets() {
     };
   }, []);
 
-  const fetchAssets = (refresh = false) => {
-    if (refresh) {
-      console.log("Refreshing asset data...");
-    }
+  const fetchAssets = () => {
     axios.get('http://localhost:8080/api/v1/assets/all')
       .then(response => {
         console.log("response", response);
@@ -74,7 +71,7 @@ function Assets() {
     }
     setIsDrawerOpen(false);
     setCurrentAsset(null);
-    fetchAssets(true);
+    fetchAssets();
   };
 
   const handleDelete = (assetId) => {
@@ -98,26 +95,6 @@ function Assets() {
     }
   };
 
-  const assetArrray = [
-    {
-      name: 'Brendan Bradt',
-      position: 'UI/UX Designer',
-      applicationDate: 'Sep. 12 2023',
-      status: 'New Applicant',
-      email: 'b.bradtk@example.com',
-      img: 'path/to/image1.jpg',
-      employee_id:1,
-      asset_id:420,
-      asset_type:'laptop',
-      serial_number:111,
-      issued_date:'12/10/2023',
-      return_date:'12/10/2023',
-
-
-    },
-    
-  ];
-
   return (
     <div className="app">
       <Sidebar />
@@ -132,21 +109,8 @@ function Assets() {
           </div>
           <table className="employee-table">
             <thead>
-              <tr
-                style={{
-                  fontWeight: "0",
-                  fontSize: "0.8vw",
-                  color: "black",
-                }}
-              >
-                <th
-                  style={{
-                    padding: "20px 0px 20px 40px",
-                    marginLeft: "10px",
-                    
-                  }}
-                >
-                  Employee ID</th>
+              <tr>
+                <th>Employee ID</th>
                 <th>Asset ID</th>
                 <th>Asset Type</th>
                 <th>Serial Number</th>
@@ -155,17 +119,16 @@ function Assets() {
                 <th></th>
               </tr>
             </thead>
-            <tbody style={{ fontSize: "0.8vw", textAlign: "center" }}>
-              {assetArrray.map((asset, index) => (
+            <tbody>
+              {assetsData.map((asset, index) => (
                 <tr key={index}>
-                                    <td>{asset.employee_id}</td>
-
+                  <td>{asset.employee_id}</td>
                   <td>{asset.asset_id}</td>
                   <td>{asset.asset_type}</td>
                   <td>{asset.serial_number}</td>
                   <td>{asset.issued_date}</td>
                   <td>{asset.return_date}</td>
-                  <td style={{ borderRight: "1px solid #E0E4EA" }}>
+                  <td>
                     <div className="dropdown-container" ref={dropdownOpen === index ? dropdownRef : null}>
                       <BsThreeDotsVertical onClick={() => toggleDropdown(index)} />
                       {dropdownOpen === index && (

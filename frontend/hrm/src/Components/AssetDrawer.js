@@ -8,7 +8,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './AssetDrawer.css';
-
+ 
 const Drawer = ({ isOpen, onClose, onSave, asset }) => {
   const [assetType, setAssetType] = useState('');
   const [serialNumber, setSerialNumber] = useState('');
@@ -17,7 +17,7 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
   const [returnDate, setReturnDate] = useState('');
   const [assetId, setAssetId] = useState(null);
   const [errors, setErrors] = useState({});
-
+ 
   useEffect(() => {
     if (asset) {
       setAssetType(asset.asset_type);
@@ -36,29 +36,32 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
     }
     setErrors({});
   }, [asset]);
-
+ 
   const validate = () => {
     const newErrors = {};
-    if (!assetType.trim()) newErrors.assetType = 'Please enter this field';
-    if (!serialNumber.trim()) newErrors.serialNumber = 'Please enter this field';
-    if (!employeeId.trim()) newErrors.employeeId = 'Please enter this field';
-    if (!issuedDate.trim()) newErrors.issuedDate = 'Please enter this field';
-    if (!returnDate.trim()) newErrors.returnDate = 'Please enter this field';
+    const alphanumericRegex = /^[a-z0-9 ]+$/i;
+ 
+    if (!assetType || !alphanumericRegex.test(assetType)) newErrors.assetType = 'Please enter a valid asset type ';
+    if (!serialNumber || !alphanumericRegex.test(serialNumber)) newErrors.serialNumber = 'Please enter a valid serial number (alphanumeric and spaces only)';
+    if (!employeeId || !alphanumericRegex.test(employeeId)) newErrors.employeeId = 'Please enter a valid employee ID (numeric only)';
+    if (!issuedDate) newErrors.issuedDate = 'Please enter this field';
+    if (!returnDate) newErrors.returnDate = 'Please enter this field';
+ 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
+ 
   const handleSave = async () => {
     if (!validate()) return;
-
+ 
     const assetData = {
-      asset_type: assetType.trim(),
-      serial_number: serialNumber.trim(),
-      issued_date: issuedDate.trim(),
-      return_date: returnDate.trim(),
-      employee_id: employeeId.trim(),
+      asset_type: assetType,
+      serial_number: serialNumber,
+      issued_date: issuedDate,
+      return_date: returnDate,
+      employee_id: employeeId,
     };
-
+ 
     try {
       const response = assetId
         ? await axios.put(`http://localhost:8080/api/v1/assets/update/${assetId}`, assetData, {
@@ -71,7 +74,7 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
               'Content-Type': 'application/json'
             }
           });
-
+ 
       onSave(response.data);
       onClose();
     } catch (error) {
@@ -79,7 +82,7 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       console.log(error.response);
     }
   };
-
+ 
   const textFieldStyles = {
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
@@ -87,7 +90,7 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
       },
     },
   };
-
+ 
   return (
     <div className={`drawer ${isOpen ? 'open' : ''}`}>
       <div className="head-group">
@@ -183,5 +186,5 @@ const Drawer = ({ isOpen, onClose, onSave, asset }) => {
     </div>
   );
 };
-
+ 
 export default Drawer;

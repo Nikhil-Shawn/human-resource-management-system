@@ -17,9 +17,9 @@ function Sidebar() {
     useEffect(() => {
         const fetchEmployeeData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/v1/employee/${employeeId}`);
-                setEmployeeData(response.data.person);
-                console.log(response.data.person.firstName)
+                const response = await axios.get(`http://localhost:8080/api/v1/employee/employeeget/${employeeId}`);
+                setEmployeeData(response.data);
+                console.log(response.data.firstName)
             } catch (error) {
                 console.error("Error fetching employee data:", error);
             }
@@ -45,11 +45,11 @@ function Sidebar() {
     };
 
     const displayCreateEmployee = () => {
-        navigate('/createEmployee');
+        navigate('/create-employee');
     };
 
     const displayEmployeeDetail = () => {
-        navigate('/employeeDetail');
+        navigate('/employee');
     };
 
     const displayLeaves = () => {
@@ -60,10 +60,6 @@ function Sidebar() {
         navigate('/payroll');
     };
 
-    const displaySeparation = () => {
-        navigate('/separation');
-    };
-
     const displayAssets = () => {
         navigate('/assets');
     };
@@ -72,9 +68,10 @@ function Sidebar() {
         navigate('/department');
     };
 
-    const displayApplicantList = () => {
-        navigate('/applicantList');
-    };
+    // Work in progress
+    // const displayApplicantList = () => {
+    //     navigate('/applicantList');
+    // };
 
     return (
         <div className="sidebar">
@@ -124,14 +121,11 @@ function Sidebar() {
                     <FaRegBuilding className="sidebar-icon" />
                     <span>Department</span>
                 </div>
-                <div className="sidebar-item" onClick={displaySeparation}>
-                    <FaSignOutAlt className="sidebar-icon" />
-                    <span>Separation</span>
-                </div>
-                <div className="sidebar-item" onClick={displayApplicantList}>
+                {/* Work in Progress */}
+                {/* <div className="sidebar-item" onClick={displayApplicantList}>
                     <FaUserTie className="sidebar-icon" />
                     <span>Applicants</span>
-                </div>
+                </div> */}
             </div>
         </div>
     );
